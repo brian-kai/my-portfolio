@@ -10,26 +10,46 @@ const navItems = [
 
 const skills = [
   {
-    category: "Programming",
-    items: ["Python", "SQL", "R", "JavaScript"],
-  },
-  {
-    category: "AI & Machine Learning",
+    category: "Data Analysis",
+    description:
+      "使用 Python、Pandas、NumPy 與 SQL 進行資料清理、資料轉換、特徵整理與視覺化分析，協助從資料中分析趨勢與洞察。",
     items: [
-      "Natural Language Processing",
-      "LLM Application",
-      "LLM Fine-tuning",
-      "Knowledge Distillation",
-      "Machine Learning",
+      "Python",
+      "Pandas",
+      "NumPy",
+      "SQL",
+      "Data Cleaning",
+      "Data Visualization",
     ],
   },
   {
-    category: "Frameworks & Tools",
-    items: ["PyTorch", "Transformers", "Pandas", "NumPy", "Scikit-learn"],
+    category: "NLP / LLM",
+    description:
+      "具備自然語言處理與大型語言模型應用經驗，能進行意圖分類、文字生成、情感分析、關鍵字擷取與知識蒸餾相關實作。",
+    items: [
+      "BERT",
+      "LLaMA",
+      "Gemma",
+      "Intent Classification",
+      "Text Generation",
+      "Sentiment Analysis",
+      "Keyword Extraction",
+      "Knowledge Distillation",
+    ],
   },
   {
-    category: "Web & Automation",
-    items: ["Next.js", "Tailwind CSS", "Vercel", "Supabase", "n8n"],
+    category: "Web / Deployment",
+    description:
+      "使用 Next.js、Tailwind CSS、Vercel、Supabase 與 n8n 建立網站介面、部署專案，並串接資料庫與自動化流程。",
+    items: [
+      "Next.js",
+      "Tailwind CSS",
+      "Vercel",
+      "Supabase",
+      "n8n",
+      "Deployment",
+      "Workflow Automation",
+    ],
   },
 ];
 
@@ -222,25 +242,29 @@ export default function Home() {
       <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-8 text-3xl font-bold">Skills</h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="rounded-2xl border border-white/10 bg-black/45 p-6 shadow-2xl shadow-black/20 md:p-8">
           {skills.map((skill) => (
-            <div
+            <article
               key={skill.category}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              className="border-b border-white/10 py-6 first:pt-0 last:border-b-0 last:pb-0"
             >
-              <h3 className="mb-4 text-xl font-semibold">{skill.category}</h3>
+              <h3 className="text-xl font-bold">{skill.category}</h3>
 
-              <div className="flex flex-wrap gap-2">
+              <p className="mt-3 max-w-5xl leading-8 text-slate-200">
+                {skill.description}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
                 {skill.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-300"
+                    className="rounded bg-white/10 px-2 py-1 font-mono text-xs font-semibold text-white"
                   >
                     {item}
                   </span>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
