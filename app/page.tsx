@@ -64,6 +64,7 @@ const certificates = [
     title: "AIA Talent Certification in AI Literacy",
     issuer: "Taiwan AI Academy",
     image: aiatclCertificate,
+    href: "/file/AIATCL.pdf",
     tags: ["AI Literacy", "AI Fundamentals", "AIA Talent"],
   },
   {
@@ -303,7 +304,7 @@ export default function Home() {
           {certificates.map((certificate, index) => (
             <a
               key={certificate.title}
-              href={certificate.image.src}
+              href={certificate.href ?? certificate.image.src}
               target="_blank"
               rel="noopener noreferrer"
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
