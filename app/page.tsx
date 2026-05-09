@@ -147,6 +147,19 @@ const projects = [
     action: "View Poster",
   },
   {
+    title: "用電趨勢分析",
+    tags: ["Data Analysis", "Python", "Visualization", "Energy Data"],
+    description:
+      "以用電資料為主題進行期末專題分析，整理資料並觀察用電變化趨勢，透過視覺化呈現不同時間區間的用電特徵與可能影響因素。",
+    highlights: [
+      "進行用電資料清理、整理與趨勢分析",
+      "透過圖表視覺化呈現用電變化",
+      "製作專題成果海報彙整分析流程與發現",
+    ],
+    href: "/file/期末專題成果報告-用電趨勢分析海報.pdf",
+    action: "View Poster",
+  },
+  {
     title: "Intent Classification & QA Generation",
     tags: ["Intent Classification", "QA Generation", "BERT", "Gemma"],
     description:
@@ -479,9 +492,13 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">Contact Me</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-          <p className="mb-4 text-slate-300">
+          <p className="hidden">
             歡迎透過 Email 與我聯繫，討論實習、專題合作或 AI
             應用相關機會。
+          </p>
+
+          <p className="mb-4 text-slate-300">
+            歡迎透過 Email 與我聯繫，也可以查看我的 GitHub 與履歷。
           </p>
 
           <div className="space-y-2 text-slate-300">
@@ -496,12 +513,26 @@ export default function Home() {
             </p>
 
             <p>
-              Phone:{" "}
+              GitHub:{" "}
               <a
-                href="tel:+886967233343"
+                href="https://github.com/brian-kai"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-blue-400 hover:underline"
               >
-                +886 967233343
+                github.com/brian-kai
+              </a>
+            </p>
+
+            <p>
+              Resume PDF:{" "}
+              <a
+                href="/file/新版履歷_英文網站.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                Download Resume
               </a>
             </p>
           </div>
