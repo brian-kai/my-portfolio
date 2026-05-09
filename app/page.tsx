@@ -116,6 +116,9 @@ export default function Home() {
             <a href="#skills" className="hover:text-white">
               Skills
             </a>
+            <a href="#work" className="hover:text-white">
+              Work
+            </a>
             <a href="#projects" className="hover:text-white">
               Projects
             </a>
@@ -433,6 +436,145 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Work Experience */}
+      <section id="work" className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="mb-8 text-3xl font-bold">Work Experience</h2>
+
+        <div className="grid gap-6">
+          <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  Teaching Assistant - Decision & Data Analysis
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  Feng Chia University | Sep 2025 - Jan 2026
+                </p>
+              </div>
+
+              <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
+                Teaching Assistant
+              </span>
+            </div>
+
+            <p className="leading-8 text-slate-300">
+              Supported students in data preprocessing, exploratory analysis, model building, and performance evaluation using analytical tools. Guided students in interpreting analytical results and translating data insights into practical decision-making recommendations.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  Teaching Assistant - Database Management System and Design
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  Feng Chia University | Feb 2025 - Jun 2026
+                </p>
+              </div>
+
+              <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
+                Teaching Assistant
+              </span>
+            </div>
+
+            <p className="leading-8 text-slate-300">
+              Helped students design databases, plan table structures, create tables, and organize structured data. Assisted students with SQL practice, including basic queries, advanced queries, data retrieval, data updates, and common database operations.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  Research Assistant - Code Annotation Generation using Myers Diff and LLaMA 3
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  Feng Chia University | Aug 2025 - Present
+                </p>
+              </div>
+
+              <span className="w-fit rounded-full bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
+                Research Assistant
+              </span>
+            </div>
+
+            <p className="leading-8 text-slate-300">
+              Assisted in an AI research project integrating Myers Diff Algorithm, deep learning classification, and LLaMA 3 for automated code change annotation generation. Supported GitHub code-change data processing, including before-and-after code extraction, diff block identification, and structured dataset preparation.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="work-hidden" className="hidden">
+        <h2 className="mb-8 text-3xl font-bold">Work Experience</h2>
+
+        <div className="grid gap-6">
+          <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  逢甲大學課程助教
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  資料庫設計、數據與決策分析 | 113-2、114-1、114-2 學期
+                </p>
+              </div>
+
+              <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
+                Teaching Assistant
+              </span>
+            </div>
+
+            <p className="leading-8 text-slate-300">
+              協助教師進行課程教學與學生學習支援，包含檢查學生課堂進度、解答資料庫與資料分析相關問題、整理課程資料與協助課堂執行。透過助教經驗，強化資料處理、問題拆解、溝通表達與教學輔導能力。
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  國科會研究計畫助理
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式
+                </p>
+              </div>
+
+              <span className="w-fit rounded-full bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
+                Research Assistant
+              </span>
+            </div>
+
+            <p className="leading-8 text-slate-300">
+              擔任研究計畫助理，協助教授處理計畫執行期間的行政事務、資料整理與經費報支流程。透過參與研究計畫，理解學術研究專案的執行流程，並培養細心度、文件管理與跨角色協作能力。
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  國中補習班理化助教
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  課堂協助、課業輔導與概念講解
+                </p>
+              </div>
+
+              <span className="w-fit rounded-full bg-emerald-400/10 px-4 py-2 text-sm text-emerald-300">
+                Tutor Assistant
+              </span>
+            </div>
+
+            <p className="leading-8 text-slate-300">
+              協助教師進行國中理化課堂教學與學生課業輔導，將理化觀念與解題步驟轉化為學生較容易理解的說明方式，提升溝通能力、教學表達能力與協助他人解決問題的能力。
+            </p>
+          </article>
         </div>
       </section>
 
