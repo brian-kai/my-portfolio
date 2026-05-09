@@ -281,7 +281,7 @@ export default function Home() {
               href={highlight.href}
               className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
             >
-              <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div className="mb-4 flex flex-col items-start gap-3">
                 <h3 className="text-xl font-semibold leading-8">
                   {highlight.title}
                 </h3>
