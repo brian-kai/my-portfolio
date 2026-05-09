@@ -1,8 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
+
+import aiatclCertificate from "./image/AIATCL.jpg";
+import aiCertificate from "./image/AI證照.png";
+import googleCertificate from "./image/GOOGLE證照.png";
 
 const navItems = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
@@ -50,6 +56,27 @@ const skills = [
       "Deployment",
       "Workflow Automation",
     ],
+  },
+];
+
+const certificates = [
+  {
+    title: "AIA Talent Certification in AI Literacy",
+    issuer: "Taiwan AI Academy",
+    image: aiatclCertificate,
+    tags: ["AI Literacy", "AI Fundamentals", "AIA Talent"],
+  },
+  {
+    title: "Microsoft AI & ML Engineering",
+    issuer: "Coursera / Microsoft",
+    image: aiCertificate,
+    tags: ["AI", "Machine Learning", "Engineering"],
+  },
+  {
+    title: "Google Data Analytics",
+    issuer: "Coursera / Google",
+    image: googleCertificate,
+    tags: ["Data Analytics", "SQL", "Python"],
   },
 ];
 
@@ -265,6 +292,57 @@ export default function Home() {
                 ))}
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="certificates" className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {certificates.map((certificate, index) => (
+            <a
+              key={certificate.title}
+              href={certificate.image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+            >
+              <div className="border-b border-white/10 bg-slate-950/40 p-3">
+                <Image
+                  src={certificate.image}
+                  alt={`${certificate.title} certificate`}
+                  className="aspect-[4/3] w-full rounded-xl object-cover object-top"
+                  priority={index === 0}
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
+              </div>
+
+              <div className="p-6">
+                <p className="text-sm font-medium text-cyan-300">
+                  {certificate.issuer}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold leading-8">
+                  {certificate.title}
+                </h3>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {certificate.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                  View Certificate
+                  <span aria-hidden="true">-&gt;</span>
+                </div>
+              </div>
+            </a>
           ))}
         </div>
       </section>
