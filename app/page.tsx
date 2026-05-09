@@ -130,12 +130,16 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
-        <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
+      <section className="relative overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_15%_20%,rgba(34,211,238,0.26),transparent_32%),radial-gradient(circle_at_80%_25%,rgba(139,92,246,0.28),transparent_34%),linear-gradient(135deg,#020617_0%,#08112d_46%,#111827_100%)]">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_88%)]" />
+        <div className="absolute left-0 top-16 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
+
+        <div className="relative mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
+        <h1 className="max-w-5xl text-4xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-6xl">
           AI / NLP / Data Analysis Portfolio
         </h1>
 
-        <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-300">
+        <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-200">
           {"\u{6211}\u{662F}\u{9EC3}\u{51F1}\u{6D5A}\u{FF0C}\u{76EE}\u{524D}\u{5C31}\u{8B80}\u{65BC}\u{9022}\u{7532}\u{5927}\u{5B78}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{8207}\u{7CFB}\u{7D71}\u{7BA1}\u{7406}\u{5B78}\u{7CFB}\u{FF0C}\u{4E3B}\u{8981}\u{6295}\u{5165}\u{81EA}\u{7136}\u{8A9E}\u{8A00}\u{8655}\u{7406}\u{3001}LLM \u{5FAE}\u{8ABF}\u{3001}\u{751F}\u{6210}\u{5F0F}AI\u{8207}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{3002}\u{7562}\u{696D}\u{5C08}\u{984C}\u{4EE5} LLaMA 3 \u{7D50}\u{5408}\u{6D88}\u{8CBB}\u{8005}\u{504F}\u{597D}\u{FF0C}\u{9032}\u{884C}\u{500B}\u{4EBA}\u{5316}\u{884C}\u{92B7}\u{6587}\u{6848}\u{751F}\u{6210}\u{7814}\u{7A76}\u{FF0C}\u{4E26}\u{65BC} 2025 \u{4E2D}\u{570B}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{5B78}\u{6703}\u{5E74}\u{6703}\u{66A8}\u{5B78}\u{8853}\u{7814}\u{8A0E}\u{6703}\u{767C}\u{8868}\u{FF0C}\u{69AE}\u{7372}\u{5927}\u{6578}\u{64DA}\u{6280}\u{8853}\u{8207}\u{61C9}\u{7528}\u{9818}\u{57DF}-\u{6700}\u{4F73}\u{8AD6}\u{6587}\u{734E}\u{3002}"}
           <br />
           <br />
@@ -168,6 +172,7 @@ export default function Home() {
           >
             Download Resume
           </a>
+        </div>
         </div>
       </section>
 
