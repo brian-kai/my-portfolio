@@ -20,15 +20,15 @@ export default function IcccmPage() {
     <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_14%_22%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.24),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white">
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
-      <nav className="relative z-10 border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
+      <nav className="relative z-10 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link href="/" className="text-lg font-bold">
-            Kevin Huang
+            Kevin Huang | 黃凱浚 Kai-Chun Huang
           </Link>
 
           <Link
             href="/#experience"
-            className="rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
           >
             Back
           </Link>

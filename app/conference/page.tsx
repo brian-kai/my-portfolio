@@ -19,15 +19,15 @@ const certificates = [
 export default function ConferencePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
-      <nav className="border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
+      <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link href="/" className="text-lg font-bold">
-            Kevin Huang
+            Kevin Huang | 黃凱浚 Kai-Chun Huang
           </Link>
 
           <Link
             href="/#conference"
-            className="rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
           >
             回首頁
           </Link>

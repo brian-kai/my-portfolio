@@ -154,7 +154,7 @@ export default function IvePage() {
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1021]/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link href="/" className="text-lg font-bold">
-            Kevin Huang
+            Kevin Huang | 黃凱浚 Kai-Chun Huang
           </Link>
 
           <div className="hidden items-center gap-5 text-sm text-slate-300 md:flex">
