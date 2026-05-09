@@ -531,8 +531,18 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mb-5 rounded-2xl bg-black/30 px-5 py-4 font-mono text-xs font-semibold leading-6 text-white ring-1 ring-white/10">
-                  Tech Stack: {project.techStack.join(" / ")}
+                <div className="mb-5 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold text-slate-300">
+                    Tech Stack:
+                  </span>
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full bg-purple-500/10 px-3 py-1 text-xs text-purple-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
                 <p className="mb-5 leading-7 text-slate-300">
