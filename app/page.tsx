@@ -134,7 +134,21 @@ export default function Home() {
           AI / NLP / Data Analysis Portfolio
         </h1>
 
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+        <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-300">
+          {"\u{6211}\u{662F}\u{9EC3}\u{51F1}\u{6D5A}\u{FF0C}\u{76EE}\u{524D}\u{5C31}\u{8B80}\u{65BC}\u{9022}\u{7532}\u{5927}\u{5B78}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{8207}\u{7CFB}\u{7D71}\u{7BA1}\u{7406}\u{5B78}\u{7CFB}\u{FF0C}\u{5C08}\u{6CE8}\u{65BC}\u{81EA}\u{7136}\u{8A9E}\u{8A00}\u{8655}\u{7406}\u{3001}LLM \u{5FAE}\u{8ABF}\u{3001}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{8207}\u{81EA}\u{52D5}\u{5316}\u{5DE5}\u{5177}\u{958B}\u{767C}\u{3002}\u{6211}\u{66FE}\u{4EE5} LLaMA 3 \u{7D50}\u{5408}\u{6D88}\u{8CBB}\u{8005}\u{504F}\u{597D}\u{9032}\u{884C}\u{500B}\u{4EBA}\u{5316}\u{884C}\u{92B7}\u{6587}\u{6848}\u{751F}\u{6210}\u{7814}\u{7A76}\u{FF0C}\u{4E26}\u{5728} 2025 \u{4E2D}\u{570B}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{5B78}\u{6703}\u{5E74}\u{6703}\u{66A8}\u{5B78}\u{8853}\u{7814}\u{8A0E}\u{6703}\u{767C}\u{8868}\u{4E14}\u{7372}\u{5F97}\u{6700}\u{4F73}\u{8AD6}\u{6587}\u{734E}\u{3002}"}
+          <br />
+          <br />
+          {"\u{6211}\u{7684}\u{5C08}\u{6848}\u{7D93}\u{9A57}\u{6DB5}\u{84CB}\u{6A21}\u{578B}\u{8A13}\u{7DF4}\u{3001}\u{6587}\u{672C}\u{5206}\u{6790}\u{3001}\u{610F}\u{5716}\u{5206}\u{985E}\u{3001}QA \u{751F}\u{6210}\u{3001}SEO Entity \u{5206}\u{6790}\u{8207}\u{524D}\u{7AEF}\u{7DB2}\u{7AD9}\u{88FD}\u{4F5C}\u{FF0C}\u{719F}\u{6089} Python\u{3001}SQL\u{3001}PyTorch\u{3001}Transformers\u{3001}Next.js\u{3001}Tailwind CSS \u{8207} Google Sheets \u{81EA}\u{52D5}\u{5316}\u{4E32}\u{63A5}\u{3002}\u{5E0C}\u{671B}\u{6301}\u{7E8C}\u{5C07}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{8207} AI \u{6280}\u{8853}\u{61C9}\u{7528}\u{5728}\u{5BE6}\u{969B}\u{554F}\u{984C}\u{89E3}\u{6C7A}\u{3001}\u{6D41}\u{7A0B}\u{6539}\u{5584}\u{8207}\u{667A}\u{6167}\u{5316}\u{7CFB}\u{7D71}\u{958B}\u{767C}\u{4E2D}\u{3002}"}
+        </p>
+
+        <p className="hidden">
+          我是黃凱浚，目前就讀於逢甲大學工業工程與系統管理學系，專注於自然語言處理、LLM 微調、資料分析與自動化工具開發。我曾以 LLaMA 3 結合消費者偏好進行個人化行銷文案生成研究，並在 2025 中國工業工程學會年會暨學術研討會發表且獲得最佳論文獎。
+          <br />
+          <br />
+          我的專案經驗涵蓋模型訓練、文本分析、意圖分類、QA 生成、SEO Entity 分析與前端網站製作，熟悉 Python、SQL、PyTorch、Transformers、Next.js、Tailwind CSS 與 Google Sheets 自動化串接。希望持續將資料分析與 AI 技術應用在實際問題解決、流程改善與智慧化系統開發中。
+        </p>
+
+        <p className="hidden">
           我是黃凱浚，目前就讀於逢甲大學工業工程與系統管理學系，專注於自然語言處理、
           LLM 微調、知識蒸餾、資料分析與自動化工具開發。
         </p>
