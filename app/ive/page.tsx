@@ -151,8 +151,8 @@ export default function IvePage() {
 
   return (
     <main className="min-h-screen bg-[#0f1021] text-white">
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1021]/85 px-6 py-4 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
+      <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1021]/85 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link href="/" className="text-lg font-bold">
             Kevin Huang
           </Link>
