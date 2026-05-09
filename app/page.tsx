@@ -242,7 +242,7 @@ export default function Home() {
       <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-8 text-3xl font-bold">Skills</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-black/45 p-6 shadow-2xl shadow-black/20 md:p-8">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-6 md:p-8">
           {skills.map((skill) => (
             <article
               key={skill.category}
