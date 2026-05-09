@@ -1,8 +1,4 @@
-import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-
-import icccmProofPage1 from "./image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_1.png";
-import icccmProofPage2 from "./image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_2.png";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -61,19 +57,7 @@ const experiences = [
   },
 ];
 
-type Highlight = {
-  title: string;
-  href?: string;
-  badge: string;
-  description: string;
-  tags: string[];
-  proofImages?: {
-    src: StaticImageData;
-    alt: string;
-  }[];
-};
-
-const highlights: Highlight[] = [
+const highlights = [
   {
     title: "2025 中國工業工程學會年會暨學術研討會",
     href: "/conference",
@@ -84,20 +68,11 @@ const highlights: Highlight[] = [
   },
   {
     title: "ICCCM 2026",
+    href: "/icccm",
     badge: "Accepted for Presentation",
     description:
       "論文摘要 AN OBJECTIVE ESSAY SCORING AND COMMENTARY GENERATION SYSTEM WITH LSTM MODEL 獲 The 14th International Conference on Computer and Communications Management 接受，將於 2026 年 7 月 24-26 日在日本東京發表。",
     tags: ["ICCCM 2026", "Presentation", "LSTM", "Essay Scoring"],
-    proofImages: [
-      {
-        src: icccmProofPage1,
-        alt: "ICCCM 2026 acceptance notification page 1",
-      },
-      {
-        src: icccmProofPage2,
-        alt: "ICCCM 2026 acceptance notification page 2",
-      },
-    ],
   },
   {
     title: "Student Association",
@@ -161,74 +136,6 @@ const projects = [
     action: "View Website",
   },
 ];
-
-function HighlightCard({ highlight }: { highlight: Highlight }) {
-  const content = (
-    <>
-      <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
-        <h3 className="text-xl font-semibold leading-8">{highlight.title}</h3>
-        <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-          {highlight.badge}
-        </span>
-      </div>
-
-      <p className="leading-8 text-slate-300">{highlight.description}</p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
-        {highlight.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {highlight.proofImages ? (
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          {highlight.proofImages.map((proof, index) => (
-            <a
-              key={proof.alt}
-              href={proof.src.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/image block overflow-hidden rounded-lg border border-white/10 bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-            >
-              <Image
-                src={proof.src}
-                alt={proof.alt}
-                className="aspect-[3/4] w-full object-cover object-top transition group-hover/image:scale-[1.02]"
-                placeholder="blur"
-                sizes="(min-width: 768px) 260px, 50vw"
-              />
-              <div className="border-t border-white/10 px-3 py-2 text-xs font-medium text-cyan-200">
-                View Proof Page {index + 1}
-              </div>
-            </a>
-          ))}
-        </div>
-      ) : null}
-    </>
-  );
-
-  if (!highlight.href) {
-    return (
-      <article className="rounded-2xl border border-white/10 bg-white/5 p-6">
-        {content}
-      </article>
-    );
-  }
-
-  return (
-    <Link
-      href={highlight.href}
-      className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-    >
-      {content}
-    </Link>
-  );
-}
 
 export default function Home() {
   return (
@@ -369,7 +276,40 @@ export default function Home() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {highlights.map((highlight) => (
-            <HighlightCard key={highlight.title} highlight={highlight} />
+            <Link
+              key={highlight.title}
+              href={highlight.href}
+              className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+            >
+              <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+                <h3 className="text-xl font-semibold leading-8">
+                  {highlight.title}
+                </h3>
+                <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+                  {highlight.badge}
+                </span>
+              </div>
+
+              <p className="leading-8 text-slate-300">
+                {highlight.description}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {highlight.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                View Details
+                <span aria-hidden="true">-&gt;</span>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
