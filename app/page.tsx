@@ -142,10 +142,10 @@ export default function Home() {
         </p>
 
         <p className="hidden">
-          我是黃凱浚，目前就讀於逢甲大學工業工程與系統管理學系，專注於自然語言處理、LLM 微調、資料分析與自動化工具開發。我曾以 LLaMA 3 結合消費者偏好進行個人化行銷文案生成研究，並在 2025 中國工業工程學會年會暨學術研討會發表且獲得最佳論文獎。
+          我是黃凱浚，目前就讀於逢甲大學工業工程與系統管理學系，主要投入自然語言處理(NLP)、LLM 微調、生成式AI與資料分析。畢業專題以 LLaMA 3 結合消費者偏好，進行個人化行銷文案生成研究，並於 2025 中國工業工程學會年會暨學術研討會發表，榮獲大數據技術與應用領域-最佳論文獎。
           <br />
           <br />
-          我的專案經驗涵蓋模型訓練、文本分析、意圖分類、QA 生成、SEO Entity 分析與前端網站製作，熟悉 Python、SQL、PyTorch、Transformers、Next.js、Tailwind CSS 與 Google Sheets 自動化串接。希望持續將資料分析與 AI 技術應用在實際問題解決、流程改善與智慧化系統開發中。
+          我的專案經驗包含模型訓練、文本分析、意圖分類、QA 生成、SEO Entity 分析與前端網站製作，熟悉 Python、SQL、PyTorch、Transformers。希望持續將資料分析與 AI 技術應用在實際問題解決中。
         </p>
 
         <p className="hidden">
