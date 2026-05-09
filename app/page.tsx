@@ -136,7 +136,6 @@ const projects = [
   {
     title: "LLaMA 3 個人化行銷文案生成系統",
     tags: ["LLM", "LLaMA 3", "NLP", "Marketing"],
-    techStack: ["Python", "Pandas", "PyTorch", "Next.js", "Tailwind CSS", "Vercel"],
     description:
       "以 LLaMA 3 結合消費者偏好資料，建立個人化產品行銷文案生成流程，並透過情感分析、關鍵字萃取與生成品質評估驗證研究成果。",
     highlights: [
@@ -150,7 +149,6 @@ const projects = [
   {
     title: "用電趨勢分析",
     tags: ["Data Analysis", "Python", "Visualization", "Energy Data"],
-    techStack: ["Python", "Pandas", "Matplotlib", "Data Visualization"],
     description:
       "以用電資料為主題進行期末專題分析，整理資料並觀察用電變化趨勢，透過視覺化呈現不同時間區間的用電特徵與可能影響因素。",
     highlights: [
@@ -164,14 +162,6 @@ const projects = [
   {
     title: "Intent Classification & QA Generation",
     tags: ["Intent Classification", "QA Generation", "BERT", "Gemma"],
-    techStack: [
-      "Python",
-      "PyTorch",
-      "BERT",
-      "BiLSTM",
-      "Gemma",
-      "Knowledge Distillation",
-    ],
     description:
       "建立文字意圖分類與問答生成流程，結合 BERT-BiLSTM、Knowledge Distillation 與 Gemma 模型，應用於客服語意理解與 QA 生成情境。",
     highlights: [
@@ -183,14 +173,6 @@ const projects = [
   {
     title: "4G 吃到飽 SEO 分析工具",
     tags: ["SEO", "SERP API", "Entity Analysis", "Google Sheets"],
-    techStack: [
-      "Next.js",
-      "Google Apps Script",
-      "SERP API",
-      "Google Sheets",
-      "Supabase",
-      "Vercel",
-    ],
     description:
       "開發 SEO Entity 分析工具，自動抓取 Google 搜尋前 10 名結果並分析頁面實體，將結果輸出至 Google Sheets，協助內容策略規劃。",
     highlights: [
@@ -204,7 +186,6 @@ const projects = [
   {
     title: "IVE K-pop Fan Website",
     tags: ["Web Design", "JSP", "Tailwind CSS", "Frontend"],
-    techStack: ["JSP", "HTML", "CSS", "JavaScript", "Tailwind CSS"],
     description:
       "製作 IVE 主題粉絲網站，規劃成員介紹、作品資訊與互動頁面，練習前端版面設計、資料呈現與使用者瀏覽體驗。",
     highlights: [
@@ -527,20 +508,6 @@ export default function Home() {
                       className="rounded-full bg-purple-500/10 px-3 py-1 text-xs text-purple-300"
                     >
                       {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mb-5 flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-semibold text-slate-300">
-                    Tech Stack:
-                  </span>
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full bg-purple-500/10 px-3 py-1 text-xs text-purple-300"
-                    >
-                      {tech}
                     </span>
                   ))}
                 </div>
