@@ -65,21 +65,25 @@ const releases = [
   {
     title: "ELEVEN",
     type: "Debut Single",
+    youtubeUrl: "https://www.youtube.com/watch?v=--FmExEAsM8",
     mood: "神秘、華麗、第一印象強烈",
   },
   {
     title: "LOVE DIVE",
     type: "Single",
+    youtubeUrl: "https://www.youtube.com/watch?v=Y8JFxS1HlDo",
     mood: "自信、優雅、代表性舞台風格",
   },
   {
     title: "After LIKE",
     type: "Single",
+    youtubeUrl: "https://www.youtube.com/watch?v=F0B7HDiY-10",
     mood: "明亮、復古、適合粉絲應援",
   },
   {
     title: "I AM",
     type: "Album Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=6ZUIwj3FgUY",
     mood: "高亢、成長、適合作為主視覺情緒",
   },
 ];
@@ -305,22 +309,29 @@ export default function IvePage() {
 
         <div className="grid gap-5 md:grid-cols-2">
           {releases.map((release, index) => (
-            <article
+            <a
               key={release.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              href={release.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70"
             >
               <div className="mb-5 flex items-center justify-between gap-4">
                 <div>
                   <h3 className="text-2xl font-bold">{release.title}</h3>
                   <p className="mt-1 text-sm text-slate-400">{release.type}</p>
                 </div>
-                <span className="text-4xl font-black text-white/10">
+                <span className="text-4xl font-black text-white/10 transition group-hover:text-pink-300/35">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
 
               <p className="leading-7 text-slate-300">{release.mood}</p>
-            </article>
+              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-pink-300 transition group-hover:text-pink-200">
+                Watch on YouTube
+                <span aria-hidden="true">-&gt;</span>
+              </div>
+            </a>
           ))}
         </div>
       </section>

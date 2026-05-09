@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin Huang | AI & Data Analysis Portfolio",
+  title: "Kevin Huang | Kai-Chun Huang | AI & Data Analysis Portfolio",
   description:
-    "Kevin Huang's portfolio focused on AI, NLP, LLM fine-tuning, and data analysis projects.",
+    "Kai-Chun Huang's portfolio focused on AI, NLP, LLM fine-tuning, and data analysis projects.",
 };
 
 export default function RootLayout({

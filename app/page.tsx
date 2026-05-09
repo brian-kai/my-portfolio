@@ -207,7 +207,7 @@ export default function Home() {
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="text-lg font-bold">
-            Kevin Huang
+            Kevin Huang｜黃凱浚 Kai-Chun Huang
           </a>
 
           <div className="hidden gap-7 text-base font-medium text-slate-300 md:flex">
@@ -223,7 +223,7 @@ export default function Home() {
       <section className="relative border-b border-white/10 pt-16">
         <div className="relative mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
-            Kevin Huang Portfolio
+            Kevin Huang｜黃凱浚 Kai-Chun Huang
           </p>
           <h1 className="max-w-5xl text-4xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-6xl">
             AI / NLP / Data Analysis Portfolio
@@ -595,7 +595,7 @@ export default function Home() {
       </a>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">
-        © 2026 Kevin Huang. All rights reserved.
+        © 2026 Kevin Huang｜黃凱浚 Kai-Chun Huang. All rights reserved.
       </footer>
     </main>
   );
