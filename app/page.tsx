@@ -169,7 +169,7 @@ export default function Home() {
             Kevin Huang
           </a>
 
-          <div className="hidden gap-6 text-sm text-slate-300 md:flex">
+          <div className="hidden gap-7 text-base font-medium text-slate-300 md:flex">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} className="hover:text-white">
                 {item.label}
@@ -428,6 +428,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <a
+        href="#"
+        aria-label="Back to top"
+        title="Back to top"
+        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/40 bg-slate-950/80 text-2xl font-bold text-cyan-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-200 hover:text-white"
+      >
+        ↑
+      </a>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">
         © 2026 Kevin Huang. All rights reserved.
