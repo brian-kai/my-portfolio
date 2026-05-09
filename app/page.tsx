@@ -75,7 +75,7 @@ const highlights = [
     tags: ["ICCCM 2026", "Presentation", "LSTM", "Essay Scoring"],
   },
   {
-    title: "Student Association",
+    title: "工業工程與系統管理學系系學會",
     href: "/student-association",
     badge: "Activity Leader",
     description:
@@ -169,8 +169,8 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-200">
-            我是黃凱浚，目前就讀於逢甲大學工業工程與系統管理學系，具備資料分析、自然語言處理與
-            LLM 應用相關的專題實作經驗。曾以 LLaMA 3
+            我是黃凱浚，就讀於逢甲大學工業工程與系統管理學系，擅長資料分析、自然語言處理與
+            LLM 應用。畢業專題以 LLaMA 3
             結合消費者偏好進行個人化行銷文案生成研究，並於 2025
             中國工業工程學會年會暨學術研討會發表，榮獲大數據技術與應用領域最佳論文獎。
           </p>
