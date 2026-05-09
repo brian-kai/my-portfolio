@@ -94,17 +94,29 @@ const starterTasks: Task[] = [
   { id: 3, text: "規劃粉絲應援任務", done: true },
 ];
 
-const quizOptions = [
-  { label: "舞台表演", result: "你適合做成員舞台精華整理。" },
-  { label: "歌曲收藏", result: "你適合做 IVE 歌曲推薦與播放清單。" },
-  { label: "造型視覺", result: "你適合設計回歸概念與相簿頁。" },
+const websiteQuizOptions = [
+  {
+    label: "舞台表演",
+    result:
+      "你適合製作成員舞台精華整理頁，收集舞台影片、直拍連結、表情亮點與服裝造型，讓粉絲快速找到每位成員的高光片段。",
+  },
+  {
+    label: "歌曲收藏",
+    result:
+      "你適合製作 IVE 歌曲收藏頁，整理 MV、專輯資訊、推薦曲目與 YouTube 連結，也可以加入個人播放清單或歌曲心得。",
+  },
+  {
+    label: "造型視覺",
+    result:
+      "你適合製作成員造型圖鑑頁，整理專輯概念照、舞台穿搭、髮型變化與視覺主題，做成適合瀏覽與收藏的圖像型網站。",
+  },
 ];
 
 export default function IvePage() {
   const [selectedMember, setSelectedMember] = useState(members[0]);
   const [tasks, setTasks] = useState(starterTasks);
   const [text, setText] = useState("");
-  const [quizResult, setQuizResult] = useState(quizOptions[0].result);
+  const [quizResult, setQuizResult] = useState(websiteQuizOptions[0].result);
 
   const completedCount = useMemo(
     () => tasks.filter((task) => task.done).length,
@@ -416,7 +428,7 @@ export default function IvePage() {
           </p>
 
           <div className="mt-6 grid gap-3">
-            {quizOptions.map((option) => (
+            {websiteQuizOptions.map((option) => (
               <button
                 key={option.label}
                 type="button"
