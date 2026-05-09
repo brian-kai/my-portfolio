@@ -163,7 +163,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
 
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="text-lg font-bold">
             Kevin Huang
@@ -179,7 +179,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="relative border-b border-white/10">
+      <section className="relative border-b border-white/10 pt-16">
         <div className="relative mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
             Kevin Huang Portfolio
