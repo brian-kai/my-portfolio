@@ -131,17 +131,15 @@ export default function Home() {
 
       {/* Hero */}
       <section className="mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
-        <p className="mb-4 text-blue-400">Hi, I&apos;m Kevin Huang</p>
-
         <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
           AI / NLP / Data Analysis Portfolio
         </h1>
 
         <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-300">
-          {"\u{6211}\u{662F}\u{9EC3}\u{51F1}\u{6D5A}\u{FF0C}\u{76EE}\u{524D}\u{5C31}\u{8B80}\u{65BC}\u{9022}\u{7532}\u{5927}\u{5B78}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{8207}\u{7CFB}\u{7D71}\u{7BA1}\u{7406}\u{5B78}\u{7CFB}\u{FF0C}\u{5C08}\u{6CE8}\u{65BC}\u{81EA}\u{7136}\u{8A9E}\u{8A00}\u{8655}\u{7406}\u{3001}LLM \u{5FAE}\u{8ABF}\u{3001}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{8207}\u{81EA}\u{52D5}\u{5316}\u{5DE5}\u{5177}\u{958B}\u{767C}\u{3002}\u{6211}\u{66FE}\u{4EE5} LLaMA 3 \u{7D50}\u{5408}\u{6D88}\u{8CBB}\u{8005}\u{504F}\u{597D}\u{9032}\u{884C}\u{500B}\u{4EBA}\u{5316}\u{884C}\u{92B7}\u{6587}\u{6848}\u{751F}\u{6210}\u{7814}\u{7A76}\u{FF0C}\u{4E26}\u{5728} 2025 \u{4E2D}\u{570B}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{5B78}\u{6703}\u{5E74}\u{6703}\u{66A8}\u{5B78}\u{8853}\u{7814}\u{8A0E}\u{6703}\u{767C}\u{8868}\u{4E14}\u{7372}\u{5F97}\u{6700}\u{4F73}\u{8AD6}\u{6587}\u{734E}\u{3002}"}
+          {"\u{6211}\u{662F}\u{9EC3}\u{51F1}\u{6D5A}\u{FF0C}\u{76EE}\u{524D}\u{5C31}\u{8B80}\u{65BC}\u{9022}\u{7532}\u{5927}\u{5B78}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{8207}\u{7CFB}\u{7D71}\u{7BA1}\u{7406}\u{5B78}\u{7CFB}\u{FF0C}\u{4E3B}\u{8981}\u{6295}\u{5165}\u{81EA}\u{7136}\u{8A9E}\u{8A00}\u{8655}\u{7406}\u{3001}LLM \u{5FAE}\u{8ABF}\u{3001}\u{751F}\u{6210}\u{5F0F}AI\u{8207}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{3002}\u{7562}\u{696D}\u{5C08}\u{984C}\u{4EE5} LLaMA 3 \u{7D50}\u{5408}\u{6D88}\u{8CBB}\u{8005}\u{504F}\u{597D}\u{FF0C}\u{9032}\u{884C}\u{500B}\u{4EBA}\u{5316}\u{884C}\u{92B7}\u{6587}\u{6848}\u{751F}\u{6210}\u{7814}\u{7A76}\u{FF0C}\u{4E26}\u{65BC} 2025 \u{4E2D}\u{570B}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{5B78}\u{6703}\u{5E74}\u{6703}\u{66A8}\u{5B78}\u{8853}\u{7814}\u{8A0E}\u{6703}\u{767C}\u{8868}\u{FF0C}\u{69AE}\u{7372}\u{5927}\u{6578}\u{64DA}\u{6280}\u{8853}\u{8207}\u{61C9}\u{7528}\u{9818}\u{57DF}-\u{6700}\u{4F73}\u{8AD6}\u{6587}\u{734E}\u{3002}"}
           <br />
           <br />
-          {"\u{6211}\u{7684}\u{5C08}\u{6848}\u{7D93}\u{9A57}\u{6DB5}\u{84CB}\u{6A21}\u{578B}\u{8A13}\u{7DF4}\u{3001}\u{6587}\u{672C}\u{5206}\u{6790}\u{3001}\u{610F}\u{5716}\u{5206}\u{985E}\u{3001}QA \u{751F}\u{6210}\u{3001}SEO Entity \u{5206}\u{6790}\u{8207}\u{524D}\u{7AEF}\u{7DB2}\u{7AD9}\u{88FD}\u{4F5C}\u{FF0C}\u{719F}\u{6089} Python\u{3001}SQL\u{3001}PyTorch\u{3001}Transformers\u{3001}Next.js\u{3001}Tailwind CSS \u{8207} Google Sheets \u{81EA}\u{52D5}\u{5316}\u{4E32}\u{63A5}\u{3002}\u{5E0C}\u{671B}\u{6301}\u{7E8C}\u{5C07}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{8207} AI \u{6280}\u{8853}\u{61C9}\u{7528}\u{5728}\u{5BE6}\u{969B}\u{554F}\u{984C}\u{89E3}\u{6C7A}\u{3001}\u{6D41}\u{7A0B}\u{6539}\u{5584}\u{8207}\u{667A}\u{6167}\u{5316}\u{7CFB}\u{7D71}\u{958B}\u{767C}\u{4E2D}\u{3002}"}
+          {"\u{6211}\u{7684}\u{5C08}\u{6848}\u{7D93}\u{9A57}\u{5305}\u{542B}\u{6A21}\u{578B}\u{8A13}\u{7DF4}\u{3001}\u{6587}\u{672C}\u{5206}\u{6790}\u{3001}\u{610F}\u{5716}\u{5206}\u{985E}\u{3001}QA \u{751F}\u{6210}\u{3001}SEO Entity \u{5206}\u{6790}\u{8207}\u{524D}\u{7AEF}\u{7DB2}\u{7AD9}\u{88FD}\u{4F5C}\u{FF0C}\u{719F}\u{6089} Python\u{3001}SQL\u{3001}PyTorch\u{3001}Transformers\u{3002}\u{5E0C}\u{671B}\u{6301}\u{7E8C}\u{5C07}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{8207} AI \u{6280}\u{8853}\u{61C9}\u{7528}\u{5728}\u{5BE6}\u{969B}\u{554F}\u{984C}\u{89E3}\u{6C7A}\u{4E2D}\u{3002}"}
         </p>
 
         <p className="hidden">
@@ -178,7 +176,33 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-          <p className="leading-8 text-slate-300">
+          <div className="space-y-6 leading-8 text-slate-300">
+            <p>
+              {"\u{6211}\u{662F}\u{9EC3}\u{51F1}\u{6D5A}\u{FF0C}\u{76EE}\u{524D}\u{5C31}\u{8B80}\u{65BC}\u{9022}\u{7532}\u{5927}\u{5B78}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{8207}\u{7CFB}\u{7D71}\u{7BA1}\u{7406}\u{5B78}\u{7CFB}\u{56DB}\u{5E74}\u{7D1A}\u{FF0C}\u{5177}\u{5099}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{8207}\u{81EA}\u{7136}\u{8A9E}\u{8A00}\u{8655}\u{7406}\u{FF08}NLP\u{FF09}\u{76F8}\u{95DC}\u{5C08}\u{984C}\u{5BE6}\u{4F5C}\u{7D93}\u{9A57}\u{FF0C}\u{4E26}\u{6301}\u{7E8C}\u{671D}\u{4EBA}\u{5DE5}\u{667A}\u{6167}\u{61C9}\u{7528}\u{9818}\u{57DF}\u{767C}\u{5C55}\u{3002}"}
+            </p>
+
+            <p>
+              {"\u{6211}\u{5C0D}\u{65BC}\u{751F}\u{6210}\u{5F0F}AI\u{3001}\u{81EA}\u{7136}\u{8A9E}\u{8A00}\u{8655}\u{7406}\u{FF08}NLP\u{FF09}\u{8207}\u{8CC7}\u{6599}\u{5206}\u{6790}\u{6280}\u{8853}\u{5177}\u{6709}\u{9AD8}\u{5EA6}\u{8208}\u{8DA3}\u{FF0C}\u{4E26}\u{6301}\u{7E8C}\u{900F}\u{904E}\u{5BE6}\u{4F5C}\u{8207}\u{8AB2}\u{7A0B}\u{5B78}\u{7FD2}\u{6DF1}\u{5316}\u{76F8}\u{95DC}\u{80FD}\u{529B}\u{3002}\u{5728}\u{5DE5}\u{5177}\u{8207}\u{6280}\u{8853}\u{65B9}\u{9762}\u{FF0C}\u{6211}\u{719F}\u{6089} Python\u{3001}SQL\u{3001}R\u{7B49}\u{8CC7}\u{6599}\u{8655}\u{7406}\u{5DE5}\u{5177}\u{FF0C}\u{4E26}\u{80FD}\u{4F7F}\u{7528} Pandas\u{3001}NumPy\u{9032}\u{884C}\u{8CC7}\u{6599}\u{6E05}\u{7406}\u{3001}\u{8F49}\u{63DB}\u{8207}\u{5206}\u{6790}\u{3002}\u{5728}\u{6A21}\u{578B}\u{61C9}\u{7528}\u{4E0A}\u{FF0C}\u{5177}\u{5099} BERT\u{3001}LLaMA\u{3001}Gemma\u{7B49}\u{8A9E}\u{8A00}\u{6A21}\u{578B}\u{7684}\u{57FA}\u{672C}\u{61C9}\u{7528}\u{7D93}\u{9A57}\u{FF0C}\u{4E26}\u{80FD}\u{6574}\u{5408}\u{81F3}\u{5BE6}\u{969B}\u{5C08}\u{984C}\u{4E2D}\u{9032}\u{884C}\u{958B}\u{767C}\u{3002}"}
+            </p>
+
+            <p>
+              {"\u{5728}\u{8AB2}\u{5916}\u{6D3B}\u{52D5}\u{65B9}\u{9762}\u{FF0C}\u{6211}\u{65BC}\u{5927}\u{4E09}\u{671F}\u{9593}\u{52A0}\u{5165}\u{5DE5}\u{696D}\u{5DE5}\u{7A0B}\u{8207}\u{7CFB}\u{7D71}\u{7BA1}\u{7406}\u{5B78}\u{7CFB}\u{7CFB}\u{5B78}\u{6703}\u{FF0C}\u{4E26}\u{64D4}\u{4EFB}\u{6D3B}\u{52D5}\u{7D44}\u{9577}\u{FF0C}\u{8CA0}\u{8CAC}\u{6D3B}\u{52D5}\u{4F01}\u{5283}\u{8207}\u{57F7}\u{884C}\u{7BA1}\u{7406}\u{FF0C}\u{5305}\u{542B}\u{6D3B}\u{52D5}\u{6D41}\u{7A0B}\u{8A2D}\u{8A08}\u{3001}\u{8CC7}\u{6E90}\u{5354}\u{8ABF}\u{8207}\u{73FE}\u{5834}\u{63A7}\u{7BA1}\u{3002}\u{900F}\u{904E}\u{5718}\u{968A}\u{5354}\u{4F5C}\u{8207}\u{6E9D}\u{901A}\u{FF0C}\u{78BA}\u{4FDD}\u{6D3B}\u{52D5}\u{9806}\u{5229}\u{57F7}\u{884C}\u{4E26}\u{63D0}\u{5347}\u{6574}\u{9AD4}\u{904B}\u{4F5C}\u{6548}\u{7387}\u{3002}"}
+            </p>
+
+            <p>
+              {"\u{6B64}\u{5916}\u{FF0C}\u{6211}\u{4EA6}\u{64D4}\u{4EFB}\u{8CC7}\u{6599}\u{5EAB}\u{8A2D}\u{8A08}\u{8207}\u{6C7A}\u{7B56}\u{8207}\u{6578}\u{64DA}\u{5206}\u{6790}\u{8AB2}\u{7A0B}\u{52A9}\u{6559}\u{8207}\u{7814}\u{7A76}\u{8A08}\u{756B}\u{52A9}\u{7406}\u{FF0C}\u{5354}\u{52A9}\u{6559}\u{5B78}\u{8207}\u{5C08}\u{6848}\u{57F7}\u{884C}\u{FF0C}\u{57F9}\u{990A}\u{8DE8}\u{89D2}\u{8272}\u{6E9D}\u{901A}\u{8207}\u{5354}\u{4F5C}\u{80FD}\u{529B}\u{FF0C}\u{4E26}\u{80FD}\u{5728}\u{591A}\u{4EFB}\u{52D9}\u{60C5}\u{5883}\u{4E0B}\u{9032}\u{884C}\u{6709}\u{6548}\u{7684}\u{9032}\u{5EA6}\u{7BA1}\u{7406}\u{8207}\u{554F}\u{984C}\u{6392}\u{9664}\u{3002}"}
+            </p>
+
+            <p>
+              {"\u{6211}\u{5177}\u{5099}\u{908F}\u{8F2F}\u{5206}\u{6790}\u{80FD}\u{529B}\u{3001}\u{554F}\u{984C}\u{5206}\u{6790}\u{80FD}\u{529B}\u{8207}\u{4E3B}\u{52D5}\u{5B78}\u{7FD2}\u{80FD}\u{529B}\u{FF0C}\u{5728}\u{9762}\u{5C0D}\u{65B0}\u{6280}\u{8853}\u{6642}\u{FF0C}\u{80FD}\u{5FEB}\u{901F}\u{7406}\u{89E3}\u{6574}\u{9AD4}\u{67B6}\u{69CB}\u{FF0C}\u{4E26}\u{900F}\u{904E}\u{5BE6}\u{4F5C}\u{601D}\u{8003}\u{6280}\u{8853}\u{7D30}\u{7BC0}\u{3002}"}
+            </p>
+
+            <p>
+              {"\u{5728}\u{5718}\u{968A}\u{5408}\u{4F5C}\u{4E2D}\u{FF0C}\u{6211}\u{91CD}\u{8996}\u{6E9D}\u{901A}\u{6548}\u{7387}\u{8207}\u{8CC7}\u{8A0A}\u{900F}\u{660E}\u{FF0C}\u{80FD}\u{91D0}\u{6E05}\u{554F}\u{984C}\u{4E26}\u{63D0}\u{51FA}\u{5177}\u{9AD4}\u{53EF}\u{884C}\u{7684}\u{65B9}\u{6848}\u{3002}\u{672A}\u{4F86}\u{FF0C}\u{6211}\u{671F}\u{671B}\u{6301}\u{7E8C}\u{5B78}\u{7FD2}\u{8EDF}\u{9AD4}\u{958B}\u{767C}\u{8207}\u{751F}\u{6210}\u{5F0F}AI\u{4E4B}\u{61C9}\u{7528}\u{3002}"}
+            </p>
+          </div>
+
+          <p className="hidden">
             我的學習與專題方向主要集中在人工智慧應用、自然語言處理、資料分析與大型語言模型應用。
             我具備 Python、SQL、R、PyTorch、Transformers 與資料前處理經驗，曾使用
             LLaMA 3、Gemma、BERT-BiLSTM 等模型進行文字生成、意圖分類與問答系統建構。
