@@ -83,18 +83,18 @@ const certificates = [
 
 const experiences = [
   {
-    title: "逢甲大學課程助教",
-    meta: "資料庫設計、決策與數據分析｜113-2、114-1、114-2 學期",
-    badge: "Teaching Assistant",
-    description:
-      "協助課程教學、作業討論與學生問題釐清，內容涵蓋資料庫設計、SQL 操作、資料整理、分析流程與決策應用。",
-  },
-  {
     title: "國科會研究計畫助理",
     meta: "以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式",
     badge: "Research Assistant",
     description:
       "協助研究流程規劃、程式碼版本差異資料整理與模型應用，支援以 LLaMA 3 產生程式碼變更註解的研究工作。",
+  },
+  {
+    title: "逢甲大學課程助教",
+    meta: "資料庫設計、決策與數據分析｜113-2、114-1、114-2 學期",
+    badge: "Teaching Assistant",
+    description:
+      "協助課程教學、作業討論與學生問題釐清，內容涵蓋資料庫設計、SQL 操作、資料整理、分析流程與決策應用。",
   },
   {
     title: "國中補習班理化助教",
@@ -364,6 +364,7 @@ export default function Home() {
       <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-8 text-3xl font-bold">Experience</h2>
 
+        <h3 className="mb-5 text-2xl font-semibold">工作經驗</h3>
         <div className="grid gap-6">
           {experiences.map((experience) => (
             <article
@@ -390,8 +391,53 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {highlights.map((highlight) => (
+        <h3 className="mb-5 mt-12 text-2xl font-semibold">系學會</h3>
+        <div className="grid gap-6">
+          {highlights
+            .filter((highlight) => highlight.href === "/student-association")
+            .map((highlight) => (
+              <Link
+                key={highlight.title}
+                href={highlight.href}
+                className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              >
+                <div className="mb-4 flex flex-col items-start gap-3">
+                  <h3 className="text-xl font-semibold leading-8">
+                    {highlight.title}
+                  </h3>
+                  <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+                    {highlight.badge}
+                  </span>
+                </div>
+
+                <p className="leading-8 text-slate-300">
+                  {highlight.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {highlight.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                  View Details
+                  <span aria-hidden="true">-&gt;</span>
+                </div>
+              </Link>
+            ))}
+        </div>
+
+        <h3 className="mb-5 mt-12 text-2xl font-semibold">研討會</h3>
+        <div className="grid gap-6 md:grid-cols-2">
+          {highlights
+            .filter((highlight) => highlight.href !== "/student-association")
+            .map((highlight) => (
             <Link
               key={highlight.title}
               href={highlight.href}
@@ -426,7 +472,7 @@ export default function Home() {
                 <span aria-hidden="true">-&gt;</span>
               </div>
             </Link>
-          ))}
+            ))}
         </div>
       </section>
 
