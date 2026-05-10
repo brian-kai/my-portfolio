@@ -86,6 +86,72 @@ const releases = [
     youtubeUrl: "https://www.youtube.com/watch?v=6ZUIwj3FgUY",
     mood: "高亢、成長、適合作為主視覺情緒",
   },
+  {
+    title: "Kitsch",
+    type: "Pre-release / Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=pG6iaOMV46I",
+    mood: "率性、酷感、帶出 IVE 的反差魅力",
+  },
+  {
+    title: "Either Way",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=_Hu4GYtye5U",
+    mood: "柔和、內省、情緒敘事感強",
+  },
+  {
+    title: "Off The Record",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=_ApV7Lm87cg",
+    mood: "夢幻、輕盈、帶有夜晚聊天的氛圍",
+  },
+  {
+    title: "Baddie",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=Da4P2uT4mVc",
+    mood: "俐落、強勢、適合展現酷帥舞台",
+  },
+  {
+    title: "HEYA",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=07EzMbVH3QE",
+    mood: "華麗、東方感、舞台視覺衝擊強",
+  },
+  {
+    title: "Accendio",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=PGLx4V680J8",
+    mood: "神祕、戲劇化、帶有奇幻敘事感",
+  },
+  {
+    title: "REBEL HEART",
+    type: "Pre-release / Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=g36q0ZLvygQ",
+    mood: "壯闊、團結、適合熱血群像感",
+  },
+  {
+    title: "ATTITUDE",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=38xYeot-ciM",
+    mood: "自信、灑脫、延續 IVE 的主體感",
+  },
+  {
+    title: "XOXZ",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=B1ShLiq3EVc",
+    mood: "低調、神祕、帶有秘密訊號般的氛圍",
+  },
+  {
+    title: "BANG BANG",
+    type: "Pre-release / Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=9qkpcLK422o",
+    mood: "強烈、節奏感、適合舞台爆發力",
+  },
+  {
+    title: "BLACKHOLE",
+    type: "Title Track",
+    youtubeUrl: "https://www.youtube.com/watch?v=1Lmy7qwmSMc",
+    mood: "深邃、強勢、帶有吸引力與沉浸感",
+  },
 ];
 
 const starterTasks: Task[] = [
@@ -313,13 +379,13 @@ export default function IvePage() {
         </div>
       </section>
 
-      <section id="music" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="music" className="mx-auto max-w-7xl px-6 py-20">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
           Music
         </p>
         <h2 className="mb-8 text-4xl font-bold">作品推薦</h2>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {releases.map((release, index) => (
             <a
               key={release.title}
