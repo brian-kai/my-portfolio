@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import MobileMenu from "./mobile-menu";
 import aiatclCertificate from "./image/AIATCL.jpg";
 import aiCertificate from "./image/AI證照.png";
 import googleCertificate from "./image/GOOGLE證照.png";
@@ -275,8 +276,13 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
 
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
-          <a href="#" className="text-lg font-bold">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 md:px-6">
+          <MobileMenu items={navItems} />
+
+          <a
+            href="#"
+            className="min-w-0 flex-1 truncate text-center text-base font-bold md:flex-none md:text-left md:text-lg"
+          >
             Kevin Huang | 黃凱浚 Kai-Chun Huang
           </a>
 
