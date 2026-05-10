@@ -4,6 +4,27 @@ import Link from "next/link";
 import proofPage1 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_1.png";
 import proofPage2 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_2.png";
 
+const details = [
+  {
+    label: "Topic",
+    value:
+      "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
+  },
+  {
+    label: "Conference",
+    value:
+      "The 14th International Conference on Computer and Communications Management",
+  },
+  {
+    label: "Date",
+    value: "July 24-26, 2026",
+  },
+  {
+    label: "Location",
+    value: "Tokyo, Japan",
+  },
+];
+
 const proofs = [
   {
     title: "ICCCM 2026 Acceptance Notification - Page 1",
@@ -40,31 +61,45 @@ export default function IcccmPage() {
           Conference Experience
         </p>
 
-        <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-5xl text-4xl font-bold leading-tight md:text-5xl">
           ICCCM 2026 Presentation Acceptance
         </h1>
 
-        <p className="mt-5 max-w-4xl leading-8 text-slate-300">
+        <p className="mt-5 max-w-5xl text-lg leading-8 text-slate-300">
           論文摘要 AN OBJECTIVE ESSAY SCORING AND COMMENTARY GENERATION SYSTEM
           WITH LSTM MODEL 獲 The 14th International Conference on Computer and
           Communications Management 接受，將於 2026 年 7 月 24-26
           日在日本東京發表。
         </p>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {details.map((detail) => (
+            <div
+              key={detail.label}
+              className="rounded-2xl border border-white/10 bg-white/[0.07] p-5"
+            >
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                {detail.label}
+              </p>
+              <p className="mt-2 leading-7 text-slate-200">{detail.value}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section className="relative z-10 mx-auto grid max-w-5xl gap-8 px-6 pb-20">
+      <section className="relative z-10 mx-auto grid max-w-7xl gap-6 px-6 pb-20 md:grid-cols-2">
         {proofs.map((proof, index) => (
           <article
             key={proof.title}
             className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
           >
-            <div className="flex min-h-[70vh] items-center justify-center border-b border-white/10 bg-slate-900/80 p-4 md:p-8">
+            <div className="flex min-h-[560px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:min-h-[640px]">
               <Image
                 src={proof.image}
                 alt={proof.title}
-                className="max-h-[82vh] w-full rounded-xl object-contain"
+                className="max-h-[620px] w-full rounded-xl object-contain md:max-h-[720px]"
                 priority={index === 0}
-                sizes="(min-width: 1024px) 960px, 100vw"
+                sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
 

@@ -655,7 +655,7 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-          <p className="max-w-4xl text-lg leading-8 text-slate-200">
+          <p className="text-lg leading-8 text-slate-200">
             我目前正在尋找 AI、資料分析、NLP、LLM
             應用相關的實習、專題合作與研究機會。如果你對我的作品、研究或技術背景有興趣，歡迎透過
             Email 或 GitHub 與我聯繫。
