@@ -27,49 +27,47 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
       </button>
 
       {isOpen ? (
-        <button
-          type="button"
-          aria-label="Close navigation menu"
-          className="fixed inset-0 z-[60] bg-black/55 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      ) : null}
+        <div className="fixed inset-0 z-[70] md:hidden">
+          <button
+            type="button"
+            aria-label="Close navigation menu"
+            className="absolute inset-0 bg-black/65"
+            onClick={() => setIsOpen(false)}
+          />
 
-      <aside
-        className={`fixed inset-y-0 left-0 z-[70] w-72 max-w-[82vw] overflow-hidden border-r border-white/10 bg-[#020617] shadow-2xl shadow-black/40 transition-transform duration-300 md:hidden ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="absolute inset-0 bg-[#020617]" />
-        <div className="relative p-6">
-          <div className="flex items-center justify-between gap-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-              Menu
-            </p>
-            <button
-              type="button"
-              aria-label="Close navigation menu"
-              onClick={() => setIsOpen(false)}
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-2xl leading-none text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
-            >
-              &times;
-            </button>
-          </div>
-
-          <nav className="mt-8 grid gap-2">
-            {items.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
+          <aside
+            className="absolute left-0 top-0 w-72 max-w-[82vw] overflow-y-auto border-r border-white/10 bg-[#020617] p-6 shadow-2xl shadow-black/40"
+            style={{ height: "100dvh", minHeight: "100vh" }}
+          >
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Menu
+              </p>
+              <button
+                type="button"
+                aria-label="Close navigation menu"
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-2xl leading-none text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
               >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+                &times;
+              </button>
+            </div>
+
+            <nav className="mt-8 grid gap-2">
+              {items.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-lg px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </aside>
         </div>
-      </aside>
+      ) : null}
     </>
   );
 }
