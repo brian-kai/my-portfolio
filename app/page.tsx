@@ -230,7 +230,7 @@ const projects = [
   },
   {
     title: "Intent Classification & QA Generation",
-    status: "進行中",
+    status: "ongoing",
     tags: ["Intent Classification", "QA Generation", "BERT", "Gemma"],
     description:
       "建立一套能理解使用者語意、判斷意圖類別，並生成對應 QA 回覆的智慧問答流程。",
