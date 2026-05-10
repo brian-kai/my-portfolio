@@ -8,9 +8,9 @@ import googleCertificate from "./image/GOOGLE證照.png";
 const navItems = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -319,54 +319,61 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="certificates" className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
+      <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="mb-8 text-3xl font-bold">Projects</h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {certificates.map((certificate, index) => (
-            <a
-              key={certificate.title}
-              href={certificate.href ?? certificate.image.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-            >
-              <div className="border-b border-white/10 bg-slate-950/40 p-3">
-                <Image
-                  src={certificate.image}
-                  alt={`${certificate.title} certificate`}
-                  className="aspect-[4/3] w-full rounded-xl object-cover object-top"
-                  priority={index === 0}
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                />
-              </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.map((project) => {
+            const isExternal = project.href?.startsWith("http");
+            const CardTag = project.href ? "a" : "article";
 
-              <div className="p-6">
-                <p className="text-sm font-medium text-cyan-300">
-                  {certificate.issuer}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold leading-8">
-                  {certificate.title}
-                </h3>
+            return (
+              <CardTag
+                key={project.title}
+                href={project.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/10"
+              >
+                <div className="mb-3 flex flex-wrap items-center gap-3">
+                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                  {!project.href ? (
+                    <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-200">
+                      Ongoing
+                    </span>
+                  ) : null}
+                </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {certificate.tags.map((tag) => (
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                      className="rounded-full bg-purple-500/10 px-3 py-1 text-xs text-purple-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
-                  View Certificate
-                  <span aria-hidden="true">-&gt;</span>
-                </div>
-              </div>
-            </a>
-          ))}
+                <p className="mb-5 leading-7 text-slate-300">
+                  {project.description}
+                </p>
+
+                <ul className="space-y-2 text-sm text-slate-400">
+                  {project.highlights.map((item) => (
+                    <li key={item}>- {item}</li>
+                  ))}
+                </ul>
+
+                {project.href ? (
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-purple-300 transition hover:text-purple-200">
+                    {project.action}
+                    <span aria-hidden="true">-&gt;</span>
+                  </div>
+                ) : null}
+              </CardTag>
+            );
+          })}
         </div>
       </section>
 
@@ -508,61 +515,54 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="mb-8 text-3xl font-bold">Projects</h2>
+      <section id="certificates" className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project) => {
-            const isExternal = project.href?.startsWith("http");
-            const CardTag = project.href ? "a" : "article";
+        <div className="grid gap-6 md:grid-cols-3">
+          {certificates.map((certificate, index) => (
+            <a
+              key={certificate.title}
+              href={certificate.href ?? certificate.image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+            >
+              <div className="border-b border-white/10 bg-slate-950/40 p-3">
+                <Image
+                  src={certificate.image}
+                  alt={`${certificate.title} certificate`}
+                  className="aspect-[4/3] w-full rounded-xl object-cover object-top"
+                  priority={index === 0}
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
+              </div>
 
-            return (
-              <CardTag
-                key={project.title}
-                href={project.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/10"
-              >
-                <div className="mb-3 flex flex-wrap items-center gap-3">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  {!project.href ? (
-                    <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-200">
-                      Ongoing
-                    </span>
-                  ) : null}
-                </div>
+              <div className="p-6">
+                <p className="text-sm font-medium text-cyan-300">
+                  {certificate.issuer}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold leading-8">
+                  {certificate.title}
+                </h3>
 
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {certificate.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-purple-500/10 px-3 py-1 text-xs text-purple-300"
+                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <p className="mb-5 leading-7 text-slate-300">
-                  {project.description}
-                </p>
-
-                <ul className="space-y-2 text-sm text-slate-400">
-                  {project.highlights.map((item) => (
-                    <li key={item}>- {item}</li>
-                  ))}
-                </ul>
-
-                {project.href ? (
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-purple-300 transition hover:text-purple-200">
-                    {project.action}
-                    <span aria-hidden="true">-&gt;</span>
-                  </div>
-                ) : null}
-              </CardTag>
-            );
-          })}
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                  View Certificate
+                  <span aria-hidden="true">-&gt;</span>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
