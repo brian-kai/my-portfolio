@@ -508,7 +508,9 @@ export default function Home() {
       <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-8 text-3xl font-bold">Experience</h2>
 
-        <h3 className="mb-5 text-2xl font-semibold">工作經驗</h3>
+        <h3 className="mb-5 text-2xl font-semibold">
+          Academic & Work Experience
+        </h3>
         <div className="grid gap-6">
           {experiences.map((experience) => {
             const content = (
@@ -558,7 +560,9 @@ export default function Home() {
           })}
         </div>
 
-        <h3 className="mb-5 mt-12 text-2xl font-semibold">系學會</h3>
+        <h3 className="mb-5 mt-12 text-2xl font-semibold">
+          Student Association
+        </h3>
         <div className="grid gap-6">
           {highlights
             .filter((highlight) => highlight.href === "/student-association")
