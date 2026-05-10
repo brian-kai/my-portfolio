@@ -301,12 +301,11 @@ export default function Home() {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
             Kevin Huang｜黃凱浚 Kai-Chun Huang
           </p>
-          <h1 className="max-w-5xl text-3xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-5xl">
-            AI & NLP Developer focused on LLM Applications, Data Analysis, and
-            Intelligent Text Generation
+          <h1 className="max-w-6xl text-3xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-5xl">
+            AI / NLP / Data Analysis Portfolio
           </h1>
 
-          <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-200">
+          <p className="mt-6 max-w-6xl text-lg leading-8 text-slate-200">
             我是黃凱浚，就讀於逢甲大學工業工程與系統管理學系，擅長資料分析、自然語言處理與
             LLM 應用。畢業專題以 LLaMA 3
             結合消費者偏好進行個人化行銷文案生成研究，並於 2025
