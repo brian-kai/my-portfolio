@@ -84,17 +84,26 @@ const certificates = [
 const experiences = [
   {
     title: "國科會研究計畫助理",
-    meta: "以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式",
+    meta: "私立逢甲大學｜以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式",
     badge: "Research Assistant",
     description:
       "協助研究流程規劃、程式碼版本差異資料整理與模型應用，支援以 LLaMA 3 產生程式碼變更註解的研究工作。",
   },
   {
-    title: "逢甲大學課程助教",
-    meta: "資料庫設計、決策與數據分析｜113-2、114-1、114-2 學期",
+    title: "逢甲大學資料庫設計課程助教",
+    meta: "私立逢甲大學｜資料庫設計｜113-2、114-2 學期",
     badge: "Teaching Assistant",
     description:
-      "協助課程教學、作業討論與學生問題釐清，內容涵蓋資料庫設計、SQL 操作、資料整理、分析流程與決策應用。",
+      "協助課程教學、夜間輔導、作業討論與學生問題釐清，內容涵蓋資料庫設計、SQL 操作、資料整理與實作流程說明。",
+    href: "/database-design-tutoring",
+    action: "View Photos",
+  },
+  {
+    title: "逢甲大學決策與數據分析課程助教",
+    meta: "私立逢甲大學｜決策與數據分析｜114-1 學期",
+    badge: "Teaching Assistant",
+    description:
+      "協助課程教學、作業討論與學生問題釐清，內容涵蓋資料分析流程、決策應用與數據分析觀念說明。",
   },
   {
     title: "國中補習班理化助教",
@@ -366,29 +375,52 @@ export default function Home() {
 
         <h3 className="mb-5 text-2xl font-semibold">工作經驗</h3>
         <div className="grid gap-6">
-          {experiences.map((experience) => (
-            <article
-              key={experience.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
-            >
-              <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
-                <div>
-                  <h3 className="text-xl font-semibold">
-                    {experience.title}
-                  </h3>
-                  <p className="mt-2 text-slate-400">{experience.meta}</p>
+          {experiences.map((experience) => {
+            const content = (
+              <>
+                <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+                  <div>
+                    <h3 className="text-xl font-semibold">
+                      {experience.title}
+                    </h3>
+                    <p className="mt-2 text-slate-400">{experience.meta}</p>
+                  </div>
+
+                  <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
+                    {experience.badge}
+                  </span>
                 </div>
 
-                <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
-                  {experience.badge}
-                </span>
-              </div>
+                <p className="leading-8 text-slate-300">
+                  {experience.description}
+                </p>
 
-              <p className="leading-8 text-slate-300">
-                {experience.description}
-              </p>
-            </article>
-          ))}
+                {experience.href ? (
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                    {experience.action}
+                    <span aria-hidden="true">-&gt;</span>
+                  </div>
+                ) : null}
+              </>
+            );
+
+            return experience.href ? (
+              <Link
+                key={experience.title}
+                href={experience.href}
+                className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              >
+                {content}
+              </Link>
+            ) : (
+              <article
+                key={experience.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              >
+                {content}
+              </article>
+            );
+          })}
         </div>
 
         <h3 className="mb-5 mt-12 text-2xl font-semibold">系學會</h3>
