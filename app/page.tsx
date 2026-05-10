@@ -149,15 +149,15 @@ const researchPublications = [
     badge: "Best Paper Award",
     details: [
       {
-        label: "Topic",
+        label: "研究主題",
         value: "基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式",
       },
       {
-        label: "Award",
+        label: "獎項",
         value: "最佳論文獎 — 大數據技術與應用領域",
       },
       {
-        label: "Location",
+        label: "地點",
         value: "高雄科技大學",
       },
     ],
@@ -169,18 +169,18 @@ const researchPublications = [
     badge: "Accepted for Presentation",
     details: [
       {
-        label: "Topic",
+        label: "研究主題",
         value:
           "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
       },
       {
-        label: "Conference",
+        label: "會議",
         value:
           "The 14th International Conference on Computer and Communications Management",
       },
       {
-        label: "Location",
-        value: "Tokyo, Japan",
+        label: "地點",
+        value: "日本東京",
       },
     ],
     tags: ["ICCCM 2026", "Presentation", "LSTM", "Essay Scoring"],
@@ -194,9 +194,9 @@ const projects = [
     description:
       "以 LLaMA 3 結合消費者偏好資料，建立個人化產品行銷文案生成流程，並透過情感分析、關鍵字萃取與生成品質評估驗證研究成果。",
     highlights: [
-      "應用 TextBlob、TextRank 與 K-Means 建立資料分析流程",
-      "以 BLEU、METEOR 與人工評估檢驗文案品質",
-      "獲 2025 中國工業工程學會年會最佳論文獎",
+      "目標: 建立結合消費者偏好的個人化產品行銷文案生成模式。",
+      "方法: LLaMA 3、TextBlob、TextRank、K-Means、BLEU、METEOR",
+      "應用: 個人化行銷文案生成、產品偏好分析、生成品質評估",
     ],
     href: "/file/畢業專題海報檔案.pdf",
     action: "View Poster",
@@ -207,9 +207,9 @@ const projects = [
     description:
       "整理為作品展示頁，呈現產品資訊分析、行銷文案語意偏好分析與 LLaMA 3 文案生成流程。",
     highlights: [
-      "規劃產品資訊、行銷文案與生成模型三大模組",
-      "展示 TextRank、K-Means、HDBSCAN 與模型訓練成果",
-      "保留系統成果視覺化，移除不適合公開的資料庫連線程式碼",
+      "目標: 將原始 JSP 系統整理成可公開瀏覽的作品展示頁。",
+      "方法: JSP Prototype、Next.js、TextRank、K-Means、HDBSCAN、LLaMA 3",
+      "應用: 系統流程展示、研究成果視覺化、作品集網站呈現",
     ],
     href: "/llama-marketing-system",
     action: "View Website",
@@ -220,22 +220,23 @@ const projects = [
     description:
       "以用電資料為主題進行期末專題分析，整理資料並觀察用電變化趨勢，透過視覺化呈現不同時間區間的用電特徵與可能影響因素。",
     highlights: [
-      "進行用電資料清理、整理與趨勢分析",
-      "透過圖表視覺化呈現用電變化",
-      "製作專題成果海報彙整分析流程與發現",
+      "目標: 分析用電資料變化趨勢，觀察不同時間區間的用電特徵。",
+      "方法: Python、Data Cleaning、Trend Analysis、Data Visualization",
+      "應用: 能源資料分析、用電趨勢觀察、專題成果海報呈現",
     ],
     href: "/file/期末專題成果報告-用電趨勢分析海報.pdf",
     action: "View Poster",
   },
   {
     title: "Intent Classification & QA Generation",
+    status: "進行中",
     tags: ["Intent Classification", "QA Generation", "BERT", "Gemma"],
     description:
-      "建立文字意圖分類與問答生成流程，結合 BERT-BiLSTM、Knowledge Distillation 與 Gemma 模型，應用於客服語意理解與 QA 生成情境。",
+      "建立一套能理解使用者語意、判斷意圖類別，並生成對應 QA 回覆的智慧問答流程。",
     highlights: [
-      "使用 BERT-BiLSTM 進行意圖分類",
-      "導入 Teacher-Student Knowledge Distillation",
-      "使用 Gemma 進行 QA Generation",
+      "目標: 建立一套能理解使用者語意、判斷意圖類別，並生成對應 QA 回覆的智慧問答流程。",
+      "方法: BERT-BiLSTM、Knowledge Distillation、Gemma 4",
+      "應用: 客服語意理解、FAQ 自動生成、智慧問答系統",
     ],
   },
   {
@@ -244,9 +245,9 @@ const projects = [
     description:
       "開發 SEO Entity 分析工具，自動抓取 Google 搜尋前 10 名結果並分析頁面實體，將結果輸出至 Google Sheets，協助內容策略規劃。",
     highlights: [
-      "串接 SERP API 擷取搜尋結果",
-      "分析競品頁面 Entity 與內容結構",
-      "部署於 Vercel 並整合 Supabase",
+      "目標: 建立能自動分析搜尋結果與競品內容結構的 SEO 工具。",
+      "方法: SERP API、Entity Analysis、Google Sheets、Vercel、Supabase",
+      "應用: SEO 內容策略、競品頁面分析、搜尋結果資料整理",
     ],
     href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
     action: "Live Demo",
@@ -258,9 +259,9 @@ const projects = [
     description:
       "製作 IVE 主題粉絲網站，規劃成員介紹、作品資訊與互動頁面，練習前端版面設計、資料呈現與使用者瀏覽體驗。",
     highlights: [
-      "使用 JSP 建立網站頁面",
-      "使用 Tailwind CSS 設計響應式介面",
-      "整理偶像團體資訊並規劃內容架構",
+      "目標: 製作 IVE 主題粉絲網站，練習前端版面與內容呈現。",
+      "方法: JSP、Tailwind CSS、Responsive Layout、Frontend Practice",
+      "應用: 人物介紹頁、作品資訊展示、互動式粉絲網站",
     ],
     href: "/ive",
     action: "View Website",
@@ -403,7 +404,7 @@ export default function Home() {
                   <div className="flex flex-wrap justify-end gap-2">
                     {!project.href ? (
                       <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-200">
-                        Ongoing
+                        {project.status ?? "Ongoing"}
                       </span>
                     ) : null}
                     {project.label ? (
