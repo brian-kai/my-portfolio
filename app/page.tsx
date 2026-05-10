@@ -253,6 +253,7 @@ const projects = [
   },
   {
     title: "IVE K-pop Fan Website",
+    label: "Side Project-Frontend Practice",
     tags: ["Web Design", "JSP", "Tailwind CSS", "Frontend"],
     description:
       "製作 IVE 主題粉絲網站，規劃成員介紹、作品資訊與互動頁面，練習前端版面設計、資料呈現與使用者瀏覽體驗。",
@@ -397,13 +398,20 @@ export default function Home() {
                 rel={isExternal ? "noopener noreferrer" : undefined}
                 className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/10"
               >
-                <div className="mb-3 flex flex-wrap items-center gap-3">
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                   <h3 className="text-xl font-semibold">{project.title}</h3>
-                  {!project.href ? (
-                    <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-200">
-                      Ongoing
-                    </span>
-                  ) : null}
+                  <div className="flex flex-wrap justify-end gap-2">
+                    {!project.href ? (
+                      <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-200">
+                        Ongoing
+                      </span>
+                    ) : null}
+                    {project.label ? (
+                      <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-200">
+                        {project.label}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div className="mb-4 flex flex-wrap gap-2">
