@@ -159,7 +159,7 @@ const projects = [
     title: "LLaMA 3 個人化產品行銷文案網站",
     tags: ["JSP", "LLaMA 3", "TextRank", "K-Means", "HDBSCAN"],
     description:
-      "將暑期網站 web_kai 的 JSP 系統整理為作品展示頁，呈現產品資訊分析、行銷文案語意偏好分析與 LLaMA 3 文案生成流程。",
+      "整理為作品展示頁，呈現產品資訊分析、行銷文案語意偏好分析與 LLaMA 3 文案生成流程。",
     highlights: [
       "規劃產品資訊、行銷文案與生成模型三大模組",
       "展示 TextRank、K-Means、HDBSCAN 與模型訓練成果",
