@@ -9,6 +9,7 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
   { label: "Experience", href: "#experience" },
   { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
@@ -141,6 +142,51 @@ const highlights = [
   },
 ];
 
+const researchPublications = [
+  {
+    title: "2025 中國工業工程學會年會暨學術研討會",
+    href: "/conference",
+    badge: "Best Paper Award",
+    details: [
+      {
+        label: "Topic",
+        value: "基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式",
+      },
+      {
+        label: "Award",
+        value: "最佳論文獎 — 大數據技術與應用領域",
+      },
+      {
+        label: "Location",
+        value: "高雄科技大學",
+      },
+    ],
+    tags: ["LLaMA 3", "NLP", "Marketing Copy", "Best Paper"],
+  },
+  {
+    title: "ICCCM 2026 Accepted for Presentation",
+    href: "/icccm",
+    badge: "Accepted for Presentation",
+    details: [
+      {
+        label: "Topic",
+        value:
+          "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
+      },
+      {
+        label: "Conference",
+        value:
+          "The 14th International Conference on Computer and Communications Management",
+      },
+      {
+        label: "Location",
+        value: "Tokyo, Japan",
+      },
+    ],
+    tags: ["ICCCM 2026", "Presentation", "LSTM", "Essay Scoring"],
+  },
+];
+
 const projects = [
   {
     title: "基於LLaMA 3 模型結合消費者偏好生成個人化行銷文案生成模式",
@@ -247,8 +293,9 @@ export default function Home() {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
             Kevin Huang｜黃凱浚 Kai-Chun Huang
           </p>
-          <h1 className="max-w-5xl text-4xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-6xl">
-            AI / NLP / Data Analysis Portfolio
+          <h1 className="max-w-5xl text-3xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-5xl">
+            AI & NLP Developer focused on LLM Applications, Data Analysis, and
+            Intelligent Text Generation
           </h1>
 
           <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-200">
@@ -256,6 +303,8 @@ export default function Home() {
             LLM 應用。畢業專題以 LLaMA 3
             結合消費者偏好進行個人化行銷文案生成研究，並於 2025
             中國工業工程學會年會暨學術研討會發表，榮獲大數據技術與應用領域最佳論文獎。
+            我專注於將大型語言模型、資料分析與自然語言處理技術應用於實際問題，例如個人化文案生成、意圖分類、問答生成與
+            SEO 分析工具開發。
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -390,6 +439,63 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="research" className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold">Research & Publications</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-slate-300">
+            研究成果聚焦於大型語言模型、自然語言處理與智慧文字生成，包含學術研討會發表與最佳論文獎紀錄。
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {researchPublications.map((publication) => (
+            <Link
+              key={publication.title}
+              href={publication.href}
+              className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+            >
+              <div className="mb-5 flex flex-col items-start gap-3">
+                <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300">
+                  {publication.badge}
+                </span>
+                <h3 className="text-xl font-semibold leading-8">
+                  {publication.title}
+                </h3>
+              </div>
+
+              <dl className="space-y-4">
+                {publication.details.map((detail) => (
+                  <div key={detail.label}>
+                    <dt className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                      {detail.label}
+                    </dt>
+                    <dd className="mt-1 leading-7 text-slate-200">
+                      {detail.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {publication.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                View Details
+                <span aria-hidden="true">-&gt;</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-8 text-3xl font-bold">Experience</h2>
 
@@ -484,48 +590,6 @@ export default function Home() {
               </Link>
             ))}
         </div>
-
-        <h3 className="mb-5 mt-12 text-2xl font-semibold">研討會</h3>
-        <div className="grid gap-6 md:grid-cols-2">
-          {highlights
-            .filter((highlight) => highlight.href !== "/student-association")
-            .map((highlight) => (
-            <Link
-              key={highlight.title}
-              href={highlight.href}
-              className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-            >
-              <div className="mb-4 flex flex-col items-start gap-3">
-                <h3 className="text-xl font-semibold leading-8">
-                  {highlight.title}
-                </h3>
-                <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-                  {highlight.badge}
-                </span>
-              </div>
-
-              <p className="leading-8 text-slate-300">
-                {highlight.description}
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {highlight.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
-                View Details
-                <span aria-hidden="true">-&gt;</span>
-              </div>
-            </Link>
-            ))}
-        </div>
       </section>
 
       <section id="certificates" className="mx-auto max-w-6xl px-6 py-20">
@@ -580,52 +644,40 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="mb-6 text-3xl font-bold">Contact Me</h2>
+        <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-          <p className="hidden">
-            歡迎透過 Email 與我聯繫，討論實習、專題合作或 AI
-            應用相關機會。
+          <p className="max-w-4xl text-lg leading-8 text-slate-200">
+            我目前正在尋找 AI、資料分析、NLP、LLM
+            應用相關的實習、專題合作與研究機會。如果你對我的作品、研究或技術背景有興趣，歡迎透過
+            Email 或 GitHub 與我聯繫。
           </p>
 
-          <p className="mb-4 text-slate-300">
-            歡迎透過 Email 與我聯繫，也可以查看我的 GitHub 與履歷。
-          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="mailto:kevin80609@gmail.com"
+              className="rounded-xl bg-blue-500 px-6 py-3 font-medium text-white transition hover:bg-blue-600"
+            >
+              Email Me
+            </a>
 
-          <div className="space-y-2 text-slate-300">
-            <p>
-              Email:{" "}
-              <a
-                href="mailto:kevin80609@gmail.com"
-                className="text-blue-400 hover:underline"
-              >
-                kevin80609@gmail.com
-              </a>
-            </p>
+            <a
+              href="https://github.com/brian-kai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
+            >
+              GitHub
+            </a>
 
-            <p>
-              GitHub:{" "}
-              <a
-                href="https://github.com/brian-kai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
-              >
-                github.com/brian-kai
-              </a>
-            </p>
-
-            <p>
-              Resume PDF:{" "}
-              <a
-                href="/file/新版履歷_英文網站.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
-              >
-                Download Resume
-              </a>
-            </p>
+            <a
+              href="/file/新版履歷_英文網站.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
+            >
+              Download Resume
+            </a>
           </div>
         </div>
       </section>
