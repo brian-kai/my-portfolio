@@ -337,10 +337,10 @@ export default function Home() {
             </p>
 
             <p>
-              在技術工具方面，我熟悉 Python、SQL、R
-              等資料處理工具，能使用 Pandas、NumPy
+              在程式方面，我熟悉 Python、SQL、R
+              等資料處理工具，能透過使用 Pandas、NumPy
               進行資料清理、轉換與分析。在模型應用上，我曾使用
-              BERT、LLaMA、Gemma
+              BERT、LLaMA 3、Gemma 4
               等語言模型，並應用於文字生成、意圖分類與問答生成等專題中。
             </p>
 
