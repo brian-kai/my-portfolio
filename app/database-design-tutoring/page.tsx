@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import tutoringPhotoOne from "../image/6BD131C2-112B-48C8-B90B-FD36B7C5F348.jpg";
-import tutoringPhotoTwo from "../image/C19D1A79-C48D-432F-889C-CE435DE83A58.jpg";
+import tutoringPhotoTwo from "../image/96339D99-F8F2-4006-966F-1B68C750CA3C.jpg";
 
 const photos = [
   {

@@ -90,7 +90,7 @@ const experiences = [
       "協助研究流程規劃、程式碼版本差異資料整理與模型應用，支援以 LLaMA 3 產生程式碼變更註解的研究工作。",
   },
   {
-    title: "逢甲大學資料庫設計課程助教",
+    title: "工業工程與系統管理學系資料庫設計課程助教",
     meta: "私立逢甲大學｜資料庫設計｜113-2、114-2 學期",
     badge: "Teaching Assistant",
     description:
@@ -99,7 +99,7 @@ const experiences = [
     action: "View Photos",
   },
   {
-    title: "逢甲大學決策與數據分析課程助教",
+    title: "工業工程與系統管理學系決策與數據分析課程助教",
     meta: "私立逢甲大學｜決策與數據分析｜114-1 學期",
     badge: "Teaching Assistant",
     description:
