@@ -143,7 +143,7 @@ const highlights = [
 
 const projects = [
   {
-    title: "LLaMA 3 個人化行銷文案生成系統",
+    title: "基於LLaMA 3 模型結合消費者偏好生成個人化行銷文案生成模式",
     tags: ["LLM", "LLaMA 3", "NLP", "Marketing"],
     description:
       "以 LLaMA 3 結合消費者偏好資料，建立個人化產品行銷文案生成流程，並透過情感分析、關鍵字萃取與生成品質評估驗證研究成果。",
