@@ -98,7 +98,7 @@ const experiences = [
   },
   {
     title: "國中補習班理化助教",
-    meta: "課堂協助、課業輔導與概念講解",
+    meta: "臺中市私立佳華文理補習班-中科旗艦校｜課堂協助、課業輔導與概念講解",
     badge: "Tutor Assistant",
     description:
       "協助課堂進行、學生課業輔導與理化概念說明，培養將複雜概念拆解並清楚表達的能力。",
