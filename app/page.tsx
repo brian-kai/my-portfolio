@@ -271,7 +271,7 @@ const projects = [
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_14%_22%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.24),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white">
+    <main className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_22%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.24),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
 
@@ -285,6 +285,8 @@ export default function Home() {
           >
             Kevin Huang | 黃凱浚 Kai-Chun Huang
           </a>
+
+          <div className="h-10 w-10 shrink-0 md:hidden" aria-hidden="true" />
 
           <div className="hidden gap-7 text-base font-medium text-slate-300 md:flex">
             {navItems.map((item) => (
