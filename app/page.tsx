@@ -283,7 +283,8 @@ export default function Home() {
             href="#"
             className="min-w-0 flex-1 truncate text-center text-base font-bold md:flex-none md:text-left md:text-lg"
           >
-            Kevin Huang | 黃凱浚 Kai-Chun Huang
+            <span className="md:hidden">Kevin Huang</span>
+            <span className="hidden md:inline">Kevin Huang | 黃凱浚 Kai-Chun Huang</span>
           </a>
 
           <div className="h-10 w-10 shrink-0 md:hidden" aria-hidden="true" />
@@ -307,7 +308,14 @@ export default function Home() {
             AI / NLP / Data Analysis Portfolio
           </h1>
 
-          <p className="mt-6 max-w-6xl text-lg leading-8 text-slate-200">
+          <p className="mt-6 max-w-6xl text-lg leading-8 text-slate-200 md:hidden">
+            我是黃凱浚，專注於資料分析、自然語言處理與 LLM
+            應用。曾以 LLaMA 3
+            個人化行銷文案生成研究獲得最佳論文獎，並持續開發意圖分類、問答生成與
+            SEO 分析工具。
+          </p>
+
+          <p className="mt-6 hidden max-w-6xl text-lg leading-8 text-slate-200 md:block">
             我是黃凱浚，就讀於逢甲大學工業工程與系統管理學系，擅長資料分析、自然語言處理與
             LLM 應用。畢業專題以 LLaMA 3
             結合消費者偏好進行個人化行銷文案生成研究，並於 2025
@@ -316,17 +324,17 @@ export default function Home() {
             SEO 分析工具開發。
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="#projects"
-              className="rounded-xl bg-blue-500 px-6 py-3 font-medium text-white transition hover:bg-blue-600"
+              className="rounded-xl bg-blue-500 px-6 py-3 text-center font-medium text-white transition hover:bg-blue-600"
             >
               View Projects
             </a>
 
             <a
               href="/file/新版履歷_英文.pdf"
-              className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
+              className="rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white"
             >
               Download Resume
             </a>
