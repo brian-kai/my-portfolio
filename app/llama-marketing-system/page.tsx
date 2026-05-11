@@ -119,13 +119,22 @@ export default function LlamaMarketingSystemPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_18%,rgba(34,211,238,0.2),transparent_30%),radial-gradient(circle_at_86%_8%,rgba(168,85,247,0.2),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] px-6 py-8 text-white [overflow-wrap:anywhere] md:py-12">
       <div className="mx-auto max-w-6xl">
-        <Link
-          href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
-        >
-          <span aria-hidden="true">&lt;-</span>
-          Back to Projects
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/#projects"
+            className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+          >
+            <span aria-hidden="true">&lt;-</span>
+            Back to Projects
+          </Link>
+
+          <Link
+            href="/"
+            className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
+          >
+            Home
+          </Link>
+        </div>
 
         <section className="border-b border-white/10 py-10 md:py-12">
           <div className="max-w-6xl">

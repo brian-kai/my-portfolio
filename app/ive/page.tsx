@@ -183,6 +183,7 @@ export default function IvePage() {
   const [tasks, setTasks] = useState(starterTasks);
   const [text, setText] = useState("");
   const [quizResult, setQuizResult] = useState(websiteQuizOptions[0].result);
+  const [showAllSongs, setShowAllSongs] = useState(false);
 
   const completedCount = useMemo(
     () => tasks.filter((task) => task.done).length,
@@ -218,7 +219,14 @@ export default function IvePage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#0f1021] text-white [overflow-wrap:anywhere]">
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1021]/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
+        <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
+          <Link
+            href="/"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-pink-300/60 hover:text-white md:hidden"
+          >
+            &lt;- Home
+          </Link>
+
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">
@@ -392,23 +400,25 @@ export default function IvePage() {
           作品推薦
         </h2>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
           {releases.map((release, index) => (
             <a
               key={release.title}
               href={release.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70 md:p-6"
+              className={`group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70 md:block md:p-6 ${
+                showAllSongs || index < 6 ? "block" : "hidden"
+              }`}
             >
-              <div className="mb-5 flex items-center justify-between gap-4">
+              <div className="mb-4 flex items-start justify-between gap-4 md:mb-5 md:items-center">
                 <div>
-                  <h3 className="text-xl font-bold md:text-2xl">
+                  <h3 className="text-lg font-bold md:text-2xl">
                     {release.title}
                   </h3>
                   <p className="mt-1 text-sm text-slate-400">{release.type}</p>
                 </div>
-                <span className="text-4xl font-black text-white/10 transition group-hover:text-pink-300/35">
+                <span className="text-3xl font-black text-white/10 transition group-hover:text-pink-300/35 md:text-4xl">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -416,13 +426,23 @@ export default function IvePage() {
               <p className="text-[15px] leading-7 text-slate-300 md:text-base">
                 {release.mood}
               </p>
-              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-pink-300 transition group-hover:text-pink-200">
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-300 transition group-hover:text-pink-200 md:mt-5">
                 Watch on YouTube
                 <span aria-hidden="true">-&gt;</span>
               </div>
             </a>
           ))}
         </div>
+
+        {!showAllSongs ? (
+          <button
+            type="button"
+            onClick={() => setShowAllSongs(true)}
+            className="mt-6 w-full rounded-full border border-pink-300/30 px-5 py-3 text-sm font-bold text-pink-200 transition hover:border-pink-300/70 hover:bg-pink-300/10 md:hidden"
+          >
+            View More Songs
+          </button>
+        ) : null}
       </section>
 
       <section id="mission" className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1fr_0.8fr]">
