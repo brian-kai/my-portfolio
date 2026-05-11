@@ -48,11 +48,14 @@ const photos = [
 
 export default function StudentAssociationPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white [overflow-wrap:anywhere]">
       <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
-          <Link href="/" className="text-lg font-bold">
-            Kevin Huang | 黃凱浚 Kai-Chun Huang
+          <Link href="/" className="min-w-0 truncate text-lg font-bold">
+            <span className="md:hidden">Kevin Huang</span>
+            <span className="hidden md:inline">
+              Kevin Huang | 黃凱浚 Kai-Chun Huang
+            </span>
           </Link>
 
           <Link
@@ -64,37 +67,39 @@ export default function StudentAssociationPage() {
         </div>
       </nav>
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
           Student Association
         </p>
 
-        <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
           系學會活動經歷
         </h1>
 
-        <p className="mt-5 max-w-4xl leading-8 text-slate-300">
+        <p className="mt-5 max-w-4xl text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
           大三上學期加入工業工程與系統管理學系系學會，擔任活動組長，參與多項系上活動規劃與執行。透過活動企劃、流程安排、現場管理與跨組溝通，培養團隊合作、組織協調、任務分配與問題解決能力。
         </p>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16">
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:pb-16">
         <h2 className="mb-6 text-2xl font-bold">活動職責</h2>
 
         <div className="grid gap-5 md:grid-cols-2">
           {experiences.map((experience) => (
             <article
               key={experience.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
             >
               <div className="mb-3 flex flex-wrap items-center gap-3">
-                <h3 className="text-xl font-semibold">{experience.title}</h3>
+                <h3 className="text-lg font-semibold leading-7 md:text-xl">
+                  {experience.title}
+                </h3>
                 <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
                   {experience.role}
                 </span>
               </div>
 
-              <p className="leading-7 text-slate-300">
+              <p className="text-[15px] leading-7 text-slate-300 md:text-base">
                 {experience.description}
               </p>
             </article>
@@ -102,7 +107,7 @@ export default function StudentAssociationPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20">
+      <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <h2 className="mb-6 text-2xl font-bold">活動照片</h2>
 
         <div className="grid gap-6">
@@ -115,14 +120,16 @@ export default function StudentAssociationPage() {
                 <Image
                   src={photo.image}
                   alt={photo.title}
-                  className="h-auto w-full rounded-xl object-cover"
+                  className="max-h-[520px] w-full rounded-xl object-contain md:max-h-none md:object-cover"
                   priority={index === 0}
                   sizes="(min-width: 1024px) 1024px, 100vw"
                 />
               </div>
 
-              <div className="border-t border-white/10 p-5">
-                <h3 className="text-xl font-semibold">{photo.title}</h3>
+              <div className="border-t border-white/10 p-4 md:p-5">
+                <h3 className="text-lg font-semibold md:text-xl">
+                  {photo.title}
+                </h3>
               </div>
             </article>
           ))}

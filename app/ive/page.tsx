@@ -216,11 +216,14 @@ export default function IvePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0f1021] text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#0f1021] text-white [overflow-wrap:anywhere]">
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1021]/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
-          <Link href="/" className="text-lg font-bold">
-            Kevin Huang | 黃凱浚 Kai-Chun Huang
+          <Link href="/" className="min-w-0 truncate text-lg font-bold">
+            <span className="md:hidden">Kevin Huang</span>
+            <span className="hidden md:inline">
+              Kevin Huang | 黃凱浚 Kai-Chun Huang
+            </span>
           </Link>
 
           <div className="hidden items-center gap-5 text-sm text-slate-300 md:flex">
@@ -243,38 +246,38 @@ export default function IvePage() {
         </div>
       </nav>
 
-      <section className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-[1fr_430px]">
+      <section className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-8 px-6 py-12 md:grid-cols-[1fr_430px] md:gap-10 md:py-16">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-pink-300">
             IVE Fan Website
           </p>
 
-          <h1 className="max-w-4xl text-5xl font-black leading-none md:text-7xl">
+          <h1 className="max-w-4xl text-4xl font-black leading-none md:text-7xl">
             IVE DIVE Hub
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-5 max-w-2xl text-[15px] leading-7 text-slate-300 md:mt-6 md:text-lg md:leading-8">
             以 IVE 為主題的粉絲網站，整合成員介紹、音樂作品、互動任務與粉絲測驗。這個頁面從原本的 HTML、CSS、JavaScript 待辦清單延伸成完整作品展示。
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#members"
-              className="rounded-full bg-pink-400 px-5 py-3 text-sm font-bold text-[#151225] transition hover:bg-pink-300"
+              className="rounded-full bg-pink-400 px-5 py-3 text-center text-sm font-bold text-[#151225] transition hover:bg-pink-300"
             >
               查看成員
             </a>
             <a
               href="#mission"
-              className="rounded-full border border-white/15 px-5 py-3 text-sm font-bold text-white transition hover:border-pink-300/60"
+              className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-pink-300/60"
             >
               開始任務
             </a>
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-5 shadow-2xl shadow-pink-950/40">
-          <div className="aspect-[4/5] rounded-[1.5rem] bg-[radial-gradient(circle_at_30%_20%,#ffb7dd,transparent_34%),radial-gradient(circle_at_80%_30%,#9be7ff,transparent_30%),linear-gradient(150deg,#2b1a58,#14142c_48%,#ff6fbd)] p-6">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-4 shadow-2xl shadow-pink-950/40 md:rounded-[2rem] md:p-5">
+          <div className="aspect-[4/5] rounded-[1.5rem] bg-[radial-gradient(circle_at_30%_20%,#ffb7dd,transparent_34%),radial-gradient(circle_at_80%_30%,#9be7ff,transparent_30%),linear-gradient(150deg,#2b1a58,#14142c_48%,#ff6fbd)] p-4 md:p-6">
             <div className="flex h-full flex-col justify-between rounded-[1.25rem] border border-white/20 bg-black/20 p-6 backdrop-blur-sm">
               <div>
                 <p className="text-sm uppercase tracking-[0.28em] text-white/70">
@@ -311,16 +314,16 @@ export default function IvePage() {
         </div>
       </section>
 
-      <section id="members" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="members" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
               Members
             </p>
-            <h2 className="text-4xl font-bold">成員介紹</h2>
+            <h2 className="text-3xl font-bold md:text-4xl">成員介紹</h2>
           </div>
 
-          <p className="max-w-2xl leading-7 text-slate-300">
+          <p className="max-w-2xl text-[15px] leading-7 text-slate-300 md:text-base">
             點選每位成員卡片，右側會切換對應的角色與網站內容定位。
           </p>
         </div>
@@ -332,7 +335,7 @@ export default function IvePage() {
                 key={member.name}
                 type="button"
                 onClick={() => setSelectedMember(member)}
-                className={`rounded-2xl border p-4 text-left transition hover:-translate-y-1 ${
+                className={`rounded-2xl border p-3 text-left transition hover:-translate-y-1 md:p-4 ${
                   selectedMember.name === member.name
                     ? "border-pink-300/70 bg-pink-300/10"
                     : "border-white/10 bg-white/5"
@@ -348,13 +351,13 @@ export default function IvePage() {
                     sizes="(min-width: 1024px) 220px, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
-                <h3 className="text-xl font-bold">{member.name}</h3>
+                <h3 className="text-lg font-bold md:text-xl">{member.name}</h3>
                 <p className="mt-1 text-sm text-slate-400">{member.role}</p>
               </button>
             ))}
           </div>
 
-          <aside className="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <aside className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
             <p className="text-sm uppercase tracking-[0.2em] text-pink-300">
               Selected
             </p>
@@ -370,20 +373,24 @@ export default function IvePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f1021]/80 via-transparent to-transparent" />
             </div>
-            <h3 className="mt-4 text-4xl font-black">{selectedMember.name}</h3>
+            <h3 className="mt-4 text-3xl font-black md:text-4xl">
+              {selectedMember.name}
+            </h3>
             <p className="mt-2 text-slate-400">{selectedMember.role}</p>
-            <p className="mt-6 leading-8 text-slate-300">
+            <p className="mt-5 text-[15px] leading-7 text-slate-300 md:mt-6 md:text-base md:leading-8">
               {selectedMember.note}
             </p>
           </aside>
         </div>
       </section>
 
-      <section id="music" className="mx-auto max-w-7xl px-6 py-20">
+      <section id="music" className="mx-auto max-w-7xl px-6 py-16 md:py-20">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
           Music
         </p>
-        <h2 className="mb-8 text-4xl font-bold">作品推薦</h2>
+        <h2 className="mb-6 text-3xl font-bold md:mb-8 md:text-4xl">
+          作品推薦
+        </h2>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {releases.map((release, index) => (
@@ -392,11 +399,13 @@ export default function IvePage() {
               href={release.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70"
+              className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70 md:p-6"
             >
               <div className="mb-5 flex items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-2xl font-bold">{release.title}</h3>
+                  <h3 className="text-xl font-bold md:text-2xl">
+                    {release.title}
+                  </h3>
                   <p className="mt-1 text-sm text-slate-400">{release.type}</p>
                 </div>
                 <span className="text-4xl font-black text-white/10 transition group-hover:text-pink-300/35">
@@ -404,7 +413,9 @@ export default function IvePage() {
                 </span>
               </div>
 
-              <p className="leading-7 text-slate-300">{release.mood}</p>
+              <p className="text-[15px] leading-7 text-slate-300 md:text-base">
+                {release.mood}
+              </p>
               <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-pink-300 transition group-hover:text-pink-200">
                 Watch on YouTube
                 <span aria-hidden="true">-&gt;</span>
@@ -414,14 +425,14 @@ export default function IvePage() {
         </div>
       </section>
 
-      <section id="mission" className="mx-auto grid max-w-6xl gap-6 px-6 py-20 lg:grid-cols-[1fr_0.8fr]">
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
+      <section id="mission" className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1fr_0.8fr]">
+        <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
           <div className="mb-5 flex items-start justify-between gap-4">
             <div>
               <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
                 Mission
               </p>
-              <h2 className="text-3xl font-bold">DIVE 任務清單</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">DIVE 任務清單</h2>
             </div>
 
             <span className="rounded-full bg-pink-400/10 px-4 py-2 text-sm text-pink-200">
@@ -484,12 +495,12 @@ export default function IvePage() {
           </ul>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
             Quiz
           </p>
-          <h2 className="text-3xl font-bold">你的 DIVE 類型</h2>
-          <p className="mt-4 leading-7 text-slate-300">
+          <h2 className="text-2xl font-bold md:text-3xl">你的 DIVE 類型</h2>
+          <p className="mt-4 text-[15px] leading-7 text-slate-300 md:text-base">
             選擇你最喜歡的粉絲活動方向，系統會推薦適合延伸的網站功能。
           </p>
 

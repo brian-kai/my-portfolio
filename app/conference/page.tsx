@@ -31,11 +31,14 @@ const certificates = [
 
 export default function ConferencePage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white [overflow-wrap:anywhere]">
       <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
-          <Link href="/" className="text-lg font-bold">
-            Kevin Huang | 黃凱浚 Kai-Chun Huang
+          <Link href="/" className="min-w-0 truncate text-lg font-bold">
+            <span className="md:hidden">Kevin Huang</span>
+            <span className="hidden md:inline">
+              Kevin Huang | 黃凱浚 Kai-Chun Huang
+            </span>
           </Link>
 
           <Link
@@ -47,12 +50,12 @@ export default function ConferencePage() {
         </div>
       </nav>
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-cyan-300">
           Conference
         </p>
 
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
           研討會獎狀
         </h1>
 
@@ -61,9 +64,9 @@ export default function ConferencePage() {
         </p>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20">
+      <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <div className="mb-6">
-          <h2 className="text-3xl font-bold">上台報告照片</h2>
+          <h2 className="text-2xl font-bold md:text-3xl">上台報告照片</h2>
           <p className="mt-3 max-w-3xl leading-8 text-slate-300">
             於 2025 中國工業工程學會年會暨學術研討會進行研究成果發表。
           </p>
@@ -96,19 +99,21 @@ export default function ConferencePage() {
             key={certificate.title}
             className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
           >
-            <div className="flex min-h-[560px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:min-h-[640px]">
+            <div className="flex h-[420px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-auto md:min-h-[640px]">
               <Image
                 src={certificate.image}
                 alt={certificate.title}
-                className="max-h-[620px] w-full rounded-xl object-contain md:max-h-[720px]"
+                className="max-h-full w-full rounded-xl object-contain md:max-h-[720px]"
                 priority={index === 0}
                 sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
 
-            <div className="p-6">
-              <h2 className="text-2xl font-semibold">{certificate.title}</h2>
-              <p className="mt-2 leading-7 text-slate-400">
+            <div className="p-5 md:p-6">
+              <h2 className="text-xl font-semibold md:text-2xl">
+                {certificate.title}
+              </h2>
+              <p className="mt-2 text-[15px] leading-7 text-slate-400 md:text-base">
                 {certificate.event}
               </p>
             </div>

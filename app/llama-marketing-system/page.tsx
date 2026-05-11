@@ -117,7 +117,7 @@ const tags = [
 
 export default function LlamaMarketingSystemPage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_14%_18%,rgba(34,211,238,0.2),transparent_30%),radial-gradient(circle_at_86%_8%,rgba(168,85,247,0.2),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] px-6 py-12 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_18%,rgba(34,211,238,0.2),transparent_30%),radial-gradient(circle_at_86%_8%,rgba(168,85,247,0.2),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] px-6 py-8 text-white [overflow-wrap:anywhere] md:py-12">
       <div className="mx-auto max-w-6xl">
         <Link
           href="/#projects"
@@ -127,15 +127,15 @@ export default function LlamaMarketingSystemPage() {
           Back to Projects
         </Link>
 
-        <section className="border-b border-white/10 py-12">
+        <section className="border-b border-white/10 py-10 md:py-12">
           <div className="max-w-6xl">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
               JSP / NLP / LLM System
             </p>
-            <h1 className="mt-4 max-w-full text-4xl font-black leading-tight md:whitespace-nowrap md:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-4 max-w-full text-3xl font-black leading-tight md:whitespace-nowrap md:text-5xl lg:text-[3.4rem]">
               LLaMA 3 個人化產品行銷文案生成系統
             </h1>
-            <p className="mt-6 max-w-5xl text-lg leading-8 text-slate-300">
+            <p className="mt-5 max-w-5xl text-[15px] leading-7 text-slate-300 md:mt-6 md:text-lg md:leading-8">
               本作品參考原始 JSP 系統架構，重新整理為可公開展示的作品頁，呈現產品資訊分析、行銷文案語義偏好分析與
               LLaMA 3 個人化文案生成三個核心模組。
             </p>
@@ -153,18 +153,18 @@ export default function LlamaMarketingSystemPage() {
           </div>
         </section>
 
-        <section className="py-14">
-          <h2 className="text-3xl font-bold">系統模組</h2>
+        <section className="py-12 md:py-14">
+          <h2 className="text-2xl font-bold md:text-3xl">系統模組</h2>
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
             {modules.map((module) => (
               <article
                 key={module.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
               >
-                <h3 className="text-xl font-semibold leading-8">
+                <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
                   {module.title}
                 </h3>
-                <p className="mt-4 leading-7 text-slate-300">
+                <p className="mt-3 text-[15px] leading-7 text-slate-300 md:mt-4 md:text-base">
                   {module.summary}
                 </p>
 
@@ -194,32 +194,36 @@ export default function LlamaMarketingSystemPage() {
           </div>
         </section>
 
-        <section className="border-y border-white/10 py-14">
-          <h2 className="text-3xl font-bold">系統流程</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <section className="border-y border-white/10 py-12 md:py-14">
+          <h2 className="text-2xl font-bold md:text-3xl">系統流程</h2>
+          <div className="mt-6 grid gap-4 md:mt-8 md:grid-cols-2 lg:grid-cols-3">
             {workflow.map((item, index) => (
               <div
                 key={item}
-                className="flex min-h-24 items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-5"
+                className="flex min-h-20 items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.07] p-4 md:min-h-24 md:gap-4 md:p-5"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-500/10 font-mono text-sm font-bold text-cyan-300">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="pt-2 leading-7 text-slate-200">{item}</p>
+                <p className="pt-2 text-[15px] leading-7 text-slate-200 md:text-base">
+                  {item}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="py-14">
-          <h2 className="text-3xl font-bold">模組流程細節</h2>
-          <div className="mt-8 space-y-6">
+        <section className="py-12 md:py-14">
+          <h2 className="text-2xl font-bold md:text-3xl">模組流程細節</h2>
+          <div className="mt-6 space-y-5 md:mt-8 md:space-y-6">
             {modules.map((module) => (
               <article
                 key={module.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
               >
-                <h3 className="text-xl font-semibold">{module.title}</h3>
+                <h3 className="text-lg font-semibold leading-7 md:text-xl">
+                  {module.title}
+                </h3>
                 <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                   {module.steps.map((step, index) => (
                     <div
@@ -229,7 +233,9 @@ export default function LlamaMarketingSystemPage() {
                       <p className="font-mono text-xs font-bold uppercase tracking-wide text-cyan-300">
                         Step {index + 1}
                       </p>
-                      <p className="mt-2 leading-7 text-slate-300">{step}</p>
+                      <p className="mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
+                        {step}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -239,7 +245,7 @@ export default function LlamaMarketingSystemPage() {
         </section>
 
         <section className="pb-16">
-          <h2 className="text-3xl font-bold">成果展示</h2>
+          <h2 className="text-2xl font-bold md:text-3xl">成果展示</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {gallery.map((item) => (
               <a
@@ -252,12 +258,12 @@ export default function LlamaMarketingSystemPage() {
                 <Image
                   src={item.image}
                   alt={item.alt}
-                  className="aspect-[4/3] w-full border-b border-white/10 bg-slate-950/50 object-contain p-3 transition duration-300 group-hover:scale-[1.02]"
+                  className="aspect-[4/3] w-full border-b border-white/10 bg-slate-950/50 object-contain p-2 transition duration-300 group-hover:scale-[1.02] md:p-3"
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
-                <div className="p-5">
+                <div className="p-4 md:p-5">
                   <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 leading-7 text-slate-300">
+                  <p className="mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
                     {item.description}
                   </p>
                 </div>
