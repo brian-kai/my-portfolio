@@ -101,9 +101,12 @@ export default function IcccmPage() {
 
       <section className="relative z-10 mx-auto grid max-w-7xl gap-6 px-6 pb-16 md:grid-cols-2 md:pb-20">
         {proofs.map((proof, index) => (
-          <article
+          <a
             key={proof.title}
-            className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+            href={proof.image.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
           >
             <div className="flex h-[420px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-auto md:min-h-[640px]">
               <Image
@@ -115,12 +118,16 @@ export default function IcccmPage() {
               />
             </div>
 
-            <div className="p-5 md:p-6">
+            <div className="p-4 md:p-5">
               <h2 className="text-xl font-semibold md:text-2xl">
                 {proof.title}
               </h2>
+              <div className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                View Full Image
+                <span aria-hidden="true">-&gt;</span>
+              </div>
             </div>
-          </article>
+          </a>
         ))}
       </section>
     </main>

@@ -27,13 +27,6 @@ export default function DatabaseDesignTutoringPage() {
             <span aria-hidden="true">&lt;-</span>
             Back to Experience
           </Link>
-
-          <Link
-            href="/"
-            className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
-          >
-            Home
-          </Link>
         </div>
 
         <header className="mt-8 border-b border-white/10 pb-6 md:pb-8">

@@ -127,13 +127,6 @@ export default function LlamaMarketingSystemPage() {
             <span aria-hidden="true">&lt;-</span>
             Back to Projects
           </Link>
-
-          <Link
-            href="/"
-            className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
-          >
-            Home
-          </Link>
         </div>
 
         <section className="border-b border-white/10 py-10 md:py-12">
@@ -183,7 +176,13 @@ export default function LlamaMarketingSystemPage() {
                   </h4>
                   <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
                     {module.features.map((feature) => (
-                      <li key={feature}>- {feature}</li>
+                      <li key={feature} className="flex gap-2">
+                        <span
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300"
+                          aria-hidden="true"
+                        />
+                        <span>{feature}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -275,6 +274,10 @@ export default function LlamaMarketingSystemPage() {
                   <p className="mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
                     {item.description}
                   </p>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                    View Full Image
+                    <span aria-hidden="true">-&gt;</span>
+                  </div>
                 </div>
               </a>
             ))}

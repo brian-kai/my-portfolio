@@ -638,11 +638,11 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
             >
-              <div className="flex h-56 items-center justify-center border-b border-white/10 bg-slate-950/40 p-3 md:h-auto">
+              <div className="h-52 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-auto">
                 <Image
                   src={certificate.image}
                   alt={`${certificate.title} certificate`}
-                  className="max-h-full w-full rounded-xl object-contain md:aspect-[4/3] md:object-cover md:object-top"
+                  className="h-full w-full rounded-xl object-cover object-top md:aspect-[4/3] md:h-auto"
                   priority={index === 0}
                   sizes="(min-width: 768px) 33vw, 100vw"
                 />
