@@ -115,13 +115,16 @@ export default function StudentAssociationPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
-        <h2 className="mb-6 text-2xl font-bold">活動照片</h2>
+        <h2 className="mb-6 px-1 text-2xl font-bold">活動照片</h2>
 
         <div className="grid gap-6">
           {photos.map((photo, index) => (
-            <article
+            <a
               key={photo.title}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+              href={photo.image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
             >
               <div className="bg-slate-900/80 p-3 md:p-5">
                 <Image
@@ -137,8 +140,12 @@ export default function StudentAssociationPage() {
                 <h3 className="text-lg font-semibold md:text-xl">
                   {photo.title}
                 </h3>
+                <div className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-emerald-300 transition group-hover:text-emerald-200">
+                  View Full Image
+                  <span aria-hidden="true">-&gt;</span>
+                </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </section>
