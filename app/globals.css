@@ -31,7 +31,5 @@ html {
 
 main p,
 main dd {
-  text-align: justify;
-  text-align-last: left;
-  text-justify: inter-ideograph;
+  text-align: left;
 }

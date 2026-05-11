@@ -345,7 +345,7 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
           <div className="space-y-6 leading-8 text-slate-300">
             <p>
               我具備資料分析、自然語言處理（NLP）與 LLM
@@ -412,10 +412,12 @@ export default function Home() {
                 href={project.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/10"
+                className="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/10 md:p-6"
               >
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                  <h3 className="text-lg font-semibold leading-7 md:text-xl">
+                    {project.title}
+                  </h3>
                   <div className="flex flex-wrap justify-end gap-2">
                     {!project.href ? (
                       <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-200">
@@ -441,7 +443,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <p className="mb-5 leading-7 text-slate-300">
+                <p className="mb-5 text-[15px] leading-7 text-slate-300 md:text-base">
                   {project.description}
                 </p>
 
@@ -476,13 +478,13 @@ export default function Home() {
             <Link
               key={publication.title}
               href={publication.href}
-              className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
             >
               <div className="mb-5 flex flex-col items-start gap-3">
                 <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300">
                   {publication.badge}
                 </span>
-                <h3 className="text-xl font-semibold leading-8">
+                <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
                   {publication.title}
                 </h3>
               </div>
@@ -493,7 +495,7 @@ export default function Home() {
                     <dt className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                       {detail.label}
                     </dt>
-                    <dd className="mt-1 leading-7 text-slate-200">
+                    <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
                       {detail.value}
                     </dd>
                   </div>
@@ -532,10 +534,12 @@ export default function Home() {
               <>
                 <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
                   <div>
-                    <h3 className="text-xl font-semibold">
+                    <h3 className="text-lg font-semibold leading-7 md:text-xl">
                       {experience.title}
                     </h3>
-                    <p className="mt-2 text-slate-400">{experience.meta}</p>
+                    <p className="mt-2 text-[15px] leading-7 text-slate-400 md:text-base">
+                      {experience.meta}
+                    </p>
                   </div>
 
                   <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
@@ -543,7 +547,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="leading-8 text-slate-300">
+                <p className="text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
                   {experience.description}
                 </p>
 
@@ -560,14 +564,14 @@ export default function Home() {
               <Link
                 key={experience.title}
                 href={experience.href}
-                className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+                className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
               >
                 {content}
               </Link>
             ) : (
               <article
                 key={experience.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
               >
                 {content}
               </article>
@@ -585,10 +589,10 @@ export default function Home() {
               <Link
                 key={highlight.title}
                 href={highlight.href}
-                className="group block rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+                className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
               >
                 <div className="mb-4 flex flex-col items-start gap-3">
-                  <h3 className="text-xl font-semibold leading-8">
+                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
                     {highlight.title}
                   </h3>
                   <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
@@ -596,7 +600,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="leading-8 text-slate-300">
+                <p className="text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
                   {highlight.description}
                 </p>
 
@@ -642,7 +646,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="p-6">
+              <div className="p-5 md:p-6">
                 <p className="text-sm font-medium text-cyan-300">
                   {certificate.issuer}
                 </p>
@@ -674,17 +678,17 @@ export default function Home() {
       <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
           <p className="text-lg leading-8 text-slate-200">
             我目前正在尋找 AI、資料分析、NLP、LLM
             應用相關的實習、專題合作與研究機會。如果你對我的作品、研究或技術背景有興趣，歡迎透過
             Email 或 GitHub 與我聯繫。
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="mailto:kevin80609@gmail.com"
-              className="rounded-xl bg-blue-500 px-6 py-3 font-medium text-white transition hover:bg-blue-600"
+              className="w-full rounded-xl bg-blue-500 px-6 py-3 text-center font-medium text-white transition hover:bg-blue-600 sm:w-auto"
             >
               Email Me
             </a>
@@ -693,7 +697,7 @@ export default function Home() {
               href="https://github.com/brian-kai"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
+              className="w-full rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white sm:w-auto"
             >
               GitHub
             </a>
@@ -702,7 +706,7 @@ export default function Home() {
               href="/file/新版履歷_英文.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
+              className="w-full rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white sm:w-auto"
             >
               Download Resume
             </a>
@@ -714,7 +718,7 @@ export default function Home() {
         href="#"
         aria-label="Back to top"
         title="Back to top"
-        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/40 bg-slate-950/80 text-2xl font-bold text-cyan-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-200 hover:text-white"
+        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-cyan-300/40 bg-slate-950/80 text-xl font-bold text-cyan-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl"
       >
         ↑
       </a>
