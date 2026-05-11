@@ -342,7 +342,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="about" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
@@ -368,26 +368,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="mb-8 text-3xl font-bold">Skills</h2>
+      <section id="skills" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <h2 className="mb-6 text-3xl font-bold md:mb-8">Skills</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-6 md:p-8">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-5 md:p-8">
           {skills.map((skill) => (
             <article
               key={skill.category}
-              className="border-b border-white/10 py-6 first:pt-0 last:border-b-0 last:pb-0"
+              className="border-b border-white/10 py-5 first:pt-0 last:border-b-0 last:pb-0 md:py-6"
             >
-              <h3 className="text-xl font-bold">{skill.category}</h3>
+              <h3 className="text-lg font-bold md:text-xl">
+                {skill.category}
+              </h3>
 
-              <p className="mt-3 max-w-5xl leading-8 text-slate-200">
+              <p className="mt-3 max-w-5xl text-[15px] leading-7 text-slate-200 md:text-base md:leading-8">
                 {skill.description}
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2 md:mt-5">
                 {skill.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded bg-white/10 px-2 py-1 font-mono text-xs font-semibold text-white"
+                    className="rounded bg-white/10 px-2 py-1 font-mono text-[11px] font-semibold leading-5 text-white md:text-xs"
                   >
                     {item}
                   </span>
@@ -398,7 +400,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="projects" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Projects</h2>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -465,7 +467,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="research" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="research" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mb-8">
           <h2 className="text-3xl font-bold">Research & Publications</h2>
           <p className="mt-4 max-w-3xl leading-8 text-slate-300">
@@ -522,7 +524,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="experience" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Experience</h2>
 
         <h3 className="mb-5 text-2xl font-semibold">
@@ -624,7 +626,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="certificates" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="certificates" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -636,25 +638,25 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
             >
-              <div className="border-b border-white/10 bg-slate-950/40 p-3">
+              <div className="flex h-56 items-center justify-center border-b border-white/10 bg-slate-950/40 p-3 md:h-auto">
                 <Image
                   src={certificate.image}
                   alt={`${certificate.title} certificate`}
-                  className="aspect-[4/3] w-full rounded-xl object-cover object-top"
+                  className="max-h-full w-full rounded-xl object-contain md:aspect-[4/3] md:object-cover md:object-top"
                   priority={index === 0}
                   sizes="(min-width: 768px) 33vw, 100vw"
                 />
               </div>
 
-              <div className="p-5 md:p-6">
+              <div className="p-4 md:p-6">
                 <p className="text-sm font-medium text-cyan-300">
                   {certificate.issuer}
                 </p>
-                <h3 className="mt-2 text-xl font-semibold leading-8">
+                <h3 className="mt-2 text-lg font-semibold leading-7 md:text-xl md:leading-8">
                   {certificate.title}
                 </h3>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-2 md:mt-4">
                   {certificate.tags.map((tag) => (
                     <span
                       key={tag}
@@ -665,7 +667,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200 md:mt-5">
                   View Certificate
                   <span aria-hidden="true">-&gt;</span>
                 </div>
@@ -675,7 +677,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
+      <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
