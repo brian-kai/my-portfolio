@@ -323,7 +323,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/file/新版履歷_英文網站.pdf"
+              href="/file/新版履歷_英文.pdf"
               className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
             >
               Download Resume
@@ -689,7 +689,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/file/新版履歷_英文網站.pdf"
+              href="/file/新版履歷_英文.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-white/20 px-6 py-3 font-medium text-white transition hover:border-white"
