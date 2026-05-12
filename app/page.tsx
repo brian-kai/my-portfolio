@@ -316,12 +316,9 @@ export default function Home() {
           </p>
 
           <p className="mt-6 hidden max-w-6xl text-lg leading-8 text-slate-200 md:block">
-            我是黃凱浚，就讀於逢甲大學工業工程與系統管理學系，擅長資料分析、自然語言處理與
-            LLM 應用。畢業專題以 LLaMA 3
-            結合消費者偏好進行個人化行銷文案生成研究，並於 2025
-            中國工業工程學會年會暨學術研討會發表，榮獲大數據技術與應用領域最佳論文獎。
-            我擅長將大型語言模型、資料分析與自然語言處理技術應用於實際問題，例如個人化文案生成、意圖分類、問答生成與
-            SEO 分析工具開發。
+            我是黃凱浚，逢甲大學工業工程與系統管理學系學生，具備資料分析、自然語言處理與 LLM 應用實作經驗。
+
+我曾以 LLaMA 3 結合消費者偏好進行個人化行銷文案生成研究，並獲得 2025 中國工業工程學會年會暨學術研討會大數據技術與應用領域最佳論文獎。現階段持續朝 AI 應用工程與生成式 AI 系統開發方向發展。
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -346,25 +343,11 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
-          <div className="space-y-6 leading-8 text-slate-300">
-            <p>
-              我具備資料分析、自然語言處理（NLP）與 LLM
-              應用相關的專題實作經驗，並持續朝人工智慧應用領域發展。
-            </p>
+          <p className="leading-8 text-slate-300">
+            我具備資料分析、自然語言處理（NLP）與 LLM 應用相關的專題實作經驗，並持續朝AI應用與系統開發領域發展。熟悉 Python、SQL、R，能使用 Pandas、NumPy 進行資料清理、轉換與分析；也曾使用 BERT、LLaMA 3、Gemma 4 等語言模型，應用於文字生成、意圖分類、個人化行銷文案與問答生成等任務。
 
-            <p>
-              在程式方面，我熟悉 Python、SQL、R
-              等資料處理工具，能透過使用 Pandas、NumPy
-              進行資料清理、轉換與分析。在模型應用上，我曾使用
-              BERT、LLaMA 3、Gemma 4
-              等語言模型，並應用於文字生成、意圖分類與問答生成等專題中。
-            </p>
-
-            <p>
-              在專題與團隊合作過程中，我經常需要拆解問題、整理資料、規劃流程並與團隊溝通，因此培養了邏輯分析、問題拆解、主動學習與跨角色協作能力。未來希望持續學習軟體開發與生成式
-              AI 應用，並將這些能力運用在實際問題解決與系統開發中。
-            </p>
-          </div>
+在專題實作中，我參與資料整理、模型訓練、流程規劃與結果評估，並透過團隊合作培養問題拆解、邏輯分析、主動學習與跨角色溝通能力。未來希望持續深化生成式 AI 與軟體開發能力，將 AI 技術應用於實際問題解決與系統開發。
+          </p>
         </div>
       </section>
 
