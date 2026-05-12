@@ -343,11 +343,18 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
-          <p className="leading-8 text-slate-300">
-            我具備資料分析、自然語言處理（NLP）與 LLM 應用相關的專題實作經驗，並持續朝AI應用與系統開發領域發展。熟悉 Python、SQL、R，能使用 Pandas、NumPy 進行資料清理、轉換與分析；也曾使用 BERT、LLaMA 3、Gemma 4 等語言模型，應用於文字生成、意圖分類、個人化行銷文案與問答生成等任務。
+          <div className="max-w-5xl">
+            <p
+              lang="zh-Hant"
+              className="text-base leading-8 text-slate-300"
+            >
+            我具備資料分析、自然語言處理（NLP）與 LLM 應用相關的專題實作經驗，能從資料整理、模型訓練、流程規劃到結果評估參與完整 AI 專案流程。
 
-在專題實作中，我參與資料整理、模型訓練、流程規劃與結果評估，並透過團隊合作培養問題拆解、邏輯分析、主動學習與跨角色溝通能力。未來希望持續深化生成式 AI 與軟體開發能力，將 AI 技術應用於實際問題解決與系統開發。
+在技術應用上，我熟悉 Python、SQL、R，並能使用 Pandas、NumPy 進行資料清理、轉換與分析；在模型應用上，曾使用 BERT、LLaMA 3、Gemma 4 等語言模型，應用於文字生成、意圖分類與問答生成等任務。
+
+在專題實作過程中，我經常需要拆解問題、整理資料、規劃流程並與團隊溝通，因此培養了邏輯分析、問題拆解、主動學習與跨角色協作能力。未來希望持續深化生成式 AI 與軟體開發能力，將 AI 技術應用於實際問題解決與系統開發。
           </p>
+          </div>
         </div>
       </section>
 
