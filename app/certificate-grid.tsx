@@ -55,7 +55,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                 />
               </div>
 
-              <div className="p-4 md:p-6">
+              <div className="flex flex-1 flex-col p-4 md:p-6">
                 <p className="text-sm font-medium text-cyan-300">
                   {certificate.issuer}
                 </p>
@@ -63,7 +63,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                   {certificate.title}
                 </h3>
 
-                <div className="mt-3 flex flex-wrap gap-2 md:mt-4">
+                <div className="mb-6 mt-3 flex flex-wrap gap-2 md:mt-4">
                   {certificate.tags.map((tag) => (
                     <span
                       key={tag}
@@ -74,7 +74,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                   ))}
                 </div>
 
-                <div className="mt-4 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white md:mt-5">
+                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white">
                   View Certificate
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                 href={certificate.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
               >
                 {content}
               </a>
@@ -100,7 +100,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
               key={certificate.title}
               type="button"
               onClick={() => setSelectedCertificate(certificate)}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
             >
               {content}
             </button>

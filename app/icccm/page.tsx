@@ -47,7 +47,7 @@ export default function IcccmPage() {
             href="/"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
           >
-            ← 返回
+            返回
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -99,14 +99,14 @@ export default function IcccmPage() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <ImageLightboxGallery
           items={proofs}
           actionLabel="View Full Image"
           gridClassName="grid gap-6 md:grid-cols-2"
           imageClassName="h-full w-full rounded-xl object-contain"
           imageSizes="(min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px]"
+          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px] md:px-4"
           showTitle
         />
       </section>

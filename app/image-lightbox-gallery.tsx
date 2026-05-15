@@ -87,7 +87,7 @@ export default function ImageLightboxGallery({
             onClick={() => setSelectedItem(item)}
             className={
               cardClassName ??
-              `group overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 ${styles.hoverBorder} hover:bg-white/10 focus:outline-none focus:ring-2 ${styles.focus}`
+              `group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 ${styles.hoverBorder} hover:bg-white/10 focus:outline-none focus:ring-2 ${styles.focus}`
             }
           >
             <div className={imageWrapperClassName}>
@@ -101,22 +101,26 @@ export default function ImageLightboxGallery({
             </div>
 
             {showTitle || showDescription || actionLabel ? (
-              <div className="border-t border-white/10 p-4 md:p-5">
+              <div className="flex flex-1 flex-col border-t border-white/10 p-4 md:p-5">
                 {showTitle ? (
-                  <h3 className="text-lg font-semibold md:text-xl">
+                  <h3
+                    className={`text-lg font-semibold md:text-xl ${
+                      actionLabel && !showDescription ? "mb-6" : ""
+                    }`}
+                  >
                     {item.title}
                   </h3>
                 ) : null}
 
                 {showDescription && item.description ? (
-                  <p className="mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
+                  <p className="mb-6 mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
                     {item.description}
                   </p>
                 ) : null}
 
                 {actionLabel ? (
                   <div
-                    className={`mt-3 inline-flex w-fit items-center justify-center rounded-lg border px-5 py-2.5 text-sm font-bold transition group-hover:-translate-y-0.5 group-hover:text-white ${styles.button}`}
+                    className={`mt-auto inline-flex w-fit items-center justify-center rounded-lg border px-5 py-2.5 text-sm font-bold transition group-hover:-translate-y-0.5 group-hover:text-white ${styles.button}`}
                   >
                     {actionLabel}
                   </div>

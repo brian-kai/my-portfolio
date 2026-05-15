@@ -324,14 +324,14 @@ export default function Home() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="#projects"
-              className="rounded-xl bg-blue-500 px-6 py-3 text-center font-medium text-white transition hover:bg-blue-600"
+              className="rounded-lg border border-cyan-300/60 bg-cyan-400/20 px-6 py-3 text-center font-bold text-cyan-50 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/30 hover:text-white"
             >
               View Projects
             </a>
 
             <a
               href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
-              className="rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white"
+              className="rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white"
             >
               Download Resume
             </a>
@@ -404,7 +404,7 @@ export default function Home() {
                 href={project.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/10 md:p-6"
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/10 md:p-6"
               >
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold leading-7 md:text-xl">
@@ -439,14 +439,14 @@ export default function Home() {
                   {project.description}
                 </p>
 
-                <ul className="space-y-2 text-sm text-slate-400">
+                <ul className="mb-6 space-y-2 text-sm text-slate-400">
                   {project.highlights.map((item) => (
                     <li key={item}>- {item}</li>
                   ))}
                 </ul>
 
                 {project.href ? (
-                  <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+                  <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                     {project.action}
                   </div>
                 ) : null}
@@ -469,7 +469,7 @@ export default function Home() {
             <Link
               key={publication.title}
               href={publication.href}
-              className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
+              className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
             >
               <div className="mb-5 flex flex-col items-start gap-3">
                 <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300">
@@ -493,7 +493,7 @@ export default function Home() {
                 ))}
               </dl>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mb-6 mt-6 flex flex-wrap gap-2">
                 {publication.tags.map((tag) => (
                   <span
                     key={tag}
@@ -504,7 +504,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+              <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                 View Details
               </div>
             </Link>
@@ -537,12 +537,12 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
+                <p className="mb-6 text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
                   {experience.description}
                 </p>
 
                 {experience.href ? (
-                  <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+                  <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                     {experience.action}
                   </div>
                 ) : null}
@@ -553,7 +553,7 @@ export default function Home() {
               <Link
                 key={experience.title}
                 href={experience.href}
-                className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
               >
                 {content}
               </Link>
@@ -578,7 +578,7 @@ export default function Home() {
               <Link
                 key={highlight.title}
                 href={highlight.href}
-                className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
               >
                 <div className="mb-4 flex flex-col items-start gap-3">
                   <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
@@ -593,7 +593,7 @@ export default function Home() {
                   {highlight.description}
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mb-6 mt-5 flex flex-wrap gap-2">
                   {highlight.tags.map((tag) => (
                     <span
                       key={tag}
@@ -604,7 +604,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                   View Details
                 </div>
               </Link>
