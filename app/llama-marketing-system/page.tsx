@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import commentHeatmap from "./images/comment-heatmap.png";
 import descriptionHeatmap from "./images/description-heatmap.png";
@@ -117,19 +117,35 @@ const tags = [
 
 export default function LlamaMarketingSystemPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_18%,rgba(34,211,238,0.2),transparent_30%),radial-gradient(circle_at_86%_8%,rgba(168,85,247,0.2),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] px-6 py-8 text-white [overflow-wrap:anywhere] md:py-12">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-wrap gap-3">
+    <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_18%,rgba(34,211,238,0.2),transparent_30%),radial-gradient(circle_at_86%_8%,rgba(168,85,247,0.2),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white [overflow-wrap:anywhere]">
+      <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
+        <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
+          <Link
+            href="/"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
+          >
+            ← 返回
+          </Link>
+
+          <Link href="/" className="min-w-0 truncate text-lg font-bold">
+            <span className="md:hidden">Kevin Huang</span>
+            <span className="hidden md:inline">
+              Kevin Huang | 黃凱浚 Kai-Chun Huang
+            </span>
+          </Link>
+
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
           >
-            <span aria-hidden="true">&lt;-</span>
-            Back to Projects
+            返回
           </Link>
         </div>
+      </nav>
 
-        <section className="border-b border-white/10 py-10 md:py-12">
+      <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+
+        <section className="border-b border-white/10 pb-10 md:pb-12">
           <div className="max-w-6xl">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
               JSP / NLP / LLM System
@@ -254,34 +270,15 @@ export default function LlamaMarketingSystemPage() {
 
         <section className="pb-16">
           <h2 className="text-2xl font-bold md:text-3xl">成果展示</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {gallery.map((item) => (
-              <a
-                key={item.title}
-                href={item.image.src}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  className="aspect-[4/3] w-full border-b border-white/10 bg-slate-950/50 object-contain p-2 transition duration-300 group-hover:scale-[1.02] md:p-3"
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                />
-                <div className="p-4 md:p-5">
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
-                    {item.description}
-                  </p>
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
-                    View Full Image
-                    <span aria-hidden="true">-&gt;</span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+          <ImageLightboxGallery
+            items={gallery}
+            actionLabel="View Full Image"
+            gridClassName="mt-6 grid gap-6 md:grid-cols-2"
+            imageClassName="aspect-[4/3] w-full bg-slate-950/50 object-contain p-2 transition duration-300 group-hover:scale-[1.02] md:p-3"
+            imageSizes="(min-width: 768px) 50vw, 100vw"
+            showDescription
+            showTitle
+          />
         </section>
       </div>
     </main>

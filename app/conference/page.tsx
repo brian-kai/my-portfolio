@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
 import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.jpg";
 import bestPaperCertificate from "./2025-11-29-[CIIE2025最佳論文獎]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
@@ -7,10 +8,12 @@ import presentationCertificate from "./2025-11-29-[CIIE2025發表證明]基於LL
 
 const presentationPhotos = [
   {
+    title: "CIIE 2025 Presentation Photo 1",
     image: presentationPhotoOne,
     alt: "2025 中國工業工程學會年會上台報告照片一",
   },
   {
+    title: "CIIE 2025 Presentation Photo 2",
     image: presentationPhotoTwo,
     alt: "2025 中國工業工程學會年會上台報告照片二",
   },
@@ -38,7 +41,7 @@ export default function ConferencePage() {
             href="/"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
           >
-            &lt;- Home
+            ← 返回
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -52,7 +55,7 @@ export default function ConferencePage() {
             href="/#conference"
             className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
           >
-            回首頁
+            返回
           </Link>
         </div>
       </nav>
@@ -79,38 +82,25 @@ export default function ConferencePage() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {presentationPhotos.map((photo, index) => (
-            <a
-              key={photo.alt}
-              href={photo.image.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-            >
-              <Image
-                src={photo.image}
-                alt={photo.alt}
-                className="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
-                priority={index === 0}
-                sizes="(min-width: 768px) 50vw, 100vw"
-              />
-            </a>
-          ))}
-        </div>
+        <ImageLightboxGallery
+          items={presentationPhotos}
+          gridClassName="grid gap-6 md:grid-cols-2"
+          imageClassName="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+          imageSizes="(min-width: 768px) 50vw, 100vw"
+        />
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-6 pb-16 md:grid-cols-2">
+      <section className="mx-auto grid max-w-6xl gap-6 px-6 pb-16 md:grid-cols-2">
         {certificates.map((certificate, index) => (
           <article
             key={certificate.title}
             className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
           >
-            <div className="flex h-[420px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-auto md:min-h-[640px]">
+            <div className="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px]">
               <Image
                 src={certificate.image}
                 alt={certificate.title}
-                className="max-h-full w-full rounded-xl object-contain md:max-h-[720px]"
+                className="h-full w-full rounded-xl object-contain"
                 priority={index === 0}
                 sizes="(min-width: 768px) 50vw, 100vw"
               />

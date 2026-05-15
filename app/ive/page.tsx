@@ -224,7 +224,7 @@ export default function IvePage() {
             href="/"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-pink-300/60 hover:text-white md:hidden"
           >
-            &lt;- Home
+            ← 返回
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -248,7 +248,7 @@ export default function IvePage() {
               href="/#projects"
               className="rounded-full border border-white/15 px-4 py-2 text-slate-200 transition hover:border-pink-300/60 hover:text-white"
             >
-              回作品集
+              返回
             </Link>
           </div>
         </div>

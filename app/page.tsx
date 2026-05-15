@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import aiatclCertificate from "./image/AIATCL.jpg";
 import aiCertificate from "./image/AI證照.png";
@@ -615,51 +615,7 @@ export default function Home() {
       <section id="certificates" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {certificates.map((certificate, index) => (
-            <a
-              key={certificate.title}
-              href={certificate.href ?? certificate.image.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-            >
-              <div className="h-52 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-auto">
-                <Image
-                  src={certificate.image}
-                  alt={`${certificate.title} certificate`}
-                  className="h-full w-full rounded-xl object-cover object-top md:aspect-[4/3] md:h-auto"
-                  priority={index === 0}
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                />
-              </div>
-
-              <div className="p-4 md:p-6">
-                <p className="text-sm font-medium text-cyan-300">
-                  {certificate.issuer}
-                </p>
-                <h3 className="mt-2 text-lg font-semibold leading-7 md:text-xl md:leading-8">
-                  {certificate.title}
-                </h3>
-
-                <div className="mt-3 flex flex-wrap gap-2 md:mt-4">
-                  {certificate.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-4 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)] md:mt-5">
-                  View Certificate
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+        <CertificateGrid certificates={certificates} />
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
@@ -675,7 +631,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="mailto:kevin80609@gmail.com"
-              className="w-full rounded-xl bg-blue-500 px-6 py-3 text-center font-medium text-white transition hover:bg-blue-600 sm:w-auto"
+              className="w-full rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white sm:w-auto"
             >
               Email Me
             </a>
@@ -684,7 +640,7 @@ export default function Home() {
               href="https://github.com/brian-kai"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white sm:w-auto"
+              className="w-full rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white sm:w-auto"
             >
               GitHub
             </a>
@@ -693,7 +649,7 @@ export default function Home() {
               href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white sm:w-auto"
+              className="w-full rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white sm:w-auto"
             >
               Download Resume
             </a>

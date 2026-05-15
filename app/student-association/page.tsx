@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import departmentNightImage from "../image/工工之夜.jpg";
 import christmasPartyImage from "../image/耶晚.jpg";
 import cultureFestivalImage from "../image/文化季.jpg";
+import ImageLightboxGallery from "../image-lightbox-gallery";
 
 const experiences = [
   {
@@ -55,7 +55,7 @@ export default function StudentAssociationPage() {
             href="/"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
           >
-            &lt;- Home
+            ← 返回
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -69,7 +69,7 @@ export default function StudentAssociationPage() {
             href="/#student-association"
             className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
           >
-            回首頁
+            返回
           </Link>
         </div>
       </nav>
@@ -79,11 +79,11 @@ export default function StudentAssociationPage() {
           Student Association
         </p>
 
-        <h1 className="max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-6xl text-3xl font-bold leading-tight md:text-5xl">
           系學會活動經歷
         </h1>
 
-        <p className="mt-5 max-w-4xl text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
+        <p className="mt-5 max-w-6xl text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
           大三上學期加入工業工程與系統管理學系系學會，擔任活動組長，參與多項系上活動規劃與執行。透過活動企劃、流程安排、現場管理與跨組溝通，培養團隊合作、組織協調、任務分配與問題解決能力。
         </p>
       </section>
@@ -117,37 +117,16 @@ export default function StudentAssociationPage() {
       <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <h2 className="mb-6 px-1 text-2xl font-bold">活動照片</h2>
 
-        <div className="grid gap-6">
-          {photos.map((photo, index) => (
-            <a
-              key={photo.title}
-              href={photo.image.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-            >
-              <div className="bg-slate-900/80 p-3 md:p-5">
-                <Image
-                  src={photo.image}
-                  alt={photo.title}
-                  className="max-h-[520px] w-full rounded-xl object-contain md:max-h-none md:object-cover"
-                  priority={index === 0}
-                  sizes="(min-width: 1024px) 1024px, 100vw"
-                />
-              </div>
-
-              <div className="border-t border-white/10 p-4 md:p-5">
-                <h3 className="text-lg font-semibold md:text-xl">
-                  {photo.title}
-                </h3>
-                <div className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-emerald-300 transition group-hover:text-emerald-200">
-                  View Full Image
-                  <span aria-hidden="true">-&gt;</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+        <ImageLightboxGallery
+          items={photos}
+          actionLabel="View Full Image"
+          gridClassName="grid gap-6 md:grid-cols-2"
+          imageClassName="aspect-[4/3] w-full rounded-xl object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+          imageSizes="(min-width: 768px) 50vw, 100vw"
+          imageWrapperClassName="bg-slate-900/80 p-3 md:p-5"
+          showTitle
+          variant="emerald"
+        />
       </section>
     </main>
   );

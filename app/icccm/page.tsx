@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import proofPage1 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_1.png";
 import proofPage2 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_2.png";
@@ -47,7 +47,7 @@ export default function IcccmPage() {
             href="/"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
           >
-            &lt;- Home
+            ← 返回
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -61,7 +61,7 @@ export default function IcccmPage() {
             href="/#experience"
             className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
           >
-            Back
+            返回
           </Link>
         </div>
       </nav>
@@ -99,36 +99,16 @@ export default function IcccmPage() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto grid max-w-7xl gap-6 px-6 pb-16 md:grid-cols-2 md:pb-20">
-        {proofs.map((proof, index) => (
-          <a
-            key={proof.title}
-            href={proof.image.src}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
-          >
-            <div className="flex h-[420px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-auto md:min-h-[640px]">
-              <Image
-                src={proof.image}
-                alt={proof.title}
-                className="max-h-full w-full rounded-xl object-contain md:max-h-[720px]"
-                priority={index === 0}
-                sizes="(min-width: 768px) 50vw, 100vw"
-              />
-            </div>
-
-            <div className="p-4 md:p-5">
-              <h2 className="text-xl font-semibold md:text-2xl">
-                {proof.title}
-              </h2>
-              <div className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
-                View Full Image
-                <span aria-hidden="true">-&gt;</span>
-              </div>
-            </div>
-          </a>
-        ))}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
+        <ImageLightboxGallery
+          items={proofs}
+          actionLabel="View Full Image"
+          gridClassName="grid gap-6 md:grid-cols-2"
+          imageClassName="h-full w-full rounded-xl object-contain"
+          imageSizes="(min-width: 768px) 50vw, 100vw"
+          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px]"
+          showTitle
+        />
       </section>
     </main>
   );
