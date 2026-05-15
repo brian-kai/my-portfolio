@@ -330,7 +330,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/file/新版履歷_英文.pdf"
+              href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
               className="rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white"
             >
               Download Resume
@@ -404,7 +404,7 @@ export default function Home() {
                 href={project.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/10 md:p-6"
+                className="group block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/10 md:p-6"
               >
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold leading-7 md:text-xl">
@@ -446,9 +446,8 @@ export default function Home() {
                 </ul>
 
                 {project.href ? (
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-purple-300 transition hover:text-purple-200">
+                  <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                     {project.action}
-                    <span aria-hidden="true">-&gt;</span>
                   </div>
                 ) : null}
               </CardTag>
@@ -505,9 +504,8 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+              <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                 View Details
-                <span aria-hidden="true">-&gt;</span>
               </div>
             </Link>
           ))}
@@ -544,9 +542,8 @@ export default function Home() {
                 </p>
 
                 {experience.href ? (
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                  <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                     {experience.action}
-                    <span aria-hidden="true">-&gt;</span>
                   </div>
                 ) : null}
               </>
@@ -607,9 +604,8 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200">
+                <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
                   View Details
-                  <span aria-hidden="true">-&gt;</span>
                 </div>
               </Link>
             ))}
@@ -657,9 +653,8 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200 md:mt-5">
+                <div className="mt-4 inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)] md:mt-5">
                   View Certificate
-                  <span aria-hidden="true">-&gt;</span>
                 </div>
               </div>
             </a>
@@ -695,7 +690,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/file/新版履歷_英文.pdf"
+              href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full rounded-xl border border-white/20 px-6 py-3 text-center font-medium text-white transition hover:border-white sm:w-auto"
