@@ -14,6 +14,7 @@ type Task = {
   id: number;
   text: string;
   done: boolean;
+  category: string;
 };
 
 const members = [
@@ -155,26 +156,38 @@ const releases = [
 ];
 
 const starterTasks: Task[] = [
-  { id: 1, text: "整理 IVE 成員資料", done: false },
-  { id: 2, text: "更新歌曲推薦清單", done: false },
-  { id: 3, text: "規劃粉絲應援任務", done: true },
+  { id: 1, text: "整理 IVE 成員資料與代表舞台", done: false, category: "Content" },
+  { id: 2, text: "更新歌曲推薦清單與 YouTube 連結", done: false, category: "Music" },
+  { id: 3, text: "規劃粉絲互動任務與測驗題目", done: true, category: "Interaction" },
+];
+
+const suggestedTasks = [
+  "新增成員造型精選",
+  "補上 MV 發行資訊",
+  "設計粉絲投票題",
 ];
 
 const websiteQuizOptions = [
   {
     label: "舞台表演",
+    eyebrow: "Stage Archive",
     result:
-      "你適合製作成員舞台精華整理頁，收集舞台影片、直拍連結、表情亮點與服裝造型，讓粉絲快速找到每位成員的高光片段。",
+      "適合製作成員舞台精華整理頁，收集舞台影片、直拍連結、表情亮點與服裝造型，讓粉絲快速找到每位成員的高光片段。",
+    features: ["舞台影片", "直拍連結", "造型整理"],
   },
   {
     label: "歌曲收藏",
+    eyebrow: "Music Library",
     result:
-      "你適合製作 IVE 歌曲收藏頁，整理 MV、專輯資訊、推薦曲目與 YouTube 連結，也可以加入個人播放清單或歌曲心得。",
+      "適合製作 IVE 歌曲收藏頁，整理 MV、專輯資訊、推薦曲目與 YouTube 連結，也可以加入個人播放清單或歌曲心得。",
+    features: ["MV 清單", "推薦曲目", "播放連結"],
   },
   {
     label: "造型視覺",
+    eyebrow: "Visual Board",
     result:
-      "你適合製作成員造型圖鑑頁，整理專輯概念照、舞台穿搭、髮型變化與視覺主題，做成適合瀏覽與收藏的圖像型網站。",
+      "適合製作成員造型圖鑑頁，整理專輯概念照、舞台穿搭、髮型變化與視覺主題，做成適合瀏覽與收藏的圖像型網站。",
+    features: ["概念照", "穿搭紀錄", "視覺主題"],
   },
 ];
 
@@ -182,13 +195,17 @@ export default function IvePage() {
   const [selectedMember, setSelectedMember] = useState(members[0]);
   const [tasks, setTasks] = useState(starterTasks);
   const [text, setText] = useState("");
-  const [quizResult, setQuizResult] = useState(websiteQuizOptions[0].result);
+  const [selectedQuiz, setSelectedQuiz] = useState(websiteQuizOptions[0]);
   const [showAllSongs, setShowAllSongs] = useState(false);
 
   const completedCount = useMemo(
     () => tasks.filter((task) => task.done).length,
     [tasks],
   );
+  const progressPercent = tasks.length
+    ? Math.round((completedCount / tasks.length) * 100)
+    : 0;
+  const visibleReleases = showAllSongs ? releases : releases.slice(0, 6);
 
   function addTask() {
     const nextText = text.trim();
@@ -198,7 +215,7 @@ export default function IvePage() {
     }
 
     setTasks((currentTasks) => [
-      { id: Date.now(), text: nextText, done: false },
+      { id: Date.now(), text: nextText, done: false, category: "Custom" },
       ...currentTasks,
     ]);
     setText("");
@@ -401,15 +418,13 @@ export default function IvePage() {
         </h2>
 
         <div className="grid gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
-          {releases.map((release, index) => (
+          {visibleReleases.map((release, index) => (
             <a
               key={release.title}
               href={release.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70 md:block md:p-6 ${
-                showAllSongs || index < 6 ? "block" : "hidden"
-              }`}
+              className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70 md:p-6"
             >
               <div className="mb-4 flex items-start justify-between gap-4 md:mb-5 md:items-center">
                 <div>
@@ -434,33 +449,45 @@ export default function IvePage() {
           ))}
         </div>
 
-        {!showAllSongs ? (
+        {releases.length > 6 ? (
           <button
             type="button"
-            onClick={() => setShowAllSongs(true)}
-            className="mt-6 w-full rounded-full border border-pink-300/30 px-5 py-3 text-sm font-bold text-pink-200 transition hover:border-pink-300/70 hover:bg-pink-300/10 md:hidden"
+            onClick={() => setShowAllSongs((current) => !current)}
+            className="mt-6 w-full rounded-full border border-pink-300/30 px-5 py-3 text-sm font-bold text-pink-200 transition hover:border-pink-300/70 hover:bg-pink-300/10 md:mx-auto md:flex md:w-fit md:px-8"
           >
-            View More Songs
+            {showAllSongs ? "收合作品" : "顯示更多作品"}
           </button>
         ) : null}
       </section>
 
-      <section id="mission" className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1fr_0.8fr]">
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
-          <div className="mb-5 flex items-start justify-between gap-4">
-            <div>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
-                Mission
-              </p>
-              <h2 className="text-2xl font-bold md:text-3xl">DIVE 任務清單</h2>
+      <section id="mission" className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1.12fr_0.88fr]">
+        <section className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 md:p-6">
+          <div className="border-b border-white/10 pb-5">
+            <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div>
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
+                  Mission
+                </p>
+                <h2 className="text-2xl font-bold md:text-3xl">DIVE 任務中心</h2>
+                <p className="mt-3 max-w-2xl text-[15px] leading-7 text-slate-300">
+                  把粉絲網站拆成可以逐步完成的任務，整理成員資料、歌曲清單與互動功能的製作進度。
+                </p>
+              </div>
+
+              <span className="inline-flex min-w-14 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-pink-300/25 bg-pink-300/10 px-4 py-1.5 text-sm font-bold text-pink-100">
+                {completedCount}/{tasks.length}
+              </span>
             </div>
 
-            <span className="rounded-full bg-pink-400/10 px-4 py-2 text-sm text-pink-200">
-              {completedCount}/{tasks.length}
-            </span>
+            <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-pink-400 transition-all duration-500"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
           </div>
 
-          <div className="flex overflow-hidden rounded-full border border-white/10 bg-white/10">
+          <div className="mt-6 grid gap-3 md:grid-cols-[1fr_auto]">
             <input
               value={text}
               onChange={(event) => setText(event.target.value)}
@@ -469,24 +496,49 @@ export default function IvePage() {
                   addTask();
                 }
               }}
-              className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none placeholder:text-slate-400"
-              placeholder="新增 IVE 任務"
+              className="min-w-0 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-pink-300/60"
+              placeholder="新增一個 IVE 網站任務"
             />
             <button
               type="button"
               onClick={addTask}
-              className="bg-pink-400 px-5 py-3 text-lg font-bold text-[#101022] transition hover:bg-pink-300"
-              aria-label="新增任務"
+              className="rounded-xl border border-pink-300/40 bg-pink-300/15 px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-200/70 hover:bg-pink-300/25"
             >
-              +
+              新增
             </button>
           </div>
 
-          <ul className="mt-5 space-y-3">
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="mr-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+              Quick add
+            </span>
+            {suggestedTasks.map((suggestion) => (
+              <button
+                key={suggestion}
+                type="button"
+                onClick={() =>
+                  setTasks((currentTasks) => [
+                    {
+                      id: Date.now() + suggestion.length,
+                      text: suggestion,
+                      done: false,
+                      category: "Idea",
+                    },
+                    ...currentTasks,
+                  ])
+                }
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-pink-300/50 hover:bg-pink-300/10 hover:text-white"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+
+          <ul className="mt-6 space-y-3">
             {tasks.map((task) => (
               <li
                 key={task.id}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#17172d] px-4 py-3"
+                className="grid gap-3 rounded-xl border border-white/10 bg-[#17172d] px-4 py-3 transition hover:border-pink-300/30 md:grid-cols-[auto_1fr_auto] md:items-center"
               >
                 <input
                   type="checkbox"
@@ -495,18 +547,23 @@ export default function IvePage() {
                   className="h-4 w-4 accent-pink-400"
                 />
 
-                <span
-                  className={`flex-1 text-sm ${
-                    task.done ? "text-slate-500 line-through" : "text-slate-100"
-                  }`}
-                >
-                  {task.text}
-                </span>
+                <div className="min-w-0">
+                  <p
+                    className={`text-sm font-semibold ${
+                      task.done ? "text-slate-500 line-through" : "text-slate-100"
+                    }`}
+                  >
+                    {task.text}
+                  </p>
+                  <span className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-pink-200">
+                    {task.category}
+                  </span>
+                </div>
 
                 <button
                   type="button"
                   onClick={() => removeTask(task.id)}
-                  className="rounded-full px-3 py-1 text-sm text-slate-400 transition hover:bg-white/10 hover:text-white"
+                  className="w-fit rounded-full px-3 py-1 text-sm text-slate-400 transition hover:bg-white/10 hover:text-white md:justify-self-end"
                 >
                   刪除
                 </button>
@@ -515,30 +572,60 @@ export default function IvePage() {
           </ul>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
+        <section className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 md:p-6">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
             Quiz
           </p>
-          <h2 className="text-2xl font-bold md:text-3xl">你的 DIVE 類型</h2>
+          <h2 className="text-2xl font-bold md:text-3xl">DIVE 網頁企劃</h2>
           <p className="mt-4 text-[15px] leading-7 text-slate-300 md:text-base">
-            選擇你最喜歡的粉絲活動方向，系統會推薦適合延伸的網站功能。
+            選一個粉絲內容方向，看看最適合延伸成哪一種網站作品。
           </p>
 
           <div className="mt-6 grid gap-3">
-            {websiteQuizOptions.map((option) => (
-              <button
-                key={option.label}
-                type="button"
-                onClick={() => setQuizResult(option.result)}
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left text-sm transition hover:border-pink-300/60 hover:bg-pink-300/10"
-              >
-                {option.label}
-              </button>
-            ))}
+            {websiteQuizOptions.map((option) => {
+              const isSelected = selectedQuiz.label === option.label;
+
+              return (
+                <button
+                  key={option.label}
+                  type="button"
+                  onClick={() => setSelectedQuiz(option)}
+                  className={`rounded-xl border px-4 py-3 text-left transition ${
+                    isSelected
+                      ? "border-pink-300/60 bg-pink-300/12"
+                      : "border-white/10 bg-white/5 hover:border-pink-300/50 hover:bg-pink-300/10"
+                  }`}
+                >
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-pink-300">
+                    {option.eyebrow}
+                  </span>
+                  <span className="mt-1 block text-base font-bold text-white">
+                    {option.label}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
-          <div className="mt-6 rounded-xl bg-pink-400/10 p-5 text-pink-100">
-            {quizResult}
+          <div className="mt-6 rounded-2xl border border-white/10 bg-[#17172d] p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-pink-300">
+              Recommended Build
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-white">{selectedQuiz.label}</h3>
+            <p className="mt-3 text-[15px] leading-7 text-slate-300">
+              {selectedQuiz.result}
+            </p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {selectedQuiz.features.map((feature) => (
+                <span
+                  key={feature}
+                  className="rounded-full bg-pink-300/10 px-3 py-1 text-xs font-semibold text-pink-100"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
       </section>
