@@ -32,6 +32,34 @@ const certificates = [
   },
 ];
 
+const researchOverview = {
+  title: "基於 LLaMA 3 模型結合消費者偏好生成個人化行銷文案生成模式",
+  tags: ["LLM", "LLaMA 3", "NLP", "Marketing"],
+  motivation:
+    "隨著數位平台之普及，傳統行銷文案常因內容制式、與消費者需求關聯性不足而降低購買意圖。因此，本研究選擇 LLaMA 3 結合消費者偏好生成個人化產品行銷文案，包含消費者偏好分析、語意分析與個人化行銷文案生成三大模組，並透過系統進行案例驗證，以評估其實用性與可行性。",
+  goals: [
+    {
+      title: "消費者偏好分析",
+      description:
+        "透過解析消費者評論，分析評論中的消費者需求與偏好資訊，作為生成個人化行銷文案之基礎。",
+    },
+    {
+      title: "語意與情感特徵整合",
+      description:
+        "針對行銷文案與消費者評論進行語意特徵分析，擷取並整合語意和情感線索，使生成文案更能貼近目標受眾。",
+    },
+    {
+      title: "個人化行銷文案生成",
+      description:
+        "根據消費者偏好分析結果，結合語意與情感特徵，透過 LLaMA 3 生成更具吸引力的個人化行銷文案。",
+    },
+  ],
+  result:
+    "研究建構一套基於 LLaMA 3 模型的個人化產品行銷文案生成方法，並整合 TextBlob、TextRank、LDA、SBERT 與 K-Means 等方法擷取消費者情感特徵、產品主題與銷售文案語意特徵。實驗結果顯示，本研究方法不僅能有效完成消費者偏好分析與文案生成，亦能改善傳統行銷文案模板化生成方式之侷限。",
+  metrics: "BLEU-3 為 18.92、BLEU-4 為 14.44、METEOR 為 0.2362",
+  posterHref: "/file/畢業專題海報檔案.pdf",
+};
+
 export default function ConferencePage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white [overflow-wrap:anywhere]">
@@ -52,7 +80,7 @@ export default function ConferencePage() {
           </Link>
 
           <Link
-            href="/#conference"
+            href="/#research"
             className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
           >
             返回
@@ -72,6 +100,84 @@ export default function ConferencePage() {
         <p className="mt-5 max-w-3xl leading-8 text-slate-300">
           CIIE 2025 研討會發表與獲獎證明，包含最佳論文獎與發表證明。
         </p>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+        <article
+          lang="zh-Hant"
+          className="rounded-2xl border border-white/15 bg-white/[0.07] p-5 shadow-[0_20px_70px_rgba(8,47,73,0.32)] md:p-8"
+        >
+          <div className="max-w-5xl">
+            <h2 className="text-2xl font-black leading-tight text-white md:text-3xl">
+              {researchOverview.title}
+            </h2>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {researchOverview.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-purple-500/15 px-3 py-1 text-xs font-semibold text-purple-200"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+            <section>
+              <h3 className="border-b border-cyan-300/50 pb-3 text-xl font-bold text-cyan-100">
+                研究動機
+              </h3>
+              <p className="mt-4 text-[15px] leading-8 text-slate-200 md:text-base">
+                {researchOverview.motivation}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="border-b border-cyan-300/50 pb-3 text-xl font-bold text-cyan-100">
+                研究目的
+              </h3>
+              <ol className="mt-4 space-y-4 text-[15px] leading-8 text-slate-200 md:text-base">
+                {researchOverview.goals.map((goal, index) => (
+                  <li key={goal.title} className="flex gap-3">
+                    <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-300/15 text-sm font-bold text-cyan-200">
+                      {index + 1}
+                    </span>
+                    <span>
+                      <strong className="text-white">{goal.title}：</strong>
+                      {goal.description}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </div>
+
+          <section className="mt-8">
+            <h3 className="border-b border-cyan-300/50 pb-3 text-xl font-bold text-cyan-100">
+              研究成果
+            </h3>
+            <p className="mt-4 text-[15px] leading-8 text-slate-200 md:text-base">
+              {researchOverview.result}
+              <span className="font-semibold text-rose-200">
+                {" "}
+                其中 {researchOverview.metrics}。
+              </span>
+            </p>
+          </section>
+
+          <div className="mt-8">
+            <a
+              href={researchOverview.posterHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center rounded-lg border border-cyan-300/60 bg-cyan-400/20 px-6 py-3 text-center font-bold text-cyan-50 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/30 hover:text-white sm:w-auto"
+            >
+              View Poster
+            </a>
+          </div>
+        </article>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">

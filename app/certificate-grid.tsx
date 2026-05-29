@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 type Certificate = {
   title: string;
   issuer: string;
-  image: StaticImageData;
+  image?: StaticImageData;
   href?: string;
   tags: string[];
 };
@@ -46,13 +46,24 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
           const content = (
             <>
               <div className="h-52 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-auto">
-                <Image
-                  src={certificate.image}
-                  alt={`${certificate.title} certificate`}
-                  className="h-full w-full rounded-xl object-cover object-top md:aspect-[4/3] md:h-auto"
-                  priority={index === 0}
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                />
+                {certificate.image ? (
+                  <Image
+                    src={certificate.image}
+                    alt={`${certificate.title} certificate`}
+                    className="h-full w-full rounded-xl object-cover object-top md:aspect-[4/3] md:h-auto"
+                    priority={index === 0}
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                  />
+                ) : (
+                  <div className="flex h-full min-h-44 flex-col items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-400/10 px-5 text-center md:aspect-[4/3]">
+                    <span className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">
+                      PDF
+                    </span>
+                    <span className="mt-3 text-lg font-bold leading-7 text-white">
+                      {certificate.title}
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-1 flex-col p-4 md:p-6">
@@ -129,13 +140,15 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
             </button>
 
             <div className="overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-2 shadow-2xl md:p-3">
-              <Image
-                src={selectedCertificate.image}
-                alt={`${selectedCertificate.title} certificate`}
-                className="max-h-[82vh] w-auto max-w-[92vw] rounded-xl object-contain"
-                sizes="100vw"
-                priority
-              />
+              {selectedCertificate.image ? (
+                <Image
+                  src={selectedCertificate.image}
+                  alt={`${selectedCertificate.title} certificate`}
+                  className="max-h-[82vh] w-auto max-w-[92vw] rounded-xl object-contain"
+                  sizes="100vw"
+                  priority
+                />
+              ) : null}
             </div>
           </div>
         </div>

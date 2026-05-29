@@ -5,6 +5,7 @@ import MobileMenu from "./mobile-menu";
 import aiatclCertificate from "./image/AIATCL.jpg";
 import aiCertificate from "./image/AI證照.png";
 import googleCertificate from "./image/GOOGLE證照.png";
+import toeicCertificate from "./image/多益成績單.png";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -80,6 +81,13 @@ const certificates = [
     issuer: "Coursera / Google",
     image: googleCertificate,
     tags: ["Data Analytics", "SQL", "Python"],
+  },
+  {
+    title: "TOEIC Listening & Reading Score Report",
+    issuer: "ETS TOEIC",
+    image: toeicCertificate,
+    href: "/file/多益成績單.pdf",
+    tags: ["TOEIC", "English", "Score Report"],
   },
 ];
 
