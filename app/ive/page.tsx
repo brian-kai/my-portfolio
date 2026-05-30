@@ -21,35 +21,35 @@ const members = [
   {
     name: "Yujin",
     role: "Leader / Vocal",
-    color: "from-pink-300 via-rose-300 to-fuchsia-400",
+    color: "from-emerald-200 via-teal-300 to-emerald-500",
     image: yujinImage,
     note: "舞台掌控力強，適合放在網站主視覺或活動主持感的區塊。",
   },
   {
     name: "Gaeul",
     role: "Rap / Dance",
-    color: "from-amber-200 via-orange-300 to-pink-300",
+    color: "from-amber-200 via-emerald-200 to-teal-300",
     image: gaeulImage,
     note: "俐落、沉穩，適合呈現節奏感與舞蹈亮點。",
   },
   {
     name: "Rei",
     role: "Rap / Vocal",
-    color: "from-violet-300 via-purple-300 to-indigo-400",
+    color: "from-slate-200 via-emerald-200 to-teal-400",
     image: reiImage,
     note: "辨識度高，適合用在可愛又帶個性的互動卡片。",
   },
   {
     name: "Wonyoung",
     role: "Vocal",
-    color: "from-sky-200 via-cyan-200 to-pink-200",
+    color: "from-slate-200 via-teal-200 to-emerald-300",
     image: wonyoungImage,
     note: "優雅亮眼，適合搭配封面、造型與視覺焦點。",
   },
   {
     name: "Liz",
     role: "Vocal",
-    color: "from-lime-200 via-emerald-200 to-cyan-300",
+    color: "from-lime-200 via-emerald-200 to-teal-300",
     image: lizImage,
     note: "聲線清亮，適合放在歌曲推薦與歌唱亮點。",
   },
@@ -234,20 +234,22 @@ export default function IvePage() {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#0f1021] text-white [overflow-wrap:anywhere]">
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1021]/85 backdrop-blur">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
         <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
-            href="/"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-pink-300/60 hover:text-white md:hidden"
+            href="/#projects"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
           >
-            返回
+            Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">
-              Kevin Huang | 黃凱浚 Kai-Chun Huang
+              Kevin Huang | Kai-Chun Huang
             </span>
           </Link>
 
@@ -263,17 +265,17 @@ export default function IvePage() {
             </a>
             <Link
               href="/#projects"
-              className="rounded-full border border-white/15 px-4 py-2 text-slate-200 transition hover:border-pink-300/60 hover:text-white"
+              className="rounded-full border border-white/15 px-4 py-2 text-slate-200 transition hover:border-emerald-300/50 hover:text-white"
             >
-              返回
+              Back
             </Link>
           </div>
         </div>
       </nav>
 
-      <section className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-8 px-6 py-12 md:grid-cols-[1fr_430px] md:gap-10 md:py-16">
+      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-8 px-6 py-12 md:grid-cols-[1fr_430px] md:gap-10 md:py-16">
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-pink-300">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
             IVE Fan Website
           </p>
 
@@ -288,21 +290,21 @@ export default function IvePage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#members"
-              className="rounded-full bg-pink-400 px-5 py-3 text-center text-sm font-bold text-[#151225] transition hover:bg-pink-300"
+              className="rounded-full bg-emerald-300 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-emerald-200"
             >
               查看成員
             </a>
             <a
               href="#mission"
-              className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-pink-300/60"
+              className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-emerald-300/50"
             >
               開始任務
             </a>
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-4 shadow-2xl shadow-pink-950/40 md:rounded-[2rem] md:p-5">
-          <div className="aspect-[4/5] rounded-[1.5rem] bg-[radial-gradient(circle_at_30%_20%,#ffb7dd,transparent_34%),radial-gradient(circle_at_80%_30%,#9be7ff,transparent_30%),linear-gradient(150deg,#2b1a58,#14142c_48%,#ff6fbd)] p-4 md:p-6">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-4 shadow-2xl shadow-emerald-950/30 md:rounded-[2rem] md:p-5">
+          <div className="aspect-[4/5] rounded-[1.5rem] bg-[radial-gradient(circle_at_24%_18%,rgba(16,185,129,0.2),transparent_34%),radial-gradient(circle_at_82%_22%,rgba(245,158,11,0.14),transparent_30%),linear-gradient(150deg,#07100d,#0a0f12_52%,#10251e)] p-4 md:p-6">
             <div className="flex h-full flex-col justify-between rounded-[1.25rem] border border-white/20 bg-black/20 p-6 backdrop-blur-sm">
               <div>
                 <p className="text-sm uppercase tracking-[0.28em] text-white/70">
@@ -339,10 +341,10 @@ export default function IvePage() {
         </div>
       </section>
 
-      <section id="members" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="members" className="relative z-10 mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
               Members
             </p>
             <h2 className="text-3xl font-bold md:text-4xl">成員介紹</h2>
@@ -362,7 +364,7 @@ export default function IvePage() {
                 onClick={() => setSelectedMember(member)}
                 className={`rounded-2xl border p-3 text-left transition hover:-translate-y-1 md:p-4 ${
                   selectedMember.name === member.name
-                    ? "border-pink-300/70 bg-pink-300/10"
+                    ? "border-emerald-300/70 bg-emerald-300/[0.08]"
                     : "border-white/10 bg-white/5"
                 }`}
               >
@@ -383,7 +385,7 @@ export default function IvePage() {
           </div>
 
           <aside className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-pink-300">
+            <p className="text-sm uppercase tracking-[0.2em] text-emerald-300">
               Selected
             </p>
             <div
@@ -409,8 +411,8 @@ export default function IvePage() {
         </div>
       </section>
 
-      <section id="music" className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
+      <section id="music" className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-20">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
           Music
         </p>
         <h2 className="mb-6 text-3xl font-bold md:mb-8 md:text-4xl">
@@ -424,7 +426,7 @@ export default function IvePage() {
               href={release.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-300/70 md:p-6"
+              className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-emerald-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
             >
               <div className="mb-4 flex items-start justify-between gap-4 md:mb-5 md:items-center">
                 <div>
@@ -433,7 +435,7 @@ export default function IvePage() {
                   </h3>
                   <p className="mt-1 text-sm text-slate-400">{release.type}</p>
                 </div>
-                <span className="text-3xl font-black text-white/10 transition group-hover:text-pink-300/35 md:text-4xl">
+                <span className="text-3xl font-black text-white/10 transition group-hover:text-emerald-300/35 md:text-4xl">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -441,7 +443,7 @@ export default function IvePage() {
               <p className="text-[15px] leading-7 text-slate-300 md:text-base">
                 {release.mood}
               </p>
-              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-300 transition group-hover:text-pink-200 md:mt-5">
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition group-hover:text-emerald-200 md:mt-5">
                 Watch on YouTube
                 <span aria-hidden="true">-&gt;</span>
               </div>
@@ -453,19 +455,19 @@ export default function IvePage() {
           <button
             type="button"
             onClick={() => setShowAllSongs((current) => !current)}
-            className="mt-6 w-full rounded-full border border-pink-300/30 px-5 py-3 text-sm font-bold text-pink-200 transition hover:border-pink-300/70 hover:bg-pink-300/10 md:mx-auto md:flex md:w-fit md:px-8"
+            className="mt-6 w-full rounded-full border border-emerald-300/30 px-5 py-3 text-sm font-bold text-emerald-200 transition hover:border-emerald-300/70 hover:bg-emerald-200/10 md:mx-auto md:flex md:w-fit md:px-8"
           >
             {showAllSongs ? "收合作品" : "顯示更多作品"}
           </button>
         ) : null}
       </section>
 
-      <section id="mission" className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1.12fr_0.88fr]">
+      <section id="mission" className="relative z-10 mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1.12fr_0.88fr]">
         <section className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 md:p-6">
           <div className="border-b border-white/10 pb-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div>
-                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                   Mission
                 </p>
                 <h2 className="text-2xl font-bold md:text-3xl">DIVE 任務中心</h2>
@@ -474,14 +476,14 @@ export default function IvePage() {
                 </p>
               </div>
 
-              <span className="inline-flex min-w-14 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-pink-300/25 bg-pink-300/10 px-4 py-1.5 text-sm font-bold text-pink-100">
+              <span className="inline-flex min-w-14 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-emerald-300/25 bg-emerald-300/[0.08] px-4 py-1.5 text-sm font-bold text-emerald-100">
                 {completedCount}/{tasks.length}
               </span>
             </div>
 
             <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/10">
               <div
-                className="h-full rounded-full bg-pink-400 transition-all duration-500"
+                className="h-full rounded-full bg-emerald-300 transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -496,13 +498,13 @@ export default function IvePage() {
                   addTask();
                 }
               }}
-              className="min-w-0 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-pink-300/60"
+              className="min-w-0 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-emerald-300/60"
               placeholder="新增一個 IVE 網站任務"
             />
             <button
               type="button"
               onClick={addTask}
-              className="rounded-xl border border-pink-300/40 bg-pink-300/15 px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-200/70 hover:bg-pink-300/25"
+              className="rounded-xl border border-emerald-300/40 bg-emerald-300/[0.12] px-5 py-3 text-sm font-bold text-emerald-100 transition hover:border-emerald-200/70 hover:bg-emerald-200/25"
             >
               新增
             </button>
@@ -527,7 +529,7 @@ export default function IvePage() {
                     ...currentTasks,
                   ])
                 }
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-pink-300/50 hover:bg-pink-300/10 hover:text-white"
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-emerald-300/50 hover:bg-emerald-200/10 hover:text-white"
               >
                 {suggestion}
               </button>
@@ -538,13 +540,13 @@ export default function IvePage() {
             {tasks.map((task) => (
               <li
                 key={task.id}
-                className="grid gap-3 rounded-xl border border-white/10 bg-[#17172d] px-4 py-3 transition hover:border-pink-300/30 md:grid-cols-[auto_1fr_auto] md:items-center"
+                className="grid gap-3 rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 transition hover:border-emerald-300/30 md:grid-cols-[auto_1fr_auto] md:items-center"
               >
                 <input
                   type="checkbox"
                   checked={task.done}
                   onChange={() => toggleTask(task.id)}
-                  className="h-4 w-4 accent-pink-400"
+                  className="h-4 w-4 accent-emerald-300"
                 />
 
                 <div className="min-w-0">
@@ -555,7 +557,7 @@ export default function IvePage() {
                   >
                     {task.text}
                   </p>
-                  <span className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-pink-200">
+                  <span className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-emerald-200">
                     {task.category}
                   </span>
                 </div>
@@ -573,7 +575,7 @@ export default function IvePage() {
         </section>
 
         <section className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 md:p-6">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-300">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
             Quiz
           </p>
           <h2 className="text-2xl font-bold md:text-3xl">DIVE 網頁企劃</h2>
@@ -592,11 +594,11 @@ export default function IvePage() {
                   onClick={() => setSelectedQuiz(option)}
                   className={`rounded-xl border px-4 py-3 text-left transition ${
                     isSelected
-                      ? "border-pink-300/60 bg-pink-300/12"
-                      : "border-white/10 bg-white/5 hover:border-pink-300/50 hover:bg-pink-300/10"
+                      ? "border-emerald-300/60 bg-emerald-300/[0.12]"
+                      : "border-white/10 bg-white/5 hover:border-emerald-300/50 hover:bg-emerald-200/10"
                   }`}
                 >
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-pink-300">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-300">
                     {option.eyebrow}
                   </span>
                   <span className="mt-1 block text-base font-bold text-white">
@@ -607,8 +609,8 @@ export default function IvePage() {
             })}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-[#17172d] p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-pink-300">
+          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.045] p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
               Recommended Build
             </p>
             <h3 className="mt-2 text-xl font-bold text-white">{selectedQuiz.label}</h3>
@@ -620,7 +622,7 @@ export default function IvePage() {
               {selectedQuiz.features.map((feature) => (
                 <span
                   key={feature}
-                  className="rounded-full bg-pink-300/10 px-3 py-1 text-xs font-semibold text-pink-100"
+                  className="rounded-full bg-emerald-300/[0.08] px-3 py-1 text-xs font-semibold text-emerald-100"
                 >
                   {feature}
                 </span>

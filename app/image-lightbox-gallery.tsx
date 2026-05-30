@@ -2,6 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type LightboxItem = {
   title: string;
@@ -131,9 +132,10 @@ export default function ImageLightboxGallery({
         ))}
       </div>
 
-      {selectedItem ? (
+      {selectedItem
+        ? createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm md:p-8"
+          className="fixed inset-0 z-[999] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={selectedItem.title}
@@ -161,8 +163,10 @@ export default function ImageLightboxGallery({
               />
             </div>
           </div>
-        </div>
-      ) : null}
+        </div>,
+          document.body,
+        )
+        : null}
     </>
   );
 }

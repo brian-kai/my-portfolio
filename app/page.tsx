@@ -277,13 +277,87 @@ const projects = [
   },
 ];
 
+const featuredProjects = [
+  {
+    title: "LLaMA 3 個人化行銷文案系統",
+    badge: "Featured Case Study",
+    href: "/llama-marketing-system",
+    action: "View Website",
+    tags: ["LLaMA 3", "NLP", "TextRank", "K-Means", "HDBSCAN"],
+    problem:
+      "行銷文案生成不能只追求流暢文字，也需要理解產品特徵、消費者偏好與語意重點，才能讓 AI 產出更接近真實使用情境。",
+    method:
+      "以 LLaMA 3 作為生成核心，結合 TextRank 關鍵字擷取、K-Means / HDBSCAN 分群與文案語意分析，整理成可展示的網站流程。",
+    outcome:
+      "將研究流程轉成可瀏覽的 product prototype，讓使用者能理解資料處理、模型生成、文案檢視與研究成果之間的關係。",
+    tech: ["LLaMA 3", "TextRank", "K-Means", "HDBSCAN", "Next.js"],
+  },
+  {
+    title: "4G SEO Entity Analysis Tool",
+    badge: "Live Demo",
+    href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
+    action: "Live Demo",
+    tags: ["SEO Tool", "SERP API", "Entity Analysis", "Google Sheets"],
+    problem:
+      "SEO 內容策略需要快速理解搜尋結果中的競品頁面、實體關鍵詞與內容方向，手動整理會耗費大量時間。",
+    method:
+      "串接 SERP API 擷取 Google 搜尋結果，進行 entity analysis，並將整理後的結果輸出到 Google Sheets，形成可重複使用的分析流程。",
+    outcome:
+      "完成可線上操作的 Live Demo，證明能把資料擷取、資料處理與產品化介面串成實際可用的 AI workflow tool。",
+    tech: ["SERP API", "Entity Analysis", "Google Sheets", "Vercel", "Supabase"],
+  },
+];
+
+const supportingProjects = [
+  {
+    title: "Intent Classification & QA Generation",
+    status: "Ongoing",
+    tags: ["BERT-BiLSTM", "Gemma", "Intent QA", "Knowledge Distillation"],
+    problem: "希望建立能理解使用者語意、判斷 intent，並產生 QA 回覆的智慧問答流程。",
+    method: "使用 BERT-BiLSTM、Knowledge Distillation 與 Gemma 進行意圖分類與回答生成實作。",
+    outcome: "目前作為 NLP / LLM 應用實驗，聚焦客服語意理解、FAQ 自動生成與 structured response generation。",
+    tech: ["BERT-BiLSTM", "Gemma", "QA Generation"],
+  },
+  {
+    title: "LLaMA 3 個人化行銷文案研究",
+    href: "/file/畢業專題海報檔案.pdf",
+    action: "View Poster",
+    tags: ["Best Paper", "LLaMA 3", "BLEU", "METEOR"],
+    problem: "研究如何讓 LLM 生成更符合消費者偏好與產品特徵的個人化行銷文案。",
+    method: "以 LLaMA 3 生成文案，搭配 TextBlob、TextRank、K-Means、BLEU、METEOR 做分析與模型評估。",
+    outcome: "完成研究海報與評估流程，並以此研究獲得 Best Paper 相關成果。",
+    tech: ["LLaMA 3", "BLEU", "METEOR", "TextBlob"],
+  },
+  {
+    title: "用電趨勢分析",
+    href: "/file/期末專題成果報告-用電趨勢分析海報.pdf",
+    action: "View Poster",
+    tags: ["Data Analysis", "Python", "Visualization"],
+    problem: "需要從用電資料中整理變化趨勢，觀察不同時間區間的用電特徵。",
+    method: "使用 Python 進行 data cleaning、trend analysis 與 data visualization。",
+    outcome: "完成專題成果海報，將資料處理流程轉化成可閱讀的分析結論。",
+    tech: ["Python", "Data Cleaning", "Visualization"],
+  },
+  {
+    title: "IVE K-pop Fan Website",
+    href: "/ive",
+    action: "View Website",
+    tags: ["Frontend", "JSP", "Tailwind CSS"],
+    problem: "以前端練習為目標，設計一個具備成員介紹與內容展示的主題網站。",
+    method: "使用 JSP 與 Tailwind CSS 規劃響應式版面與內容呈現。",
+    outcome: "完成可瀏覽的 fan website，作為 frontend layout 與內容組織練習。",
+    tech: ["JSP", "Tailwind CSS", "Responsive Layout"],
+  },
+];
+
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_22%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.24),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white [overflow-wrap:anywhere]">
-      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
-      <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/90 backdrop-blur">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 md:px-6">
           <MobileMenu items={navItems} />
 
@@ -292,7 +366,7 @@ export default function Home() {
             className="min-w-0 flex-1 truncate text-center text-base font-bold md:flex-none md:text-left md:text-lg"
           >
             <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | 黃凱浚 Kai-Chun Huang</span>
+            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
           </a>
 
           <div className="h-10 w-10 shrink-0 md:hidden" aria-hidden="true" />
@@ -307,51 +381,106 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="relative border-b border-white/10 pt-16">
-        <div className="relative mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
-            Kevin Huang｜黃凱浚 Kai-Chun Huang
-          </p>
-          <h1 className="max-w-6xl text-3xl font-black leading-tight text-white drop-shadow-[0_0_28px_rgba(56,189,248,0.28)] md:text-5xl">
-            AI / NLP / Data Analysis Portfolio
-          </h1>
+      <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#070a0d] pt-16">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-          <p className="mt-6 max-w-6xl text-lg leading-8 text-slate-200 md:hidden">
-            我是黃凱浚，專注於資料分析、自然語言處理與 LLM
-            應用。曾以 LLaMA 3
-            個人化行銷文案生成研究獲得最佳論文獎，並持續開發意圖分類、問答生成與
-            SEO 分析工具。
-          </p>
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-10 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+          <div>
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              Kevin Huang | AI Engineer / AI Product Associate
+            </p>
 
-          <p className="mt-6 hidden max-w-6xl text-lg leading-8 text-slate-200 md:block">
-            我是黃凱浚，逢甲大學工業工程與系統管理學系學生，具備資料分析、自然語言處理與 LLM 應用實作經驗。
+            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl lg:whitespace-nowrap xl:text-6xl">
+              NLP / LLM AI Engineer
+            </h1>
 
-我曾以 LLaMA 3 結合消費者偏好進行個人化行銷文案生成研究，並獲得 2025 中國工業工程學會年會暨學術研討會大數據技術與應用領域最佳論文獎。現階段持續朝 AI 應用工程與生成式 AI 系統開發方向發展。
-          </p>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+              Focused on NLP, LLM, Python, SQL, data processing, and AI workflow
+              design, with projects that connect model experiments to usable AI
+              tools.
+            </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <a
-              href="#projects"
-              className="rounded-lg border border-cyan-300/60 bg-cyan-400/20 px-6 py-3 text-center font-bold text-cyan-50 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/30 hover:text-white"
-            >
-              View Projects
-            </a>
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              {["Best Paper", "LLaMA 3", "BERT-BiLSTM", "SEO Tool", "Live Demo"].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
+                  >
+                    {item}
+                  </span>
+                ),
+              )}
+            </div>
 
-            <a
-              href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
-              className="rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white"
-            >
-              Download Resume
-            </a>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href="#projects"
+                className="rounded-lg border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-center font-bold text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.18)] transition hover:-translate-y-0.5 hover:bg-emerald-200"
+              >
+                View Projects
+              </a>
+
+              <a
+                href="#contact"
+                className="rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              >
+                Contact Me
+              </a>
+
+              <a
+                href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
+                className="rounded-lg border border-white/10 px-6 py-3 text-center font-bold text-slate-300 transition hover:-translate-y-0.5 hover:border-white/25 hover:text-white"
+              >
+                Resume
+              </a>
+            </div>
+          </div>
+
+          <div className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur md:p-6">
+            <div className="border-b border-white/10 pb-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Focus stack
+              </p>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                {["NLP", "LLM", "Python", "SQL"].map((item) => (
+                  <div key={item} className="bg-slate-950/50 px-4 py-3">
+                    <p className="font-mono text-sm font-bold text-slate-100">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-5">
+              {[
+                ["Research", "LLaMA 3 marketing copy generation"],
+                ["Modeling", "BERT-BiLSTM intent classification"],
+                ["Product", "SEO entity analysis tool with live demo"],
+                ["Workflow", "Data processing to deployable AI prototype"],
+              ].map(([label, value]) => (
+                <div
+                  key={label}
+                  className="grid gap-2 border-l border-emerald-300/40 pl-4"
+                >
+                  <p className="font-mono text-xs uppercase tracking-wide text-emerald-300">
+                    {label}
+                  </p>
+                  <p className="text-sm leading-6 text-slate-200">{value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="about" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
-          <div className="max-w-5xl">
+        <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
+          <div className="max-w-none">
             <p
               lang="zh-Hant"
               className="text-base leading-8 text-slate-300"
@@ -366,10 +495,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="skills" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="skills" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-6 text-3xl font-bold md:mb-8">Skills</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-5 md:p-8">
+        <div className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur md:p-8">
           {skills.map((skill) => (
             <article
               key={skill.category}
@@ -387,7 +516,7 @@ export default function Home() {
                 {skill.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded bg-white/10 px-2 py-1 font-mono text-[11px] font-semibold leading-5 text-white md:text-xs"
+                    className="border border-emerald-300/15 bg-emerald-300/[0.07] px-2 py-1 font-mono text-[11px] font-semibold leading-5 text-emerald-50 md:text-xs"
                   >
                     {item}
                   </span>
@@ -398,11 +527,80 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-        <h2 className="mb-8 text-3xl font-bold">Projects</h2>
+      <section id="projects" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-24">
+        <div className="mb-9 max-w-3xl">
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Featured case studies
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">Projects</h2>
+          <p className="mt-4 leading-8 text-slate-300">
+            以工程與產品作品集的角度重新整理，聚焦能證明研究、資料處理、
+            模型方法與產品展示能力的 AI 專案；從 {projects.length} 個作品中
+            選出代表案例放大呈現。
+          </p>
+        </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project) => {
+        <div className="grid gap-6 lg:grid-cols-2">
+          {featuredProjects.map((project) => {
+            const isExternal = project.href.startsWith("http");
+
+            return (
+              <a
+                key={project.title}
+                href={project.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                className="group flex h-full flex-col border border-white/10 bg-white/[0.055] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.2)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.075] md:p-7"
+              >
+                <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                      {project.badge}
+                    </span>
+                    <h3 className="mt-3 text-2xl font-bold leading-tight text-white">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <span className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold text-emerald-100">
+                    {project.action}
+                  </span>
+                </div>
+
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border border-white/10 bg-slate-950/45 px-3 py-1 text-xs text-slate-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="grid gap-4">
+                  {[
+                    ["Problem", project.problem],
+                    ["Method", project.method],
+                    ["Outcome", project.outcome],
+                    ["Tech", project.tech.join(" / ")],
+                  ].map(([label, value]) => (
+                    <div key={label} className="border-l border-emerald-300/35 pl-4">
+                      <p className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
+                        {label}
+                      </p>
+                      <p className="mt-1 text-[15px] leading-7 text-slate-300">
+                        {value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {supportingProjects.map((project) => {
             const isExternal = project.href?.startsWith("http");
             const CardTag = project.href ? "a" : "article";
 
@@ -412,49 +610,53 @@ export default function Home() {
                 href={project.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/10 md:p-6"
+                className="group flex h-full flex-col border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-1 hover:border-emerald-300/35 hover:bg-white/[0.065] md:p-6"
               >
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-lg font-semibold leading-7 md:text-xl">
+                <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                  <h3 className="text-lg font-semibold leading-7 text-white md:text-xl">
                     {project.title}
                   </h3>
-                  <div className="flex flex-wrap justify-end gap-2">
-                    {!project.href ? (
-                      <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-200">
-                        {project.status ?? "Ongoing"}
-                      </span>
-                    ) : null}
-                    {project.label ? (
-                      <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-200">
-                        {project.label}
-                      </span>
-                    ) : null}
-                  </div>
+                  {project.status ? (
+                    <span className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1 text-xs font-semibold text-emerald-100">
+                      {project.status}
+                    </span>
+                  ) : null}
                 </div>
 
-                <div className="mb-4 flex flex-wrap gap-2">
+                <div className="mb-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-purple-500/10 px-3 py-1 text-xs text-purple-300"
+                      className="border border-white/10 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <p className="mb-5 text-[15px] leading-7 text-slate-300 md:text-base">
-                  {project.description}
-                </p>
+                <div className="space-y-3 text-sm leading-6 text-slate-300">
+                  <p>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
+                      Problem
+                    </span>{" "}
+                    {project.problem}
+                  </p>
+                  <p>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
+                      Method
+                    </span>{" "}
+                    {project.method}
+                  </p>
+                  <p>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
+                      Outcome
+                    </span>{" "}
+                    {project.outcome}
+                  </p>
+                </div>
 
-                <ul className="mb-6 space-y-2 text-sm text-slate-400">
-                  {project.highlights.map((item) => (
-                    <li key={item}>- {item}</li>
-                  ))}
-                </ul>
-
-                {project.href ? (
-                  <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+                {project.action ? (
+                  <div className="mt-6 inline-flex w-fit items-center justify-center border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition group-hover:border-emerald-300/60 group-hover:bg-emerald-300/[0.14]">
                     {project.action}
                   </div>
                 ) : null}
@@ -464,7 +666,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="research" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="research" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <div className="mb-8">
           <h2 className="text-3xl font-bold">Research & Publications</h2>
           <p className="mt-4 max-w-3xl leading-8 text-slate-300">
@@ -477,10 +679,10 @@ export default function Home() {
             <Link
               key={publication.title}
               href={publication.href}
-              className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
+              className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
             >
               <div className="mb-5 flex flex-col items-start gap-3">
-                <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300">
+                <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
                   {publication.badge}
                 </span>
                 <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
@@ -505,14 +707,14 @@ export default function Home() {
                 {publication.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                    className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+              <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
                 View Details
               </div>
             </Link>
@@ -520,7 +722,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="experience" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Experience</h2>
 
         <h3 className="mb-5 text-2xl font-semibold">
@@ -540,7 +742,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <span className="w-fit rounded-full bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
+                  <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
                     {experience.badge}
                   </span>
                 </div>
@@ -550,7 +752,7 @@ export default function Home() {
                 </p>
 
                 {experience.href ? (
-                  <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+                  <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
                     {experience.action}
                   </div>
                 ) : null}
@@ -561,14 +763,14 @@ export default function Home() {
               <Link
                 key={experience.title}
                 href={experience.href}
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
+                className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
               >
                 {content}
               </Link>
             ) : (
               <article
                 key={experience.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
+                className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-6"
               >
                 {content}
               </article>
@@ -586,13 +788,13 @@ export default function Home() {
               <Link
                 key={highlight.title}
                 href={highlight.href}
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 md:p-6"
+                className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
               >
                 <div className="mb-4 flex flex-col items-start gap-3">
                   <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
                     {highlight.title}
                   </h3>
-                  <span className="w-fit rounded-full bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+                  <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
                     {highlight.badge}
                   </span>
                 </div>
@@ -605,14 +807,14 @@ export default function Home() {
                   {highlight.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white group-hover:shadow-[0_14px_30px_rgba(34,211,238,0.18)]">
+                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
                   View Details
                 </div>
               </Link>
@@ -620,16 +822,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="certificates" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="certificates" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
 
         <CertificateGrid certificates={certificates} />
       </section>
 
-      <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section id="contact" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+        <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
           <p className="text-lg leading-8 text-slate-200">
             我目前正在尋找 AI、資料分析、NLP、LLM
             應用相關的實習、專題合作與研究機會。如果你對我的作品、研究或技術背景有興趣，歡迎透過
@@ -639,7 +841,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="mailto:kevin80609@gmail.com"
-              className="w-full rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white sm:w-auto"
+              className="w-full rounded-lg border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-center font-bold text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.18)] transition hover:-translate-y-0.5 hover:bg-emerald-200 sm:w-auto"
             >
               Email Me
             </a>
@@ -648,7 +850,7 @@ export default function Home() {
               href="https://github.com/brian-kai"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white sm:w-auto"
+              className="w-full rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white sm:w-auto"
             >
               GitHub
             </a>
@@ -657,7 +859,7 @@ export default function Home() {
               href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-6 py-3 text-center font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/25 hover:text-white sm:w-auto"
+              className="w-full rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white sm:w-auto"
             >
               Download Resume
             </a>
@@ -669,13 +871,13 @@ export default function Home() {
         href="#"
         aria-label="Back to top"
         title="Back to top"
-        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-cyan-300/40 bg-slate-950/80 text-xl font-bold text-cyan-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl"
+        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-emerald-300/40 bg-[#070a0d]/86 text-xl font-bold text-emerald-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl"
       >
         ↑
       </a>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">
-        © 2026 Kevin Huang｜黃凱浚 Kai-Chun Huang. All rights reserved.
+        © 2026 Kevin Huang | Kai-Chun Huang. All rights reserved.
       </footer>
     </main>
   );

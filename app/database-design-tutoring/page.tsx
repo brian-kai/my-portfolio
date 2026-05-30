@@ -19,35 +19,37 @@ const photos = [
 
 export default function DatabaseDesignTutoringPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_22%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.24),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white [overflow-wrap:anywhere]">
-      <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
         <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
           >
-            返回
+            Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">
-              Kevin Huang | 黃凱浚 Kai-Chun Huang
+              Kevin Huang | Kai-Chun Huang
             </span>
           </Link>
 
           <Link
             href="/#experience"
-            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
           >
-            返回
+            Back
           </Link>
         </div>
       </nav>
 
-      <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
         <header className="border-b border-white/10 pb-6 md:pb-8">
-          <p className="text-sm font-medium text-cyan-300">私立逢甲大學</p>
+          <p className="text-sm font-medium text-emerald-300">私立逢甲大學</p>
           <h1 className="mt-3 text-3xl font-black leading-tight md:text-5xl">
             資料庫設計夜間輔導
           </h1>

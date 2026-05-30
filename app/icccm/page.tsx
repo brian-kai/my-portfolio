@@ -38,36 +38,37 @@ const proofs = [
 
 export default function IcccmPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_14%_22%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.24),transparent_34%),linear-gradient(135deg,#020617_0%,#071329_45%,#111827_100%)] text-white [overflow-wrap:anywhere]">
-      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <nav className="relative z-10 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
         <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
           >
-            返回
+            Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">
-              Kevin Huang | 黃凱浚 Kai-Chun Huang
+              Kevin Huang | Kai-Chun Huang
             </span>
           </Link>
 
           <Link
             href="/#experience"
-            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
           >
-            返回
+            Back
           </Link>
         </div>
       </nav>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-cyan-300">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
           Conference Experience
         </p>
 
@@ -102,12 +103,13 @@ export default function IcccmPage() {
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <ImageLightboxGallery
           items={proofs}
-          actionLabel="View Full Image"
+          cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
           gridClassName="grid gap-6 md:grid-cols-2"
           imageClassName="h-full w-full rounded-xl object-contain"
           imageSizes="(min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px] md:px-4"
+          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-white/[0.035] p-2 md:h-[480px] md:px-4"
           showTitle
+          variant="emerald"
         />
       </section>
     </main>

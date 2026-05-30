@@ -55,8 +55,8 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                     sizes="(min-width: 768px) 33vw, 100vw"
                   />
                 ) : (
-                  <div className="flex h-full min-h-44 flex-col items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-400/10 px-5 text-center md:aspect-[4/3]">
-                    <span className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">
+                  <div className="flex h-full min-h-44 flex-col items-center justify-center rounded-xl border border-emerald-300/20 bg-emerald-300/[0.08] px-5 text-center md:aspect-[4/3]">
+                    <span className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">
                       PDF
                     </span>
                     <span className="mt-3 text-lg font-bold leading-7 text-white">
@@ -67,7 +67,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
               </div>
 
               <div className="flex flex-1 flex-col p-4 md:p-6">
-                <p className="text-sm font-medium text-cyan-300">
+                <p className="text-sm font-medium text-emerald-300">
                   {certificate.issuer}
                 </p>
                 <h3 className="mt-2 text-lg font-semibold leading-7 md:text-xl md:leading-8">
@@ -78,14 +78,14 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                   {certificate.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300"
+                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 px-5 py-2.5 text-sm font-bold text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25 group-hover:text-white">
+                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 shadow-[0_16px_36px_rgba(16,185,129,0.14)] transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
                   View Certificate
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                 href={certificate.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+                className="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
               >
                 {content}
               </a>
@@ -111,7 +111,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
               key={certificate.title}
               type="button"
               onClick={() => setSelectedCertificate(certificate)}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              className="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
             >
               {content}
             </button>
@@ -121,7 +121,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
 
       {selectedCertificate ? (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm md:p-8"
+          className="fixed inset-0 z-[100] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={selectedCertificate.title}
@@ -134,7 +134,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
             <button
               type="button"
               onClick={() => setSelectedCertificate(null)}
-              className="ml-auto rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition hover:border-cyan-200/70 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              className="ml-auto rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition hover:border-emerald-300/70 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
             >
               Close
             </button>

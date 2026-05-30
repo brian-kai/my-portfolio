@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
@@ -62,47 +61,49 @@ const researchOverview = {
 
 export default function ConferencePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white [overflow-wrap:anywhere]">
-      <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
         <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
           >
-            返回
+            Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">
-              Kevin Huang | 黃凱浚 Kai-Chun Huang
+              Kevin Huang | Kai-Chun Huang
             </span>
           </Link>
 
           <Link
             href="/#research"
-            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
           >
-            返回
+            Back
           </Link>
         </div>
       </nav>
 
-      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-cyan-300">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
           Conference
         </p>
 
         <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
-          研討會獎狀
+          研討會發表與獲獎證明
         </h1>
 
         <p className="mt-5 max-w-3xl leading-8 text-slate-300">
-          CIIE 2025 研討會發表與獲獎證明，包含最佳論文獎與發表證明。
+          CIIE 2025 研討會發表與獲獎紀錄，包含論文發表證明與最佳論文獎證明。
         </p>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <article
           lang="zh-Hant"
           className="rounded-2xl border border-white/15 bg-white/[0.07] p-5 shadow-[0_20px_70px_rgba(8,47,73,0.32)] md:p-8"
@@ -116,7 +117,7 @@ export default function ConferencePage() {
               {researchOverview.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-purple-500/15 px-3 py-1 text-xs font-semibold text-purple-200"
+                  className="rounded-full bg-emerald-300/[0.08] px-3 py-1 text-xs font-semibold text-emerald-200"
                 >
                   {tag}
                 </span>
@@ -126,7 +127,7 @@ export default function ConferencePage() {
 
           <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
             <section>
-              <h3 className="border-b border-cyan-300/50 pb-3 text-xl font-bold text-cyan-100">
+              <h3 className="border-b border-emerald-300/45 pb-3 text-xl font-bold text-emerald-100">
                 研究動機
               </h3>
               <p className="mt-4 text-[15px] leading-8 text-slate-200 md:text-base">
@@ -135,13 +136,13 @@ export default function ConferencePage() {
             </section>
 
             <section>
-              <h3 className="border-b border-cyan-300/50 pb-3 text-xl font-bold text-cyan-100">
+              <h3 className="border-b border-emerald-300/45 pb-3 text-xl font-bold text-emerald-100">
                 研究目的
               </h3>
               <ol className="mt-4 space-y-4 text-[15px] leading-8 text-slate-200 md:text-base">
                 {researchOverview.goals.map((goal, index) => (
                   <li key={goal.title} className="flex gap-3">
-                    <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-300/15 text-sm font-bold text-cyan-200">
+                    <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-300/[0.12] text-sm font-bold text-emerald-200">
                       {index + 1}
                     </span>
                     <span>
@@ -155,7 +156,7 @@ export default function ConferencePage() {
           </div>
 
           <section className="mt-8">
-            <h3 className="border-b border-cyan-300/50 pb-3 text-xl font-bold text-cyan-100">
+            <h3 className="border-b border-emerald-300/45 pb-3 text-xl font-bold text-emerald-100">
               研究成果
             </h3>
             <p className="mt-4 text-[15px] leading-8 text-slate-200 md:text-base">
@@ -172,7 +173,7 @@ export default function ConferencePage() {
               href={researchOverview.posterHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-lg border border-cyan-300/60 bg-cyan-400/20 px-6 py-3 text-center font-bold text-cyan-50 shadow-[0_10px_24px_rgba(8,145,178,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-200/80 hover:bg-cyan-300/30 hover:text-white sm:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/60 bg-emerald-300/[0.12] px-6 py-3 text-center font-bold text-emerald-50 shadow-[0_16px_36px_rgba(16,185,129,0.14)] transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white sm:w-auto"
             >
               View Poster
             </a>
@@ -180,7 +181,7 @@ export default function ConferencePage() {
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
         <div className="mb-6">
           <h2 className="text-2xl font-bold md:text-3xl">上台報告照片</h2>
           <p className="mt-3 max-w-3xl leading-8 text-slate-300">
@@ -196,32 +197,21 @@ export default function ConferencePage() {
         />
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-6 pb-16 md:grid-cols-2">
-        {certificates.map((certificate, index) => (
-          <article
-            key={certificate.title}
-            className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
-          >
-            <div className="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px]">
-              <Image
-                src={certificate.image}
-                alt={certificate.title}
-                className="h-full w-full rounded-xl object-contain"
-                priority={index === 0}
-                sizes="(min-width: 768px) 50vw, 100vw"
-              />
-            </div>
-
-            <div className="p-5 md:p-6">
-              <h2 className="text-xl font-semibold md:text-2xl">
-                {certificate.title}
-              </h2>
-              <p className="mt-2 text-[15px] leading-7 text-slate-400 md:text-base">
-                {certificate.event}
-              </p>
-            </div>
-          </article>
-        ))}
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16">
+        <ImageLightboxGallery
+          items={certificates.map((certificate) => ({
+            ...certificate,
+            description: certificate.event,
+          }))}
+          cardClassName="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+          gridClassName="grid gap-6 md:grid-cols-2"
+          imageClassName="h-full w-full rounded-xl object-contain transition duration-300 group-hover:scale-[1.01]"
+          imageSizes="(min-width: 768px) 50vw, 100vw"
+          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px]"
+          showDescription
+          showTitle
+          variant="emerald"
+        />
       </section>
     </main>
   );
