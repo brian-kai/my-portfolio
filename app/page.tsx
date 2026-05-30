@@ -358,7 +358,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 md:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
           <MobileMenu items={navItems} />
 
           <a
