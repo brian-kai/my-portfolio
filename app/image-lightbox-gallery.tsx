@@ -135,7 +135,7 @@ export default function ImageLightboxGallery({
       {selectedItem
         ? createPortal(
         <div
-          className="fixed inset-0 z-[999] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
+          className="z-modal fixed inset-0 flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={selectedItem.title}

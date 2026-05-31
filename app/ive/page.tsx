@@ -234,14 +234,14 @@ export default function IvePage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
-      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#09070f] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_14%_16%,rgba(236,72,153,0.18),transparent_26%),radial-gradient(circle_at_82%_12%,rgba(45,212,191,0.14),transparent_24%),radial-gradient(circle_at_74%_82%,rgba(129,140,248,0.16),transparent_28%),linear-gradient(180deg,#09070f_0%,#0e111f_50%,#09070f_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(244,114,182,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(45,212,191,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <nav className="z-nav sticky top-0 border-b border-pink-200/10 bg-[#09070f]/86 backdrop-blur">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#projects"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-pink-200/60 hover:text-white md:hidden"
           >
             Back
           </Link>
@@ -265,7 +265,7 @@ export default function IvePage() {
             </a>
             <Link
               href="/#projects"
-              className="rounded-full border border-white/15 px-4 py-2 text-slate-200 transition hover:border-emerald-300/50 hover:text-white"
+              className="rounded-full border border-white/15 px-4 py-2 text-slate-200 transition hover:border-pink-200/60 hover:text-white"
             >
               Back
             </Link>
@@ -275,7 +275,7 @@ export default function IvePage() {
 
       <section className="relative z-10 mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-8 px-6 py-12 md:grid-cols-[1fr_430px] md:gap-10 md:py-16">
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-pink-200">
             IVE Fan Website
           </p>
 
@@ -290,22 +290,22 @@ export default function IvePage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#members"
-              className="rounded-full bg-emerald-300 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-emerald-200"
+              className="rounded-full bg-pink-200 px-5 py-3 text-center text-sm font-bold text-[#190914] transition hover:bg-rose-100"
             >
               查看成員
             </a>
             <a
               href="#mission"
-              className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-emerald-300/50"
+              className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-pink-200/60"
             >
               開始任務
             </a>
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-4 shadow-2xl shadow-emerald-950/30 md:rounded-[2rem] md:p-5">
-          <div className="aspect-[4/5] rounded-[1.5rem] bg-[radial-gradient(circle_at_24%_18%,rgba(16,185,129,0.2),transparent_34%),radial-gradient(circle_at_82%_22%,rgba(245,158,11,0.14),transparent_30%),linear-gradient(150deg,#07100d,#0a0f12_52%,#10251e)] p-4 md:p-6">
-            <div className="flex h-full flex-col justify-between rounded-[1.25rem] border border-white/20 bg-black/20 p-6 backdrop-blur-sm">
+        <div className="relative overflow-hidden rounded-3xl border border-pink-200/15 bg-white/10 p-4 shadow-2xl shadow-pink-950/30 md:rounded-[2rem] md:p-5">
+          <div className="aspect-[4/5] rounded-[1.5rem] bg-[radial-gradient(circle_at_24%_18%,rgba(236,72,153,0.24),transparent_34%),radial-gradient(circle_at_82%_22%,rgba(45,212,191,0.2),transparent_30%),linear-gradient(150deg,#140814,#0d1020_52%,#132423)] p-4 md:p-6">
+            <div className="flex h-full flex-col justify-between rounded-[1.25rem] border border-white/20 bg-black/24 p-6 backdrop-blur-sm">
               <div>
                 <p className="text-sm uppercase tracking-[0.28em] text-white/70">
                   Fan Concept
@@ -344,7 +344,7 @@ export default function IvePage() {
       <section id="members" className="relative z-10 mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">
               Members
             </p>
             <h2 className="text-3xl font-bold md:text-4xl">成員介紹</h2>
@@ -364,7 +364,7 @@ export default function IvePage() {
                 onClick={() => setSelectedMember(member)}
                 className={`rounded-2xl border p-3 text-left transition hover:-translate-y-1 md:p-4 ${
                   selectedMember.name === member.name
-                    ? "border-emerald-300/70 bg-emerald-300/[0.08]"
+                    ? "border-pink-200/70 bg-pink-300/[0.08]"
                     : "border-white/10 bg-white/5"
                 }`}
               >
@@ -384,8 +384,8 @@ export default function IvePage() {
             ))}
           </div>
 
-          <aside className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-emerald-300">
+          <aside className="rounded-2xl border border-pink-200/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(76,29,149,0.18)] md:p-6">
+            <p className="text-sm uppercase tracking-[0.2em] text-pink-200">
               Selected
             </p>
             <div
@@ -412,7 +412,7 @@ export default function IvePage() {
       </section>
 
       <section id="music" className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">
           Music
         </p>
         <h2 className="mb-6 text-3xl font-bold md:mb-8 md:text-4xl">
@@ -426,7 +426,7 @@ export default function IvePage() {
               href={release.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-emerald-300/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+              className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-200/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-200/70 md:p-6"
             >
               <div className="mb-4 flex items-start justify-between gap-4 md:mb-5 md:items-center">
                 <div>
@@ -443,7 +443,7 @@ export default function IvePage() {
               <p className="text-[15px] leading-7 text-slate-300 md:text-base">
                 {release.mood}
               </p>
-              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition group-hover:text-emerald-200 md:mt-5">
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-200 transition group-hover:text-rose-100 md:mt-5">
                 Watch on YouTube
                 <span aria-hidden="true">-&gt;</span>
               </div>
@@ -455,7 +455,7 @@ export default function IvePage() {
           <button
             type="button"
             onClick={() => setShowAllSongs((current) => !current)}
-            className="mt-6 w-full rounded-full border border-emerald-300/30 px-5 py-3 text-sm font-bold text-emerald-200 transition hover:border-emerald-300/70 hover:bg-emerald-200/10 md:mx-auto md:flex md:w-fit md:px-8"
+            className="mt-6 w-full rounded-full border border-pink-200/30 px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-200/70 hover:bg-pink-200/10 md:mx-auto md:flex md:w-fit md:px-8"
           >
             {showAllSongs ? "收合作品" : "顯示更多作品"}
           </button>
@@ -463,11 +463,11 @@ export default function IvePage() {
       </section>
 
       <section id="mission" className="relative z-10 mx-auto grid max-w-6xl gap-6 px-6 py-16 md:py-20 lg:grid-cols-[1.12fr_0.88fr]">
-        <section className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 md:p-6">
+        <section className="rounded-2xl border border-pink-200/10 bg-white/[0.06] p-5 md:p-6">
           <div className="border-b border-white/10 pb-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div>
-                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">
                   Mission
                 </p>
                 <h2 className="text-2xl font-bold md:text-3xl">DIVE 任務中心</h2>
@@ -476,14 +476,14 @@ export default function IvePage() {
                 </p>
               </div>
 
-              <span className="inline-flex min-w-14 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-emerald-300/25 bg-emerald-300/[0.08] px-4 py-1.5 text-sm font-bold text-emerald-100">
+              <span className="inline-flex min-w-14 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-pink-200/25 bg-pink-300/[0.08] px-4 py-1.5 text-sm font-bold text-pink-100">
                 {completedCount}/{tasks.length}
               </span>
             </div>
 
             <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/10">
               <div
-                className="h-full rounded-full bg-emerald-300 transition-all duration-500"
+                className="h-full rounded-full bg-gradient-to-r from-pink-200 via-teal-200 to-indigo-200 transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -498,13 +498,13 @@ export default function IvePage() {
                   addTask();
                 }
               }}
-              className="min-w-0 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-emerald-300/60"
+              className="min-w-0 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-pink-200/60"
               placeholder="新增一個 IVE 網站任務"
             />
             <button
               type="button"
               onClick={addTask}
-              className="rounded-xl border border-emerald-300/40 bg-emerald-300/[0.12] px-5 py-3 text-sm font-bold text-emerald-100 transition hover:border-emerald-200/70 hover:bg-emerald-200/25"
+              className="rounded-xl border border-pink-200/40 bg-pink-300/[0.12] px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-100/70 hover:bg-pink-200/25"
             >
               新增
             </button>

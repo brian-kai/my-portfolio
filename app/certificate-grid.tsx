@@ -41,21 +41,21 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
 
   return (
     <>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-3">
         {certificates.map((certificate, index) => {
           const content = (
             <>
-              <div className="h-52 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-auto">
+              <div className="h-48 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-56 lg:h-64">
                 {certificate.image ? (
                   <Image
                     src={certificate.image}
                     alt={`${certificate.title} certificate`}
-                    className="h-full w-full rounded-xl object-cover object-top md:aspect-[4/3] md:h-auto"
+                    className="h-full w-full rounded-lg object-cover object-top"
                     priority={index === 0}
                     sizes="(min-width: 768px) 33vw, 100vw"
                   />
                 ) : (
-                  <div className="flex h-full min-h-44 flex-col items-center justify-center rounded-xl border border-emerald-300/20 bg-emerald-300/[0.08] px-5 text-center md:aspect-[4/3]">
+                  <div className="flex h-full min-h-44 flex-col items-center justify-center rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-5 text-center">
                     <span className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">
                       PDF
                     </span>
@@ -66,15 +66,15 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col p-4 md:p-6">
+              <div className="flex flex-1 flex-col p-4 md:p-5">
                 <p className="text-sm font-medium text-emerald-300">
                   {certificate.issuer}
                 </p>
-                <h3 className="mt-2 text-lg font-semibold leading-7 md:text-xl md:leading-8">
+                <h3 className="mt-2 text-lg font-semibold leading-7">
                   {certificate.title}
                 </h3>
 
-                <div className="mb-6 mt-3 flex flex-wrap gap-2 md:mt-4">
+                <div className="mb-5 mt-3 flex flex-wrap gap-2">
                   {certificate.tags.map((tag) => (
                     <span
                       key={tag}
@@ -85,7 +85,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                   ))}
                 </div>
 
-                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 shadow-[0_16px_36px_rgba(16,185,129,0.14)] transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
+                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-4 py-2 text-sm font-bold text-emerald-100 shadow-[0_16px_36px_rgba(16,185,129,0.14)] transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
                   View Certificate
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
 
       {selectedCertificate ? (
         <div
-          className="fixed inset-0 z-[100] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
+          className="z-modal fixed inset-0 flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={selectedCertificate.title}

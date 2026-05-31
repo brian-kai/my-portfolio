@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import ActiveSectionNav from "./active-section-nav";
 import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import aiatclCertificate from "./image/AIATCL.jpg";
@@ -196,87 +197,6 @@ const researchPublications = [
   },
 ];
 
-const projects = [
-  {
-    title: "基於LLaMA 3 模型結合消費者偏好生成個人化行銷文案生成模式",
-    tags: ["LLM", "LLaMA 3", "NLP", "Marketing"],
-    description:
-      "以 LLaMA 3 結合消費者偏好資料，建立個人化產品行銷文案生成流程，並透過情感分析、關鍵字萃取與生成品質評估驗證研究成果。",
-    highlights: [
-      "目標: 建立結合消費者偏好的個人化產品行銷文案生成模式。",
-      "方法: LLaMA 3、TextBlob、TextRank、K-Means、BLEU、METEOR",
-      "應用: 個人化行銷文案生成、產品偏好分析、生成品質評估",
-    ],
-    href: "/file/畢業專題海報檔案.pdf",
-    action: "View Poster",
-  },
-  {
-    title: "LLaMA 3 個人化產品行銷文案網站",
-    tags: ["JSP", "LLaMA 3", "TextRank", "K-Means", "HDBSCAN"],
-    description:
-      "整理為作品展示頁，呈現產品資訊分析、行銷文案語意偏好分析與 LLaMA 3 文案生成流程。",
-    highlights: [
-      "目標: 將原始 JSP 系統整理成可公開瀏覽的作品展示頁。",
-      "方法: JSP Prototype、Next.js、TextRank、K-Means、HDBSCAN、LLaMA 3",
-      "應用: 系統流程展示、研究成果視覺化、作品集網站呈現",
-    ],
-    href: "/llama-marketing-system",
-    action: "View Website",
-  },
-  {
-    title: "用電趨勢分析",
-    tags: ["Data Analysis", "Python", "Visualization", "Energy Data"],
-    description:
-      "以用電資料為主題進行期末專題分析，整理資料並觀察用電變化趨勢，透過視覺化呈現不同時間區間的用電特徵與可能影響因素。",
-    highlights: [
-      "目標: 分析用電資料變化趨勢，觀察不同時間區間的用電特徵。",
-      "方法: Python、Data Cleaning、Trend Analysis、Data Visualization",
-      "應用: 能源資料分析、用電趨勢觀察、專題成果海報呈現",
-    ],
-    href: "/file/期末專題成果報告-用電趨勢分析海報.pdf",
-    action: "View Poster",
-  },
-  {
-    title: "Intent Classification & QA Generation",
-    status: "ongoing",
-    tags: ["Intent Classification", "QA Generation", "BERT", "Gemma"],
-    description:
-      "建立一套能理解使用者語意、判斷意圖類別，並生成對應 QA 回覆的智慧問答流程。",
-    highlights: [
-      "目標: 建立一套能理解使用者語意、判斷意圖類別，並生成對應 QA 回覆的智慧問答流程。",
-      "方法: BERT-BiLSTM、Knowledge Distillation、Gemma 4",
-      "應用: 客服語意理解、FAQ 自動生成、智慧問答系統",
-    ],
-  },
-  {
-    title: "4G 吃到飽 SEO 分析工具",
-    tags: ["SEO", "SERP API", "Entity Analysis", "Google Sheets"],
-    description:
-      "開發 SEO Entity 分析工具，自動抓取 Google 搜尋前 10 名結果並分析頁面實體，將結果輸出至 Google Sheets，協助內容策略規劃。",
-    highlights: [
-      "目標: 建立能自動分析搜尋結果與競品內容結構的 SEO 工具。",
-      "方法: SERP API、Entity Analysis、Google Sheets、Vercel、Supabase",
-      "應用: SEO 內容策略、競品頁面分析、搜尋結果資料整理",
-    ],
-    href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
-    action: "Live Demo",
-  },
-  {
-    title: "IVE K-pop Fan Website",
-    label: "Side Project-Frontend Practice",
-    tags: ["Web Design", "JSP", "Tailwind CSS", "Frontend"],
-    description:
-      "製作 IVE 主題粉絲網站，規劃成員介紹、作品資訊與互動頁面，練習前端版面設計、資料呈現與使用者瀏覽體驗。",
-    highlights: [
-      "目標: 製作 IVE 主題粉絲網站，練習前端版面與內容呈現。",
-      "方法: JSP、Tailwind CSS、Responsive Layout、Frontend Practice",
-      "應用: 人物介紹頁、作品資訊展示、互動式粉絲網站",
-    ],
-    href: "/ive",
-    action: "View Website",
-  },
-];
-
 const featuredProjects = [
   {
     title: "LLaMA 3 個人化行銷文案系統",
@@ -289,7 +209,7 @@ const featuredProjects = [
     method:
       "以 LLaMA 3 作為生成核心，結合 TextRank 關鍵字擷取、K-Means / HDBSCAN 分群與文案語意分析，整理成可展示的網站流程。",
     outcome:
-      "將研究流程轉成可瀏覽的 product prototype，讓使用者能理解資料處理、模型生成、文案檢視與研究成果之間的關係。",
+      "已整理成可瀏覽的 case study 頁面，將資料前處理、偏好分群、語意分析與文案生成流程拆成模組展示，並保留訓練 loss、分群圖與 heatmap 作為研究成果視覺。",
     tech: ["LLaMA 3", "TextRank", "K-Means", "HDBSCAN", "Next.js"],
   },
   {
@@ -303,7 +223,7 @@ const featuredProjects = [
     method:
       "串接 SERP API 擷取 Google 搜尋結果，進行 entity analysis，並將整理後的結果輸出到 Google Sheets，形成可重複使用的分析流程。",
     outcome:
-      "完成可線上操作的 Live Demo，證明能把資料擷取、資料處理與產品化介面串成實際可用的 AI workflow tool。",
+      "已完成可線上操作的 Live Demo，使用者可以從搜尋結果擷取、entity analysis 到 Google Sheets 輸出看到完整 workflow，呈現資料處理與產品化介面的串接能力。",
     tech: ["SERP API", "Entity Analysis", "Google Sheets", "Vercel", "Supabase"],
   },
 ];
@@ -315,7 +235,7 @@ const supportingProjects = [
     tags: ["BERT-BiLSTM", "Gemma", "Intent QA", "Knowledge Distillation"],
     problem: "希望建立能理解使用者語意、判斷 intent，並產生 QA 回覆的智慧問答流程。",
     method: "使用 BERT-BiLSTM、Knowledge Distillation 與 Gemma 進行意圖分類與回答生成實作。",
-    outcome: "目前作為 NLP / LLM 應用實驗，聚焦客服語意理解、FAQ 自動生成與 structured response generation。",
+    outcome: "目前作為 NLP / LLM 應用實驗，已明確拆分 intent classification、QA generation 與 structured response generation 三個工作面向，適合後續整理成客服語意理解 prototype。",
     tech: ["BERT-BiLSTM", "Gemma", "QA Generation"],
   },
   {
@@ -325,7 +245,7 @@ const supportingProjects = [
     tags: ["Best Paper", "LLaMA 3", "BLEU", "METEOR"],
     problem: "研究如何讓 LLM 生成更符合消費者偏好與產品特徵的個人化行銷文案。",
     method: "以 LLaMA 3 生成文案，搭配 TextBlob、TextRank、K-Means、BLEU、METEOR 做分析與模型評估。",
-    outcome: "完成研究海報與評估流程，並以此研究獲得 Best Paper 相關成果。",
+    outcome: "完成研究海報、生成品質評估流程與會議發表材料，並以此研究獲得 2025 中國工業工程學會年會暨學術研討會大數據技術與應用領域 Best Paper Award。",
     tech: ["LLaMA 3", "BLEU", "METEOR", "TextBlob"],
   },
   {
@@ -335,7 +255,7 @@ const supportingProjects = [
     tags: ["Data Analysis", "Python", "Visualization"],
     problem: "需要從用電資料中整理變化趨勢，觀察不同時間區間的用電特徵。",
     method: "使用 Python 進行 data cleaning、trend analysis 與 data visualization。",
-    outcome: "完成專題成果海報，將資料處理流程轉化成可閱讀的分析結論。",
+    outcome: "完成專題成果海報，把資料清理、趨勢觀察與視覺化圖表整理成可閱讀的分析敘事，可作為資料分析流程與簡報能力的佐證。",
     tech: ["Python", "Data Cleaning", "Visualization"],
   },
   {
@@ -345,7 +265,7 @@ const supportingProjects = [
     tags: ["Frontend", "JSP", "Tailwind CSS"],
     problem: "以前端練習為目標，設計一個具備成員介紹與內容展示的主題網站。",
     method: "使用 JSP 與 Tailwind CSS 規劃響應式版面與內容呈現。",
-    outcome: "完成可瀏覽的 fan website，作為 frontend layout 與內容組織練習。",
+    outcome: "完成可瀏覽的 fan website，包含成員介紹、音樂作品、互動任務與測驗內容，作為 frontend layout、互動狀態與內容組織的練習作品。",
     tech: ["JSP", "Tailwind CSS", "Responsive Layout"],
   },
 ];
@@ -357,7 +277,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
           <MobileMenu items={navItems} />
 
@@ -371,13 +291,7 @@ export default function Home() {
 
           <div className="h-10 w-10 shrink-0 md:hidden" aria-hidden="true" />
 
-          <div className="hidden gap-7 text-base font-medium text-slate-300 md:flex">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="hover:text-white">
-                {item.label}
-              </a>
-            ))}
-          </div>
+          <ActiveSectionNav items={navItems} />
         </div>
       </nav>
 
@@ -385,8 +299,8 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-10 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-          <div>
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.45fr)] lg:gap-16">
+          <div className="max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Kevin Huang | AI Engineer / AI Product Associate
             </p>
@@ -438,41 +352,25 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur md:p-6">
-            <div className="border-b border-white/10 pb-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Focus stack
-              </p>
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                {["NLP", "LLM", "Python", "SQL"].map((item) => (
-                  <div key={item} className="bg-slate-950/50 px-4 py-3">
-                    <p className="font-mono text-sm font-bold text-slate-100">
-                      {item}
-                    </p>
-                  </div>
-                ))}
+          <aside className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            {[
+              ["Best Paper Award", "2025 CIIE 大數據技術與應用領域"],
+              ["Live AI Workflow", "SEO Entity Analysis Tool"],
+              ["Research / NLP", "LLaMA 3、BERT-BiLSTM、Gemma"],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                className="border border-white/10 bg-[#07100d]/76 p-5 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur"
+              >
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  {label}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-slate-200">
+                  {value}
+                </p>
               </div>
-            </div>
-
-            <div className="space-y-4 pt-5">
-              {[
-                ["Research", "LLaMA 3 marketing copy generation"],
-                ["Modeling", "BERT-BiLSTM intent classification"],
-                ["Product", "SEO entity analysis tool with live demo"],
-                ["Workflow", "Data processing to deployable AI prototype"],
-              ].map(([label, value]) => (
-                <div
-                  key={label}
-                  className="grid gap-2 border-l border-emerald-300/40 pl-4"
-                >
-                  <p className="font-mono text-xs uppercase tracking-wide text-emerald-300">
-                    {label}
-                  </p>
-                  <p className="text-sm leading-6 text-slate-200">{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+            ))}
+          </aside>
         </div>
       </section>
 
@@ -528,16 +426,11 @@ export default function Home() {
       </section>
 
       <section id="projects" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-24">
-        <div className="mb-9 max-w-3xl">
+        <div className="mb-12 max-w-4xl">
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
             Featured case studies
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Projects</h2>
-          <p className="mt-4 leading-8 text-slate-300">
-            以工程與產品作品集的角度重新整理，聚焦能證明研究、資料處理、
-            模型方法與產品展示能力的 AI 專案；從 {projects.length} 個作品中
-            選出代表案例放大呈現。
-          </p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -871,7 +764,7 @@ export default function Home() {
         href="#"
         aria-label="Back to top"
         title="Back to top"
-        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-emerald-300/40 bg-[#070a0d]/86 text-xl font-bold text-emerald-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl"
+        className="z-nav fixed bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border border-emerald-300/40 bg-[#070a0d]/86 text-xl font-bold text-emerald-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl"
       >
         ↑
       </a>

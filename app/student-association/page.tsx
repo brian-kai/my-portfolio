@@ -48,14 +48,14 @@ const photos = [
 
 export default function StudentAssociationPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
-      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(245,158,11,0.16),transparent_28%),radial-gradient(circle_at_84%_14%,rgba(34,197,94,0.1),transparent_24%),linear-gradient(180deg,#0d0c09_0%,#15120b_52%,#0d0c09_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
+      <nav className="relative z-10 border-b border-amber-200/10 bg-[#0d0c09]/88 backdrop-blur">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
+            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-amber-200/60 hover:text-white md:hidden"
           >
             Back
           </Link>
@@ -69,7 +69,7 @@ export default function StudentAssociationPage() {
 
           <Link
             href="/#student-association"
-            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-amber-200/60 hover:text-white md:inline-flex"
           >
             Back
           </Link>
@@ -77,15 +77,15 @@ export default function StudentAssociationPage() {
       </nav>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-amber-200">
           Student Association
         </p>
 
-        <h1 className="max-w-6xl text-3xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-6xl text-3xl font-black leading-tight md:text-5xl">
           系學會活動經歷
         </h1>
 
-        <p className="mt-5 max-w-6xl text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
+        <p className="mt-5 max-w-5xl border-l border-amber-200/35 pl-5 text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
           大三上學期加入工業工程與系統管理學系系學會，擔任活動組長，參與多項系上活動規劃與執行。透過活動企劃、流程安排、現場管理與跨組溝通，培養團隊合作、組織協調、任務分配與問題解決能力。
         </p>
       </section>
@@ -97,13 +97,13 @@ export default function StudentAssociationPage() {
           {experiences.map((experience) => (
             <article
               key={experience.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
+              className="rounded-lg border border-amber-200/10 bg-[#15120b]/80 p-5 shadow-[0_18px_54px_rgba(0,0,0,0.18)] md:p-6"
             >
               <div className="mb-3 flex flex-wrap items-center gap-3">
                 <h3 className="text-lg font-semibold leading-7 md:text-xl">
                   {experience.title}
                 </h3>
-                <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                <span className="border border-amber-200/20 bg-amber-200/[0.08] px-3 py-1 text-xs font-medium text-amber-100">
                   {experience.role}
                 </span>
               </div>
@@ -124,7 +124,7 @@ export default function StudentAssociationPage() {
           gridClassName="grid gap-6 md:grid-cols-2"
           imageClassName="aspect-[4/3] w-full rounded-xl object-cover object-center transition duration-300 group-hover:scale-[1.02]"
           imageSizes="(min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="bg-slate-900/80 p-3 md:p-5"
+          imageWrapperClassName="bg-[#15120b]/90 p-3 md:p-5"
           showTitle
           variant="emerald"
         />

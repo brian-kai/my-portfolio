@@ -17,7 +17,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-slate-200 transition hover:border-cyan-300/50 hover:text-white md:hidden"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
       >
         <span className="flex flex-col gap-1.5" aria-hidden="true">
           <span className="block h-0.5 w-5 rounded bg-current" />
@@ -27,7 +27,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
       </button>
 
       {isOpen ? (
-        <div className="fixed inset-0 z-[70] md:hidden">
+        <div className="z-menu fixed inset-0 md:hidden">
           <button
             type="button"
             aria-label="Close navigation menu"
@@ -40,14 +40,14 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
             style={{ height: "100dvh", minHeight: "100vh" }}
           >
             <div className="flex items-center justify-between gap-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 Menu
               </p>
               <button
                 type="button"
                 aria-label="Close navigation menu"
                 onClick={() => setIsOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-2xl leading-none text-slate-200 transition hover:border-cyan-300/50 hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-2xl leading-none text-slate-200 transition hover:border-emerald-300/50 hover:text-white"
               >
                 &times;
               </button>

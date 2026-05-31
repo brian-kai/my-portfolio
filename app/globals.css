@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --z-nav: 50;
+  --z-menu: 70;
+  --z-modal: 100;
 }
 
 @theme inline {
@@ -22,14 +25,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1;
+  text-rendering: geometricPrecision;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 main p,
 main dd {
   text-align: left;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@layer utilities {
+  .z-nav {
+    z-index: var(--z-nav);
+  }
+
+  .z-menu {
+    z-index: var(--z-menu);
+  }
+
+  .z-modal {
+    z-index: var(--z-modal);
+  }
 }
