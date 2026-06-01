@@ -124,9 +124,9 @@ export default function LlamaMarketingSystemPage() {
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#projects"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
+            className="absolute left-6 border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:hidden"
           >
-            Back
+            Back to Projects
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -138,9 +138,9 @@ export default function LlamaMarketingSystemPage() {
 
           <Link
             href="/#projects"
-            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
+            className="hidden border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:inline-flex"
           >
-            Back
+            Back to Projects
           </Link>
         </div>
       </nav>

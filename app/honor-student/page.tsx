@@ -44,9 +44,9 @@ export default function HonorStudentPage() {
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#honors"
-            className="absolute left-6 border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
+            className="absolute left-6 border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:hidden"
           >
-            Back
+            Back to Honors
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -58,7 +58,7 @@ export default function HonorStudentPage() {
 
           <Link
             href="/#honors"
-            className="hidden border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
+            className="hidden border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:inline-flex"
           >
             Back to Honors
           </Link>
@@ -74,7 +74,7 @@ export default function HonorStudentPage() {
           校級榮譽學生入選
         </h1>
 
-        <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg md:leading-8">
+        <p className="mt-5 max-w-6xl text-base leading-7 text-slate-300 [text-wrap:pretty] md:text-lg md:leading-8">
           榮譽學生申請以三個面向呈現：學術研究與競賽成果、跨域資料分析實作，以及公共服務與領導表現。內容包含
           CIIE 2025 最佳論文獎、ICCCM 2026 論文接受、Google Data
           Analytics 學習、用電趨勢分析專題，以及擔任資料庫設計助教、研究助理與系學會活動組長的經驗，展現研究執行、資料處理、團隊協調與服務投入。

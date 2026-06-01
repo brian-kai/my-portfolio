@@ -241,9 +241,9 @@ export default function IvePage() {
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#projects"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-pink-200/60 hover:text-white md:hidden"
+            className="absolute left-6 border border-pink-200/50 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-pink-200/80 hover:bg-pink-300/[0.08] hover:text-white md:hidden"
           >
-            Back
+            Back to Projects
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -265,9 +265,9 @@ export default function IvePage() {
             </a>
             <Link
               href="/#projects"
-              className="rounded-full border border-white/15 px-4 py-2 text-slate-200 transition hover:border-pink-200/60 hover:text-white"
+              className="border border-pink-200/50 px-4 py-2 font-semibold text-slate-200 transition hover:border-pink-200/80 hover:bg-pink-300/[0.08] hover:text-white"
             >
-              Back
+              Back to Projects
             </Link>
           </div>
         </div>

@@ -55,9 +55,9 @@ export default function StudentAssociationPage() {
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#student-association"
-            className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-amber-200/60 hover:text-white md:hidden"
+            className="absolute left-6 border border-amber-200/50 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-amber-200/80 hover:bg-amber-300/[0.08] hover:text-white md:hidden"
           >
-            Back
+            Back to Student Association
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -69,9 +69,9 @@ export default function StudentAssociationPage() {
 
           <Link
             href="/#student-association"
-            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-amber-200/60 hover:text-white md:inline-flex"
+            className="hidden border border-amber-200/50 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-amber-200/80 hover:bg-amber-300/[0.08] hover:text-white md:inline-flex"
           >
-            Back
+            Back to Student Association
           </Link>
         </div>
       </nav>
