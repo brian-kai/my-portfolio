@@ -10,6 +10,25 @@ type NavItem = {
 export default function MobileMenu({ items }: { items: NavItem[] }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToSection = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    event.preventDefault();
+    setIsOpen(false);
+
+    const section = document.querySelector<HTMLElement>(href);
+    if (!section) {
+      return;
+    }
+
+    window.scrollTo({
+      top: section.offsetTop,
+      behavior: "smooth",
+    });
+    window.history.replaceState(null, "", href);
+  };
+
   return (
     <>
       <button
@@ -58,7 +77,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(event) => scrollToSection(event, item.href)}
                   className="rounded-lg px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
                 >
                   {item.label}

@@ -54,7 +54,7 @@ export default function StudentAssociationPage() {
       <nav className="relative z-10 border-b border-amber-200/10 bg-[#0d0c09]/88 backdrop-blur">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
-            href="/"
+            href="/#student-association"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-amber-200/60 hover:text-white md:hidden"
           >
             Back

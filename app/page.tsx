@@ -197,6 +197,18 @@ const researchPublications = [
   },
 ];
 
+const honors = [
+  {
+    title: "校級榮譽學生入選",
+    badge: "Honor Student",
+    href: "/honor-student",
+    action: "View Details",
+    description:
+      "入選學校榮譽學生，作為學業表現、專題參與與校內發展歷程的綜合肯定。",
+    tags: ["University Recognition", "Honor Student", "Academic Growth"],
+  },
+];
+
 const featuredProjects = [
   {
     title: "LLaMA 3 個人化行銷文案系統",
@@ -232,11 +244,11 @@ const supportingProjects = [
   {
     title: "Intent Classification & QA Generation",
     status: "Ongoing",
-    tags: ["BERT-BiLSTM", "Gemma", "Intent QA", "Knowledge Distillation"],
+    tags: ["BERT-BiLSTM", "Gemma 4", "Intent QA", "Knowledge Distillation"],
     problem: "希望建立能理解使用者語意、判斷 intent，並產生 QA 回覆的智慧問答流程。",
-    method: "使用 BERT-BiLSTM、Knowledge Distillation 與 Gemma 進行意圖分類與回答生成實作。",
+    method: "使用 BERT-BiLSTM、Knowledge Distillation 與 Gemma 4 進行意圖分類與回答生成實作。",
     outcome: "目前作為 NLP / LLM 應用實驗，已明確拆分 intent classification、QA generation 與 structured response generation 三個工作面向，適合後續整理成客服語意理解 prototype。",
-    tech: ["BERT-BiLSTM", "Gemma", "QA Generation"],
+    tech: ["BERT-BiLSTM", "Gemma 4", "QA Generation"],
   },
   {
     title: "LLaMA 3 個人化行銷文案研究",
@@ -356,7 +368,7 @@ export default function Home() {
             {[
               ["Best Paper Award", "2025 CIIE 大數據技術與應用領域"],
               ["Live AI Workflow", "SEO Entity Analysis Tool"],
-              ["Research / NLP", "LLaMA 3、BERT-BiLSTM、Gemma"],
+              ["Research / NLP", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
             ].map(([label, value]) => (
               <div
                 key={label}
@@ -559,6 +571,52 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        id="honors"
+        className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20"
+      >
+        <div className="mb-8 max-w-3xl">
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Honors & recognition
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">Honors</h2>
+        </div>
+
+        <Link
+          href={honors[0].href}
+          className="group block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div className="max-w-4xl">
+              <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200">
+                {honors[0].badge}
+              </span>
+              <h3 className="mt-4 text-xl font-semibold leading-7 text-white md:text-2xl">
+                {honors[0].title}
+              </h3>
+              <p className="mt-4 max-w-3xl text-[15px] leading-7 text-slate-300 [text-wrap:pretty] md:text-base md:leading-8">
+                {honors[0].description}
+              </p>
+
+              <div className="mt-6 inline-flex w-fit items-center justify-center border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition group-hover:border-emerald-300/60 group-hover:bg-emerald-300/[0.14]">
+                {honors[0].action}
+              </div>
+            </div>
+
+            <div className="flex max-w-sm flex-wrap gap-2 md:justify-end">
+              {honors[0].tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-white/10 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Link>
+      </section>
+
       <section id="research" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <div className="mb-8">
           <h2 className="text-3xl font-bold">Research & Publications</h2>
@@ -671,7 +729,10 @@ export default function Home() {
           })}
         </div>
 
-        <h3 className="mb-5 mt-12 text-2xl font-semibold">
+        <h3
+          id="student-association"
+          className="mb-5 mt-12 text-2xl font-semibold"
+        >
           Student Association
         </h3>
         <div className="grid gap-6">
@@ -683,11 +744,11 @@ export default function Home() {
                 href={highlight.href}
                 className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
               >
-                <div className="mb-4 flex flex-col items-start gap-3">
+                <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
                   <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
                     {highlight.title}
                   </h3>
-                  <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
+                  <span className="w-fit shrink-0 border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
                     {highlight.badge}
                   </span>
                 </div>

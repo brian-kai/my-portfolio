@@ -10,6 +10,24 @@ type NavItem = {
 export default function ActiveSectionNav({ items }: { items: NavItem[] }) {
   const [activeHref, setActiveHref] = useState<string | null>(null);
 
+  const scrollToSection = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    event.preventDefault();
+
+    const section = document.querySelector<HTMLElement>(href);
+    if (!section) {
+      return;
+    }
+
+    window.scrollTo({
+      top: section.offsetTop,
+      behavior: "smooth",
+    });
+    window.history.replaceState(null, "", href);
+  };
+
   useEffect(() => {
     const sections = items
       .map((item) => ({
@@ -34,7 +52,8 @@ export default function ActiveSectionNav({ items }: { items: NavItem[] }) {
         return;
       }
 
-      const readingLine = window.scrollY + 120;
+      const readingLine =
+        window.scrollY + Math.min(window.innerHeight * 0.38, 320);
       let currentHref = sections[0].href;
 
       for (const section of sections) {
@@ -65,6 +84,7 @@ export default function ActiveSectionNav({ items }: { items: NavItem[] }) {
           <a
             key={item.href}
             href={item.href}
+            onClick={(event) => scrollToSection(event, item.href)}
             aria-current={isActive ? "true" : undefined}
             className={`rounded-lg px-3 py-2 transition ${
               isActive

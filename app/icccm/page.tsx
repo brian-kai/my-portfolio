@@ -45,7 +45,7 @@ export default function IcccmPage() {
       <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
-            href="/"
+            href="/#research"
             className="absolute left-6 rounded-full border border-white/15 px-3 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
           >
             Back
@@ -59,7 +59,7 @@ export default function IcccmPage() {
           </Link>
 
           <Link
-            href="/#experience"
+            href="/#research"
             className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:inline-flex"
           >
             Back
