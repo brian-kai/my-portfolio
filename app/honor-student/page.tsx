@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import ImageLightboxGallery from "../image-lightbox-gallery";
+import LightboxImage from "../lightbox-image";
 
 import honorStudentCertificate from "../image/honor-student-certificate.png";
 import honorStudentPortrait from "../image/honor-student-portrait.jpg";
@@ -86,7 +86,7 @@ export default function HonorStudentPage() {
         </div>
       </nav>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:py-16">
         <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
           Honors & Recognition
         </p>
@@ -111,13 +111,13 @@ export default function HonorStudentPage() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
         <div className="mb-8 max-w-3xl">
           <h2 className="text-2xl font-bold md:text-3xl">獲選依據與官方證明</h2>
         </div>
 
-        <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(26rem,0.85fr)]">
-          <div className="grid h-full gap-4">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)]">
+          <div className="grid gap-4">
             {details.map((detail) => (
               <article
                 key={detail.label}
@@ -143,7 +143,7 @@ export default function HonorStudentPage() {
             ))}
           </div>
 
-          <aside className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-4">
+          <aside className="border border-white/10 bg-white/[0.045] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-4">
             <div className="mb-3">
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                 Official Certificate
@@ -151,12 +151,12 @@ export default function HonorStudentPage() {
               <h3 className="mt-2 text-xl font-bold">逢甲大學榮譽學生證書</h3>
             </div>
 
-            <Image
+            <LightboxImage
               src={honorStudentCertificate}
               alt="逢甲大學榮譽學生證書"
-              className="min-h-0 flex-1 bg-white object-contain"
+              className="h-auto max-h-[58vh] w-full bg-white object-contain"
               priority
-              sizes="(min-width: 1024px) 38vw, calc(100vw - 48px)"
+              sizes="(min-width: 1280px) 460px, (min-width: 1024px) 34vw, calc(100vw - 48px)"
             />
 
             <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -166,24 +166,26 @@ export default function HonorStudentPage() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
         <div className="mb-8 max-w-3xl">
           <h2 className="text-2xl font-bold md:text-3xl">
             Honor Student Visual Record
           </h2>
         </div>
 
-        <ImageLightboxGallery
-          items={photos}
-          actionLabel="View Photo"
-          cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-          gridClassName="grid gap-6 md:grid-cols-2"
-          imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
-          imageSizes="(min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="h-[520px] overflow-hidden border-b border-white/10 bg-slate-950/50 md:h-[680px]"
-          showTitle
-          variant="emerald"
-        />
+        <div className="max-w-6xl">
+          <ImageLightboxGallery
+            items={photos}
+            actionLabel="View Photo"
+            cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+            gridClassName="grid gap-6 md:grid-cols-2"
+            imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
+            imageSizes="(min-width: 1280px) 560px, (min-width: 768px) 46vw, 100vw"
+            imageWrapperClassName="h-[420px] overflow-hidden border-b border-white/10 bg-slate-950/50 md:h-[520px]"
+            showTitle
+            variant="emerald"
+          />
+        </div>
       </section>
     </main>
   );
