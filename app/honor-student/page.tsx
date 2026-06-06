@@ -173,19 +173,17 @@ export default function HonorStudentPage() {
           </h2>
         </div>
 
-        <div className="max-w-6xl">
-          <ImageLightboxGallery
-            items={photos}
-            actionLabel="View Photo"
-            cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-            gridClassName="grid gap-6 md:grid-cols-2"
-            imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
-            imageSizes="(min-width: 1280px) 560px, (min-width: 768px) 46vw, 100vw"
-            imageWrapperClassName="h-[420px] overflow-hidden border-b border-white/10 bg-slate-950/50 md:h-[520px]"
-            showTitle
-            variant="emerald"
-          />
-        </div>
+        <ImageLightboxGallery
+          items={photos}
+          actionLabel="View Photo"
+          cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+          gridClassName="grid gap-6 md:grid-cols-2"
+          imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
+          imageSizes="(min-width: 1280px) 620px, (min-width: 768px) 50vw, 100vw"
+          imageWrapperClassName="h-[420px] overflow-hidden border-b border-white/10 bg-slate-950/50 md:h-[520px]"
+          showTitle
+          variant="emerald"
+        />
       </section>
     </main>
   );
