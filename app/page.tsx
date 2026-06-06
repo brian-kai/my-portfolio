@@ -145,9 +145,9 @@ const highlights = [
   {
     title: "工業工程與系統管理學系系學會",
     href: "/student-association",
-    badge: "Activity Leader",
+    badge: "Leadership Evidence",
     description:
-      "擔任工業工程與系統管理學系系學會活動組長，負責活動企劃、流程安排、資源協調與現場執行。",
+      "擔任工業工程與系統管理學系系學會活動組長，作為團隊協作、流程安排、資源協調與現場執行能力的輔助證據。",
     tags: ["Event Planning", "Teamwork", "Coordination", "Leadership"],
   },
 ];
@@ -322,13 +322,13 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-              Focused on NLP, LLM, Python, SQL, data processing, and AI workflow
-              design, with projects that connect model experiments to usable AI
-              tools.
+              Building NLP, LLM, and data workflow projects that turn model
+              experiments into usable AI tools, research evidence, and product
+              demos.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2.5">
-              {["Best Paper", "LLaMA 3", "BERT-BiLSTM", "SEO Tool", "Live Demo"].map(
+              {["Best Paper Award", "LLaMA 3 System", "Live SEO Tool", "NLP Research", "AI Workflow"].map(
                 (item) => (
                   <span
                     key={item}
@@ -366,9 +366,9 @@ export default function Home() {
 
           <aside className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
             {[
-              ["Best Paper Award", "2025 CIIE 大數據技術與應用領域"],
-              ["Live AI Workflow", "SEO Entity Analysis Tool"],
-              ["Research / NLP", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
+              ["Research Proof", "2025 CIIE Best Paper Award"],
+              ["Product Demo", "SEO Entity Analysis Tool"],
+              ["LLM Stack", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
             ].map(([label, value]) => (
               <div
                 key={label}
@@ -395,11 +395,11 @@ export default function Home() {
               lang="zh-Hant"
               className="text-base leading-8 text-slate-300"
             >
-            我具備資料分析、自然語言處理（NLP）與 LLM 應用相關的專題實作經驗，能從資料整理、模型訓練、流程規劃到結果評估參與完整 AI 專案流程。
+            我聚焦於 NLP、LLM、資料處理與 AI workflow 的實作與應用。作品集整理了研究型專案、可展示的 AI 工具流程，以及能支持產品化思考的資料分析與前端呈現能力。
 
-在技術應用上，我熟悉 Python、SQL、R，並能使用 Pandas、NumPy 進行資料清理、轉換與分析；在模型應用上，曾使用 BERT、LLaMA 3、Gemma 4 等語言模型，應用於文字生成、意圖分類與問答生成等任務。
+在 AI 專案中，我能從問題拆解、資料清理、模型應用、實驗評估到成果展示參與完整流程；曾使用 Python、SQL、Pandas、NumPy、BERT、LLaMA 3、Gemma 4 等工具與模型，實作文字生成、意圖分類、問答生成、entity analysis 與資料視覺化相關任務。
 
-在專題實作過程中，我經常需要拆解問題、整理資料、規劃流程並與團隊溝通，因此培養了邏輯分析、問題拆解、主動學習與跨角色協作能力。未來希望持續深化生成式 AI 與軟體開發能力，將 AI 技術應用於實際問題解決與系統開發。
+我希望把模型實驗轉化成可以被理解、被操作、被驗證的產品雛形，因此也重視 workflow design、介面呈現、研究說明與跨角色溝通。這個 portfolio 的核心，是展示我如何把 AI 技術、資料分析與實際使用情境連在一起。
           </p>
           </div>
         </div>
@@ -733,7 +733,7 @@ export default function Home() {
           id="student-association"
           className="mb-5 mt-12 text-2xl font-semibold"
         >
-          Student Association
+          Leadership Evidence
         </h3>
         <div className="grid gap-6">
           {highlights
