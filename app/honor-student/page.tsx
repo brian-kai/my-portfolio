@@ -1,36 +1,57 @@
 import Link from "next/link";
+import Image from "next/image";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
+import honorStudentCertificate from "../image/honor-student-certificate.png";
 import honorStudentPortrait from "../image/honor-student-portrait.jpg";
 import honorStudentPortraitAlt from "../image/honor-student-portrait-alt.jpg";
 
 const photos = [
   {
-    title: "Honor Student Portrait",
+    title: "Recognition Portrait",
     image: honorStudentPortrait,
     alt: "Kai-Chun Huang wearing honor student graduation regalia",
-    description: "校級榮譽學生紀念照片，作為學校肯定與畢業歷程紀錄。",
   },
   {
-    title: "Honor Student Portrait 2",
+    title: "Graduation Honor Record",
     image: honorStudentPortraitAlt,
     alt: "Kai-Chun Huang in honor student regalia posing for a portrait",
-    description: "榮譽學生紀念照，以正式形象補強作品集中的個人可信度。",
   },
+];
+
+const proofChips = [
+  "115 級榮譽學生",
+  "Feng Chia University",
+  "Academic / Service / Leadership",
 ];
 
 const details = [
   {
-    label: "Recognition",
-    value: "校級榮譽學生入選",
+    label: "Academic & Research",
+    value: "以研究發表與學術成果展現專題執行、模型應用與英文論文發表能力。",
+    evidence: [
+      "CIIE 2025 最佳論文獎",
+      "ICCCM 2026 Accepted for Presentation",
+      "NLP / LLM 研究與專題實作",
+    ],
   },
   {
-    label: "Meaning",
-    value: "作為學業表現、專題參與與校內發展歷程的綜合肯定。",
+    label: "Cross-domain Practice",
+    value: "將資料分析、AI 工具與實務問題連結，完成資料整理到成果呈現。",
+    evidence: [
+      "Google Data Analytics 學習",
+      "用電趨勢分析專題",
+      "AI workflow 與資料處理專案",
+    ],
   },
   {
-    label: "Portfolio role",
-    value: "補強研究與專案之外的學校認可紀錄，讓作品集具備更完整的履歷脈絡。",
+    label: "Leadership & Service",
+    value: "透過助教、研究助理與系學會活動經驗，呈現溝通協作與公共服務投入。",
+    evidence: [
+      "資料庫設計課程助教",
+      "國科會研究計畫助理",
+      "系學會活動組長",
+    ],
   },
 ];
 
@@ -75,29 +96,83 @@ export default function HonorStudentPage() {
         </h1>
 
         <p className="mt-5 max-w-6xl text-base leading-7 text-slate-300 [text-wrap:pretty] md:text-lg md:leading-8">
-          榮譽學生申請以三個面向呈現：學術研究與競賽成果、跨域資料分析實作，以及公共服務與領導表現。內容包含
-          CIIE 2025 最佳論文獎、ICCCM 2026 論文接受、Google Data
-          Analytics 學習、用電趨勢分析專題，以及擔任資料庫設計助教、研究助理與系學會活動組長的經驗，展現研究執行、資料處理、團隊協調與服務投入。
+          以學術研究、跨域資料分析、國際參與、專業實習與公共服務等面向獲選，作為大學階段綜合表現的代表性榮譽。
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {details.map((detail) => (
-            <div
-              key={detail.label}
-              className="border border-white/10 bg-white/[0.06] p-4 md:p-5"
+        <div className="mt-7 flex flex-wrap gap-2.5">
+          {proofChips.map((chip) => (
+            <span
+              key={chip}
+              className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
             >
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                {detail.label}
-              </p>
-              <p className="mt-3 text-[15px] leading-7 text-slate-200">
-                {detail.value}
-              </p>
-            </div>
+              {chip}
+            </span>
           ))}
         </div>
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+        <div className="mb-8 max-w-3xl">
+          <h2 className="text-2xl font-bold md:text-3xl">獲選依據與官方證明</h2>
+        </div>
+
+        <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(26rem,0.85fr)]">
+          <div className="grid h-full gap-4">
+            {details.map((detail) => (
+              <article
+                key={detail.label}
+                className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.14)] backdrop-blur md:p-6"
+              >
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  {detail.label}
+                </p>
+                <p className="mt-3 text-[15px] leading-7 text-slate-200">
+                  {detail.value}
+                </p>
+                <div className="mt-5 grid gap-2">
+                  {detail.evidence.map((item) => (
+                    <div
+                      key={item}
+                      className="border-l border-emerald-300/40 pl-3 text-sm leading-6 text-slate-300"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <aside className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-4">
+            <div className="mb-3">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                Official Certificate
+              </p>
+              <h3 className="mt-2 text-xl font-bold">逢甲大學榮譽學生證書</h3>
+            </div>
+
+            <Image
+              src={honorStudentCertificate}
+              alt="逢甲大學榮譽學生證書"
+              className="min-h-0 flex-1 bg-white object-contain"
+              priority
+              sizes="(min-width: 1024px) 38vw, calc(100vw - 48px)"
+            />
+
+            <p className="mt-3 text-sm leading-6 text-slate-400">
+              逢甲大學正式核發之榮譽學生證書，作為本頁成果佐證。
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+        <div className="mb-8 max-w-3xl">
+          <h2 className="text-2xl font-bold md:text-3xl">
+            Honor Student Visual Record
+          </h2>
+        </div>
+
         <ImageLightboxGallery
           items={photos}
           actionLabel="View Photo"
@@ -106,7 +181,6 @@ export default function HonorStudentPage() {
           imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
           imageSizes="(min-width: 768px) 50vw, 100vw"
           imageWrapperClassName="h-[520px] overflow-hidden border-b border-white/10 bg-slate-950/50 md:h-[680px]"
-          showDescription
           showTitle
           variant="emerald"
         />
