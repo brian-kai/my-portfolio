@@ -1,7 +1,9 @@
 import Link from "next/link";
+import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
 import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.jpg";
+import orCompetitionAward from "./or-competition-award-2026.png";
 import bestPaperCertificate from "./2025-11-29-[CIIE2025最佳論文獎]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
 import presentationCertificate from "./2025-11-29-[CIIE2025發表證明]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
 
@@ -18,6 +20,12 @@ const presentationPhotos = [
   },
 ];
 
+const conferenceNavItems = [
+  { label: "Overview", href: "#overview" },
+  { label: "Presentation Photos", href: "#presentation-photos" },
+  { label: "Recognition", href: "#recognition" },
+];
+
 const certificates = [
   {
     title: "CIIE 2025 最佳論文獎",
@@ -29,6 +37,28 @@ const certificates = [
     event: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
     image: presentationCertificate,
   },
+];
+
+const awardEvidence = [
+  {
+    title: "OR 競賽獎狀",
+    description: "基於LLaMA 3 個人化行銷文案研究題目於2026作業研究學會-大專生競賽獲獎證明。",
+    image: orCompetitionAward,
+  },
+];
+
+const recognitionItems = [
+  {
+    title: "最佳論文獎",
+    description: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式。",
+    image: certificates[0].image,
+  },
+  {
+    title: "研討會發表證明",
+    description: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式。",
+    image: certificates[1].image,
+  },
+  ...awardEvidence,
 ];
 
 const researchOverview = {
@@ -64,37 +94,40 @@ export default function ConferencePage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-4 md:justify-between md:px-6">
           <Link
             href="/#research"
-            className="absolute left-6 border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:hidden"
+            className="absolute left-4 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             Back to Research
           </Link>
 
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
+          <Link href="/#research" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">
               Kevin Huang | Kai-Chun Huang
             </span>
           </Link>
 
-          <Link
-            href="/#research"
-            className="hidden border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:inline-flex"
-          >
-            Back to Research
-          </Link>
+          <div className="hidden items-center gap-3 md:flex">
+            <ActiveSectionNav items={conferenceNavItems} />
+            <Link
+              href="/#research"
+              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+            >
+              Back to Research
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
+      <section id="overview" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-12 pt-28 md:scroll-mt-28 md:pb-16 md:pt-32">
+        <p className="mb-4 inline-flex border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-sm font-semibold text-emerald-200">
           Conference
         </p>
 
-        <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-6xl">
           研討會發表與獲獎證明
         </h1>
 
@@ -127,7 +160,7 @@ export default function ConferencePage() {
 
           <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
             <section>
-              <h3 className="border-b border-emerald-300/45 pb-3 text-xl font-bold text-emerald-100">
+              <h3 className="border-b border-emerald-300/45 pb-3 text-lg font-bold text-emerald-100 md:text-xl">
                 研究動機
               </h3>
               <p className="mt-4 text-[15px] leading-8 text-slate-200 md:text-base">
@@ -136,7 +169,7 @@ export default function ConferencePage() {
             </section>
 
             <section>
-              <h3 className="border-b border-emerald-300/45 pb-3 text-xl font-bold text-emerald-100">
+              <h3 className="border-b border-emerald-300/45 pb-3 text-lg font-bold text-emerald-100 md:text-xl">
                 研究目的
               </h3>
               <ol className="mt-4 space-y-4 text-[15px] leading-8 text-slate-200 md:text-base">
@@ -156,7 +189,7 @@ export default function ConferencePage() {
           </div>
 
           <section className="mt-8">
-            <h3 className="border-b border-emerald-300/45 pb-3 text-xl font-bold text-emerald-100">
+            <h3 className="border-b border-emerald-300/45 pb-3 text-lg font-bold text-emerald-100 md:text-xl">
               研究成果
             </h3>
             <p className="mt-4 text-[15px] leading-8 text-slate-200 md:text-base">
@@ -181,7 +214,7 @@ export default function ConferencePage() {
         </article>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section id="presentation-photos" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
         <div className="mb-6">
           <h2 className="text-2xl font-bold md:text-3xl">上台報告照片</h2>
           <p className="mt-3 max-w-3xl leading-8 text-slate-300">
@@ -197,19 +230,21 @@ export default function ConferencePage() {
         />
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16">
+      <section id="recognition" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold md:text-3xl">獎項與發表證明</h2>
+        </div>
+
         <ImageLightboxGallery
-          items={certificates.map((certificate) => ({
-            ...certificate,
-            description: certificate.event,
-          }))}
+          items={recognitionItems}
           cardClassName="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-          gridClassName="grid gap-6 md:grid-cols-2"
+          gridClassName="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
           imageClassName="h-full w-full rounded-xl object-contain transition duration-300 group-hover:scale-[1.01]"
-          imageSizes="(min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="flex h-[360px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[480px]"
+          imageSizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
+          imageWrapperClassName="flex h-[390px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[520px]"
           showDescription
           showTitle
+          titleClassName="text-base font-semibold text-white md:text-lg"
           variant="emerald"
         />
       </section>

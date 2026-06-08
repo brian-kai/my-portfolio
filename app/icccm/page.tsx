@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import proofPage1 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_1.png";
@@ -36,17 +37,22 @@ const proofs = [
   },
 ];
 
+const icccmNavItems = [
+  { label: "Overview", href: "#overview" },
+  { label: "Proof", href: "#proof" },
+];
+
 export default function IcccmPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#research"
-            className="absolute left-6 border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:hidden"
+            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             Back to Research
           </Link>
@@ -58,16 +64,19 @@ export default function IcccmPage() {
             </span>
           </Link>
 
-          <Link
-            href="/#research"
-            className="hidden border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:inline-flex"
-          >
-            Back to Research
-          </Link>
+          <div className="hidden items-center gap-3 md:flex">
+            <ActiveSectionNav items={icccmNavItems} />
+            <Link
+              href="/#research"
+              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+            >
+              Back to Research
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <section id="overview" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-12 pt-28 md:scroll-mt-28 md:pb-16 md:pt-32">
         <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
           Conference Experience
         </p>
@@ -100,7 +109,7 @@ export default function IcccmPage() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section id="proof" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
         <ImageLightboxGallery
           items={proofs}
           cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"

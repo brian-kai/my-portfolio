@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ActiveSectionNav from "../active-section-nav";
 import departmentNightImage from "../image/工工之夜.jpg";
 import christmasPartyImage from "../image/耶晚.jpg";
 import cultureFestivalImage from "../image/文化季.jpg";
@@ -46,16 +47,22 @@ const photos = [
   },
 ];
 
+const associationNavItems = [
+  { label: "Overview", href: "#overview" },
+  { label: "Duties", href: "#duties" },
+  { label: "Photos", href: "#photos" },
+];
+
 export default function StudentAssociationPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(245,158,11,0.16),transparent_28%),radial-gradient(circle_at_84%_14%,rgba(34,197,94,0.1),transparent_24%),linear-gradient(180deg,#0d0c09_0%,#15120b_52%,#0d0c09_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
-      <nav className="relative z-10 border-b border-amber-200/10 bg-[#0d0c09]/88 backdrop-blur">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-amber-200/10 bg-[#0d0c09]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#student-association"
-            className="absolute left-6 border border-amber-200/50 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-amber-200/80 hover:bg-amber-300/[0.08] hover:text-white md:hidden"
+            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             Back to Student Association
           </Link>
@@ -67,16 +74,19 @@ export default function StudentAssociationPage() {
             </span>
           </Link>
 
-          <Link
-            href="/#student-association"
-            className="hidden border border-amber-200/50 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-amber-200/80 hover:bg-amber-300/[0.08] hover:text-white md:inline-flex"
-          >
-            Back to Student Association
-          </Link>
+          <div className="hidden items-center gap-3 md:flex">
+            <ActiveSectionNav items={associationNavItems} />
+            <Link
+              href="/#student-association"
+              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+            >
+              Back to Student Association
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <section id="overview" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-12 pt-28 md:scroll-mt-28 md:pb-16 md:pt-32">
         <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-amber-200">
           Student Association
         </p>
@@ -90,7 +100,7 @@ export default function StudentAssociationPage() {
         </p>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-14 md:pb-16">
+      <section id="duties" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-14 md:scroll-mt-28 md:pb-16">
         <h2 className="mb-6 text-2xl font-bold">活動職責</h2>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -116,7 +126,7 @@ export default function StudentAssociationPage() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+      <section id="photos" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
         <h2 className="mb-6 px-1 text-2xl font-bold">活動照片</h2>
 
         <ImageLightboxGallery

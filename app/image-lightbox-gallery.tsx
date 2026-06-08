@@ -21,6 +21,7 @@ type ImageLightboxGalleryProps = {
   imageWrapperClassName?: string;
   showDescription?: boolean;
   showTitle?: boolean;
+  titleClassName?: string;
   variant?: "cyan" | "emerald";
 };
 
@@ -53,6 +54,7 @@ export default function ImageLightboxGallery({
   imageWrapperClassName = "",
   showDescription = false,
   showTitle = false,
+  titleClassName = "text-lg font-semibold md:text-xl",
   variant = "cyan",
 }: ImageLightboxGalleryProps) {
   const [selectedItem, setSelectedItem] = useState<LightboxItem | null>(null);
@@ -105,7 +107,7 @@ export default function ImageLightboxGallery({
               <div className="flex flex-1 flex-col border-t border-white/10 p-4 md:p-5">
                 {showTitle ? (
                   <h3
-                    className={`text-lg font-semibold md:text-xl ${
+                    className={`${titleClassName} ${
                       actionLabel && !showDescription ? "mb-6" : ""
                     }`}
                   >

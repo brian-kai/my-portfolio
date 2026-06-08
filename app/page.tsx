@@ -157,6 +157,7 @@ const researchPublications = [
     title: "2025 中國工業工程學會年會暨學術研討會",
     href: "/conference",
     badge: "Best Paper Award",
+    subtitle: "2026台灣作業研究學會-大專校院專題競賽",
     details: [
       {
         label: "研究主題",
@@ -164,7 +165,10 @@ const researchPublications = [
       },
       {
         label: "獎項",
-        value: "最佳論文獎 — 大數據技術與應用領域",
+        value: [
+          "2025 工工年會：最佳論文獎 — 大數據技術與應用領域",
+          "2026 台灣作業研究學會大專校院專題競賽：人工智慧與大數據分析組第三名",
+        ],
       },
       {
         label: "地點",
@@ -328,7 +332,7 @@ export default function Home() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2.5">
-              {["Best Paper Award", "LLaMA 3 System", "Live SEO Tool", "NLP Research", "AI Workflow"].map(
+              {["OR Competition 3rd Place", "Best Paper Award", "LLaMA 3 System", "Live SEO Tool", "NLP Research", "AI Workflow"].map(
                 (item) => (
                   <span
                     key={item}
@@ -399,7 +403,7 @@ export default function Home() {
 
 在 AI 專案中，我能從問題拆解、資料清理、模型應用、實驗評估到成果展示參與完整流程；曾使用 Python、SQL、Pandas、NumPy、BERT、LLaMA 3、Gemma 4 等工具與模型，實作文字生成、意圖分類、問答生成、entity analysis 與資料視覺化相關任務。
 
-我希望把模型實驗轉化成可以被理解、被操作、被驗證的產品雛形，因此也重視 workflow design、介面呈現、研究說明與跨角色溝通。這個 portfolio 的核心，是展示我如何把 AI 技術、資料分析與實際使用情境連在一起。
+我希望把模型實驗轉化成可以被理解、被操作、被驗證的產品雛形，因此也重視 workflow design、介面呈現、研究說明與跨角色溝通。
           </p>
           </div>
         </div>
@@ -633,12 +637,24 @@ export default function Home() {
               className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
             >
               <div className="mb-5 flex flex-col items-start gap-3">
-                <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                  {publication.badge}
-                </span>
+                <div className="flex flex-wrap gap-2">
+                  <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
+                    {publication.badge}
+                  </span>
+                  {publication.href === "/conference" ? (
+                    <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
+                      作業研究競賽第三名
+                    </span>
+                  ) : null}
+                </div>
                 <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
                   {publication.title}
                 </h3>
+                {publication.subtitle ? (
+                  <p className="text-lg font-semibold leading-7 text-white md:text-xl md:leading-8">
+                    {publication.subtitle}
+                  </p>
+                ) : null}
               </div>
 
               <dl className="space-y-4">
@@ -648,7 +664,15 @@ export default function Home() {
                       {detail.label}
                     </dt>
                     <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
-                      {detail.value}
+                      {Array.isArray(detail.value) ? (
+                        <span className="grid gap-1">
+                          {detail.value.map((item) => (
+                            <span key={item}>{item}</span>
+                          ))}
+                        </span>
+                      ) : (
+                        detail.value
+                      )}
                     </dd>
                   </div>
                 ))}

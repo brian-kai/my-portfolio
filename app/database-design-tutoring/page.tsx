@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import tutoringPhotoOne from "../image/6BD131C2-112B-48C8-B90B-FD36B7C5F348.jpg";
@@ -44,16 +45,22 @@ const evidenceSummaries = [
   },
 ];
 
+const tutoringNavItems = [
+  { label: "Overview", href: "#overview" },
+  { label: "Summary", href: "#summary" },
+  { label: "Photos", href: "#photos" },
+];
+
 export default function DatabaseDesignTutoringPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="relative z-10 border-b border-white/10 bg-[#070a0d]/86 backdrop-blur">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#experience"
-            className="absolute left-6 border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:hidden"
+            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             Back to Experience
           </Link>
@@ -65,17 +72,20 @@ export default function DatabaseDesignTutoringPage() {
             </span>
           </Link>
 
-          <Link
-            href="/#experience"
-            className="hidden border border-emerald-300/45 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/70 hover:bg-emerald-300/[0.08] hover:text-white md:inline-flex"
-          >
-            Back to Experience
-          </Link>
+          <div className="hidden items-center gap-3 md:flex">
+            <ActiveSectionNav items={tutoringNavItems} />
+            <Link
+              href="/#experience"
+              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+            >
+              Back to Experience
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <header className="border-b border-white/10 pb-6 md:pb-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-12 pt-28 md:pb-16 md:pt-32">
+        <header id="overview" className="scroll-mt-24 border-b border-white/10 pb-6 md:scroll-mt-28 md:pb-8">
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
             私立逢甲大學
           </p>
@@ -99,7 +109,7 @@ export default function DatabaseDesignTutoringPage() {
           </div>
         </header>
 
-        <section className="py-8 md:py-10">
+        <section id="summary" className="scroll-mt-24 py-8 md:scroll-mt-28 md:py-10">
           <div className="mb-6 max-w-3xl">
             <h2 className="text-2xl font-bold md:text-3xl">
               Teaching Evidence Summary
@@ -133,7 +143,7 @@ export default function DatabaseDesignTutoringPage() {
           </div>
         </section>
 
-        <section className="py-8 md:py-10">
+        <section id="photos" className="scroll-mt-24 py-8 md:scroll-mt-28 md:py-10">
           <div className="mb-8 max-w-3xl">
             <h2 className="text-2xl font-bold md:text-3xl">
               Tutoring & Lab Support Record
