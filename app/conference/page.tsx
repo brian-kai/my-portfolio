@@ -4,6 +4,7 @@ import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
 import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.jpg";
 import orCompetitionAward from "./or-competition-award-2026.png";
+import orCompetitionAwardCeremony from "./or-competition-award-ceremony-2026.jpg";
 import bestPaperCertificate from "./2025-11-29-[CIIE2025最佳論文獎]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
 import presentationCertificate from "./2025-11-29-[CIIE2025發表證明]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
 
@@ -44,6 +45,31 @@ const awardEvidence = [
     title: "OR 競賽獎狀",
     description: "基於LLaMA 3 個人化行銷文案研究題目於2026作業研究學會-大專生競賽獲獎證明。",
     image: orCompetitionAward,
+  },
+];
+
+const awardCeremonyPhotos = [
+  {
+    title: "2026 作業研究專題競賽頒獎典禮",
+    description:
+      "於 2026 臺灣作業研究學會大專校院專題競賽中，獲得人工智慧與大數據分析組第三名。",
+    image: orCompetitionAwardCeremony,
+    alt: "2026 作業研究專題競賽第三名頒獎照片",
+    details: [
+      {
+        label: "競賽組別",
+        value: "人工智慧與大數據分析組",
+      },
+      {
+        label: "獲獎名次",
+        value: "第三名",
+        highlight: true,
+      },
+      {
+        label: "主辦單位",
+        value: "臺灣作業研究學會",
+      },
+    ],
   },
 ];
 
@@ -233,6 +259,22 @@ export default function ConferencePage() {
       <section id="recognition" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28">
         <div className="mb-6">
           <h2 className="text-2xl font-bold md:text-3xl">獎項與發表證明</h2>
+        </div>
+
+        <div className="mb-8">
+          <ImageLightboxGallery
+            items={awardCeremonyPhotos}
+            actionLabel="查看頒獎照片"
+            cardClassName="group grid overflow-hidden rounded-2xl border border-emerald-300/20 bg-white/[0.06] text-left shadow-[0_24px_80px_rgba(16,185,129,0.14)] transition hover:-translate-y-1 hover:border-emerald-300/45 hover:bg-white/[0.09] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 lg:grid-cols-[1.35fr_0.65fr]"
+            gridClassName="grid"
+            imageClassName="aspect-[16/9] h-full w-full object-cover object-[52%_48%] transition duration-300 group-hover:scale-[1.015]"
+            imageSizes="(min-width: 1024px) 62vw, 100vw"
+            imageWrapperClassName="overflow-hidden bg-slate-950/80"
+            showDescription
+            showTitle
+            titleClassName="text-xl font-black leading-tight text-white md:text-2xl"
+            variant="emerald"
+          />
         </div>
 
         <ImageLightboxGallery

@@ -9,6 +9,11 @@ type LightboxItem = {
   image: StaticImageData;
   alt?: string;
   description?: string;
+  details?: {
+    label: string;
+    value: string;
+    highlight?: boolean;
+  }[];
 };
 
 type ImageLightboxGalleryProps = {
@@ -103,7 +108,7 @@ export default function ImageLightboxGallery({
               />
             </div>
 
-            {showTitle || showDescription || actionLabel ? (
+            {showTitle || showDescription || item.details || actionLabel ? (
               <div className="flex flex-1 flex-col border-t border-white/10 p-4 md:p-5">
                 {showTitle ? (
                   <h3
@@ -119,6 +124,34 @@ export default function ImageLightboxGallery({
                   <p className="mb-6 mt-2 text-[15px] leading-7 text-slate-300 md:text-base">
                     {item.description}
                   </p>
+                ) : null}
+
+                {item.details ? (
+                  <dl className="mb-6 grid gap-3">
+                    {item.details.map((detail) => (
+                      <div
+                        key={detail.label}
+                        className={`rounded-xl border px-4 py-3 ${
+                          detail.highlight
+                            ? "border-emerald-300/45 bg-emerald-300/[0.12]"
+                            : "border-white/10 bg-white/[0.045]"
+                        }`}
+                      >
+                        <dt className="text-xs font-semibold text-slate-400">
+                          {detail.label}
+                        </dt>
+                        <dd
+                          className={`mt-1 font-bold ${
+                            detail.highlight
+                              ? "text-emerald-100"
+                              : "text-slate-100"
+                          }`}
+                        >
+                          {detail.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 ) : null}
 
                 {actionLabel ? (
