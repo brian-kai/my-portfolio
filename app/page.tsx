@@ -220,13 +220,13 @@ const featuredProjects = [
     href: "/llama-marketing-system",
     action: "View Website",
     tags: ["LLaMA 3", "NLP", "TextRank", "K-Means", "HDBSCAN"],
-    problem:
-      "行銷文案生成不能只追求流暢文字，也需要理解產品特徵、消費者偏好與語意重點，才能讓 AI 產出更接近真實使用情境。",
-    method:
-      "以 LLaMA 3 作為生成核心，結合 TextRank 關鍵字擷取、K-Means / HDBSCAN 分群與文案語意分析，整理成可展示的網站流程。",
-    outcome:
-      "已整理成可瀏覽的 case study 頁面，將資料前處理、偏好分群、語意分析與文案生成流程拆成模組展示，並保留訓練 loss、分群圖與 heatmap 作為研究成果視覺。",
-    tech: ["LLaMA 3", "TextRank", "K-Means", "HDBSCAN", "Next.js"],
+    summary:
+      "以 LLaMA 3 分析消費者偏好，並生成更貼近產品特徵的個人化行銷文案。",
+    proofPoints: [
+      "結合 TextRank、情感分析、分群方法與 LLaMA 3 文案生成流程。",
+      "整理訓練 loss、分群結果與評論/描述 heatmap 作為研究視覺證據。",
+      "延伸為 CIIE 最佳論文獎與作業研究專題競賽獲獎成果。",
+    ],
   },
   {
     title: "4G SEO Entity Analysis Tool",
@@ -234,13 +234,13 @@ const featuredProjects = [
     href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
     action: "Live Demo",
     tags: ["SEO Tool", "SERP API", "Entity Analysis", "Google Sheets"],
-    problem:
-      "SEO 內容策略需要快速理解搜尋結果中的競品頁面、實體關鍵詞與內容方向，手動整理會耗費大量時間。",
-    method:
-      "串接 SERP API 擷取 Google 搜尋結果，進行 entity analysis，並將整理後的結果輸出到 Google Sheets，形成可重複使用的分析流程。",
-    outcome:
-      "已完成可線上操作的 Live Demo，使用者可以從搜尋結果擷取、entity analysis 到 Google Sheets 輸出看到完整 workflow，呈現資料處理與產品化介面的串接能力。",
-    tech: ["SERP API", "Entity Analysis", "Google Sheets", "Vercel", "Supabase"],
+    summary:
+      "一個可線上操作的 SEO 分析工具，用來擷取 SERP 實體並輸出結構化洞察到 Google Sheets。",
+    proofPoints: [
+      "串接 SERP API，進行 entity extraction 與關鍵詞比較。",
+      "將 SEO 研究流程自動化，產出可重複使用的內容規劃資料。",
+      "部署成 Vercel live demo，呈現完整的端到端產品介面。",
+    ],
   },
 ];
 
@@ -249,40 +249,44 @@ const supportingProjects = [
     title: "Intent Classification & QA Generation",
     status: "Ongoing",
     tags: ["BERT-BiLSTM", "Gemma 4", "Intent QA", "Knowledge Distillation"],
-    problem: "希望建立能理解使用者語意、判斷 intent，並產生 QA 回覆的智慧問答流程。",
-    method: "使用 BERT-BiLSTM、Knowledge Distillation 與 Gemma 4 進行意圖分類與回答生成實作。",
-    outcome: "目前作為 NLP / LLM 應用實驗，已明確拆分 intent classification、QA generation 與 structured response generation 三個工作面向，適合後續整理成客服語意理解 prototype。",
-    tech: ["BERT-BiLSTM", "Gemma 4", "QA Generation"],
+    summary:
+      "建立結合 BERT-BiLSTM、Gemma 4 與知識蒸餾的意圖分類與 QA 生成流程。",
+    problem: "判斷使用者 intent，並生成可用的 QA 回覆。",
+    method: "使用 BERT-BiLSTM、Gemma 4 與 knowledge distillation。",
+    outcome: "整理為語意理解與 QA workflow 的 NLP prototype。",
   },
   {
     title: "LLaMA 3 個人化行銷文案研究",
     href: "/file/畢業專題海報檔案.pdf",
     action: "View Poster",
     tags: ["Best Paper", "LLaMA 3", "BLEU", "METEOR"],
-    problem: "研究如何讓 LLM 生成更符合消費者偏好與產品特徵的個人化行銷文案。",
-    method: "以 LLaMA 3 生成文案，搭配 TextBlob、TextRank、K-Means、BLEU、METEOR 做分析與模型評估。",
-    outcome: "完成研究海報、生成品質評估流程與會議發表材料，並以此研究獲得 2025 中國工業工程學會年會暨學術研討會大數據技術與應用領域 Best Paper Award。",
-    tech: ["LLaMA 3", "BLEU", "METEOR", "TextBlob"],
+    summary:
+      "個人化行銷文案生成研究海報，包含 BLEU、METEOR 評估與研討會獲獎證明。",
+    problem: "生成更符合消費者偏好與產品特徵的行銷文案。",
+    method: "結合 LLaMA 3、TextBlob、TextRank、K-Means 與評估指標。",
+    outcome: "完成研究發表材料，並獲得 Best Paper Award。",
   },
   {
     title: "用電趨勢分析",
     href: "/file/期末專題成果報告-用電趨勢分析海報.pdf",
     action: "View Poster",
     tags: ["Data Analysis", "Python", "Visualization"],
-    problem: "需要從用電資料中整理變化趨勢，觀察不同時間區間的用電特徵。",
-    method: "使用 Python 進行 data cleaning、trend analysis 與 data visualization。",
-    outcome: "完成專題成果海報，把資料清理、趨勢觀察與視覺化圖表整理成可閱讀的分析敘事，可作為資料分析流程與簡報能力的佐證。",
-    tech: ["Python", "Data Cleaning", "Visualization"],
+    summary:
+      "使用 Python 進行資料清理、趨勢探索與用電模式視覺化的資料分析專題。",
+    problem: "從用電資料中找出可解讀的變化趨勢。",
+    method: "進行資料清理、趨勢分析與 Python 視覺化整理。",
+    outcome: "完成可用於海報展示的資料分析敘事。",
   },
   {
     title: "IVE K-pop Fan Website",
     href: "/ive",
     action: "View Website",
     tags: ["Frontend", "JSP", "Tailwind CSS"],
-    problem: "以前端練習為目標，設計一個具備成員介紹與內容展示的主題網站。",
-    method: "使用 JSP 與 Tailwind CSS 規劃響應式版面與內容呈現。",
-    outcome: "完成可瀏覽的 fan website，包含成員介紹、音樂作品、互動任務與測驗內容，作為 frontend layout、互動狀態與內容組織的練習作品。",
-    tech: ["JSP", "Tailwind CSS", "Responsive Layout"],
+    summary:
+      "以前端練習為核心，聚焦響應式版面、視覺層級與粉絲網站內容架構。",
+    problem: "建立內容豐富且主題明確的 fan website。",
+    method: "使用 JSP 與 Tailwind CSS 製作響應式頁面。",
+    outcome: "完成可瀏覽、內容結構清楚的前端作品。",
   },
 ];
 
@@ -475,7 +479,23 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="mb-6 flex flex-wrap gap-2">
+                <p className="mb-6 text-[15px] leading-7 text-slate-300 md:text-base">
+                  {project.summary}
+                </p>
+
+                <ul className="mb-6 grid gap-3 text-[15px] leading-7 text-slate-200">
+                  {project.proofPoints.map((point) => (
+                    <li key={point} className="flex gap-3">
+                      <span
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300"
+                        aria-hidden="true"
+                      />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -483,24 +503,6 @@ export default function Home() {
                     >
                       {tag}
                     </span>
-                  ))}
-                </div>
-
-                <div className="grid gap-4">
-                  {[
-                    ["Problem", project.problem],
-                    ["Method", project.method],
-                    ["Outcome", project.outcome],
-                    ["Tech", project.tech.join(" / ")],
-                  ].map(([label, value]) => (
-                    <div key={label} className="border-l border-emerald-300/35 pl-4">
-                      <p className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
-                        {label}
-                      </p>
-                      <p className="mt-1 text-[15px] leading-7 text-slate-300">
-                        {value}
-                      </p>
-                    </div>
                   ))}
                 </div>
               </a>
@@ -532,7 +534,26 @@ export default function Home() {
                   ) : null}
                 </div>
 
-                <div className="mb-5 flex flex-wrap gap-2">
+                <p className="mb-5 text-[15px] leading-7 text-slate-300">
+                  {project.summary}
+                </p>
+
+                <div className="mb-5 grid gap-3 text-sm leading-6 text-slate-300">
+                  {[
+                    ["Problem", project.problem],
+                    ["Method", project.method],
+                    ["Outcome", project.outcome],
+                  ].map(([label, value]) => (
+                    <p key={label}>
+                      <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
+                        {label}
+                      </span>{" "}
+                      {value}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -541,27 +562,6 @@ export default function Home() {
                       {tag}
                     </span>
                   ))}
-                </div>
-
-                <div className="space-y-3 text-sm leading-6 text-slate-300">
-                  <p>
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
-                      Problem
-                    </span>{" "}
-                    {project.problem}
-                  </p>
-                  <p>
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
-                      Method
-                    </span>{" "}
-                    {project.method}
-                  </p>
-                  <p>
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
-                      Outcome
-                    </span>{" "}
-                    {project.outcome}
-                  </p>
                 </div>
 
                 {project.action ? (

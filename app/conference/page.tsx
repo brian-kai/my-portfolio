@@ -10,12 +10,14 @@ import presentationCertificate from "./2025-11-29-[CIIE2025發表證明]基於LL
 
 const presentationPhotos = [
   {
-    title: "CIIE 2025 Presentation Photo 1",
+    title: "研究成果發表現場",
+    description: "於簡報中說明研究流程、資料分析方法與個人化文案生成結果。",
     image: presentationPhotoOne,
     alt: "2025 中國工業工程學會年會上台報告照片一",
   },
   {
-    title: "CIIE 2025 Presentation Photo 2",
+    title: "口頭簡報與答詢",
+    description: "針對 LLaMA 3 結合消費者偏好的研究設計進行口頭發表。",
     image: presentationPhotoTwo,
     alt: "2025 中國工業工程學會年會上台報告照片二",
   },
@@ -243,16 +245,22 @@ export default function ConferencePage() {
       <section id="presentation-photos" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
         <div className="mb-6">
           <h2 className="text-2xl font-bold md:text-3xl">上台報告照片</h2>
-          <p className="mt-3 max-w-3xl leading-8 text-slate-300">
-            於 2025 中國工業工程學會年會暨學術研討會進行研究成果發表。
+          <p className="mt-3 max-w-5xl leading-8 text-slate-300">
+            於 2025 中國工業工程學會年會暨學術研討會進行口頭發表，分享 LLaMA 3 結合消費者偏好的行銷文案生成研究。
           </p>
         </div>
 
         <ImageLightboxGallery
           items={presentationPhotos}
+          actionLabel="View Photo"
+          cardClassName="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.045] text-left transition hover:-translate-y-1 hover:border-emerald-300/35 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
           gridClassName="grid gap-6 md:grid-cols-2"
-          imageClassName="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+          imageClassName="aspect-[4/3] w-full object-cover object-center brightness-[0.94] saturate-[0.92] contrast-[1.06] transition duration-300 group-hover:scale-[1.02] group-hover:brightness-100"
           imageSizes="(min-width: 768px) 50vw, 100vw"
+          showDescription
+          showTitle
+          titleClassName="text-base font-bold text-white md:text-lg"
+          variant="emerald"
         />
       </section>
 
@@ -264,7 +272,7 @@ export default function ConferencePage() {
         <div className="mb-8">
           <ImageLightboxGallery
             items={awardCeremonyPhotos}
-            actionLabel="查看頒獎照片"
+            actionLabel="View Award Photo"
             cardClassName="group grid overflow-hidden rounded-2xl border border-emerald-300/20 bg-white/[0.06] text-left shadow-[0_24px_80px_rgba(16,185,129,0.14)] transition hover:-translate-y-1 hover:border-emerald-300/45 hover:bg-white/[0.09] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 lg:grid-cols-[1.35fr_0.65fr]"
             gridClassName="grid"
             imageClassName="aspect-[16/9] h-full w-full object-cover object-[52%_48%] transition duration-300 group-hover:scale-[1.015]"
