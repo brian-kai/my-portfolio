@@ -168,11 +168,8 @@ const researchPublications = [
         value: [
           "2025 工工年會：最佳論文獎 — 大數據技術與應用領域",
           "2026 台灣作業研究學會大專校院專題競賽：人工智慧與大數據分析組第三名",
+          "逢甲大學工業工程與系統管理學系-114學年度畢業專題第二名",
         ],
-      },
-      {
-        label: "地點",
-        value: "高雄科技大學",
       },
     ],
     tags: ["LLaMA 3", "NLP", "Marketing Copy", "Best Paper"],
@@ -575,52 +572,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="honors"
-        className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20"
-      >
-        <div className="mb-8 max-w-3xl">
-          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Honors & recognition
-          </p>
-          <h2 className="text-3xl font-bold md:text-4xl">Honors</h2>
-        </div>
-
-        <Link
-          href={honors[0].href}
-          className="group block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
-        >
-          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-            <div className="max-w-4xl">
-              <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200">
-                {honors[0].badge}
-              </span>
-              <h3 className="mt-4 text-xl font-semibold leading-7 text-white md:text-2xl">
-                {honors[0].title}
-              </h3>
-              <p className="mt-4 max-w-3xl text-[15px] leading-7 text-slate-300 [text-wrap:pretty] md:text-base md:leading-8">
-                {honors[0].description}
-              </p>
-
-              <div className="mt-6 inline-flex w-fit items-center justify-center border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition group-hover:border-emerald-300/60 group-hover:bg-emerald-300/[0.14]">
-                {honors[0].action}
-              </div>
-            </div>
-
-            <div className="flex max-w-sm flex-wrap gap-2 md:justify-end">
-              {honors[0].tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-white/10 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </Link>
-      </section>
-
       <section id="research" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <div className="mb-8">
           <h2 className="text-3xl font-bold">Research & Publications</h2>
@@ -643,7 +594,7 @@ export default function Home() {
                   </span>
                   {publication.href === "/conference" ? (
                     <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                      作業研究競賽第三名
+                      Operations Research Project Competition Third Place
                     </span>
                   ) : null}
                 </div>
@@ -700,7 +651,88 @@ export default function Home() {
       <section id="experience" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-8 text-3xl font-bold">Experience</h2>
 
-        <h3 className="mb-5 text-2xl font-semibold">
+        <h3 className="mb-5 text-2xl font-semibold">Honors & recognition</h3>
+        <Link
+          href={honors[0].href}
+          className="group block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div className="max-w-4xl">
+              <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200">
+                {honors[0].badge}
+              </span>
+              <h3 className="mt-4 text-xl font-semibold leading-7 text-white md:text-2xl">
+                {honors[0].title}
+              </h3>
+              <p className="mt-4 max-w-3xl text-[15px] leading-7 text-slate-300 [text-wrap:pretty] md:text-base md:leading-8">
+                {honors[0].description}
+              </p>
+
+              <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition group-hover:border-emerald-300/60 group-hover:bg-emerald-300/[0.14]">
+                {honors[0].action}
+              </div>
+            </div>
+
+            <div className="flex max-w-sm flex-wrap gap-2 md:justify-end">
+              {honors[0].tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-white/10 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Link>
+
+        <h3
+          id="student-association"
+          className="mb-5 mt-12 text-2xl font-semibold"
+        >
+          Leadership Evidence
+        </h3>
+        <div className="grid gap-6">
+          {highlights
+            .filter((highlight) => highlight.href === "/student-association")
+            .map((highlight) => (
+              <Link
+                key={highlight.title}
+                href={highlight.href}
+                className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+              >
+                <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
+                    {highlight.title}
+                  </h3>
+                  <span className="w-fit shrink-0 border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
+                    {highlight.badge}
+                  </span>
+                </div>
+
+                <p className="text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
+                  {highlight.description}
+                </p>
+
+                <div className="mb-6 mt-5 flex flex-wrap gap-2">
+                  {highlight.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
+                  View Details
+                </div>
+              </Link>
+            ))}
+        </div>
+
+        <h3 className="mb-5 mt-12 text-2xl font-semibold">
           Academic & Work Experience
         </h3>
         <div className="grid gap-6">
@@ -753,51 +785,6 @@ export default function Home() {
           })}
         </div>
 
-        <h3
-          id="student-association"
-          className="mb-5 mt-12 text-2xl font-semibold"
-        >
-          Leadership Evidence
-        </h3>
-        <div className="grid gap-6">
-          {highlights
-            .filter((highlight) => highlight.href === "/student-association")
-            .map((highlight) => (
-              <Link
-                key={highlight.title}
-                href={highlight.href}
-                className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
-              >
-                <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
-                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
-                    {highlight.title}
-                  </h3>
-                  <span className="w-fit shrink-0 border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
-                    {highlight.badge}
-                  </span>
-                </div>
-
-                <p className="text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
-                  {highlight.description}
-                </p>
-
-                <div className="mb-6 mt-5 flex flex-wrap gap-2">
-                  {highlight.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
-                  View Details
-                </div>
-              </Link>
-            ))}
-        </div>
       </section>
 
       <section id="certificates" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">

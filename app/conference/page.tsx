@@ -3,6 +3,7 @@ import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
 import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.jpg";
+import graduateProjectAward from "../image/graduate-project-award.png";
 import orCompetitionAward from "./or-competition-award-2026.png";
 import orCompetitionAwardCeremony from "./or-competition-award-ceremony-2026.jpg";
 import bestPaperCertificate from "./2025-11-29-[CIIE2025最佳論文獎]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
@@ -47,6 +48,13 @@ const awardEvidence = [
     title: "OR 競賽獎狀",
     description: "基於LLaMA 3 個人化行銷文案研究題目於2026作業研究學會-大專生競賽獲獎證明。",
     image: orCompetitionAward,
+  },
+  {
+    title: "畢業專題獎狀",
+    description:
+      "畢業專題成果的正式獎狀證明，與研究成果、專題競賽和發表紀錄放在同一脈絡中呈現。",
+    image: graduateProjectAward,
+    alt: "畢業專題獎狀",
   },
 ];
 

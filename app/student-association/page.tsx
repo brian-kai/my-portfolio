@@ -4,6 +4,9 @@ import departmentNightImage from "../image/工工之夜.jpg";
 import christmasPartyImage from "../image/耶晚.jpg";
 import cultureFestivalImage from "../image/文化季.jpg";
 import ImageLightboxGallery from "../image-lightbox-gallery";
+import studentAssociationAward from "../image/student-association-award.png";
+import LightboxImage from "../lightbox-image";
+import AwardProofSection from "./award-proof-section";
 
 const experiences = [
   {
@@ -49,7 +52,7 @@ const photos = [
 
 const associationNavItems = [
   { label: "Overview", href: "#overview" },
-  { label: "Duties", href: "#duties" },
+  { label: "Award", href: "#award" },
   { label: "Photos", href: "#photos" },
 ];
 
@@ -75,7 +78,7 @@ export default function StudentAssociationPage() {
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={associationNavItems} />
+            <ActiveSectionNav items={associationNavItems} variant="amber" />
             <Link
               href="/#student-association"
               className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
@@ -100,7 +103,7 @@ export default function StudentAssociationPage() {
         </p>
       </section>
 
-      <section id="duties" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-14 md:scroll-mt-28 md:pb-16">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-14 md:pb-16">
         <h2 className="mb-6 text-2xl font-bold">活動職責</h2>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -123,6 +126,81 @@ export default function StudentAssociationPage() {
               </p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <AwardProofSection />
+
+      <section
+        id="award-old"
+        className="hidden"
+      >
+        <div className="mb-7 grid gap-4 md:grid-cols-[minmax(0,0.74fr)_minmax(16rem,0.26fr)] md:items-end">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/80">
+              Official proof
+            </p>
+            <h2 className="text-3xl font-black leading-tight text-white md:text-4xl">
+              系學會正式證明
+            </h2>
+          </div>
+          <p className="max-w-sm text-[15px] leading-7 text-slate-300 md:text-right">
+            獎狀、職責與照片放在同一頁，讓系學會經歷有完整的證據鏈。
+          </p>
+        </div>
+
+        <div className="overflow-hidden rounded-lg border border-amber-200/20 bg-[#15120b]/88 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+          <div className="grid lg:grid-cols-[minmax(0,0.76fr)_minmax(16rem,0.24fr)]">
+            <div className="bg-white p-2 md:p-4">
+              <LightboxImage
+                src={studentAssociationAward}
+                alt="系學獎狀"
+                actionLabel="View Award"
+                actionClassName="m-3 inline-flex w-fit items-center justify-center rounded-lg border border-amber-200/55 bg-[#15120b] px-5 py-2.5 text-sm font-bold text-amber-50 shadow-[0_14px_32px_rgba(245,158,11,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-amber-200/80 group-hover:bg-[#1b160d]"
+                className="h-auto max-h-[720px] w-full object-contain"
+                sizes="(min-width: 1024px) 820px, calc(100vw - 48px)"
+                priority
+              />
+            </div>
+
+            <aside className="flex flex-col border-t border-amber-200/15 p-5 md:p-6 lg:border-l lg:border-t-0">
+              <span className="w-fit border border-amber-200/25 bg-amber-200/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-100">
+                Leadership Evidence
+              </span>
+
+              <h3 className="mt-6 text-2xl font-black leading-tight text-white">
+                系學獎狀
+              </h3>
+
+              <p className="mt-4 text-[15px] leading-8 text-slate-300">
+                系學會經歷的正式獎狀證明，補強活動規劃、團隊協作、現場執行與服務貢獻。
+              </p>
+
+              <div className="mt-7 grid gap-3 text-sm leading-6 text-slate-300">
+                {[
+                  ["Position", "活動組長"],
+                  ["Evidence", "服務獎狀"],
+                  ["Context", "工業工程與系統管理學系系學會"],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="border-l border-amber-200/35 bg-white/[0.035] px-4 py-3"
+                  >
+                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-200/80">
+                      {label}
+                    </p>
+                    <p className="mt-1 font-semibold text-slate-100">{value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-auto pt-7">
+                <p className="text-xs leading-6 text-slate-400">
+                  使用獎狀下方按鈕可放大檢視。
+                </p>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 

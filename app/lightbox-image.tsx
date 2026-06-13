@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 type LightboxImageProps = {
+  actionClassName?: string;
+  actionLabel?: string;
   alt: string;
   className?: string;
   priority?: boolean;
@@ -13,6 +15,8 @@ type LightboxImageProps = {
 };
 
 export default function LightboxImage({
+  actionClassName,
+  actionLabel,
   alt,
   className,
   priority,
@@ -56,6 +60,16 @@ export default function LightboxImage({
           priority={priority}
           sizes={sizes}
         />
+        {actionLabel ? (
+          <span
+            className={
+              actionClassName ??
+              "m-3 inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-900 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16]"
+            }
+          >
+            {actionLabel}
+          </span>
+        ) : null}
         <span className="sr-only">View larger image</span>
       </button>
 

@@ -7,7 +7,22 @@ type NavItem = {
   href: string;
 };
 
-export default function ActiveSectionNav({ items }: { items: NavItem[] }) {
+type ActiveSectionNavProps = {
+  items: NavItem[];
+  variant?: "emerald" | "amber";
+};
+
+const activeVariantClasses = {
+  emerald:
+    "border border-emerald-300/35 bg-emerald-300/[0.1] text-emerald-100 shadow-[0_10px_28px_rgba(16,185,129,0.12)]",
+  amber:
+    "border border-amber-200/35 bg-amber-200/[0.1] text-amber-100 shadow-[0_10px_28px_rgba(245,158,11,0.12)]",
+};
+
+export default function ActiveSectionNav({
+  items,
+  variant = "emerald",
+}: ActiveSectionNavProps) {
   const [activeHref, setActiveHref] = useState<string | null>(null);
 
   const scrollToSection = (
@@ -88,7 +103,7 @@ export default function ActiveSectionNav({ items }: { items: NavItem[] }) {
             aria-current={isActive ? "true" : undefined}
             className={`rounded-lg px-3 py-2 transition ${
               isActive
-                ? "border border-emerald-300/35 bg-emerald-300/[0.1] text-emerald-100 shadow-[0_10px_28px_rgba(16,185,129,0.12)]"
+                ? activeVariantClasses[variant]
                 : "hover:bg-white/[0.06] hover:text-white"
             }`}
           >

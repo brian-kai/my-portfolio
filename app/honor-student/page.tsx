@@ -71,7 +71,7 @@ export default function HonorStudentPage() {
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
-            href="/#honors"
+            href="/#experience"
             className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             Back to Honors
@@ -87,7 +87,7 @@ export default function HonorStudentPage() {
           <div className="hidden items-center gap-3 md:flex">
             <ActiveSectionNav items={honorNavItems} />
             <Link
-              href="/#honors"
+              href="/#experience"
               className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
             >
               Back to Honors
