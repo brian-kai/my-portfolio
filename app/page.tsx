@@ -3,7 +3,9 @@ import Link from "next/link";
 import ActiveSectionNav from "./active-section-nav";
 import AiProfilePanel from "./ai-profile-panel";
 import CertificateGrid from "./certificate-grid";
+import { EvidenceButton } from "./evidence-drawer";
 import MobileMenu from "./mobile-menu";
+import SkillWorkMatrix from "./skill-work-matrix";
 import aiatclCertificate from "./image/AIATCL.jpg";
 import aiCertificate from "./image/AI證照.png";
 import googleCertificate from "./image/GOOGLE證照.png";
@@ -63,6 +65,8 @@ const skills = [
     ],
   },
 ];
+
+void skills;
 
 const certificates = [
   {
@@ -396,11 +400,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
+      <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
-          <div className="max-w-none">
+          <div className="hidden">
             <p
               lang="zh-Hant"
               className="text-base leading-8 text-slate-300"
@@ -412,62 +416,108 @@ export default function Home() {
 我希望把模型實驗轉化成可以被理解、被操作、被驗證的產品雛形，因此也重視 workflow design、介面呈現、研究說明與跨角色溝通。
           </p>
           </div>
-        </div>
-      </section>
 
-      <section id="skills" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
-        <h2 className="mb-6 text-3xl font-bold md:mb-8">Skills</h2>
-
-        <div className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur md:p-8">
-          {skills.map((skill) => (
-            <article
-              key={skill.category}
-              className="border-b border-white/10 py-5 first:pt-0 last:border-b-0 last:pb-0 md:py-6"
-            >
-              <h3 className="text-lg font-bold md:text-xl">
-                {skill.category}
-              </h3>
-
-              <p className="mt-3 max-w-5xl text-[15px] leading-7 text-slate-200 md:text-base md:leading-8">
-                {skill.description}
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1fr)] lg:items-start">
+            <div>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+                AI workflow builder
               </p>
+              <p
+                lang="zh-Hant"
+                className="mt-4 max-w-3xl text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10"
+              >
+                我專注於 NLP、LLM 與資料工作流，擅長把模型實驗整理成可展示、可驗證、可操作的 AI 工具與研究成果。
+              </p>
+              <p
+                lang="zh-Hant"
+                className="mt-5 max-w-3xl text-base leading-8 text-slate-300"
+              >
+                在專案中，我從問題拆解、資料清理、模型應用、實驗評估到成果展示參與完整流程，並重視 workflow design、介面呈現與跨角色溝通。
+              </p>
+            </div>
 
-              <div className="mt-4 flex flex-wrap gap-2 md:mt-5">
-                {skill.items.map((item) => (
-                  <span
-                    key={item}
-                    className="border border-emerald-300/15 bg-emerald-300/[0.07] px-2 py-1 font-mono text-[11px] font-semibold leading-5 text-emerald-50 md:text-xs"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+            <div className="grid gap-3 md:grid-cols-3 lg:grid-cols-1">
+              {[
+                {
+                  title: "AI Workflow",
+                  text: "問題拆解、資料清理、模型應用、實驗評估與成果展示。",
+                },
+                {
+                  title: "NLP / LLM",
+                  text: "LLaMA 3、BERT、Gemma、文字生成、意圖分類與問答生成。",
+                },
+                {
+                  title: "Data Product",
+                  text: "Python、SQL、Pandas、資料視覺化、demo deployment 與產品化呈現。",
+                },
+              ].map((item) => (
+                <article
+                  key={item.title}
+                  className="border border-white/10 bg-slate-950/35 p-4"
+                >
+                  <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                    {item.text}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-2 border-t border-white/10 pt-6">
+            {[
+              "Best Paper Award",
+              "LLaMA 3 System",
+              "SEO Live Demo",
+              "Database TA",
+              "Google Data Analytics",
+              "AI / ML Certificate",
+            ].map((item) => (
+              <span
+                key={item}
+                className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1.5 text-xs font-semibold text-emerald-100"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="projects" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-24">
-        <div className="mb-12 max-w-4xl">
+      <section id="skills" className="relative mx-auto max-w-[90rem] px-6 py-16 md:px-8 md:py-20">
+        <SkillWorkMatrix />
+      </section>
+
+      <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
+        <div className="mb-12 border-b border-white/10 pb-8">
+          <div>
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
             Featured case studies
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Projects</h2>
+          </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr]">
           {featuredProjects.map((project) => {
             const isExternal = project.href.startsWith("http");
 
             return (
-              <a
+              <article
                 key={project.title}
-                href={project.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className="group flex h-full flex-col border border-white/10 bg-white/[0.055] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.2)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.075] md:p-7"
+                className="group relative flex h-full flex-col border border-white/10 bg-white/[0.055] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.2)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.075] focus-within:ring-2 focus-within:ring-emerald-300/70 md:p-7"
               >
-                <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
+                <a
+                  href={project.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  aria-label={`${project.action} for ${project.title}`}
+                  className="absolute inset-0 z-10"
+                />
+
+                <div className="pointer-events-none mb-5 flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                       {project.badge}
@@ -481,11 +531,11 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="mb-6 text-[15px] leading-7 text-slate-300 md:text-base">
+                <p className="pointer-events-none mb-6 text-[15px] leading-7 text-slate-300 md:text-base">
                   {project.summary}
                 </p>
 
-                <ul className="mb-6 grid gap-3 text-[15px] leading-7 text-slate-200">
+                <ul className="pointer-events-none mb-6 grid gap-3 text-[15px] leading-7 text-slate-200">
                   {project.proofPoints.map((point) => (
                     <li key={point} className="flex gap-3">
                       <span
@@ -497,7 +547,7 @@ export default function Home() {
                   ))}
                 </ul>
 
-                <div className="mt-auto flex flex-wrap gap-2">
+                <div className="pointer-events-none mt-auto flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -507,12 +557,40 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </a>
+
+                <div className="relative z-20 mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a
+                    href={project.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-4 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white sm:w-auto"
+                  >
+                    {project.action}
+                  </a>
+                  <EvidenceButton
+                    buttonLabel="Evidence"
+                    evidence={{
+                      title: project.title,
+                      type: project.badge,
+                      proofLinks: [
+                        { label: project.action, href: project.href },
+                        { label: "Projects section", href: "#projects" },
+                      ],
+                      whyItMatters:
+                        "This project connects a concrete AI or data problem to a visible artifact, making the work easier to verify during portfolio review.",
+                      relatedWork: [
+                        { label: "Research evidence", href: "#research" },
+                        { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
+                      ],
+                    }}
+                  />
+                </div>
+              </article>
             );
           })}
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div className="mt-8 grid gap-4 border-t border-white/10 pt-8 md:grid-cols-2 xl:grid-cols-4">
           {supportingProjects.map((project) => {
             const isExternal = project.href?.startsWith("http");
             const CardTag = project.href ? "a" : "article";
@@ -577,92 +655,151 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="research" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
+      <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold">Research & Publications</h2>
-          <p className="mt-4 max-w-3xl leading-8 text-slate-300">
-            研究成果聚焦於大型語言模型、自然語言處理與智慧文字生成，包含學術研討會發表與最佳論文獎紀錄。
-          </p>
+          <div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              Evidence ledger
+            </p>
+            <h2 className="text-3xl font-bold">Research & Publications</h2>
+          </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="divide-y divide-white/10 border-y border-white/10">
           {researchPublications.map((publication) => (
-            <Link
+            <article
               key={publication.title}
-              href={publication.href}
-              className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+              className="group relative grid gap-6 py-7 transition hover:bg-white/[0.035] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(24rem,1fr)] lg:gap-10"
             >
-              <div className="mb-5 flex flex-col items-start gap-3">
-                <div className="flex flex-wrap gap-2">
-                  <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                    {publication.badge}
-                  </span>
-                  {publication.href === "/conference" ? (
+              <Link
+                href={publication.href}
+                aria-label={`View details for ${publication.title}`}
+                className="absolute inset-0 z-10"
+              />
+
+              <div className="flex min-w-0 flex-col lg:h-full">
+                <div className="pointer-events-none flex flex-col items-start gap-3">
+                  <div className="flex flex-wrap gap-2">
                     <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                      Operations Research Project Competition Third Place
+                      {publication.badge}
                     </span>
+                    {publication.href === "/conference" ? (
+                      <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
+                        Operations Research Project Competition Third Place
+                      </span>
+                    ) : null}
+                  </div>
+                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
+                    {publication.title}
+                  </h3>
+                  {publication.subtitle ? (
+                    <p className="text-lg font-semibold leading-7 text-white md:text-xl md:leading-8">
+                      {publication.subtitle}
+                    </p>
                   ) : null}
                 </div>
-                <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
-                  {publication.title}
-                </h3>
-                {publication.subtitle ? (
-                  <p className="text-lg font-semibold leading-7 text-white md:text-xl md:leading-8">
-                    {publication.subtitle}
+
+                <div className="pointer-events-none mt-6 border-l border-emerald-300/35 pl-4">
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Evidence focus
                   </p>
-                ) : null}
-              </div>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-100">
+                    {publication.badge}
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
+                    {publication.tags.slice(0, 3).join(" / ")}
+                  </p>
+                </div>
 
-              <dl className="space-y-4">
-                {publication.details.map((detail) => (
-                  <div key={detail.label}>
-                    <dt className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                      {detail.label}
-                    </dt>
-                    <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
-                      {Array.isArray(detail.value) ? (
-                        <span className="grid gap-1">
-                          {detail.value.map((item) => (
-                            <span key={item}>{item}</span>
-                          ))}
-                        </span>
-                      ) : (
-                        detail.value
-                      )}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              <div className="mb-6 mt-6 flex flex-wrap gap-2">
-                {publication.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
+                <div className="relative z-20 mt-auto flex flex-col gap-3 pt-8 sm:flex-row sm:flex-wrap">
+                  <Link
+                    href={publication.href}
+                    className="inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white sm:w-auto"
                   >
-                    {tag}
-                  </span>
-                ))}
+                    View Details
+                  </Link>
+                  <EvidenceButton
+                    buttonLabel="Evidence"
+                    evidence={{
+                      title: publication.title,
+                      type: publication.badge,
+                      proofLinks: [
+                        { label: "Detail page", href: publication.href },
+                        { label: "Research section", href: "#research" },
+                      ],
+                      whyItMatters:
+                        "This research item gives external validation for AI and NLP work through presentation, award, or publication evidence.",
+                      relatedWork: [
+                        { label: "LLaMA 3 case study", href: "/llama-marketing-system" },
+                        { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
+                      ],
+                    }}
+                  />
+                </div>
               </div>
 
-              <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
-                View Details
+              <div className="pointer-events-none min-w-0 border border-white/10 bg-slate-950/25 p-5">
+                <dl className="grid gap-4">
+                  {publication.details.map((detail) => (
+                    <div
+                      key={detail.label}
+                    >
+                      <dt className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                        {detail.label}
+                      </dt>
+                      <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
+                        {Array.isArray(detail.value) ? (
+                          <span className="grid gap-1">
+                            {detail.value.map((item) => (
+                              <span key={item}>{item}</span>
+                            ))}
+                          </span>
+                        ) : (
+                          detail.value
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {publication.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       </section>
 
-      <section id="experience" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
-        <h2 className="mb-8 text-3xl font-bold">Experience</h2>
+      <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
+        <div className="mb-8">
+          <div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              Timeline
+            </p>
+            <h2 className="text-3xl font-bold">Experience</h2>
+          </div>
+        </div>
 
         <h3 className="mb-5 text-2xl font-semibold">Honors & recognition</h3>
-        <Link
-          href={honors[0].href}
-          className="group block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+        <article
+          className="group relative block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus-within:ring-2 focus-within:ring-emerald-300/70 md:p-6"
         >
+          <Link
+            href={honors[0].href}
+            aria-label={`View details for ${honors[0].title}`}
+            className="absolute inset-0 z-10"
+          />
+
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-            <div className="max-w-4xl">
+            <div className="pointer-events-none max-w-4xl">
               <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200">
                 {honors[0].badge}
               </span>
@@ -673,12 +810,34 @@ export default function Home() {
                 {honors[0].description}
               </p>
 
-              <div className="mt-6 inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition group-hover:border-emerald-300/60 group-hover:bg-emerald-300/[0.14]">
-                {honors[0].action}
+              <div className="pointer-events-auto relative z-20 mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href={honors[0].href}
+                  className="inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition hover:border-emerald-300/60 hover:bg-emerald-300/[0.14] sm:w-auto"
+                >
+                  {honors[0].action}
+                </Link>
+                <EvidenceButton
+                  buttonLabel="Evidence"
+                  evidence={{
+                    title: honors[0].title,
+                    type: honors[0].badge,
+                    proofLinks: [
+                      { label: "Honor details", href: honors[0].href },
+                      { label: "Certificate evidence", href: "/honor-student" },
+                    ],
+                    whyItMatters:
+                      "This evidence supports academic growth and cross-domain credibility beyond single project output.",
+                    relatedWork: [
+                      { label: "Experience section", href: "#experience" },
+                      { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
+                    ],
+                  }}
+                />
               </div>
             </div>
 
-            <div className="flex max-w-sm flex-wrap gap-2 md:justify-end">
+            <div className="pointer-events-none flex max-w-sm flex-wrap gap-2 md:justify-end">
               {honors[0].tags.map((tag) => (
                 <span
                   key={tag}
@@ -689,7 +848,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </Link>
+        </article>
 
         <h3
           id="student-association"
@@ -740,7 +899,7 @@ export default function Home() {
         <h3 className="mb-5 mt-12 text-2xl font-semibold">
           Academic & Work Experience
         </h3>
-        <div className="grid gap-6">
+        <div className="relative grid gap-6 border-l border-emerald-300/25 pl-6">
           {experiences.map((experience) => {
             const content = (
               <>
@@ -775,14 +934,14 @@ export default function Home() {
               <Link
                 key={experience.title}
                 href={experience.href}
-                className="group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
+                className="group relative flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition before:absolute before:-left-[1.92rem] before:top-6 before:h-3 before:w-3 before:rounded-full before:border before:border-emerald-200 before:bg-[#070a0d] hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
               >
                 {content}
               </Link>
             ) : (
               <article
                 key={experience.title}
-                className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-6"
+                className="relative border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur before:absolute before:-left-[1.92rem] before:top-6 before:h-3 before:w-3 before:rounded-full before:border before:border-emerald-200 before:bg-[#070a0d] md:p-6"
               >
                 {content}
               </article>
@@ -792,13 +951,23 @@ export default function Home() {
 
       </section>
 
-      <section id="certificates" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
-        <h2 className="mb-8 text-3xl font-bold">Certificates</h2>
+      <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
+        <div className="mb-8 grid gap-5 lg:grid-cols-[0.45fr_1fr] lg:items-end">
+          <div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              Proof gallery
+            </p>
+            <h2 className="text-3xl font-bold">Certificates</h2>
+          </div>
+          <p className="max-w-3xl leading-8 text-slate-300">
+            證照區改以文件本身為主角，卡片文字減量，點擊即可用 viewer 檢視完整證明。
+          </p>
+        </div>
 
         <CertificateGrid certificates={certificates} />
       </section>
 
-      <section id="contact" className="relative mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
+      <section id="contact" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
         <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">

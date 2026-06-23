@@ -29,18 +29,22 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
 
   return (
     <>
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {certificates.map((certificate, index) => {
+          const viewerIndex = viewerItems.findIndex(
+            (item) => item.title === certificate.title,
+          );
+
           const content = (
             <>
-              <div className="h-48 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-56 lg:h-64">
+              <div className="pointer-events-none h-56 overflow-hidden border-b border-white/10 bg-slate-950/40 p-3 md:h-64 xl:h-72">
                 {certificate.image ? (
                   <Image
                     src={certificate.image}
                     alt={`${certificate.title} certificate`}
                     className="h-full w-full rounded-lg object-cover object-top"
                     priority={index === 0}
-                    sizes="(min-width: 768px) 33vw, 100vw"
+                    sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
                 ) : (
                   <div className="flex h-full min-h-44 flex-col items-center justify-center rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-5 text-center">
@@ -54,15 +58,15 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col p-4 md:p-5">
-                <p className="text-sm font-medium text-emerald-300">
+              <div className="flex flex-1 flex-col p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-300">
                   {certificate.issuer}
                 </p>
-                <h3 className="mt-2 text-lg font-semibold leading-7">
+                <h3 className="mt-2 text-base font-semibold leading-7">
                   {certificate.title}
                 </h3>
 
-                <div className="mb-5 mt-3 flex flex-wrap gap-2">
+                <div className="pointer-events-none mt-3 flex flex-wrap gap-2">
                   {certificate.tags.map((tag) => (
                     <span
                       key={tag}
@@ -73,44 +77,44 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
                   ))}
                 </div>
 
-                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-4 py-2 text-sm font-bold text-emerald-100 shadow-[0_16px_36px_rgba(16,185,129,0.14)] transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
-                  View Certificate
-                </div>
+                <span className="sr-only">Select card to view certificate</span>
               </div>
             </>
           );
 
           if (!certificate.image && certificate.href) {
             return (
-              <a
+              <article
                 key={certificate.title}
-                href={certificate.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+                className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus-within:ring-2 focus-within:ring-emerald-300/70"
               >
+                <a
+                  href={certificate.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View certificate for ${certificate.title}`}
+                  className="absolute inset-0 z-10"
+                />
                 {content}
-              </a>
+              </article>
             );
           }
 
           return (
-            <button
+            <article
               key={certificate.title}
-              type="button"
-              onClick={() => {
-                const viewerIndex = viewerItems.findIndex(
-                  (item) => item.title === certificate.title,
-                );
-
-                if (viewerIndex >= 0) {
-                  setSelectedIndex(viewerIndex);
-                }
-              }}
-              className="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+              className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus-within:ring-2 focus-within:ring-emerald-300/70"
             >
+              {viewerIndex >= 0 ? (
+                <button
+                  type="button"
+                  onClick={() => setSelectedIndex(viewerIndex)}
+                  aria-label={`View certificate for ${certificate.title}`}
+                  className="absolute inset-0 z-10 text-left"
+                />
+              ) : null}
               {content}
-            </button>
+            </article>
           );
         })}
       </div>

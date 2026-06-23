@@ -23,7 +23,9 @@ export default function ActiveSectionNav({
   items,
   variant = "emerald",
 }: ActiveSectionNavProps) {
-  const [activeHref, setActiveHref] = useState<string | null>(null);
+  const [activeHref, setActiveHref] = useState<string | null>(
+    items[0]?.href ?? null,
+  );
 
   const scrollToSection = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -58,35 +60,59 @@ export default function ActiveSectionNav({
       return;
     }
 
-    const updateActiveSection = () => {
+    const visibleSections = new Map<string, number>();
+
+    const setLastSectionIfAtPageEnd = () => {
       const documentHeight = document.documentElement.scrollHeight;
       const viewportBottom = window.scrollY + window.innerHeight;
 
       if (viewportBottom >= documentHeight - 24) {
         setActiveHref(sections[sections.length - 1].href);
+        return true;
+      }
+
+      return false;
+    };
+
+    const updateActiveFromVisibleSections = () => {
+      if (setLastSectionIfAtPageEnd()) {
         return;
       }
 
-      const readingLine =
-        window.scrollY + Math.min(window.innerHeight * 0.38, 320);
-      let currentHref = sections[0].href;
+      const [mostVisibleHref] = Array.from(visibleSections.entries()).sort(
+        (first, second) => second[1] - first[1],
+      )[0] ?? [sections[0].href];
 
-      for (const section of sections) {
-        if (section.element.offsetTop <= readingLine) {
-          currentHref = section.href;
-        }
-      }
-
-      setActiveHref(currentHref);
+      setActiveHref(mostVisibleHref);
     };
 
-    updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const href = `#${entry.target.id}`;
+
+          if (entry.isIntersecting) {
+            visibleSections.set(href, entry.intersectionRatio);
+          } else {
+            visibleSections.delete(href);
+          }
+        }
+
+        updateActiveFromVisibleSections();
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -55% 0px",
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      },
+    );
+
+    for (const section of sections) {
+      observer.observe(section.element);
+    }
 
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
+      observer.disconnect();
     };
   }, [items]);
 

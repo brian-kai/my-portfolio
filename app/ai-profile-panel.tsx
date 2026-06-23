@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import EvidenceDrawer, { type EvidenceItem } from "./evidence-drawer";
 
 const profileModes = [
   {
@@ -17,6 +18,21 @@ const profileModes = [
     stack: ["LLaMA 3", "LSTM", "BLEU", "METEOR"],
     cta: "View Research Evidence",
     href: "#research",
+    evidence: {
+      title: "Research-backed AI systems",
+      type: "Research Evidence",
+      proofLinks: [
+        { label: "CIIE 2025 Best Paper Award", href: "/conference" },
+        { label: "ICCCM 2026 Acceptance", href: "/icccm" },
+        { label: "LLaMA 3 Case Study", href: "/llama-marketing-system" },
+      ],
+      whyItMatters:
+        "This evidence shows the ability to turn model experiments into reviewed research outcomes, not only isolated prototypes.",
+      relatedWork: [
+        { label: "Research section", href: "#research" },
+        { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
+      ],
+    },
   },
   {
     id: "product",
@@ -32,6 +48,23 @@ const profileModes = [
     stack: ["Next.js", "Vercel", "SERP API", "Entity Analysis"],
     cta: "Open Demo Projects",
     href: "#projects",
+    evidence: {
+      title: "Product demos and deployed AI tools",
+      type: "Demo Evidence",
+      proofLinks: [
+        {
+          label: "SEO Entity Analysis Tool",
+          href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
+        },
+        { label: "LLaMA 3 Marketing System", href: "/llama-marketing-system" },
+      ],
+      whyItMatters:
+        "Live demos make the portfolio verifiable. They show that the work can move from analysis and modeling into something people can open and inspect.",
+      relatedWork: [
+        { label: "Projects section", href: "#projects" },
+        { label: "GitHub", href: "https://github.com/brian-kai" },
+      ],
+    },
   },
   {
     id: "workflow",
@@ -47,11 +80,27 @@ const profileModes = [
     stack: ["Python", "SQL", "Pandas", "HDBSCAN"],
     cta: "Explore Workflow",
     href: "#skills",
+    evidence: {
+      title: "Data workflow and model pipeline skills",
+      type: "Workflow Evidence",
+      proofLinks: [
+        { label: "Skills section", href: "#skills" },
+        { label: "LLaMA 3 Workflow", href: "/llama-marketing-system" },
+        { label: "Project cases", href: "#projects" },
+      ],
+      whyItMatters:
+        "The workflow evidence connects data cleaning, feature extraction, clustering, visualization, and model output into a repeatable AI engineering process.",
+      relatedWork: [
+        { label: "Data projects", href: "#projects" },
+        { label: "Research section", href: "#research" },
+      ],
+    },
   },
 ];
 
 export default function AiProfilePanel() {
   const [activeModeId, setActiveModeId] = useState(profileModes[0].id);
+  const [openEvidence, setOpenEvidence] = useState<EvidenceItem | null>(null);
   const activeMode =
     profileModes.find((mode) => mode.id === activeModeId) ?? profileModes[0];
 
@@ -103,12 +152,15 @@ export default function AiProfilePanel() {
 
         <div className="mt-5 grid gap-2.5">
           {activeMode.proofPoints.map((point) => (
-            <div
+            <EvidenceDrawer
               key={point}
-              className="border-l border-emerald-300/45 bg-white/[0.035] px-3 py-2 text-sm font-semibold leading-6 text-slate-100"
-            >
-              {point}
-            </div>
+              buttonLabel={point}
+              buttonClassName="w-full border-l border-emerald-300/45 bg-white/[0.035] px-3 py-2 text-left text-sm font-semibold leading-6 text-slate-100 transition hover:bg-emerald-300/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+              evidence={{ ...activeMode.evidence, title: point }}
+              isOpen={openEvidence?.title === point}
+              onClose={() => setOpenEvidence(null)}
+              onOpen={() => setOpenEvidence({ ...activeMode.evidence, title: point })}
+            />
           ))}
         </div>
 
