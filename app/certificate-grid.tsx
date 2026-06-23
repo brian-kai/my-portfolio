@@ -1,7 +1,8 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProofViewer, { type ProofViewerItem } from "./proof-viewer";
 
 type Certificate = {
   title: string;
@@ -16,28 +17,15 @@ type CertificateGridProps = {
 };
 
 export default function CertificateGrid({ certificates }: CertificateGridProps) {
-  const [selectedCertificate, setSelectedCertificate] =
-    useState<Certificate | null>(null);
-
-  useEffect(() => {
-    if (!selectedCertificate) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedCertificate(null);
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedCertificate]);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const viewerItems: ProofViewerItem[] = certificates
+    .filter((certificate) => certificate.image)
+    .map((certificate) => ({
+      title: certificate.title,
+      image: certificate.image as StaticImageData,
+      alt: `${certificate.title} certificate`,
+      originalHref: certificate.href,
+    }));
 
   return (
     <>
@@ -92,7 +80,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
             </>
           );
 
-          if (certificate.href) {
+          if (!certificate.image && certificate.href) {
             return (
               <a
                 key={certificate.title}
@@ -110,7 +98,15 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
             <button
               key={certificate.title}
               type="button"
-              onClick={() => setSelectedCertificate(certificate)}
+              onClick={() => {
+                const viewerIndex = viewerItems.findIndex(
+                  (item) => item.title === certificate.title,
+                );
+
+                if (viewerIndex >= 0) {
+                  setSelectedIndex(viewerIndex);
+                }
+              }}
               className="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
             >
               {content}
@@ -119,39 +115,14 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
         })}
       </div>
 
-      {selectedCertificate ? (
-        <div
-          className="z-modal fixed inset-0 flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:p-8"
-          role="dialog"
-          aria-modal="true"
-          aria-label={selectedCertificate.title}
-          onClick={() => setSelectedCertificate(null)}
-        >
-          <div
-            className="relative flex max-h-full max-w-7xl flex-col gap-4"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setSelectedCertificate(null)}
-              className="ml-auto rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition hover:border-emerald-300/70 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-            >
-              Close
-            </button>
-
-            <div className="overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-2 shadow-2xl md:p-3">
-              {selectedCertificate.image ? (
-                <Image
-                  src={selectedCertificate.image}
-                  alt={`${selectedCertificate.title} certificate`}
-                  className="max-h-[82vh] w-auto max-w-[92vw] rounded-xl object-contain"
-                  sizes="100vw"
-                  priority
-                />
-              ) : null}
-            </div>
-          </div>
-        </div>
+      {selectedIndex !== null ? (
+        <ProofViewer
+          currentIndex={selectedIndex}
+          isOpen
+          items={viewerItems}
+          onClose={() => setSelectedIndex(null)}
+          onIndexChange={setSelectedIndex}
+        />
       ) : null}
     </>
   );

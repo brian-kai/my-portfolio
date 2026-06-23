@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import ActiveSectionNav from "./active-section-nav";
+import AiProfilePanel from "./ai-profile-panel";
 import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import aiatclCertificate from "./image/AIATCL.jpg";
@@ -316,7 +317,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.45fr)] lg:gap-16">
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,0.62fr)] lg:gap-12">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Kevin Huang | AI Engineer / AI Product Associate
@@ -369,7 +370,10 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="grid gap-4">
+            <AiProfilePanel />
+
+            <aside className="hidden gap-3 sm:grid-cols-3 lg:grid-cols-1">
             {[
               ["Research Proof", "2025 CIIE Best Paper Award"],
               ["Product Demo", "SEO Entity Analysis Tool"],
@@ -387,7 +391,8 @@ export default function Home() {
                 </p>
               </div>
             ))}
-          </aside>
+            </aside>
+          </div>
         </div>
       </section>
 
