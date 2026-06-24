@@ -97,10 +97,10 @@ const skillEntries: SkillEntry[] = [
     ],
   },
   {
-    name: "K-Means",
+    name: "Customer Insights",
     group: "Data Analysis",
     summary: "用於分群分析與偏好輪廓整理，將模型輸出轉成可解釋的洞察。",
-    evidenceTitle: "K-Means clustering evidence",
+    evidenceTitle: "Customer insight analysis evidence",
     evidenceType: "Data Workflow",
     works: [
       {
@@ -118,10 +118,10 @@ const skillEntries: SkillEntry[] = [
     ],
   },
   {
-    name: "HDBSCAN",
+    name: "Content Insights",
     group: "Data Analysis",
     summary: "用於探索型分群與資料結構觀察，補足固定群數方法的限制。",
-    evidenceTitle: "HDBSCAN analysis evidence",
+    evidenceTitle: "Content insight analysis evidence",
     evidenceType: "Data Workflow",
     works: [
       {
@@ -271,7 +271,7 @@ export default function SkillWorkMatrix() {
           </div>
 
           <EvidenceButton
-            buttonLabel="查看證據"
+            buttonLabel="View Evidence"
             evidence={{
               title: selectedSkill.evidenceTitle,
               type: selectedSkill.evidenceType,

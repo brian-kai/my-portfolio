@@ -952,16 +952,13 @@ export default function Home() {
       </section>
 
       <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <div className="mb-8 grid gap-5 lg:grid-cols-[0.45fr_1fr] lg:items-end">
+        <div className="mb-8">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Proof gallery
             </p>
             <h2 className="text-3xl font-bold">Certificates</h2>
           </div>
-          <p className="max-w-3xl leading-8 text-slate-300">
-            證照區改以文件本身為主角，卡片文字減量，點擊即可用 viewer 檢視完整證明。
-          </p>
         </div>
 
         <CertificateGrid certificates={certificates} />
