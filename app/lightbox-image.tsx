@@ -32,21 +32,22 @@ export default function LightboxImage({
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group block w-full bg-white text-left focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+        className="pressable-subtle group block w-full bg-white text-left focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
         aria-label={`View ${alt}`}
       >
         <Image
           src={src}
           alt={alt}
-          className={className}
+          className={className ? `motion-reduce-transform ${className}` : undefined}
           priority={priority}
           sizes={sizes}
         />
         {actionLabel ? (
           <span
             className={
-              actionClassName ??
-              "m-3 inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-900 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16]"
+              actionClassName
+                ? `motion-reduce-transform ${actionClassName}`
+                : "motion-reduce-transform m-3 inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-900 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16]"
             }
           >
             {actionLabel}

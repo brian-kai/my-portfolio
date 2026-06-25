@@ -3,6 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+const focusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "textarea:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "[tabindex]:not([tabindex='-1'])",
+].join(",");
+
 type EvidenceLink = {
   label: string;
   href: string;
@@ -34,6 +43,7 @@ export default function EvidenceDrawer({
   onOpen,
 }: EvidenceDrawerProps) {
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -49,6 +59,32 @@ export default function EvidenceDrawer({
       if (event.key === "Escape") {
         event.preventDefault();
         onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>(focusableSelector) ??
+          [],
+      ).filter((element) => !element.hasAttribute("disabled"));
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -69,7 +105,7 @@ export default function EvidenceDrawer({
         onClick={onOpen}
         className={
           buttonClassName ??
-          "inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-4 py-2 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+          "pressable motion-reduce-transform inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-4 py-2 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
         }
       >
         {buttonLabel}
@@ -82,6 +118,7 @@ export default function EvidenceDrawer({
               onClick={onClose}
             >
               <aside
+                ref={dialogRef}
                 role="dialog"
                 aria-modal="true"
                 aria-label={evidence.title}
@@ -101,7 +138,7 @@ export default function EvidenceDrawer({
                     ref={closeButtonRef}
                     type="button"
                     onClick={onClose}
-                    className="rounded-lg border border-white/15 bg-white/[0.08] px-3 py-2 text-sm font-bold text-slate-100 transition hover:border-emerald-300/60 hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+                    className="pressable-subtle rounded-lg border border-white/15 bg-white/[0.08] px-3 py-2 text-sm font-bold text-slate-100 transition hover:border-emerald-300/60 hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
                   >
                     Close
                   </button>
@@ -123,7 +160,7 @@ export default function EvidenceDrawer({
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="border border-emerald-300/25 bg-emerald-300/[0.08] px-4 py-3 text-sm font-bold text-emerald-100 transition hover:border-emerald-300/55 hover:bg-emerald-300/[0.14] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+                          className="pressable-subtle border border-emerald-300/25 bg-emerald-300/[0.08] px-4 py-3 text-sm font-bold text-emerald-100 transition hover:border-emerald-300/55 hover:bg-emerald-300/[0.14] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
                         >
                           {link.label}
                         </a>
@@ -155,7 +192,7 @@ export default function EvidenceDrawer({
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="border border-white/10 bg-white/[0.045] px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/45 hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+                          className="pressable-subtle border border-white/10 bg-white/[0.045] px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-300/45 hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
                         >
                           {link.label}
                         </a>

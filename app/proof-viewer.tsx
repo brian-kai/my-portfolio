@@ -178,7 +178,7 @@ export default function ProofViewer({
                   <button
                     type="button"
                     onClick={() => moveTo(-1)}
-                    className="rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
                     aria-label="Previous image"
                   >
                     Prev
@@ -186,7 +186,7 @@ export default function ProofViewer({
                   <button
                     type="button"
                     onClick={() => moveTo(1)}
-                    className="rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
                     aria-label="Next image"
                   >
                     Next
@@ -197,7 +197,7 @@ export default function ProofViewer({
               <button
                 type="button"
                 onClick={() => setZoom((current) => Math.min(current + 0.25, 2.5))}
-                className="rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
                 aria-label="Zoom in"
               >
                 Zoom +
@@ -205,7 +205,7 @@ export default function ProofViewer({
               <button
                 type="button"
                 onClick={() => setZoom((current) => Math.max(current - 0.25, 1))}
-                className="rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
                 aria-label="Zoom out"
               >
                 Zoom -
@@ -213,7 +213,7 @@ export default function ProofViewer({
               <button
                 type="button"
                 onClick={() => setZoom(1)}
-                className="rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
               >
                 Reset
               </button>
@@ -221,7 +221,7 @@ export default function ProofViewer({
                 href={originalHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
               >
                 Open original
               </a>
@@ -229,7 +229,7 @@ export default function ProofViewer({
                 ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
-                className={`rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition ${closeHoverClassName} hover:bg-white/20 focus:outline-none focus:ring-2 ${closeFocusClassName}`}
+                className={`pressable-subtle rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition ${closeHoverClassName} hover:bg-white/20 focus:outline-none focus:ring-2 ${closeFocusClassName}`}
               >
                 Close
               </button>
@@ -240,7 +240,7 @@ export default function ProofViewer({
             <Image
               src={activeItem.image}
               alt={activeItem.alt ?? activeItem.title}
-              className="mx-auto h-auto max-w-none rounded-lg object-contain transition-transform duration-200"
+              className="motion-reduce-transform mx-auto h-auto max-w-none rounded-lg object-contain transition-transform duration-200"
               style={{
                 maxHeight: zoom === 1 ? "72vh" : "none",
                 width: `${zoom * 100}%`,

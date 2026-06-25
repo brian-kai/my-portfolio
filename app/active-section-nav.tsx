@@ -127,7 +127,7 @@ export default function ActiveSectionNav({
             href={item.href}
             onClick={(event) => scrollToSection(event, item.href)}
             aria-current={isActive ? "true" : undefined}
-            className={`rounded-lg px-3 py-2 transition ${
+            className={`pressable-subtle rounded-lg px-3 py-2 transition ${
               isActive
                 ? activeVariantClasses[variant]
                 : "hover:bg-white/[0.06] hover:text-white"

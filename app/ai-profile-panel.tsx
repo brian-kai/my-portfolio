@@ -129,7 +129,7 @@ export default function AiProfilePanel() {
               key={mode.id}
               type="button"
               onClick={() => setActiveModeId(mode.id)}
-              className={`min-h-11 border px-3 py-2 text-left text-sm font-bold transition active:translate-y-px ${
+              className={`pressable-subtle min-h-11 border px-3 py-2 text-left text-sm font-bold transition ${
                 isActive
                   ? "border-emerald-300/60 bg-emerald-300/[0.14] text-white shadow-[0_14px_32px_rgba(16,185,129,0.14)]"
                   : "border-white/10 bg-white/[0.045] text-slate-300 hover:border-emerald-300/35 hover:bg-white/[0.075] hover:text-white"
@@ -155,7 +155,7 @@ export default function AiProfilePanel() {
             <EvidenceDrawer
               key={point}
               buttonLabel={point}
-              buttonClassName="w-full border-l border-emerald-300/45 bg-white/[0.035] px-3 py-2 text-left text-sm font-semibold leading-6 text-slate-100 transition hover:bg-emerald-300/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+              buttonClassName="pressable-subtle w-full border-l border-emerald-300/45 bg-white/[0.035] px-3 py-2 text-left text-sm font-semibold leading-6 text-slate-100 transition hover:bg-emerald-300/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
               evidence={{ ...activeMode.evidence, title: point }}
               isOpen={openEvidence?.title === point}
               onClose={() => setOpenEvidence(null)}
@@ -177,7 +177,7 @@ export default function AiProfilePanel() {
 
         <a
           href={activeMode.href}
-          className="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/65 bg-emerald-300 px-4 py-3 text-sm font-black text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.16)] transition hover:-translate-y-0.5 hover:bg-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-200/80"
+          className="pressable motion-reduce-transform mt-6 inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/65 bg-emerald-300 px-4 py-3 text-sm font-black text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.16)] transition hover:-translate-y-0.5 hover:bg-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-200/80"
         >
           {activeMode.cta}
         </a>

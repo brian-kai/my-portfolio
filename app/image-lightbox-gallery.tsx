@@ -65,6 +65,7 @@ export default function ImageLightboxGallery({
 }: ImageLightboxGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const styles = variantClasses[variant];
+  const interactiveCardClassName = "pressable motion-reduce-transform";
   const viewerItems: ProofViewerItem[] = items.map((item) => ({
     title: item.title,
     image: item.image,
@@ -81,15 +82,16 @@ export default function ImageLightboxGallery({
             type="button"
             onClick={() => setSelectedIndex(index)}
             className={
-              cardClassName ??
-              `group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 ${styles.hoverBorder} hover:bg-white/10 focus:outline-none focus:ring-2 ${styles.focus}`
+              cardClassName
+                ? `${interactiveCardClassName} ${cardClassName}`
+                : `${interactiveCardClassName} group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 ${styles.hoverBorder} hover:bg-white/10 focus:outline-none focus:ring-2 ${styles.focus}`
             }
           >
             <div className={imageWrapperClassName}>
               <Image
                 src={item.image}
                 alt={item.alt ?? item.title}
-                className={imageClassName}
+                className={`motion-reduce-transform ${imageClassName}`}
                 priority={index === 0}
                 sizes={imageSizes}
               />
@@ -143,7 +145,7 @@ export default function ImageLightboxGallery({
 
                 {actionLabel ? (
                   <div
-                    className={`mt-auto inline-flex w-fit items-center justify-center rounded-lg border px-5 py-2.5 text-sm font-bold transition group-hover:-translate-y-0.5 group-hover:text-white ${styles.button}`}
+                    className={`motion-reduce-transform mt-auto inline-flex w-fit items-center justify-center rounded-lg border px-5 py-2.5 text-sm font-bold transition group-hover:-translate-y-0.5 group-hover:text-white ${styles.button}`}
                   >
                     {actionLabel}
                   </div>

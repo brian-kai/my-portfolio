@@ -249,7 +249,7 @@ export default function IvePage() {
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#projects"
-            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="pressable motion-reduce-transform absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             Back to Projects
           </Link>
@@ -265,7 +265,7 @@ export default function IvePage() {
             <ActiveSectionNav items={iveNavItems} />
             <Link
               href="/#projects"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              className="pressable motion-reduce-transform rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
             >
               Back to Projects
             </Link>
@@ -273,7 +273,7 @@ export default function IvePage() {
         </div>
       </nav>
 
-      <section id="overview" className="relative z-10 mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl scroll-mt-24 items-center gap-8 px-6 pb-12 pt-28 md:scroll-mt-28 md:grid-cols-[1fr_430px] md:gap-10 md:pb-16 md:pt-32">
+      <section id="overview" className="relative z-10 mx-auto grid min-h-[calc(100dvh-73px)] max-w-6xl scroll-mt-24 items-center gap-8 px-6 pb-12 pt-28 md:scroll-mt-28 md:grid-cols-[1fr_430px] md:gap-10 md:pb-16 md:pt-32">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-pink-200">
             IVE Fan Website
@@ -290,13 +290,13 @@ export default function IvePage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#members"
-              className="rounded-full bg-pink-200 px-5 py-3 text-center text-sm font-bold text-[#190914] transition hover:bg-rose-100"
+              className="pressable rounded-full bg-pink-200 px-5 py-3 text-center text-sm font-bold text-[#190914] transition hover:bg-rose-100"
             >
               查看成員
             </a>
             <a
               href="#mission"
-              className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-pink-200/60"
+              className="pressable rounded-full border border-white/15 px-5 py-3 text-center text-sm font-bold text-white transition hover:border-pink-200/60"
             >
               開始任務
             </a>
@@ -319,7 +319,7 @@ export default function IvePage() {
                     key={member.name}
                     type="button"
                     onClick={() => setSelectedMember(member)}
-                    className={`aspect-square rounded-2xl bg-gradient-to-br ${member.color} p-1 text-left transition hover:-translate-y-1`}
+                    className={`pressable motion-reduce-transform aspect-square rounded-2xl bg-gradient-to-br ${member.color} p-1 text-left transition hover:-translate-y-1`}
                   >
                     <span className="relative flex h-full items-end overflow-hidden rounded-[0.85rem] bg-[#101022]/35 p-2 text-xs font-bold">
                       <Image
@@ -362,7 +362,7 @@ export default function IvePage() {
                 key={member.name}
                 type="button"
                 onClick={() => setSelectedMember(member)}
-                className={`rounded-2xl border p-3 text-left transition hover:-translate-y-1 md:p-4 ${
+                className={`pressable motion-reduce-transform rounded-2xl border p-3 text-left transition hover:-translate-y-1 md:p-4 ${
                   selectedMember.name === member.name
                     ? "border-pink-200/70 bg-pink-300/[0.08]"
                     : "border-white/10 bg-white/5"
@@ -374,7 +374,7 @@ export default function IvePage() {
                   <Image
                     src={member.image}
                     alt={member.name}
-                    className="h-full w-full rounded-lg bg-[#101022]/45 object-contain transition duration-500 hover:scale-105"
+                    className="motion-reduce-transform h-full w-full rounded-lg bg-[#101022]/45 object-contain transition duration-500 hover:scale-105"
                     sizes="(min-width: 1024px) 220px, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
@@ -426,7 +426,7 @@ export default function IvePage() {
               href={release.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-200/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-200/70 md:p-6"
+              className="pressable motion-reduce-transform group rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-pink-200/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-pink-200/70 md:p-6"
             >
               <div className="mb-4 flex items-start justify-between gap-4 md:mb-5 md:items-center">
                 <div>
@@ -455,7 +455,7 @@ export default function IvePage() {
           <button
             type="button"
             onClick={() => setShowAllSongs((current) => !current)}
-            className="mt-6 w-full rounded-full border border-pink-200/30 px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-200/70 hover:bg-pink-200/10 md:mx-auto md:flex md:w-fit md:px-8"
+            className="pressable mt-6 w-full rounded-full border border-pink-200/30 px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-200/70 hover:bg-pink-200/10 md:mx-auto md:flex md:w-fit md:px-8"
           >
             {showAllSongs ? "收合作品" : "顯示更多作品"}
           </button>
@@ -504,7 +504,7 @@ export default function IvePage() {
             <button
               type="button"
               onClick={addTask}
-              className="rounded-xl border border-pink-200/40 bg-pink-300/[0.12] px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-100/70 hover:bg-pink-200/25"
+              className="pressable rounded-xl border border-pink-200/40 bg-pink-300/[0.12] px-5 py-3 text-sm font-bold text-pink-100 transition hover:border-pink-100/70 hover:bg-pink-200/25"
             >
               新增
             </button>
@@ -529,7 +529,7 @@ export default function IvePage() {
                     ...currentTasks,
                   ])
                 }
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-emerald-300/50 hover:bg-emerald-200/10 hover:text-white"
+                className="pressable-subtle rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-emerald-300/50 hover:bg-emerald-200/10 hover:text-white"
               >
                 {suggestion}
               </button>
@@ -540,7 +540,7 @@ export default function IvePage() {
             {tasks.map((task) => (
               <li
                 key={task.id}
-                className="grid gap-3 rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 transition hover:border-emerald-300/30 md:grid-cols-[auto_1fr_auto] md:items-center"
+                className="pressable-subtle grid gap-3 rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 transition hover:border-emerald-300/30 md:grid-cols-[auto_1fr_auto] md:items-center"
               >
                 <input
                   type="checkbox"
@@ -565,7 +565,7 @@ export default function IvePage() {
                 <button
                   type="button"
                   onClick={() => removeTask(task.id)}
-                  className="w-fit rounded-full px-3 py-1 text-sm text-slate-400 transition hover:bg-white/10 hover:text-white md:justify-self-end"
+                  className="pressable-subtle w-fit rounded-full px-3 py-1 text-sm text-slate-400 transition hover:bg-white/10 hover:text-white md:justify-self-end"
                 >
                   刪除
                 </button>
@@ -592,7 +592,7 @@ export default function IvePage() {
                   key={option.label}
                   type="button"
                   onClick={() => setSelectedQuiz(option)}
-                  className={`rounded-xl border px-4 py-3 text-left transition ${
+                  className={`pressable-subtle rounded-xl border px-4 py-3 text-left transition ${
                     isSelected
                       ? "border-emerald-300/60 bg-emerald-300/[0.12]"
                       : "border-white/10 bg-white/5 hover:border-emerald-300/50 hover:bg-emerald-200/10"

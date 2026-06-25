@@ -22,10 +22,10 @@ type SkillEntry = {
 
 const skillEntries: SkillEntry[] = [
   {
-    name: "LLaMA 3",
+    name: "Natural Language Generation",
     group: "LLM / NLP",
     summary: "用於個人化行銷文案生成、研究流程設計，以及 case-study 的核心 AI 能力。",
-    evidenceTitle: "LLaMA 3 AI marketing workflow evidence",
+    evidenceTitle: "Natural language generation evidence",
     evidenceType: "Research / Project",
     works: [
       {
@@ -49,10 +49,32 @@ const skillEntries: SkillEntry[] = [
     ],
   },
   {
-    name: "SQL",
+    name: "Consumer Preference Analysis",
+    group: "LLM / NLP",
+    summary:
+      "以消費者偏好、評論語意與產品特徵作為分析基礎，支援後續個人化行銷文案生成。",
+    evidenceTitle: "Consumer preference analysis evidence",
+    evidenceType: "Research / Project",
+    works: [
+      {
+        type: "Project",
+        title: "LLaMA 3 個人化行銷文案系統",
+        description: "將消費者偏好分析與產品資訊整理連接到個人化文案生成流程。",
+        href: "/llama-marketing-system",
+      },
+      {
+        type: "Research",
+        title: "CIIE Best Paper Award",
+        description: "研究主題聚焦於 LLaMA 3 結合消費者偏好的行銷文案生成模式。",
+        href: "/conference",
+      },
+    ],
+  },
+  {
+    name: "Data Cleaning & Analysis",
     group: "Data Analysis",
     summary: "用於資料查詢、資料庫教學與分析專案，讓資料處理能力有實際場景可驗證。",
-    evidenceTitle: "SQL data workflow evidence",
+    evidenceTitle: "Data cleaning and analysis evidence",
     evidenceType: "Data / Teaching",
     works: [
       {
@@ -76,10 +98,10 @@ const skillEntries: SkillEntry[] = [
     ],
   },
   {
-    name: "TextRank",
+    name: "Keyword Extraction",
     group: "LLM / NLP",
     summary: "用於關鍵字抽取與研究流程前處理，支援 LLM 生成前的資料整理。",
-    evidenceTitle: "TextRank keyword extraction evidence",
+    evidenceTitle: "Keyword extraction evidence",
     evidenceType: "NLP Workflow",
     works: [
       {
@@ -97,7 +119,51 @@ const skillEntries: SkillEntry[] = [
     ],
   },
   {
-    name: "Customer Insights",
+    name: "Text Clustering",
+    group: "LLM / NLP",
+    summary:
+      "以文本特徵、主題與分群結果整理內容結構，協助分析產品與消費者語意關係。",
+    evidenceTitle: "Text clustering evidence",
+    evidenceType: "NLP Workflow",
+    works: [
+      {
+        type: "Project",
+        title: "LLaMA 3 marketing workflow",
+        description: "將文本分群與偏好分析結果用於後續文案生成流程。",
+        href: "/llama-marketing-system",
+      },
+      {
+        type: "Research",
+        title: "Research visualization proof",
+        description: "研究材料包含分群結果、heatmap 與模型輸出評估。",
+        href: "/conference",
+      },
+    ],
+  },
+  {
+    name: "Computational Marketing",
+    group: "LLM / NLP",
+    summary:
+      "將 NLP、消費者偏好分析與生成式模型應用在行銷文案與產品溝通情境。",
+    evidenceTitle: "Computational marketing evidence",
+    evidenceType: "Research / Project",
+    works: [
+      {
+        type: "Project",
+        title: "LLaMA 3 個人化行銷文案系統",
+        description: "以模型與資料分析流程支援個人化產品行銷文案生成。",
+        href: "/llama-marketing-system",
+      },
+      {
+        type: "Research",
+        title: "CIIE Best Paper Award",
+        description: "以個人化行銷文案生成作為研究與系統展示主題。",
+        href: "/conference",
+      },
+    ],
+  },
+  {
+    name: "Customer Insight Analysis",
     group: "Data Analysis",
     summary: "用於分群分析與偏好輪廓整理，將模型輸出轉成可解釋的洞察。",
     evidenceTitle: "Customer insight analysis evidence",
@@ -188,7 +254,23 @@ const skillEntries: SkillEntry[] = [
   },
 ];
 
-const groups = Array.from(new Set(skillEntries.map((entry) => entry.group)));
+const featuredAcademicSkills = new Set([
+  "Natural Language Generation",
+  "Consumer Preference Analysis",
+]);
+
+const featuredDataSkills = new Set([
+  "Data Cleaning & Analysis",
+  "Customer Insight Analysis",
+]);
+
+const visibleSkillEntries = skillEntries.filter(
+  (entry) =>
+    (entry.group !== "LLM / NLP" || featuredAcademicSkills.has(entry.name)) &&
+    (entry.group !== "Data Analysis" || featuredDataSkills.has(entry.name)),
+);
+
+const groups = Array.from(new Set(visibleSkillEntries.map((entry) => entry.group)));
 
 const typeLabel: Record<WorkItem["type"], string> = {
   Project: "Project",
@@ -198,7 +280,7 @@ const typeLabel: Record<WorkItem["type"], string> = {
 };
 
 export default function SkillWorkMatrix() {
-  const [selectedSkill, setSelectedSkill] = useState(skillEntries[0]);
+  const [selectedSkill, setSelectedSkill] = useState(visibleSkillEntries[0]);
 
   return (
     <div className="grid gap-6 xl:grid-cols-[18rem_minmax(0,1fr)]">
@@ -212,8 +294,8 @@ export default function SkillWorkMatrix() {
           </div>
           <button
             type="button"
-            onClick={() => setSelectedSkill(skillEntries[0])}
-            className="rounded-lg border border-white/15 bg-white/[0.06] px-3 py-2 text-xs font-bold text-slate-300 transition hover:border-emerald-300/50 hover:text-white"
+            onClick={() => setSelectedSkill(visibleSkillEntries[0])}
+            className="pressable-subtle rounded-lg border border-white/15 bg-white/[0.06] px-3 py-2 text-xs font-bold text-slate-300 transition hover:border-emerald-300/50 hover:text-white"
           >
             清除
           </button>
@@ -230,7 +312,7 @@ export default function SkillWorkMatrix() {
                 {group}
               </p>
               <div className="flex flex-wrap gap-2">
-                {skillEntries
+                {visibleSkillEntries
                   .filter((entry) => entry.group === group)
                   .map((entry) => {
                     const isSelected = entry.name === selectedSkill.name;
@@ -240,7 +322,7 @@ export default function SkillWorkMatrix() {
                         key={entry.name}
                         type="button"
                         onClick={() => setSelectedSkill(entry)}
-                        className={`border px-3 py-2 font-mono text-xs font-bold transition ${
+                        className={`pressable-subtle border px-3 py-2 font-mono text-xs font-bold transition ${
                           isSelected
                             ? "border-emerald-300 bg-emerald-300/[0.14] text-white"
                             : "border-white/10 bg-slate-950/45 text-slate-300 hover:border-emerald-300/45 hover:text-white"
@@ -301,7 +383,7 @@ export default function SkillWorkMatrix() {
                 href={work.href}
                 target={work.href.startsWith("http") ? "_blank" : undefined}
                 rel={work.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex min-h-52 flex-col border border-white/10 bg-slate-950/35 p-4 transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.06]"
+                className="pressable motion-reduce-transform group flex min-h-52 flex-col border border-white/10 bg-slate-950/35 p-4 transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.06]"
               >
                 <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1 font-mono text-xs font-semibold text-emerald-200">
                   {typeLabel[work.type]}

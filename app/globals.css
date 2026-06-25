@@ -46,6 +46,17 @@ section[id] {
   scroll-margin-top: 5.5rem;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @layer utilities {
   .z-nav {
     z-index: var(--z-nav);
@@ -57,5 +68,31 @@ section[id] {
 
   .z-modal {
     z-index: var(--z-modal);
+  }
+
+  .pressable {
+    transform-origin: center;
+  }
+
+  .pressable:active {
+    transform: translateY(1px) scale(0.99);
+  }
+
+  .pressable-subtle {
+    transform-origin: center;
+  }
+
+  .pressable-subtle:active {
+    transform: translateY(1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .motion-reduce-transform,
+    .motion-reduce-transform:hover,
+    .motion-reduce-transform:active,
+    .motion-reduce-transform:focus,
+    .motion-reduce-transform:focus-visible {
+      transform: none !important;
+    }
   }
 }
