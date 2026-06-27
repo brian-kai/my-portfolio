@@ -28,7 +28,7 @@ type ImageLightboxGalleryProps = {
   showDescription?: boolean;
   showTitle?: boolean;
   titleClassName?: string;
-  variant?: "cyan" | "emerald";
+  variant?: "cyan" | "emerald" | "amber";
 };
 
 const variantClasses = {
@@ -47,6 +47,14 @@ const variantClasses = {
     hoverBorder: "hover:border-emerald-300/40",
     closeFocus: "focus:ring-emerald-300/70",
     closeHover: "hover:border-emerald-200/70",
+  },
+  amber: {
+    button:
+      "border-amber-200/50 bg-amber-200/15 text-amber-100 shadow-[0_10px_24px_rgba(245,158,11,0.14)] group-hover:border-amber-100/80 group-hover:bg-amber-200/25",
+    focus: "focus:ring-amber-200/70",
+    hoverBorder: "hover:border-amber-200/40",
+    closeFocus: "focus:ring-amber-200/70",
+    closeHover: "hover:border-amber-100/70",
   },
 };
 

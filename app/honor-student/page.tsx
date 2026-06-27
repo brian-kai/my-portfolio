@@ -64,15 +64,15 @@ const honorNavItems = [
 
 export default function HonorStudentPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
-      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#080705] text-white [overflow-wrap:anywhere]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(245,158,11,0.15),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(250,204,21,0.075),transparent_24%),radial-gradient(circle_at_72%_64%,rgba(16,185,129,0.07),transparent_30%),linear-gradient(180deg,#080705_0%,#0d0b08_48%,#080705_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-amber-100/10 bg-[#080705]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
           <Link
             href="/#experience"
-            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="absolute left-6 rounded-lg border border-amber-100/15 bg-amber-100/[0.06] px-4 py-2 text-sm font-bold text-stone-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-amber-100/[0.1] hover:text-white md:hidden"
           >
             Back to Honors
           </Link>
@@ -85,10 +85,10 @@ export default function HonorStudentPage() {
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={honorNavItems} />
+            <ActiveSectionNav items={honorNavItems} variant="amber" />
             <Link
               href="/#experience"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              className="rounded-lg border border-amber-100/15 bg-amber-100/[0.06] px-4 py-2 text-sm font-bold text-stone-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-amber-100/[0.1] hover:text-white"
             >
               Back to Honors
             </Link>
@@ -97,7 +97,7 @@ export default function HonorStudentPage() {
       </nav>
 
       <section id="overview" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-12 pt-28 md:scroll-mt-28 md:pb-16 md:pt-32">
-        <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+        <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-amber-200">
           Honors & Recognition
         </p>
 
@@ -113,7 +113,7 @@ export default function HonorStudentPage() {
           {proofChips.map((chip) => (
             <span
               key={chip}
-              className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
+              className="border border-amber-200/25 bg-amber-200/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-amber-100"
             >
               {chip}
             </span>
@@ -131,19 +131,19 @@ export default function HonorStudentPage() {
             {details.map((detail) => (
               <article
                 key={detail.label}
-                className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.14)] backdrop-blur md:p-6"
+                className="border border-amber-100/15 bg-amber-100/[0.04] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.14)] backdrop-blur md:p-6"
               >
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
                   {detail.label}
                 </p>
-                <p className="mt-3 text-[15px] leading-7 text-slate-200">
+                <p className="mt-3 text-[15px] leading-7 text-stone-200">
                   {detail.value}
                 </p>
                 <div className="mt-5 grid gap-2">
                   {detail.evidence.map((item) => (
                     <div
                       key={item}
-                      className="border-l border-emerald-300/40 pl-3 text-sm leading-6 text-slate-300"
+                      className="border-l border-amber-200/45 pl-3 text-sm leading-6 text-stone-300"
                     >
                       {item}
                     </div>
@@ -153,9 +153,9 @@ export default function HonorStudentPage() {
             ))}
           </div>
 
-          <aside className="border border-white/10 bg-white/[0.045] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-4">
+          <aside className="border border-amber-100/15 bg-amber-100/[0.04] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-4">
             <div className="mb-3">
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-amber-200">
                 Official Certificate
               </p>
               <h3 className="mt-2 text-xl font-bold">逢甲大學榮譽學生證書</h3>
@@ -169,7 +169,7 @@ export default function HonorStudentPage() {
               sizes="(min-width: 1280px) 460px, (min-width: 1024px) 34vw, calc(100vw - 48px)"
             />
 
-            <p className="mt-3 text-sm leading-6 text-slate-400">
+            <p className="mt-3 text-sm leading-6 text-stone-400">
               逢甲大學正式核發之榮譽學生證書，作為本頁成果佐證。
             </p>
           </aside>
@@ -186,13 +186,13 @@ export default function HonorStudentPage() {
         <ImageLightboxGallery
           items={photos}
           actionLabel="View Photo"
-          cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+          cardClassName="group flex h-full flex-col overflow-hidden border border-amber-100/15 bg-amber-100/[0.04] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-amber-200/40 hover:bg-amber-100/[0.07] focus:outline-none focus:ring-2 focus:ring-amber-200/70"
           gridClassName="grid gap-6 md:grid-cols-2"
           imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
           imageSizes="(min-width: 1280px) 620px, (min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="h-[420px] overflow-hidden border-b border-white/10 bg-slate-950/50 md:h-[520px]"
+          imageWrapperClassName="h-[420px] overflow-hidden border-b border-amber-100/10 bg-stone-950/50 md:h-[520px]"
           showTitle
-          variant="emerald"
+          variant="amber"
         />
       </section>
     </main>
