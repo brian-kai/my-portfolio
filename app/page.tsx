@@ -285,7 +285,7 @@ const supportingProjects = [
     action: "View Website",
     tags: ["Frontend", "JSP", "Tailwind CSS"],
     summary:
-      "以前端練習為核心，聚焦響應式版面、視覺層級與粉絲網站內容架構。",
+      "以前端介面實作為核心，聚焦響應式版面、視覺層級與粉絲網站內容架構。",
     problem: "建立內容豐富且主題明確的 fan website。",
     method: "使用 JSP 與 Tailwind CSS 製作響應式頁面。",
     outcome: "完成可瀏覽、內容結構清楚的前端作品。",
