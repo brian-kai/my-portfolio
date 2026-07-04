@@ -3,7 +3,6 @@ import Link from "next/link";
 import ActiveSectionNav from "./active-section-nav";
 import AiProfilePanel from "./ai-profile-panel";
 import CertificateGrid from "./certificate-grid";
-import { EvidenceButton } from "./evidence-drawer";
 import MobileMenu from "./mobile-menu";
 import SkillWorkMatrix from "./skill-work-matrix";
 import aiatclCertificate from "./image/AIATCL.jpg";
@@ -171,7 +170,8 @@ const researchPublications = [
       {
         label: "獎項",
         value: [
-          "2025 工工年會：最佳論文獎 — 大數據技術與應用領域",
+          "2026 全國工業工程與管理大學生專題論文與技術報告競賽：服務系統與科技管理組第一名",
+          "2025 工工年會：最佳論文獎 / 大數據技術與應用領域",
           "2026 台灣作業研究學會大專校院專題競賽：人工智慧與大數據分析組第三名",
           "逢甲大學工業工程與系統管理學系-114學年度畢業專題第二名",
         ],
@@ -354,7 +354,7 @@ export default function Home() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2.5">
-              {["OR Competition 3rd Place", "Best Paper Award", "LLaMA 3 System", "Live SEO Tool", "NLP Research", "AI Workflow"].map(
+              {["IE Competition 1st Place", "OR Competition 3rd Place", "Best Paper Award", "LLaMA 3 System", "Live SEO Tool", "NLP Research", "AI Workflow"].map(
                 (item) => (
                   <span
                     key={item}
@@ -395,7 +395,8 @@ export default function Home() {
 
             <aside className="hidden gap-3 sm:grid-cols-3 lg:grid-cols-1">
             {[
-              ["Research Proof", "2025 CIIE Best Paper Award"],
+              ["Research Proof", "2026 IE Competition 1st Place"],
+              ["Conference Proof", "2025 CIIE Best Paper Award"],
               ["Product Demo", "SEO Entity Analysis Tool"],
               ["LLM Stack", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
             ].map(([label, value]) => (
@@ -642,24 +643,6 @@ export default function Home() {
                   >
                     {project.action}
                   </a>
-                  <EvidenceButton
-                    buttonLabel="Evidence"
-                    buttonClassName="pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-white/15 bg-white/[0.055] px-4 py-2.5 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/50 hover:bg-white/[0.09] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70 sm:w-auto"
-                    evidence={{
-                      title: project.title,
-                      type: project.badge,
-                      proofLinks: [
-                        { label: project.action, href: project.href },
-                        { label: "Projects section", href: "#projects" },
-                      ],
-                      whyItMatters:
-                        "This project connects a concrete AI or data problem to a visible artifact, making the work easier to verify during portfolio review.",
-                      relatedWork: [
-                        { label: "Research evidence", href: "#research" },
-                        { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
-                      ],
-                    }}
-                  />
                 </div>
               </article>
             );
@@ -796,6 +779,11 @@ export default function Home() {
                     </span>
                     {publication.href === "/conference" ? (
                       <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
+                        Industrial Engineering Competition First Place
+                      </span>
+                    ) : null}
+                    {publication.href === "/conference" ? (
+                      <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
                         Operations Research Project Competition Third Place
                       </span>
                     ) : null}
@@ -829,23 +817,6 @@ export default function Home() {
                   >
                     View Details
                   </Link>
-                  <EvidenceButton
-                    buttonLabel="Evidence"
-                    evidence={{
-                      title: publication.title,
-                      type: publication.badge,
-                      proofLinks: [
-                        { label: "Detail page", href: publication.href },
-                        { label: "Research section", href: "#research" },
-                      ],
-                      whyItMatters:
-                        "This research item gives external validation for AI and NLP work through presentation, award, or publication evidence.",
-                      relatedWork: [
-                        { label: "LLaMA 3 case study", href: "/llama-marketing-system" },
-                        { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
-                      ],
-                    }}
-                  />
                 </div>
               </div>
 
@@ -928,23 +899,6 @@ export default function Home() {
                 >
                   {honors[0].action}
                 </Link>
-                <EvidenceButton
-                  buttonLabel="Evidence"
-                  evidence={{
-                    title: honors[0].title,
-                    type: honors[0].badge,
-                    proofLinks: [
-                      { label: "Honor details", href: honors[0].href },
-                      { label: "Certificate evidence", href: "/honor-student" },
-                    ],
-                    whyItMatters:
-                      "This evidence supports academic growth and cross-domain credibility beyond single project output.",
-                    relatedWork: [
-                      { label: "Experience section", href: "#experience" },
-                      { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
-                    ],
-                  }}
-                />
               </div>
             </div>
 

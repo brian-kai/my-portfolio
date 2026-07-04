@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import EvidenceDrawer, { type EvidenceItem } from "./evidence-drawer";
 
 const profileModes = [
   {
@@ -16,7 +15,7 @@ const profileModes = [
       "LLaMA 3 and LSTM research pipeline",
     ],
     stack: ["LLaMA 3", "LSTM", "BLEU", "METEOR"],
-    cta: "View Research Evidence",
+    cta: "View Research",
     href: "#research",
     evidence: {
       title: "Research-backed AI systems",
@@ -100,7 +99,6 @@ const profileModes = [
 
 export default function AiProfilePanel() {
   const [activeModeId, setActiveModeId] = useState(profileModes[0].id);
-  const [openEvidence, setOpenEvidence] = useState<EvidenceItem | null>(null);
   const activeMode =
     profileModes.find((mode) => mode.id === activeModeId) ?? profileModes[0];
 
@@ -152,15 +150,12 @@ export default function AiProfilePanel() {
 
         <div className="mt-5 grid gap-2.5">
           {activeMode.proofPoints.map((point) => (
-            <EvidenceDrawer
+            <div
               key={point}
-              buttonLabel={point}
-              buttonClassName="pressable-subtle w-full border-l border-emerald-300/45 bg-white/[0.035] px-3 py-2 text-left text-sm font-semibold leading-6 text-slate-100 transition hover:bg-emerald-300/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-              evidence={{ ...activeMode.evidence, title: point }}
-              isOpen={openEvidence?.title === point}
-              onClose={() => setOpenEvidence(null)}
-              onOpen={() => setOpenEvidence({ ...activeMode.evidence, title: point })}
-            />
+              className="border-l border-emerald-300/45 bg-white/[0.035] px-3 py-2 text-sm font-semibold leading-6 text-slate-100"
+            >
+              {point}
+            </div>
           ))}
         </div>
 

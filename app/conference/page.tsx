@@ -4,6 +4,7 @@ import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
 import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.jpg";
 import graduateProjectAward from "../image/graduate-project-award.png";
+import industrialEngineeringCompetitionAward from "./industrial-engineering-competition-award-2026.png";
 import orCompetitionAward from "./or-competition-award-2026.png";
 import orCompetitionAwardCeremony from "./or-competition-award-ceremony-2026.jpg";
 import bestPaperCertificate from "./2025-11-29-[CIIE2025最佳論文獎]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
@@ -44,6 +45,14 @@ const certificates = [
 ];
 
 const awardEvidence = [
+  {
+    title: "工工競賽第一名獎狀",
+    description:
+      "2026 年全國工業工程與管理大學生專題論文與技術報告競賽服務系統與科技管理組第一名。",
+    image: industrialEngineeringCompetitionAward,
+    alt: "2026 全國工業工程與管理大學生專題論文與技術報告競賽第一名獎狀",
+    originalHref: "/file/industrial-engineering-competition-award-2026.pdf",
+  },
   {
     title: "OR 競賽獎狀",
     description: "基於LLaMA 3 個人化行銷文案研究題目於2026作業研究學會-大專生競賽獲獎證明。",
@@ -168,7 +177,7 @@ export default function ConferencePage() {
         </h1>
 
         <p className="mt-5 max-w-3xl leading-8 text-slate-300">
-          CIIE 2025 研討會發表與獲獎紀錄，包含論文發表證明與最佳論文獎證明。
+          CIIE 2025 研討會發表與獲獎紀錄，包含論文發表證明、最佳論文獎，以及 2026 全國工業工程與管理大學生專題論文與技術報告競賽第一名證明。
         </p>
       </section>
 

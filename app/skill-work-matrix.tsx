@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-import { EvidenceButton } from "./evidence-drawer";
-
 type WorkItem = {
   type: "Project" | "Research" | "Experience" | "Certificate";
   title: string;
@@ -339,7 +337,7 @@ export default function SkillWorkMatrix() {
       </aside>
 
       <section className="border border-emerald-300/20 bg-[#07100d]/60 p-5 backdrop-blur md:p-7">
-        <div className="flex flex-col gap-5 border-b border-white/10 pb-7 lg:flex-row lg:items-start lg:justify-between">
+        <div className="border-b border-white/10 pb-7">
           <div className="max-w-4xl">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Selected skill
@@ -351,24 +349,6 @@ export default function SkillWorkMatrix() {
               {selectedSkill.summary}
             </p>
           </div>
-
-          <EvidenceButton
-            buttonLabel="View Evidence"
-            evidence={{
-              title: selectedSkill.evidenceTitle,
-              type: selectedSkill.evidenceType,
-              proofLinks: selectedSkill.works.map((work) => ({
-                label: work.title,
-                href: work.href,
-              })),
-              whyItMatters:
-                "這個技能不是只出現在關鍵字列表，而是連到實際作品、研究成果與可驗證經驗。",
-              relatedWork: selectedSkill.works.map((work) => ({
-                label: work.title,
-                href: work.href,
-              })),
-            }}
-          />
         </div>
 
         <div className="mt-7">
