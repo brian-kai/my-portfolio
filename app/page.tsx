@@ -6,9 +6,9 @@ import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import SkillWorkMatrix from "./skill-work-matrix";
 import aiatclCertificate from "./image/AIATCL.jpg";
-import aiCertificate from "./image/AI證照.png";
-import googleCertificate from "./image/GOOGLE證照.png";
-import toeicCertificate from "./image/多益成績單.png";
+import aiCertificate from "./image/ai-certificate.png";
+import googleCertificate from "./image/google-certificate.png";
+import toeicCertificate from "./image/toeic-score-report.png";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -44,7 +44,7 @@ const certificates = [
     title: "TOEIC Listening & Reading Score Report",
     issuer: "ETS TOEIC",
     image: toeicCertificate,
-    href: "/file/多益成績單.pdf",
+    href: "/file/toeic-score-report.pdf",
     tags: ["TOEIC", "English", "Score Report"],
   },
 ];
@@ -212,7 +212,7 @@ const supportingProjects = [
   },
   {
     title: "LLaMA 3 個人化行銷文案研究",
-    href: "/file/畢業專題海報檔案.pdf",
+    href: "/file/graduation-project-poster.pdf",
     action: "View Poster",
     tags: ["Best Paper", "LLaMA 3", "BLEU", "METEOR"],
     summary:
@@ -223,7 +223,7 @@ const supportingProjects = [
   },
   {
     title: "用電趨勢分析",
-    href: "/file/期末專題成果報告-用電趨勢分析海報.pdf",
+    href: "/file/electricity-usage-trend-analysis-poster.pdf",
     action: "View Poster",
     tags: ["Data Analysis", "Python", "Visualization"],
     summary:
@@ -272,13 +272,13 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
           <MobileMenu items={navItems} />
 
-          <a
-            href="#"
+          <Link
+            href="/"
             className="min-w-0 flex-1 truncate text-center text-base font-bold md:flex-none md:text-left md:text-lg"
           >
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </a>
+          </Link>
 
           <div className="h-10 w-10 shrink-0 md:hidden" aria-hidden="true" />
 

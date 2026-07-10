@@ -8,8 +8,8 @@ import graduateProjectAward from "../image/graduate-project-award.png";
 import industrialEngineeringCompetitionAward from "./industrial-engineering-competition-award-2026.png";
 import orCompetitionAward from "./or-competition-award-2026.png";
 import orCompetitionAwardCeremony from "./or-competition-award-ceremony-2026.jpg";
-import bestPaperCertificate from "./2025-11-29-[CIIE2025最佳論文獎]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
-import presentationCertificate from "./2025-11-29-[CIIE2025發表證明]基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式.png";
+import bestPaperCertificate from "./2025-11-29-ciie2025-best-paper-award-llama3-marketing-copy.png";
+import presentationCertificate from "./2025-11-29-ciie2025-presentation-proof-llama3-marketing-copy.png";
 
 const presentationPhotos = [
   {
@@ -134,7 +134,7 @@ const researchOverview = {
   result:
     "研究建構一套基於 LLaMA 3 模型的個人化產品行銷文案生成方法，並整合 TextBlob、TextRank、LDA、SBERT 與 K-Means 等方法擷取消費者情感特徵、產品主題與銷售文案語意特徵。實驗結果顯示，本研究方法不僅能有效完成消費者偏好分析與文案生成，亦能改善傳統行銷文案模板化生成方式之侷限。",
   metrics: "BLEU-3 為 18.92、BLEU-4 為 14.44、METEOR 為 0.2362",
-  posterHref: "/file/畢業專題海報檔案.pdf",
+  posterHref: "/file/graduation-project-poster.pdf",
 };
 
 export const metadata: Metadata = {

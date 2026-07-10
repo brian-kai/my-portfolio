@@ -3,8 +3,8 @@ import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
-import proofPage1 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_1.png";
-import proofPage2 from "../image/KY1012-A ICCCM 2026 acceptance notification-Abstract_頁面_2.png";
+import proofPage1 from "../image/icccm-2026-acceptance-notification-page-1.png";
+import proofPage2 from "../image/icccm-2026-acceptance-notification-page-2.png";
 
 const details = [
   {

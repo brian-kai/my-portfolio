@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
-import departmentNightImage from "../image/工工之夜.jpg";
-import christmasPartyImage from "../image/耶晚.jpg";
-import cultureFestivalImage from "../image/文化季.jpg";
+import departmentNightImage from "../image/ie-department-night.jpg";
+import christmasPartyImage from "../image/christmas-eve-event.jpg";
+import cultureFestivalImage from "../image/culture-festival.jpg";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import AwardProofSection from "./award-proof-section";
 
