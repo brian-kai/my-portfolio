@@ -290,7 +290,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[minmax(0,0.82fr)_minmax(30rem,0.72fr)] lg:gap-12">
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,0.85fr)_minmax(26rem,0.65fr)] xl:gap-10">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Kevin Huang | AI Engineer / AI Product Associate
@@ -372,7 +372,7 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1fr)] lg:items-start">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1fr)] xl:items-start">
             <div>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
                 AI workflow builder
@@ -391,7 +391,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3 lg:grid-cols-1">
+            <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1">
               {[
                 {
                   title: "AI Workflow",
@@ -447,7 +447,7 @@ export default function Home() {
 
       <div className="border-y border-white/10 bg-white/[0.02]">
       <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
-        <div className="mb-10 grid gap-6 border-b border-white/10 pb-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,0.7fr)] lg:items-end">
+        <div className="mb-10 grid gap-6 border-b border-white/10 pb-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,0.7fr)] xl:items-end">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Featured case studies
@@ -478,7 +478,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-12">
+        <div className="grid gap-5 xl:grid-cols-12">
           {featuredProjects.map((project, index) => {
             const isExternal = project.href.startsWith("http");
             const artifactLabel = getProjectArtifactLabel(project.action);
@@ -495,8 +495,8 @@ export default function Home() {
                 key={project.title}
                 className={`pressable motion-reduce-transform group relative flex h-full flex-col overflow-hidden border backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 focus-within:ring-2 focus-within:ring-emerald-300/70 ${
                   isPrimary
-                    ? "border-emerald-300/25 bg-[linear-gradient(135deg,rgba(16,185,129,0.1),rgba(255,255,255,0.04)_45%,rgba(245,158,11,0.055))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] md:p-7 lg:col-span-7"
-                    : "border-white/10 bg-white/[0.045] p-5 shadow-[0_20px_64px_rgba(0,0,0,0.18)] hover:bg-white/[0.065] md:p-6 lg:col-span-5"
+                    ? "border-emerald-300/25 bg-[linear-gradient(135deg,rgba(16,185,129,0.1),rgba(255,255,255,0.04)_45%,rgba(245,158,11,0.055))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] md:p-7 xl:col-span-7"
+                    : "border-white/10 bg-white/[0.045] p-5 shadow-[0_20px_64px_rgba(0,0,0,0.18)] hover:bg-white/[0.065] md:p-6 xl:col-span-5"
                 }`}
               >
                 <a
@@ -602,7 +602,7 @@ export default function Home() {
             return (
               <article
                 key={project.title}
-                className="pressable-subtle group relative grid gap-5 py-6 transition hover:bg-white/[0.03] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 lg:grid-cols-[3rem_minmax(16rem,0.82fr)_minmax(0,1.18fr)] lg:gap-8"
+                className="pressable-subtle group relative grid gap-5 py-6 transition hover:bg-white/[0.03] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 xl:grid-cols-[3rem_minmax(14rem,0.82fr)_minmax(0,1.18fr)] xl:gap-8"
               >
                 {project.href ? (
                   <a
@@ -703,7 +703,7 @@ export default function Home() {
           {researchPublications.map((publication) => (
             <article
               key={publication.title}
-              className="group relative grid gap-6 py-7 transition hover:bg-white/[0.035] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(24rem,1fr)] lg:gap-10"
+              className="group relative grid gap-6 py-7 transition hover:bg-white/[0.035] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 xl:grid-cols-[minmax(0,0.82fr)_minmax(22rem,1fr)] xl:gap-10"
             >
               <Link
                 href={publication.href}
@@ -711,7 +711,7 @@ export default function Home() {
                 className="absolute inset-0 z-10"
               />
 
-              <div className="flex min-w-0 flex-col lg:h-full">
+              <div className="flex min-w-0 flex-col xl:h-full">
                 <div className="pointer-events-none flex flex-col items-start gap-3">
                   <div className="flex flex-wrap gap-2">
                     <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
