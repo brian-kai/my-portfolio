@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -57,6 +58,8 @@ const awardEvidence = [
     title: "OR 競賽獎狀",
     description: "基於LLaMA 3 個人化行銷文案研究題目於2026作業研究學會-大專生競賽獲獎證明。",
     image: orCompetitionAward,
+    alt: "2026 臺灣作業研究學會大專校院專題競賽第三名獎狀",
+    originalHref: "/file/or-competition-award-2026.pdf",
   },
   {
     title: "畢業專題獎狀",
@@ -134,18 +137,24 @@ const researchOverview = {
   posterHref: "/file/畢業專題海報檔案.pdf",
 };
 
+export const metadata: Metadata = {
+  title: "CIIE 2025 研討會發表與獲獎證明",
+  description:
+    "2025 中國工業工程學會年會最佳論文獎、發表證明，以及工工專題競賽第一名與 OR 專題競賽第三名獲獎紀錄。",
+};
+
 export default function ConferencePage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-4 md:justify-between md:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
           <Link
             href="/#research"
-            className="absolute left-4 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
-            Back to Research
+            ← Back
           </Link>
 
           <Link href="/#research" className="min-w-0 truncate text-lg font-bold">

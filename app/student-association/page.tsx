@@ -1,11 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
 import departmentNightImage from "../image/工工之夜.jpg";
 import christmasPartyImage from "../image/耶晚.jpg";
 import cultureFestivalImage from "../image/文化季.jpg";
 import ImageLightboxGallery from "../image-lightbox-gallery";
-import studentAssociationAward from "../image/student-association-award.png";
-import LightboxImage from "../lightbox-image";
 import AwardProofSection from "./award-proof-section";
 
 const experiences = [
@@ -77,18 +76,24 @@ const associationNavItems = [
   { label: "Award", href: "#award" },
 ];
 
+export const metadata: Metadata = {
+  title: "系學會活動經歷",
+  description:
+    "工業工程與系統管理學系系學會活動組長經歷，包含活動職責、正式獎狀證明與活動照片紀錄。",
+};
+
 export default function StudentAssociationPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(245,158,11,0.16),transparent_28%),radial-gradient(circle_at_84%_14%,rgba(34,197,94,0.1),transparent_24%),linear-gradient(180deg,#0d0c09_0%,#15120b_52%,#0d0c09_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-amber-200/10 bg-[#0d0c09]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#student-association"
-            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
-            Back to Student Association
+            ← Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
@@ -209,79 +214,6 @@ export default function StudentAssociationPage() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section
-        id="award-old"
-        className="hidden"
-      >
-        <div className="mb-7 grid gap-4 md:grid-cols-[minmax(0,0.74fr)_minmax(16rem,0.26fr)] md:items-end">
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/80">
-              Official proof
-            </p>
-            <h2 className="text-3xl font-black leading-tight text-white md:text-4xl">
-              系學會正式證明
-            </h2>
-          </div>
-          <p className="max-w-sm text-[15px] leading-7 text-slate-300 md:text-right">
-            獎狀、職責與照片放在同一頁，讓系學會經歷有完整的證據鏈。
-          </p>
-        </div>
-
-        <div className="overflow-hidden rounded-lg border border-amber-200/20 bg-[#15120b]/88 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
-          <div className="grid lg:grid-cols-[minmax(0,0.76fr)_minmax(16rem,0.24fr)]">
-            <div className="bg-white p-2 md:p-4">
-              <LightboxImage
-                src={studentAssociationAward}
-                alt="系學獎狀"
-                actionLabel="View Award"
-                actionClassName="m-3 inline-flex w-fit items-center justify-center rounded-lg border border-amber-200/55 bg-[#15120b] px-5 py-2.5 text-sm font-bold text-amber-50 shadow-[0_14px_32px_rgba(245,158,11,0.16)] transition group-hover:-translate-y-0.5 group-hover:border-amber-200/80 group-hover:bg-[#1b160d]"
-                className="h-auto max-h-[720px] w-full object-contain"
-                sizes="(min-width: 1024px) 820px, calc(100vw - 48px)"
-                priority
-              />
-            </div>
-
-            <aside className="flex flex-col border-t border-amber-200/15 p-5 md:p-6 lg:border-l lg:border-t-0">
-              <span className="w-fit border border-amber-200/25 bg-amber-200/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-100">
-                Leadership Evidence
-              </span>
-
-              <h3 className="mt-6 text-2xl font-black leading-tight text-white">
-                系學獎狀
-              </h3>
-
-              <p className="mt-4 text-[15px] leading-8 text-slate-300">
-                系學會經歷的正式獎狀證明，補強活動規劃、團隊協作、現場執行與服務貢獻。
-              </p>
-
-              <div className="mt-7 grid gap-3 text-sm leading-6 text-slate-300">
-                {[
-                  ["Position", "活動組長"],
-                  ["Evidence", "服務獎狀"],
-                  ["Context", "工業工程與系統管理學系系學會"],
-                ].map(([label, value]) => (
-                  <div
-                    key={label}
-                    className="border-l border-amber-200/35 bg-white/[0.035] px-4 py-3"
-                  >
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-200/80">
-                      {label}
-                    </p>
-                    <p className="mt-1 font-semibold text-slate-100">{value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-auto pt-7">
-                <p className="text-xs leading-6 text-slate-400">
-                  使用獎狀下方按鈕可放大檢視。
-                </p>
-              </div>
-            </aside>
-          </div>
         </div>
       </section>
 

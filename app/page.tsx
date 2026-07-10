@@ -20,53 +20,6 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const skills = [
-  {
-    category: "Data Analysis",
-    description:
-      "使用 Python、Pandas、NumPy 與 SQL 進行資料清理、資料轉換、特徵整理與視覺化分析，協助從資料中分析趨勢與洞察。",
-    items: [
-      "Python",
-      "Pandas",
-      "NumPy",
-      "SQL",
-      "Data Cleaning",
-      "Data Visualization",
-    ],
-  },
-  {
-    category: "NLP / LLM",
-    description:
-      "具備自然語言處理與大型語言模型應用經驗，能進行意圖分類、文字生成、情感分析、關鍵字擷取與知識蒸餾相關實作。",
-    items: [
-      "BERT",
-      "LLaMA",
-      "Gemma",
-      "Intent Classification",
-      "Text Generation",
-      "Sentiment Analysis",
-      "Keyword Extraction",
-      "Knowledge Distillation",
-    ],
-  },
-  {
-    category: "Web / Deployment",
-    description:
-      "使用 Next.js、Tailwind CSS、Vercel、Supabase 與 n8n 建立網站介面、部署專案，並串接資料庫與自動化流程。",
-    items: [
-      "Next.js",
-      "Tailwind CSS",
-      "Vercel",
-      "Supabase",
-      "n8n",
-      "Deployment",
-      "Workflow Automation",
-    ],
-  },
-];
-
-void skills;
-
 const certificates = [
   {
     title: "AIA Talent Certification in AI Literacy",
@@ -283,11 +236,11 @@ const supportingProjects = [
     title: "IVE K-pop Fan Website",
     href: "/ive",
     action: "View Website",
-    tags: ["Frontend", "JSP", "Tailwind CSS"],
+    tags: ["Frontend", "Next.js", "Tailwind CSS"],
     summary:
       "以前端介面實作為核心，聚焦響應式版面、視覺層級與粉絲網站內容架構。",
     problem: "建立內容豐富且主題明確的 fan website。",
-    method: "使用 JSP 與 Tailwind CSS 製作響應式頁面。",
+    method: "使用 Next.js 與 Tailwind CSS 製作響應式頁面。",
     outcome: "完成可瀏覽、內容結構清楚的前端作品。",
   },
 ];
@@ -393,7 +346,7 @@ export default function Home() {
           <div className="grid gap-4">
             <AiProfilePanel />
 
-            <aside className="hidden gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            <aside className="hidden gap-3 sm:grid sm:grid-cols-3 lg:grid-cols-1">
             {[
               ["Research Proof", "2026 IE Competition 1st Place"],
               ["Conference Proof", "2025 CIIE Best Paper Award"],
@@ -421,19 +374,6 @@ export default function Home() {
         <h2 className="mb-6 text-3xl font-bold">About Me</h2>
 
         <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
-          <div className="hidden">
-            <p
-              lang="zh-Hant"
-              className="text-base leading-8 text-slate-300"
-            >
-            我聚焦於 NLP、LLM、資料處理與 AI workflow 的實作與應用。作品集整理了研究型專案、可展示的 AI 工具流程，以及能支持產品化思考的資料分析與前端呈現能力。
-
-在 AI 專案中，我能從問題拆解、資料清理、模型應用、實驗評估到成果展示參與完整流程；曾使用 Python、SQL、Pandas、NumPy、BERT、LLaMA 3、Gemma 4 等工具與模型，實作文字生成、意圖分類、問答生成、entity analysis 與資料視覺化相關任務。
-
-我希望把模型實驗轉化成可以被理解、被操作、被驗證的產品雛形，因此也重視 workflow design、介面呈現、研究說明與跨角色溝通。
-          </p>
-          </div>
-
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1fr)] lg:items-start">
             <div>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">

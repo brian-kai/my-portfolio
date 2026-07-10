@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -72,6 +73,12 @@ const icccmNavItems = [
   { label: "Proof", href: "#proof" },
 ];
 
+export const metadata: Metadata = {
+  title: "ICCCM 2026 Presentation Accepted",
+  description:
+    "Paper accepted for presentation at ICCCM 2026 in Tokyo: An Objective Essay Scoring and Commentary Generation System with LSTM Model.",
+};
+
 export default function IcccmPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
@@ -79,12 +86,12 @@ export default function IcccmPage() {
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#research"
-            className="absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
-            Back to Research
+            ← Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">

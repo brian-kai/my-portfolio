@@ -246,12 +246,12 @@ export default function IvePage() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_14%_16%,rgba(236,72,153,0.18),transparent_26%),radial-gradient(circle_at_82%_12%,rgba(45,212,191,0.14),transparent_24%),radial-gradient(circle_at_74%_82%,rgba(129,140,248,0.16),transparent_28%),linear-gradient(180deg,#09070f_0%,#0e111f_50%,#09070f_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(244,114,182,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(45,212,191,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-pink-200/10 bg-[#09070f]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-center px-6 py-4 md:justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#projects"
-            className="pressable motion-reduce-transform absolute left-6 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="pressable motion-reduce-transform shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
-            Back to Projects
+            ← Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
