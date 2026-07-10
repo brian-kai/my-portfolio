@@ -306,7 +306,7 @@ export default function SkillWorkMatrix() {
         <div className="mt-7 grid gap-5">
           {groups.map((group) => (
             <div key={group}>
-              <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
                 {group}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -352,7 +352,7 @@ export default function SkillWorkMatrix() {
         </div>
 
         <div className="mt-7">
-          <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+          <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
             Used in
           </p>
 

@@ -296,7 +296,7 @@ export default function Home() {
               Kevin Huang | AI Engineer / AI Product Associate
             </p>
 
-            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl lg:whitespace-nowrap xl:text-6xl">
+            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl xl:text-6xl">
               NLP / LLM AI Engineer
             </h1>
 
@@ -346,7 +346,7 @@ export default function Home() {
           <div className="grid gap-4">
             <AiProfilePanel />
 
-            <aside className="hidden gap-3 sm:grid sm:grid-cols-3 lg:grid-cols-1">
+            <aside className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-1">
             {[
               ["Research Proof", "2026 IE Competition 1st Place"],
               ["Conference Proof", "2025 CIIE Best Paper Award"],
@@ -355,7 +355,7 @@ export default function Home() {
             ].map(([label, value]) => (
               <div
                 key={label}
-                className="border border-white/10 bg-[#07100d]/76 p-5 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur"
+                className="border border-white/10 bg-[#07100d]/76 p-4 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur sm:p-5"
               >
                 <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
                   {label}
@@ -447,6 +447,7 @@ export default function Home() {
         <SkillWorkMatrix />
       </section>
 
+      <div className="border-y border-white/10 bg-white/[0.02]">
       <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
         <div className="mb-10 grid gap-6 border-b border-white/10 pb-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,0.7fr)] lg:items-end">
           <div>
@@ -463,7 +464,7 @@ export default function Home() {
             {[
               ["01", "Artifact", "Demo / website / poster"],
               ["02", "Method", "Problem to outcome"],
-              ["03", "Evidence", "Proof drawer"],
+              ["03", "Highlights", "Proof points"],
             ].map(([step, title, text]) => (
               <div
                 key={step}
@@ -473,7 +474,7 @@ export default function Home() {
                   {step}
                 </p>
                 <p className="mt-1 text-sm font-semibold text-white">{title}</p>
-                <p className="mt-1 text-xs leading-5 text-slate-500">{text}</p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">{text}</p>
               </div>
             ))}
           </div>
@@ -487,7 +488,7 @@ export default function Home() {
             const isPrimary = index === 0;
             const reviewPath = [
               ["Artifact", artifactLabel],
-              ["Evidence", "Proof drawer"],
+              ["Highlights", `${project.proofPoints.length} proof points`],
               ["Stack", project.tags.slice(0, 2).join(" / ")],
             ];
 
@@ -518,12 +519,12 @@ export default function Home() {
                     {artifactLabel}
                   </span>
                   <span className="text-xs font-semibold text-amber-200">
-                    Evidence ready
+                    Verified
                   </span>
                 </div>
 
                 <div className="pointer-events-none mt-5">
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                     {reviewType} entry
                   </p>
                   <h3
@@ -541,7 +542,7 @@ export default function Home() {
                 <dl className="pointer-events-none mt-5 grid gap-3 border-y border-white/10 py-4 sm:grid-cols-3">
                   {reviewPath.map(([label, value]) => (
                     <div key={label}>
-                      <dt className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      <dt className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                         {label}
                       </dt>
                       <dd className="mt-1 text-sm font-semibold leading-6 text-emerald-100">
@@ -688,12 +689,13 @@ export default function Home() {
           })}
         </div>
       </section>
+      </div>
 
       <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
         <div className="mb-8">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Evidence ledger
+              Publications & Awards
             </p>
             <h2 className="text-3xl font-bold">Research & Publications</h2>
           </div>
@@ -739,8 +741,8 @@ export default function Home() {
                 </div>
 
                 <div className="pointer-events-none mt-6 border-l border-emerald-300/35 pl-4">
-                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                    Evidence focus
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                    Focus area
                   </p>
                   <p className="mt-2 text-sm font-semibold leading-6 text-emerald-100">
                     {publication.badge}
@@ -766,7 +768,7 @@ export default function Home() {
                     <div
                       key={detail.label}
                     >
-                      <dt className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                      <dt className="text-sm font-semibold uppercase tracking-wide text-slate-400">
                         {detail.label}
                       </dt>
                       <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
@@ -859,7 +861,7 @@ export default function Home() {
           id="student-association"
           className="mb-5 mt-12 text-2xl font-semibold"
         >
-          Leadership Evidence
+          Leadership
         </h3>
         <div className="grid gap-6">
           {highlights
@@ -956,11 +958,12 @@ export default function Home() {
 
       </section>
 
+      <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
       <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
         <div className="mb-8">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Proof gallery
+              Certifications
             </p>
             <h2 className="text-3xl font-bold">Certificates</h2>
           </div>
@@ -968,6 +971,7 @@ export default function Home() {
 
         <CertificateGrid certificates={certificates} />
       </section>
+      </div>
 
       <section id="contact" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
         <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
@@ -1017,7 +1021,7 @@ export default function Home() {
         ↑
       </a>
 
-      <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">
+      <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-400">
         © 2026 Kevin Huang | Kai-Chun Huang. All rights reserved.
       </footer>
     </main>

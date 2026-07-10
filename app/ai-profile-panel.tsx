@@ -17,21 +17,6 @@ const profileModes = [
     stack: ["LLaMA 3", "LSTM", "BLEU", "METEOR"],
     cta: "View Research",
     href: "#research",
-    evidence: {
-      title: "Research-backed AI systems",
-      type: "Research Evidence",
-      proofLinks: [
-        { label: "CIIE 2025 Best Paper Award", href: "/conference" },
-        { label: "ICCCM 2026 Acceptance", href: "/icccm" },
-        { label: "LLaMA 3 Case Study", href: "/llama-marketing-system" },
-      ],
-      whyItMatters:
-        "This evidence shows the ability to turn model experiments into reviewed research outcomes, not only isolated prototypes.",
-      relatedWork: [
-        { label: "Research section", href: "#research" },
-        { label: "Resume", href: "/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf" },
-      ],
-    },
   },
   {
     id: "product",
@@ -47,23 +32,6 @@ const profileModes = [
     stack: ["Next.js", "Vercel", "SERP API", "Entity Analysis"],
     cta: "Open Demo Projects",
     href: "#projects",
-    evidence: {
-      title: "Product demos and deployed AI tools",
-      type: "Demo Evidence",
-      proofLinks: [
-        {
-          label: "SEO Entity Analysis Tool",
-          href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
-        },
-        { label: "LLaMA 3 Marketing System", href: "/llama-marketing-system" },
-      ],
-      whyItMatters:
-        "Live demos make the portfolio verifiable. They show that the work can move from analysis and modeling into something people can open and inspect.",
-      relatedWork: [
-        { label: "Projects section", href: "#projects" },
-        { label: "GitHub", href: "https://github.com/brian-kai" },
-      ],
-    },
   },
   {
     id: "workflow",
@@ -79,21 +47,6 @@ const profileModes = [
     stack: ["Python", "SQL", "Pandas", "HDBSCAN"],
     cta: "Explore Workflow",
     href: "#skills",
-    evidence: {
-      title: "Data workflow and model pipeline skills",
-      type: "Workflow Evidence",
-      proofLinks: [
-        { label: "Skills section", href: "#skills" },
-        { label: "LLaMA 3 Workflow", href: "/llama-marketing-system" },
-        { label: "Project cases", href: "#projects" },
-      ],
-      whyItMatters:
-        "The workflow evidence connects data cleaning, feature extraction, clustering, visualization, and model output into a repeatable AI engineering process.",
-      relatedWork: [
-        { label: "Data projects", href: "#projects" },
-        { label: "Research section", href: "#research" },
-      ],
-    },
   },
 ];
 
