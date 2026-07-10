@@ -56,7 +56,7 @@ export default function AiProfilePanel() {
     profileModes.find((mode) => mode.id === activeModeId) ?? profileModes[0];
 
   return (
-    <aside className="w-full border border-white/10 bg-[#07100d]/80 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur md:p-5 lg:max-w-[34rem]">
+    <aside className="w-full border border-white/10 bg-[#07100d]/80 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur md:p-5 lg:max-w-[40rem]">
       <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
         <div>
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">

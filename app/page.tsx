@@ -290,7 +290,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,0.62fr)] lg:gap-12">
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 lg:grid-cols-[minmax(0,0.82fr)_minmax(30rem,0.72fr)] lg:gap-12">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Kevin Huang | AI Engineer / AI Product Associate
@@ -307,7 +307,7 @@ export default function Home() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2.5">
-              {["IE Competition 1st Place", "OR Competition 3rd Place", "Best Paper Award", "LLaMA 3 System", "Live SEO Tool", "NLP Research", "AI Workflow"].map(
+              {["IE Competition 1st Place", "OR Competition 3rd Place", "Best Paper Award", "LLaMA 3 System", "Live SEO Tool"].map(
                 (item) => (
                   <span
                     key={item}
@@ -343,31 +343,29 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid gap-4">
-            <AiProfilePanel />
-
-            <aside className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            {[
-              ["Research Proof", "2026 IE Competition 1st Place"],
-              ["Conference Proof", "2025 CIIE Best Paper Award"],
-              ["Product Demo", "SEO Entity Analysis Tool"],
-              ["LLM Stack", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
-            ].map(([label, value]) => (
-              <div
-                key={label}
-                className="border border-white/10 bg-[#07100d]/76 p-4 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur sm:p-5"
-              >
-                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                  {label}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-slate-200">
-                  {value}
-                </p>
-              </div>
-            ))}
-            </aside>
-          </div>
+          <AiProfilePanel />
         </div>
+
+        <aside className="relative mx-auto grid max-w-7xl grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 pt-10 sm:grid-cols-4 md:px-8 md:pb-20">
+          {[
+            ["Research Proof", "2026 IE Competition 1st Place"],
+            ["Conference Proof", "2025 CIIE Best Paper Award"],
+            ["Product Demo", "SEO Entity Analysis Tool"],
+            ["LLM Stack", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              className="border border-white/10 bg-[#07100d]/76 p-4 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur sm:p-5"
+            >
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                {label}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-slate-200">
+                {value}
+              </p>
+            </div>
+          ))}
+        </aside>
       </section>
 
       <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
