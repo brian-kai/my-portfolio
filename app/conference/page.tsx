@@ -5,6 +5,7 @@ import ImageLightboxGallery from "../image-lightbox-gallery";
 import presentationPhotoOne from "../image/67C8471D-8089-417B-B3A5-A69F0B04C706.jpg";
 import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.jpg";
 import graduateProjectAward from "../image/graduate-project-award.png";
+import industrialEngineeringCompetitionCeremony from "./industrial-engineering-competition-ceremony-2026.jpg";
 import industrialEngineeringCompetitionAward from "./industrial-engineering-competition-award-2026.png";
 import orCompetitionAward from "./or-competition-award-2026.png";
 import orCompetitionAwardCeremony from "./or-competition-award-ceremony-2026.jpg";
@@ -64,13 +65,35 @@ const awardEvidence = [
   {
     title: "畢業專題獎狀",
     description:
-      "畢業專題成果的正式獎狀證明，與研究成果、專題競賽和發表紀錄放在同一脈絡中呈現。",
+      "畢業專題成果的正式獎狀證明。",
     image: graduateProjectAward,
     alt: "畢業專題獎狀",
   },
 ];
 
 const awardCeremonyPhotos = [
+  {
+    title: "工工專題競賽頒獎照片",
+    description:
+      "2026 全國工業工程與管理大學生專題論文與技術報告競賽服務系統與科技管理組第一名頒獎紀錄。",
+    image: industrialEngineeringCompetitionCeremony,
+    alt: "2026 全國工業工程與管理大學生專題論文與技術報告競賽第一名頒獎照片",
+    details: [
+      {
+        label: "競賽組別",
+        value: "服務系統與科技管理組",
+      },
+      {
+        label: "獲獎名次",
+        value: "第一名",
+        highlight: true,
+      },
+      {
+        label: "競賽名稱",
+        value: "全國工業工程與管理大學生專題論文與技術報告競賽",
+      },
+    ],
+  },
   {
     title: "2026 作業研究專題競賽頒獎典禮",
     description:
@@ -185,7 +208,7 @@ export default function ConferencePage() {
           研討會發表與獲獎證明
         </h1>
 
-        <p className="mt-5 max-w-3xl leading-8 text-slate-300">
+        <p className="mt-5 max-w-full overflow-x-auto whitespace-nowrap leading-8 text-slate-300">
           CIIE 2025 研討會發表與獲獎紀錄，包含論文發表證明、最佳論文獎，以及 2026 全國工業工程與管理大學生專題論文與技術報告競賽第一名證明。
         </p>
       </section>
