@@ -161,7 +161,7 @@ const researchOverview = {
 };
 
 export const metadata: Metadata = {
-  title: "CIIE 2025 研討會發表與獲獎證明",
+  title: "研究發表與競賽獲獎證明",
   description:
     "2025 中國工業工程學會年會最佳論文獎、發表證明，以及工工專題競賽第一名與 OR 專題競賽第三名獲獎紀錄。",
 };
@@ -201,11 +201,11 @@ export default function ConferencePage() {
 
       <section id="overview" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-12 pt-28 md:scroll-mt-28 md:pb-16 md:pt-32">
         <p className="mb-4 inline-flex border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-sm font-semibold text-emerald-200">
-          Conference
+          Research Achievements
         </p>
 
         <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-6xl">
-          研討會發表與獲獎證明
+          研究發表與競賽獲獎證明
         </h1>
 
         <p className="mt-5 max-w-full overflow-x-auto whitespace-nowrap leading-8 text-slate-300">
