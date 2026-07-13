@@ -29,9 +29,8 @@ const presentationPhotos = [
 
 const conferenceNavItems = [
   { label: "Overview", href: "#overview" },
-  { label: "Recognition", href: "#recognition" },
-  { label: "Research", href: "#research" },
   { label: "Presentation Photos", href: "#presentation-photos" },
+  { label: "Recognition", href: "#recognition" },
 ];
 
 const certificates = [
@@ -219,9 +218,9 @@ export default function ConferencePage() {
         >
           {[
             ["成果總覽", "#overview"],
-            ["獎項證明", "#recognition"],
             ["研究內容", "#research"],
             ["發表照片", "#presentation-photos"],
+            ["獎項證明", "#recognition"],
           ].map(([label, href]) => (
             <a
               key={href}
@@ -232,41 +231,6 @@ export default function ConferencePage() {
             </a>
           ))}
         </nav>
-      </section>
-
-      <section id="recognition" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold md:text-3xl">獎項與發表證明</h2>
-        </div>
-
-        <div className="mb-8">
-          <ImageLightboxGallery
-            items={awardCeremonyPhotos}
-            actionLabel="View Award Photo"
-            cardClassName="group grid overflow-hidden rounded-2xl border border-emerald-300/20 bg-white/[0.06] text-left shadow-[0_24px_80px_rgba(16,185,129,0.14)] transition hover:-translate-y-1 hover:border-emerald-300/45 hover:bg-white/[0.09] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 lg:grid-cols-[1.35fr_0.65fr]"
-            gridClassName="grid"
-            imageClassName="aspect-[16/9] h-full w-full object-cover object-[52%_48%] transition duration-300 group-hover:scale-[1.015]"
-            imageSizes="(min-width: 1024px) 62vw, 100vw"
-            imageWrapperClassName="overflow-hidden bg-slate-950/80"
-            showDescription
-            showTitle
-            titleClassName="text-xl font-black leading-tight text-white md:text-2xl"
-            variant="emerald"
-          />
-        </div>
-
-        <ImageLightboxGallery
-          items={recognitionItems}
-          cardClassName="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
-          gridClassName="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-          imageClassName="h-full w-full rounded-xl object-contain transition duration-300 group-hover:scale-[1.01]"
-          imageSizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="flex h-[390px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[520px]"
-          showDescription
-          showTitle
-          titleClassName="text-base font-semibold text-white md:text-lg"
-          variant="emerald"
-        />
       </section>
 
       <section id="research" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
@@ -365,6 +329,41 @@ export default function ConferencePage() {
           showDescription
           showTitle
           titleClassName="text-base font-bold text-white md:text-lg"
+          variant="emerald"
+        />
+      </section>
+
+      <section id="recognition" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold md:text-3xl">獎項與發表證明</h2>
+        </div>
+
+        <div className="mb-8">
+          <ImageLightboxGallery
+            items={awardCeremonyPhotos}
+            actionLabel="View Award Photo"
+            cardClassName="group grid overflow-hidden rounded-2xl border border-emerald-300/20 bg-white/[0.06] text-left shadow-[0_24px_80px_rgba(16,185,129,0.14)] transition hover:-translate-y-1 hover:border-emerald-300/45 hover:bg-white/[0.09] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 lg:grid-cols-[1.35fr_0.65fr]"
+            gridClassName="grid"
+            imageClassName="aspect-[16/9] h-full w-full object-cover object-[52%_48%] transition duration-300 group-hover:scale-[1.015]"
+            imageSizes="(min-width: 1024px) 62vw, 100vw"
+            imageWrapperClassName="overflow-hidden bg-slate-950/80"
+            showDescription
+            showTitle
+            titleClassName="text-xl font-black leading-tight text-white md:text-2xl"
+            variant="emerald"
+          />
+        </div>
+
+        <ImageLightboxGallery
+          items={recognitionItems}
+          cardClassName="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.08] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+          gridClassName="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          imageClassName="h-full w-full rounded-xl object-contain transition duration-300 group-hover:scale-[1.01]"
+          imageSizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
+          imageWrapperClassName="flex h-[390px] items-center justify-center border-b border-white/10 bg-slate-900/80 p-2 md:h-[520px]"
+          showDescription
+          showTitle
+          titleClassName="text-base font-semibold text-white md:text-lg"
           variant="emerald"
         />
       </section>

@@ -290,34 +290,20 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,0.85fr)_minmax(26rem,0.65fr)] xl:gap-10">
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.12fr)_minmax(24rem,0.68fr)] xl:gap-10">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Kevin Huang | AI Engineer / AI Product Associate
             </p>
 
-            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl xl:text-6xl">
+            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl xl:whitespace-nowrap xl:text-6xl">
               NLP / LLM AI Engineer
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-              Building NLP, LLM, and data workflow projects that turn model
-              experiments into usable AI tools, research evidence, and product
-              demos.
+              專注於 NLP、LLM 與資料工作流程專案，將模型實驗轉化為可實際使用的
+              AI 工具、研究成果與產品展示。
             </p>
-
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              {["IE Competition 1st Place", "OR Competition 3rd Place", "Best Paper Award", "LLaMA 3 System", "Live SEO Tool"].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
-                  >
-                    {item}
-                  </span>
-                ),
-              )}
-            </div>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a
@@ -346,7 +332,7 @@ export default function Home() {
           <AiProfilePanel />
         </div>
 
-        <aside className="relative mx-auto grid max-w-7xl grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 pt-10 sm:grid-cols-4 md:px-8 md:pb-20">
+        <aside className="relative mx-auto grid max-w-[86rem] grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 pt-10 sm:grid-cols-4 md:px-8 md:pb-20">
           {[
             ["Research Proof", "2026 IE Competition 1st Place"],
             ["Conference Proof", "2025 CIIE Best Paper Award"],
