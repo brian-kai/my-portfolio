@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
@@ -189,6 +190,23 @@ export default function LlamaMarketingSystemPage() {
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="contribution-title" className="border-b border-white/10 py-10 md:py-12">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
+            My Contribution
+          </p>
+          <h2 id="contribution-title" className="mt-3 text-2xl font-bold md:text-3xl">
+            {projectLeadership.title}
+          </h2>
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+            <p className="border-l border-emerald-300/35 pl-4 text-[15px] leading-7 text-slate-300">
+              {projectLeadership.description}
+            </p>
+            <p className="border-l border-emerald-300/35 pl-4 text-[15px] leading-7 text-slate-300">
+              {projectLeadership.training}
+            </p>
           </div>
         </section>
 

@@ -3,3 +3,4 @@ export const siteName = "Kevin Huang | Kai-Chun Huang";
 export const siteTitle = `${siteName} | AI & Data Analysis Portfolio`;
 export const siteDescription =
   "Kai-Chun Huang's portfolio focused on AI, NLP, LLM fine-tuning, and data analysis projects.";
+export const resumeHref = "/file/Huang_Kai-Chun_Intelligent_Manufacturing_Engineer_Resume.pdf";

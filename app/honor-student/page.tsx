@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { additionalAcademicExperiences, projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
+import { honorSharing } from "../resume-highlights";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import LightboxImage from "../lightbox-image";
 
@@ -30,20 +32,20 @@ const proofChips = [
 const details = [
   {
     label: "Academic & Research",
-    value: "以研究發表與學術成果展現專題執行、模型應用與英文論文發表能力。",
+    value: "以專題領導、研究發表與國際研討會摘要錄取，呈現研究規劃與模型實作經驗。",
     evidence: [
       "CIIE 2025 最佳論文獎",
       "ICCCM 2026 Accepted for Presentation",
-      "NLP / LLM 研究與專題實作",
+      "畢業專題組長：進度規劃、組員分工與每週兩次進度報告",
     ],
   },
   {
     label: "Cross-domain Practice",
     value: "將資料分析、AI 工具與實務問題連結，完成資料整理到成果呈現。",
     evidence: [
-      "Google Data Analytics 學習",
-      "用電趨勢分析專題",
-      "AI workflow 與資料處理專案",
+      "Google Data Analytics：資料清理、SQL 查詢、R 語言與視覺化",
+      "工業感測與聯網實作：用電趨勢分析專題",
+      "2020–2023 年每日用電資料分析、異常檢測與模型建構",
     ],
   },
   {
@@ -51,7 +53,7 @@ const details = [
     value: "透過助教、研究助理與系學會活動經驗，呈現溝通協作與公共服務投入。",
     evidence: [
       "資料庫設計課程助教",
-      "國科會研究計畫助理",
+      "研究計畫助理：研究資料整理、經費報帳與核銷",
       "系學會活動組長",
     ],
   },
@@ -60,13 +62,14 @@ const details = [
 const honorNavItems = [
   { label: "Overview", href: "#overview" },
   { label: "Evidence", href: "#evidence" },
+  { label: "Experience", href: "#academic-experience" },
   { label: "Photos", href: "#photos" },
 ];
 
 export const metadata: Metadata = {
   title: "校級榮譽學生入選",
   description:
-    "逢甲大學 115 級榮譽學生入選紀錄，包含獲選依據、官方證書與照片證明。",
+    "逢甲大學 115 級榮譽學生入選紀錄，整理研究計畫、預研生、跨域學習、專題領導與教學服務經驗，以及官方證書與照片。",
 };
 
 export default function HonorStudentPage() {
@@ -113,7 +116,7 @@ export default function HonorStudentPage() {
         </h1>
 
         <p className="mt-5 max-w-6xl text-base leading-7 text-slate-300 [text-wrap:pretty] md:text-lg md:leading-8">
-          以學術研究、跨域資料分析、國際參與、專業實習與公共服務等面向獲選，作為大學階段綜合表現的代表性榮譽。
+          獲選逢甲大學 115 級榮譽學生。申請事蹟涵蓋競賽獲獎與學術成就、跨域學習、公共服務與領導表現，呈現大學階段的研究、實作與服務經驗。
         </p>
 
         <div className="mt-7 flex flex-wrap gap-2.5">
@@ -130,7 +133,7 @@ export default function HonorStudentPage() {
 
       <section id="evidence" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
         <div className="mb-8 max-w-3xl">
-          <h2 className="text-2xl font-bold md:text-3xl">獲選依據與官方證明</h2>
+          <h2 className="text-2xl font-bold md:text-3xl">申請事蹟與官方證明</h2>
         </div>
 
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)]">
@@ -181,6 +184,38 @@ export default function HonorStudentPage() {
             </p>
           </aside>
         </div>
+      </section>
+
+      <section id="academic-experience" className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">
+          Research & Learning
+        </p>
+        <h2 className="mt-3 text-2xl font-bold md:text-3xl">研究參與與自主學習</h2>
+        <div className="mt-8 divide-y divide-amber-100/10 border-y border-amber-100/10">
+          {additionalAcademicExperiences.map((experience) => (
+            <article key={experience.id} id={experience.id} className="grid scroll-mt-28 gap-4 py-7 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-10">
+              <div>
+                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-amber-200">{experience.badge}</p>
+                <h3 className="mt-3 text-xl font-semibold">{experience.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-stone-400">{experience.meta}</p>
+              </div>
+              <p className="text-[15px] leading-8 text-stone-200">{experience.description}</p>
+            </article>
+          ))}
+        </div>
+        <article className="mt-8 border-l border-amber-200/40 bg-amber-100/[0.04] p-5 md:p-6">
+          <h3 className="text-xl font-semibold">{projectLeadership.title}</h3>
+          <p className="mt-3 text-[15px] leading-8 text-stone-200">{projectLeadership.description}</p>
+          <Link href="/llama-marketing-system" className="mt-4 inline-flex min-h-11 items-center font-semibold text-amber-200 underline underline-offset-4 hover:text-amber-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-200">
+            查看 LLaMA 3 專題與個人貢獻 →
+          </Link>
+        </article>
+        <article id="sharing-session" className="mt-6 scroll-mt-28 border-l border-amber-200/40 bg-amber-100/[0.04] p-5 md:p-6">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wide text-amber-200">{honorSharing.badge}</p>
+          <h3 className="mt-3 text-xl font-semibold">{honorSharing.title}</h3>
+          <p className="mt-2 text-sm leading-6 text-stone-400">{honorSharing.meta}</p>
+          <p className="mt-3 text-[15px] leading-8 text-stone-200">{honorSharing.description}</p>
+        </article>
       </section>
 
       <section id="photos" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">

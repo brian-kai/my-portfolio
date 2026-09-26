@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { additionalAcademicExperiences } from "./academic-experiences";
+import { cieAward, courseHonors, education, honorSharing, workflowInternship } from "./resume-highlights";
+import { resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
 import AiProfilePanel from "./ai-profile-panel";
@@ -27,7 +30,7 @@ const certificates = [
     issuer: "Taiwan AI Academy",
     image: aiatclCertificate,
     href: "/file/AIATCL.pdf",
-    tags: ["AI Literacy", "AI Fundamentals", "AIA Talent"],
+    tags: ["Score 95", "AI Literacy", "Valid 2026.04–2028.04"],
   },
   {
     title: "Microsoft AI & ML Engineering",
@@ -46,34 +49,46 @@ const certificates = [
     issuer: "ETS TOEIC",
     image: toeicCertificate,
     href: "/file/toeic-score-report.pdf",
-    tags: ["TOEIC", "English", "Score Report"],
+    tags: ["Score 845", "TOEIC", "English"],
   },
 ];
 
-const experiences = [
+type Experience = {
+  title: string;
+  meta: string;
+  badge: string;
+  description: string;
+  href?: string;
+  action?: string;
+};
+
+const experiences: Experience[] = [
+  workflowInternship,
   {
     title: "國科會研究計畫助理",
-    meta: "私立逢甲大學｜以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式",
+    meta: "私立逢甲大學｜以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式｜2025.08–2026.08",
     badge: "Research Assistant",
     description:
-      "協助研究流程規劃、程式碼版本差異資料整理與模型應用，支援以 LLaMA 3 產生程式碼變更註解的研究工作。",
+      "整合 Myers Diff 演算法、深度學習分類與 LLaMA 3，建立自動化程式碼變更註解流程，支援程式碼審查與軟體維護；以 Python 處理 GitHub 程式碼變更資料，包含修改前後程式碼擷取、diff 區塊辨識與模型訓練資料集整理。並協助研究資料彙整、研究經費報帳與核銷，累積研究行政與協調經驗。",
   },
+  ...additionalAcademicExperiences,
   {
     title: "工業工程與系統管理學系資料庫設計課程助教",
-    meta: "私立逢甲大學｜資料庫設計｜113-2、114-2 學期",
+    meta: "私立逢甲大學｜資料庫管理系統與設計｜113-2、114-2 學期（2025.02–至今）",
     badge: "Teaching Assistant",
     description:
-      "協助課程教學、夜間輔導、作業討論與學生問題釐清，內容涵蓋資料庫設計、SQL 操作、資料整理與實作流程說明。",
+      "協助課程教學、夜間輔導、作業討論與學生問題釐清，內容涵蓋關聯式綱要設計、SQL 查詢、正規化與資料庫管理。",
     href: "/database-design-tutoring",
     action: "View Photos",
   },
   {
     title: "工業工程與系統管理學系決策與數據分析課程助教",
-    meta: "私立逢甲大學｜決策與數據分析｜114-1 學期",
+    meta: "私立逢甲大學｜決策與數據分析｜114-1 學期（2025.09–2026.01）",
     badge: "Teaching Assistant",
     description:
-      "協助課程教學、作業討論與學生問題釐清，內容涵蓋資料分析流程、決策應用與數據分析觀念說明。",
+      "指導學生以 R 進行資料前處理、探索性分析、模型建構與評估，並協助作業討論與學生問題釐清。",
   },
+  honorSharing,
   {
     title: "國中補習班理化助教",
     meta: "臺中市私立佳華文理補習班-中科旗艦校｜課堂協助、課業輔導與概念講解",
@@ -95,10 +110,10 @@ const highlights = [
   {
     title: "ICCCM 2026",
     href: "/icccm",
-    badge: "Accepted for Presentation",
+    badge: "Published Paper",
     description:
-      "論文摘要 AN OBJECTIVE ESSAY SCORING AND COMMENTARY GENERATION SYSTEM WITH LSTM MODEL 獲 The 14th International Conference on Computer and Communications Management 接受，將於 2026 年 7 月 24-26 日在日本東京發表。",
-    tags: ["ICCCM 2026", "Presentation", "LSTM", "Essay Scoring"],
+      "論文 AN OBJECTIVE ESSAY SCORING AND COMMENTARY GENERATION SYSTEM WITH LSTM MODEL 於 2026 年 7 月 24-26 日在日本東京 The 14th International Conference on Computer and Communications Management 發表。",
+    tags: ["ICCCM 2026", "Published Paper", "LSTM", "Essay Scoring"],
   },
   {
     title: "工業工程與系統管理學系系學會",
@@ -128,15 +143,16 @@ const researchPublications = [
           "2025 工工年會：最佳論文獎 / 大數據技術與應用領域",
           "2026 台灣作業研究學會大專校院專題競賽：人工智慧與大數據分析組第三名",
           "逢甲大學工業工程與系統管理學系-114學年度畢業專題第二名",
+          `${cieAward.title}：工業工程組佳作（Honorable Award）`,
         ],
       },
     ],
     tags: ["LLaMA 3", "NLP", "Marketing Copy", "Best Paper"],
   },
   {
-    title: "ICCCM 2026 Accepted for Presentation",
+    title: "ICCCM 2026 Published Paper",
     href: "/icccm",
-    badge: "Accepted for Presentation",
+    badge: "Published Paper",
     details: [
       {
         label: "研究主題",
@@ -153,7 +169,7 @@ const researchPublications = [
         value: "日本東京",
       },
     ],
-    tags: ["ICCCM 2026", "Presentation", "LSTM", "Essay Scoring"],
+    tags: ["ICCCM 2026", "Published Paper", "LSTM", "Essay Scoring"],
   },
 ];
 
@@ -164,7 +180,7 @@ const honors = [
     href: "/honor-student",
     action: "View Details",
     description:
-      "入選學校榮譽學生，作為學業表現、專題參與與校內發展歷程的綜合肯定。",
+      "入選逢甲大學 2026 屆榮譽學生（2026.06），作為學業表現、專題參與與校內發展歷程的綜合肯定。",
     tags: ["University Recognition", "Honor Student", "Academic Growth"],
   },
 ];
@@ -179,6 +195,9 @@ const featuredProjects = [
     summary:
       "以 LLaMA 3 分析消費者偏好，並生成更貼近產品特徵的個人化行銷文案。",
     proofPoints: [
+      "擔任專題組長，規劃研究進度與組員分工，每週彙整兩次進度報告。",
+      "以 QLoRA 於 78K 筆行銷文本微調 LLaMA 3 8B，減少制式化的產品描述。",
+      "BLEU-3 18.92、BLEU-4 14.44、METEOR 23.62；人工評估流暢度 0.89、多樣性 0.87、相關性 0.80、吸引力 0.85。",
       "結合 TextRank、情感分析、分群方法與 LLaMA 3 文案生成流程。",
       "整理訓練 loss、分群結果與評論/描述 heatmap 作為研究視覺證據。",
       "延伸為 CIIE 最佳論文獎與作業研究專題競賽獲獎成果。",
@@ -202,14 +221,25 @@ const featuredProjects = [
 
 const supportingProjects = [
   {
+    title: "AI 行銷內容自動化（ZOUSTEC 實習）",
+    href: "/marketing-automation",
+    action: "View Case Study",
+    tags: ["n8n", "GA4", "Statistical Testing", "Workflow Automation"],
+    summary:
+      "以 51 個 n8n 工作流程串接 AI 生成、AI 審核與 4 個發布平台，並以 GA4 數據回饋持續改善。",
+    problem: "人工製作與發布內容耗時，且影像模型產出的輪播圖常有文字與版面錯誤。",
+    method: "n8n 自動化流程、GA4 漏斗分析、Fisher 精確檢定與 Benjamini–Hochberg 校正、HTML 輪播圖模板。",
+    outcome: "每篇處理時間 30 → 2 分鐘、執行成功率 97.1%、發布 128 篇；Threads 30 天 22,761 次瀏覽。",
+  },
+  {
     title: "Intent Classification & QA Generation",
     status: "Ongoing",
     tags: ["BERT-BiLSTM", "Gemma 4", "Intent QA", "Knowledge Distillation"],
     summary:
-      "建立結合 BERT-BiLSTM、Gemma 4 與知識蒸餾的意圖分類與 QA 生成流程。",
-    problem: "判斷使用者 intent，並生成可用的 QA 回覆。",
-    method: "使用 BERT-BiLSTM、Gemma 4 與 knowledge distillation。",
-    outcome: "整理為語意理解與 QA workflow 的 NLP prototype。",
+      "建立結合 BERT-BiLSTM、Gemma 4 與 teacher-student 知識蒸餾的端到端意圖分類與 QA 生成流程。",
+    problem: "判斷使用者 intent，並生成可用的領域 QA 回覆。",
+    method: "BERT-BiLSTM 意圖分類；清理、篩選並格式化 69,477 組 QA，以 QLoRA 與 Unsloth 微調 Gemma 4-E4B。",
+    outcome: "意圖分類 Accuracy 96.22%、F1-score 96.20%。",
   },
   {
     title: "LLaMA 3 個人化行銷文案研究",
@@ -228,10 +258,10 @@ const supportingProjects = [
     action: "View Poster",
     tags: ["Data Analysis", "Python", "Visualization"],
     summary:
-      "使用 Python 進行資料清理、趨勢探索與用電模式視覺化的資料分析專題。",
+      "於「工業感測與聯網實作」課程參與用電趨勢分析，主要負責資料分析與模型建構。",
     problem: "從用電資料中找出可解讀的變化趨勢。",
-    method: "進行資料清理、趨勢分析與 Python 視覺化整理。",
-    outcome: "完成可用於海報展示的資料分析敘事。",
+    method: "整理 2020–2023 年每日用電資料，於 Google Colab 以 Python 進行前處理、趨勢分析、異常檢測與模型訓練。",
+    outcome: "以折線圖呈現用電趨勢與異常情形，完成研究海報，提供節能規劃與用電管理的參考。",
   },
   {
     title: "IVE K-pop Fan Website",
@@ -251,6 +281,7 @@ const getProjectArtifactLabel = (action?: string, status?: string) => {
   if (action === "Live Demo") return "Live Demo";
   if (action === "View Poster") return "Poster";
   if (action === "View Website") return "Website";
+  if (action === "View Case Study") return "Case Study";
   return "Project Proof";
 };
 
@@ -258,7 +289,7 @@ const getProjectReviewType = (action?: string, status?: string) => {
   if (status) return "Ongoing Work";
   if (action === "Live Demo") return "Demo";
   if (action === "View Poster") return "Research Proof";
-  if (action === "View Website") return "Case Study";
+  if (action === "View Website" || action === "View Case Study") return "Case Study";
   return "Project";
 };
 
@@ -341,7 +372,7 @@ export default function Home() {
               </a>
 
               <a
-                href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
+                href={resumeHref}
                 className="pressable motion-reduce-transform rounded-lg border border-white/10 px-6 py-3 text-center font-bold text-slate-300 transition hover:-translate-y-0.5 hover:border-white/25 hover:text-white"
               >
                 Resume
@@ -411,7 +442,7 @@ export default function Home() {
                 },
                 {
                   title: "Data Product",
-                  text: "Python、SQL、Pandas、資料視覺化、demo deployment 與產品化呈現。",
+                  text: "Python、SQL、R、統計檢定、PyTorch、n8n、Supabase、Git / Linux 與 demo deployment。",
                 },
               ].map((item) => (
                 <article
@@ -433,7 +464,9 @@ export default function Home() {
             {[
               "Best Paper Award",
               "LLaMA 3 System",
+              "n8n Workflow Automation",
               "SEO Live Demo",
+              "GPA 3.9 / 4.3",
               "Database TA",
               "Google Data Analytics",
               "AI / ML Certificate",
@@ -818,6 +851,27 @@ export default function Home() {
           </div>
         </div>
 
+        <h3 className="mb-5 text-2xl font-semibold">Education</h3>
+        <article
+          data-reveal
+          className="mb-12 grid gap-5 border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:p-6"
+        >
+          <div>
+            <h3 className="text-xl font-semibold leading-7 text-white md:text-2xl">
+              {education.school}｜{education.degree}
+            </h3>
+            <p className="mt-2 text-[15px] leading-7 text-slate-400 md:text-base">
+              {education.period}｜{education.program}
+            </p>
+          </div>
+          <div className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+              GPA
+            </p>
+            <p className="mt-1 text-lg font-bold text-emerald-100">{education.gpa}</p>
+          </div>
+        </article>
+
         <h3 className="mb-5 text-2xl font-semibold">Honors & recognition</h3>
         <article
           data-reveal
@@ -863,6 +917,23 @@ export default function Home() {
             </div>
           </div>
         </article>
+
+        <ul data-reveal-group className="mt-4 grid gap-4 sm:grid-cols-2">
+          {courseHonors.map((honor) => (
+            <li
+              key={honor.title}
+              className="border border-white/10 bg-white/[0.035] p-5"
+            >
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                Academic Honor｜{honor.date}
+              </p>
+              <p className="mt-2 text-base font-semibold leading-7 text-white">
+                {honor.title}
+              </p>
+              <p className="mt-1 text-sm text-slate-400">{honor.issuer}</p>
+            </li>
+          ))}
+        </ul>
 
         <h3
           id="student-association"
@@ -1008,7 +1079,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/file/Huang_Kai-Chun_AI_Engineer_Intern_Resume.pdf"
+              href={resumeHref}
               target="_blank"
               rel="noopener noreferrer"
               className="pressable motion-reduce-transform w-full rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white sm:w-auto"
