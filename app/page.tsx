@@ -5,6 +5,7 @@ import { resumeHref } from "./site-config";
 import ActiveSectionNav from "./active-section-nav";
 import AiProfilePanel from "./ai-profile-panel";
 import BackToTop from "./back-to-top";
+import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
 import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
@@ -298,6 +299,7 @@ export default function Home() {
       <HomeMotion />
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <DataFlowBackground />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
@@ -318,10 +320,9 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#070a0d] pt-16">
+      <section className="relative isolate overflow-hidden border-b border-white/10 pt-16">
         <div className="hero-glow" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
         <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.12fr)_minmax(28rem,0.85fr)] xl:gap-10">
           <div className="hero-intro max-w-3xl">
