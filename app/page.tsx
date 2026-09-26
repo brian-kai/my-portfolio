@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { additionalAcademicExperiences } from "./academic-experiences";
-import { cieAward, courseHonors, education, honorSharing, workflowInternship } from "./resume-highlights";
+import { cieAward, courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
 import { resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
@@ -72,7 +71,6 @@ const experiences: Experience[] = [
     description:
       "整合 Myers Diff 演算法、深度學習分類與 LLaMA 3，建立自動化程式碼變更註解流程，支援程式碼審查與軟體維護；以 Python 處理 GitHub 程式碼變更資料，包含修改前後程式碼擷取、diff 區塊辨識與模型訓練資料集整理。並協助研究資料彙整、研究經費報帳與核銷，累積研究行政與協調經驗。",
   },
-  ...additionalAcademicExperiences,
   {
     title: "工業工程與系統管理學系資料庫設計課程助教",
     meta: "私立逢甲大學｜資料庫管理系統與設計｜113-2、114-2 學期（2025.02–至今）",
@@ -851,27 +849,6 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Experience</h2>
           </div>
         </div>
-
-        <h3 className="mb-5 text-2xl font-semibold">Education</h3>
-        <article
-          data-reveal
-          className="mb-12 grid gap-5 border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:p-6"
-        >
-          <div>
-            <h3 className="text-xl font-semibold leading-7 text-white md:text-2xl">
-              {education.school}｜{education.degree}
-            </h3>
-            <p className="mt-2 text-[15px] leading-7 text-slate-400 md:text-base">
-              {education.period}｜{education.program}
-            </p>
-          </div>
-          <div className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-              GPA
-            </p>
-            <p className="mt-1 text-lg font-bold text-emerald-100">{education.gpa}</p>
-          </div>
-        </article>
 
         <h3 className="mb-5 text-2xl font-semibold">Honors & recognition</h3>
         <article
