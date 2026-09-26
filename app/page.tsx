@@ -1,15 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cieAward, courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
 import { resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
-import AiProfilePanel from "./ai-profile-panel";
 import BackToTop from "./back-to-top";
+import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
 import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
+import LightboxImage from "./lightbox-image";
 import SkillWorkMatrix from "./skill-work-matrix";
+import llamaSystemDiagram from "./llama-marketing-system/images/llama-system-diagram.svg";
 import aiatclCertificate from "./image/AIATCL.jpg";
+import aboutPortrait from "./image/honor-student-portrait.jpg";
 import aiCertificate from "./image/ai-certificate.png";
 import googleCertificate from "./image/google-certificate.png";
 import toeicCertificate from "./image/toeic-score-report.png";
@@ -124,54 +128,6 @@ const highlights = [
   },
 ];
 
-const researchPublications = [
-  {
-    title: "2025 中國工業工程學會年會暨學術研討會",
-    href: "/conference",
-    badge: "Best Paper Award",
-    subtitle: "2026台灣作業研究學會-大專校院專題競賽",
-    details: [
-      {
-        label: "研究主題",
-        value: "基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式",
-      },
-      {
-        label: "獎項",
-        value: [
-          "2026 全國工業工程與管理大學生專題論文與技術報告競賽：服務系統與科技管理組第一名",
-          "2025 工工年會：最佳論文獎 / 大數據技術與應用領域",
-          "2026 台灣作業研究學會大專校院專題競賽：人工智慧與大數據分析組第三名",
-          "逢甲大學工業工程與系統管理學系-114學年度畢業專題第二名",
-          `${cieAward.title}：工業工程組佳作（Honorable Award）`,
-        ],
-      },
-    ],
-    tags: ["LLaMA 3", "NLP", "Marketing Copy", "Best Paper"],
-  },
-  {
-    title: "ICCCM 2026 Published Paper",
-    href: "/icccm",
-    badge: "Published Paper",
-    details: [
-      {
-        label: "研究主題",
-        value:
-          "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
-      },
-      {
-        label: "會議",
-        value:
-          "The 14th International Conference on Computer and Communications Management",
-      },
-      {
-        label: "地點",
-        value: "日本東京",
-      },
-    ],
-    tags: ["ICCCM 2026", "Published Paper", "LSTM", "Essay Scoring"],
-  },
-];
-
 const honors = [
   {
     title: "校級榮譽學生入選",
@@ -184,113 +140,238 @@ const honors = [
   },
 ];
 
-const featuredProjects = [
-  {
-    title: "LLaMA 3 個人化行銷文案系統",
-    badge: "Featured Case Study",
-    href: "/llama-marketing-system",
-    action: "View Website",
-    tags: ["LLaMA 3", "NLP", "TextRank", "K-Means", "HDBSCAN"],
-    summary:
-      "以 LLaMA 3 分析消費者偏好，並生成更貼近產品特徵的個人化行銷文案。",
-    proofPoints: [
-      "擔任專題組長，規劃研究進度與組員分工，每週彙整兩次進度報告。",
-      "以 QLoRA 於 78K 筆行銷文本微調 LLaMA 3 8B，減少制式化的產品描述。",
-      "BLEU-3 18.92、BLEU-4 14.44、METEOR 23.62；人工評估流暢度 0.89、多樣性 0.87、相關性 0.80、吸引力 0.85。",
-      "結合 TextRank、情感分析、分群方法與 LLaMA 3 文案生成流程。",
-      "整理訓練 loss、分群結果與評論/描述 heatmap 作為研究視覺證據。",
-      "延伸為 CIIE 最佳論文獎與作業研究專題競賽獲獎成果。",
-    ],
-  },
-  {
-    title: "4G SEO Entity Analysis Tool",
-    badge: "Live Demo",
-    href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app",
-    action: "Live Demo",
-    tags: ["SEO Tool", "SERP API", "Entity Analysis", "Google Sheets"],
-    summary:
-      "一個可線上操作的 SEO 分析工具，用來擷取 SERP 實體並輸出結構化洞察到 Google Sheets。",
-    proofPoints: [
-      "串接 SERP API，進行 entity extraction 與關鍵詞比較。",
-      "將 SEO 研究流程自動化，產出可重複使用的內容規劃資料。",
-      "部署成 Vercel live demo，呈現完整的端到端產品介面。",
-    ],
-  },
-];
+type ProjectLink = { label: string; href: string };
 
-const supportingProjects = [
+const isExternalHref = (href: string) => href.startsWith("http") || href.endsWith(".pdf");
+
+const llamaShowcase = {
+  eyebrow: "Case Study · Research",
+  award: "CIIE 2025 最佳論文獎",
+  title: "LLaMA 3 個人化行銷文案系統",
+  role: "專題組長｜規劃研究進度與組員分工，每週彙整兩次進度報告。",
+  steps: [
+    ["Problem", "制式化的產品描述，難以貼近不同消費者的偏好。"],
+    ["Method", "以 QLoRA 於 78K 筆行銷文本微調 LLaMA 3 8B，結合 TextRank、情感分析與分群建立偏好特徵。"],
+    ["Outcome", "BLEU-4 14.44、METEOR 23.62；人工評估流暢度 0.89、相關性 0.80。"],
+  ],
+  tags: ["LLaMA 3", "QLoRA", "TextRank", "K-Means", "HDBSCAN"],
+  primary: { label: "View Case Study", href: "/llama-marketing-system" },
+  secondary: { label: "研究海報", href: "/file/graduation-project-poster.pdf" },
+};
+
+const automationShowcase = {
+  eyebrow: "Automation",
+  company: "ZOUSTEC",
+  role: `${workflowInternship.title} · ${workflowInternship.meta.split("｜")[1]}`,
+  title: "AI 行銷內容自動化",
+  steps: [
+    ["Problem", "人工製作與發布內容耗時，且影像模型產出的輪播圖常有文字與版面錯誤。"],
+    ["Method", "n8n 自動化流程、GA4 漏斗分析、Fisher 精確檢定與 Benjamini–Hochberg 校正、HTML 輪播圖模板。"],
+    ["Outcome", "串接 AI 生成、AI 審核與 4 個發布平台，發布 128 篇，並以 GA4 數據回饋持續改善。"],
+  ],
+  metrics: [
+    ["30→2", "分鐘 / 篇"],
+    ["97.1%", "執行成功率"],
+    ["51", "n8n 工作流程"],
+    ["22,761", "Threads 30 天瀏覽"],
+  ],
+  tags: ["n8n", "GA4", "Statistical Testing", "Workflow Automation"],
+  primary: { label: "View Case Study", href: "/marketing-automation" },
+};
+
+const moreProjects: {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  highlight: string;
+  status?: string;
+  link?: ProjectLink;
+}[] = [
   {
-    title: "AI 行銷內容自動化（ZOUSTEC 實習）",
-    href: "/marketing-automation",
-    action: "View Case Study",
-    tags: ["n8n", "GA4", "Statistical Testing", "Workflow Automation"],
-    summary:
-      "以 51 個 n8n 工作流程串接 AI 生成、AI 審核與 4 個發布平台，並以 GA4 數據回饋持續改善。",
-    problem: "人工製作與發布內容耗時，且影像模型產出的輪播圖常有文字與版面錯誤。",
-    method: "n8n 自動化流程、GA4 漏斗分析、Fisher 精確檢定與 Benjamini–Hochberg 校正、HTML 輪播圖模板。",
-    outcome: "每篇處理時間 30 → 2 分鐘、執行成功率 97.1%、發布 128 篇；Threads 30 天 22,761 次瀏覽。",
-  },
-  {
+    eyebrow: "NLP",
+    status: "進行中",
     title: "Intent Classification & QA Generation",
-    status: "Ongoing",
-    tags: ["BERT-BiLSTM", "Gemma 4", "Intent QA", "Knowledge Distillation"],
-    summary:
-      "建立結合 BERT-BiLSTM、Gemma 4 與 teacher-student 知識蒸餾的端到端意圖分類與 QA 生成流程。",
-    problem: "判斷使用者 intent，並生成可用的領域 QA 回覆。",
-    method: "BERT-BiLSTM 意圖分類；清理、篩選並格式化 69,477 組 QA，以 QLoRA 與 Unsloth 微調 Gemma 4-E4B。",
-    outcome: "意圖分類 Accuracy 96.22%、F1-score 96.20%。",
+    summary: "BERT-BiLSTM 意圖分類結合 teacher-student 知識蒸餾，以 69,477 組 QA 微調 Gemma 4-E4B。",
+    highlight: "Accuracy 96.22% · F1 96.20%",
   },
   {
-    title: "LLaMA 3 個人化行銷文案研究",
-    href: "/file/graduation-project-poster.pdf",
-    action: "View Poster",
-    tags: ["Best Paper", "LLaMA 3", "BLEU", "METEOR"],
-    summary:
-      "個人化行銷文案生成研究海報，包含 BLEU、METEOR 評估與研討會獲獎證明。",
-    problem: "生成更符合消費者偏好與產品特徵的行銷文案。",
-    method: "結合 LLaMA 3、TextBlob、TextRank、K-Means 與評估指標。",
-    outcome: "完成研究發表材料，並獲得 Best Paper Award。",
+    eyebrow: "Live Demo",
+    title: "4G SEO Entity Analysis Tool",
+    summary: "串接 SERP API 擷取實體並比較關鍵詞，輸出結構化洞察到 Google Sheets。",
+    highlight: "SERP API → Google Sheets",
+    link: { label: "Live Demo", href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app" },
   },
   {
+    eyebrow: "Data Analysis · Poster",
     title: "用電趨勢分析",
-    href: "/file/electricity-usage-trend-analysis-poster.pdf",
-    action: "View Poster",
-    tags: ["Data Analysis", "Python", "Visualization"],
-    summary:
-      "於「工業感測與聯網實作」課程參與用電趨勢分析，主要負責資料分析與模型建構。",
-    problem: "從用電資料中找出可解讀的變化趨勢。",
-    method: "整理 2020–2023 年每日用電資料，於 Google Colab 以 Python 進行前處理、趨勢分析、異常檢測與模型訓練。",
-    outcome: "以折線圖呈現用電趨勢與異常情形，完成研究海報，提供節能規劃與用電管理的參考。",
+    summary: "整理 2020–2023 年每日用電資料，以 Python 進行趨勢分析、異常檢測與模型訓練。",
+    highlight: "Python · Visualization",
+    link: { label: "View Poster", href: "/file/electricity-usage-trend-analysis-poster.pdf" },
   },
   {
+    eyebrow: "Frontend",
     title: "IVE K-pop Fan Website",
-    href: "/ive",
-    action: "View Website",
-    tags: ["Frontend", "Next.js", "Tailwind CSS"],
-    summary:
-      "以前端介面實作為核心，聚焦響應式版面、視覺層級與粉絲網站內容架構。",
-    problem: "建立內容豐富且主題明確的 fan website。",
-    method: "使用 Next.js 與 Tailwind CSS 製作響應式頁面。",
-    outcome: "完成可瀏覽、內容結構清楚的前端作品。",
+    summary: "以 Next.js 與 Tailwind CSS 製作，聚焦響應式版面與視覺層級的粉絲網站。",
+    highlight: "Next.js · Tailwind CSS",
+    link: { label: "View Website", href: "/ive" },
   },
 ];
 
-const getProjectArtifactLabel = (action?: string, status?: string) => {
-  if (status) return "In Progress";
-  if (action === "Live Demo") return "Live Demo";
-  if (action === "View Poster") return "Poster";
-  if (action === "View Website") return "Website";
-  if (action === "View Case Study") return "Case Study";
-  return "Project Proof";
+const projectButtonClass =
+  "pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/55 bg-emerald-300/[0.12] px-4 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/80 hover:bg-emerald-300/[0.18] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70 sm:w-auto";
+
+function ProjectSteps({ steps }: { steps: string[][] }) {
+  return (
+    <dl className="mt-6 grid gap-4">
+      {steps.map(([label, value]) => (
+        <div key={label} className="border-l-2 border-emerald-300/35 pl-4">
+          <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+            {label}
+          </dt>
+          <dd className="mt-1 text-[15px] leading-7 text-slate-200">{value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function ProjectTags({ tags }: { tags: string[] }) {
+  return (
+    <div className="mt-6 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span key={tag} className="border border-white/10 bg-slate-950/40 px-2.5 py-1 text-xs text-slate-300">
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+const heroProof = [
+  {
+    label: "Competition",
+    value: "1st Place",
+    detail: "2026 全國工業工程與管理大學生專題論文競賽",
+    href: "/conference",
+    action: "Proof",
+    highlight: true,
+  },
+  {
+    label: "Conference",
+    value: "Best Paper",
+    detail: "CIIE 2025 · LLaMA 3 個人化行銷文案",
+    href: "/conference",
+    action: "Proof",
+    highlight: true,
+  },
+  {
+    label: "NLP Model",
+    value: "96.22%",
+    detail: "BERT-BiLSTM 意圖分類 Accuracy",
+    href: "#projects",
+    action: "Projects",
+  },
+  {
+    label: "Automation",
+    value: "30→2 分",
+    detail: "n8n 自動化後每篇內容處理時間",
+    href: "/marketing-automation",
+    action: "Case study",
+  },
+];
+
+const aboutIntro = {
+  lead: "我從工業工程的系統思維出發，用資料與 AI 把問題拆清楚、做出能實際使用的解法。",
+  paragraphs: [
+    "工業工程讓我習慣從流程與系統的角度看問題。在資料分析、工程統計與決策分析等課程，以及用 LSTM 預測用電趨勢的 AI 課程專題中，我發現自己最享受用資料和模型解決問題的過程，也因此一路投入 NLP 與 LLM 的研究與實作。",
+    "合作時，我最在意溝通與把事情講清楚。擔任畢業專題組長時，模型訓練一度卡關，我主動請教學長姐、查閱文獻，重新調整資料處理與超參數，直到模型穩定；擔任助教的經驗，也讓我習慣把複雜的概念轉成別人聽得懂的說明。",
+  ],
 };
 
-const getProjectReviewType = (action?: string, status?: string) => {
-  if (status) return "Ongoing Work";
-  if (action === "Live Demo") return "Demo";
-  if (action === "View Poster") return "Research Proof";
-  if (action === "View Website" || action === "View Case Study") return "Case Study";
-  return "Project";
+const beyondCode = [
+  {
+    key: "Lead",
+    title: "帶團隊",
+    points: [
+      ["畢業專題組長", "規劃研究方向與進度，安排分工，每週彙整兩次進度報告"],
+      ["系學會活動組長", "擔任抽直屬、聖誕傳情副召與文化季攤販長，負責流程與人員協調"],
+    ],
+    link: { label: "看經歷", href: "#experience" },
+  },
+  {
+    key: "Teach",
+    title: "教別人",
+    points: [
+      ["資料庫設計、決策與數據分析助教", "協助 SQL 與 R 的作業討論與學生問題釐清"],
+      ["補習班理化助教", "把複雜概念轉化為容易理解的內容"],
+    ],
+    link: { label: "看助教經歷", href: "/database-design-tutoring" },
+  },
+  {
+    key: "Share",
+    title: "分享與表達",
+    points: [
+      ["榮譽學生經驗分享會受邀講者", "向約 100 位大一新生分享課程規劃、競賽經驗與研究入門"],
+      ["研討會發表", "於 CIIE 2025 口頭發表畢業專題研究成果"],
+    ],
+    link: { label: "看分享會", href: "/honor-student#sharing-session" },
+  },
+];
+
+const medalTones = {
+  gold: { medal: "bg-amber-300 text-slate-950 shadow-[0_0_16px_rgba(252,211,77,0.45)]", rank: "text-amber-300", row: "bg-[linear-gradient(90deg,rgba(252,211,77,0.09),transparent_60%)]" },
+  silver: { medal: "bg-slate-200 text-slate-950 shadow-[0_0_16px_rgba(226,232,240,0.35)]", rank: "text-slate-100", row: "" },
+  bronze: { medal: "bg-orange-300 text-slate-950 shadow-[0_0_16px_rgba(253,186,116,0.4)]", rank: "text-orange-300", row: "" },
+  emerald: { medal: "bg-emerald-300 text-slate-950 shadow-[0_0_16px_rgba(110,231,183,0.4)]", rank: "text-emerald-300", row: "" },
 };
+
+const awardResearch = {
+  topic: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
+  summary: "同一份畢業專題研究，獲得學會、全國競賽與校內共 5 項肯定。",
+  stats: [
+    ["5", "項獎項"],
+    ["3", "項全國競賽"],
+  ],
+  tags: ["LLaMA 3", "NLP", "Marketing Copy"],
+  href: "/conference",
+  awards: [
+    { medal: "1", rank: "第一名", tone: "gold", name: "全國工業工程與管理大學生專題論文與技術報告競賽", category: "服務系統與科技管理組", level: "全國", year: "2026" },
+    { medal: "★", rank: "最佳論文", tone: "gold", name: "中國工業工程學會年會暨學術研討會", category: "大數據技術與應用領域", level: "學會", year: "2025" },
+    { medal: "2", rank: "第二名", tone: "silver", name: "逢甲大學工工系畢業專題", category: "114 學年度", level: "校內", year: "2026" },
+    { medal: "3", rank: "第三名", tone: "bronze", name: "台灣作業研究學會大專校院專題競賽", category: "人工智慧與大數據分析組", level: "全國", year: "2026" },
+    { medal: "✓", rank: "佳作", tone: "emerald", name: cieAward.title.replace(/^\d{4}\s*/, ""), category: "工業工程組", level: "全國", year: "2026" },
+  ] as { medal: string; rank: string; tone: keyof typeof medalTones; name: string; category: string; level: string; year: string }[],
+};
+
+const icccmPaper = {
+  title: "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
+  titleZh: "以 LSTM 模型之文章客觀評分與評語生成模式",
+  facts: [
+    ["Conference", "ICCCM 2026 · The 14th International Conference on Computer and Communications Management"],
+    ["Date", "July 24–26, 2026"],
+    ["Location", "Tokyo, Japan"],
+  ],
+  results: [
+    ["0.79", "文本分類 F1"],
+    ["0.790", "評分系統 SCC"],
+    ["0.749", "評分系統 PCC"],
+    ["66.7%", "評語生成整體一致性"],
+  ],
+  tags: ["LSTM", "Bi-LSTM", "Essay Scoring"],
+  href: "/icccm",
+};
+
+function ResearchTags({ tags }: { tags: string[] }) {
+  return (
+    <div className="mt-6 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span key={tag} className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200">
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -298,6 +379,7 @@ export default function Home() {
       <HomeMotion />
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <DataFlowBackground />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
@@ -306,31 +388,34 @@ export default function Home() {
 
           <Link
             href="/"
-            className="min-w-0 flex-1 truncate text-center text-base font-bold md:flex-none md:text-left md:text-lg"
+            className="min-w-0 flex-1 truncate text-center text-base font-bold md:text-lg lg:flex-none lg:text-left"
           >
             <span className="md:hidden">Kevin Huang</span>
             <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
           </Link>
 
-          <div className="h-10 w-10 shrink-0 md:hidden" aria-hidden="true" />
+          <div className="h-10 w-10 shrink-0 lg:hidden" aria-hidden="true" />
 
-          <ActiveSectionNav items={navItems} />
+          <ActiveSectionNav items={navItems} breakpoint="lg" />
         </div>
       </nav>
 
-      <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#070a0d] pt-16">
+      <section className="relative isolate overflow-hidden border-b border-white/10 pt-16">
         <div className="hero-glow" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.12fr)_minmax(28rem,0.85fr)] xl:gap-10">
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-10 px-6 py-14 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(28rem,0.9fr)] xl:gap-14">
           <div className="hero-intro max-w-3xl">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Kevin Huang | AI Engineer / AI Product Associate
+            <p className="mb-4 text-base text-slate-300 md:text-lg">
+              Hi, I&apos;m <span className="font-bold text-white">Kevin Huang</span>{" "}
+              <span aria-hidden="true">👋</span>
             </p>
 
-            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl xl:whitespace-nowrap xl:text-6xl">
-              NLP / LLM AI Engineer
+            <h1 className="text-[2.6rem] font-black leading-[1.05] text-white sm:text-5xl md:text-6xl xl:text-7xl">
+              NLP / LLM
+              <span className="block bg-gradient-to-r from-emerald-300 to-amber-300 bg-clip-text text-transparent">
+                AI Engineer
+              </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
@@ -338,144 +423,141 @@ export default function Home() {
               AI 工具、研究成果與產品展示。
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              {[
-                "IE Competition 1st Place",
-                "OR Competition 3rd Place",
-                "Best Paper Award",
-                "LLaMA 3 System",
-                "Live SEO Tool",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+            <p className="mt-6 inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] px-3.5 py-1.5 text-sm font-bold text-emerald-100">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
+              Open to AI Engineer / AI Product Associate
+            </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href="#projects"
                 className="pressable motion-reduce-transform rounded-lg border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-center font-bold text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.18)] transition hover:-translate-y-0.5 hover:bg-emerald-200"
               >
                 View Projects
               </a>
-
-              <a
-                href="#contact"
-                className="pressable motion-reduce-transform rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
-              >
-                Contact Me
-              </a>
-
               <a
                 href={resumeHref}
-                className="pressable motion-reduce-transform rounded-lg border border-white/10 px-6 py-3 text-center font-bold text-slate-300 transition hover:-translate-y-0.5 hover:border-white/25 hover:text-white"
+                className="pressable motion-reduce-transform rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
               >
                 Resume
               </a>
+              <a
+                href="#contact"
+                className="px-2 py-2 text-center font-bold text-slate-300 underline-offset-4 transition hover:text-white hover:underline"
+              >
+                Contact →
+              </a>
             </div>
           </div>
 
-          <div className="hero-panel">
-            <AiProfilePanel />
-          </div>
+          <aside aria-labelledby="selected-proof" className="hero-panel border border-white/10 bg-[#0a1014]/80 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur">
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
+              <h2 id="selected-proof" className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                Selected proof
+              </h2>
+              <span className="text-xs font-semibold text-slate-400">點擊看證據</span>
+            </div>
+            <ul className="grid grid-cols-2 gap-px bg-white/10">
+              {heroProof.map((proof) => (
+                <li key={proof.label} className="bg-[#0a1014]">
+                  <Link
+                    href={proof.href}
+                    className="group flex h-full flex-col p-4 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 sm:p-5 md:p-6"
+                  >
+                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      {proof.label}
+                    </span>
+                    <span
+                      className={`mt-2.5 text-2xl font-black leading-tight tracking-tight sm:text-3xl md:text-[2.1rem] ${
+                        proof.highlight ? "text-amber-300" : "text-white"
+                      }`}
+                    >
+                      {proof.value}
+                    </span>
+                    <span className="mt-2 text-xs leading-5 text-slate-300 sm:text-sm sm:leading-6">{proof.detail}</span>
+                    <span className="mt-auto pt-3 text-xs font-bold text-emerald-300 transition group-hover:text-emerald-200 sm:text-sm">
+                      {proof.action} →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
-
-        <aside data-reveal-group className="relative z-10 mx-auto mt-4 grid max-w-[86rem] grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 sm:grid-cols-4 md:px-8 md:pb-20">
-          {[
-            ["Research Proof", "2026 IE Competition 1st Place"],
-            ["Conference Proof", "2025 CIIE Best Paper Award"],
-            ["Product Demo", "SEO Entity Analysis Tool"],
-            ["LLM Stack", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
-          ].map(([label, value]) => (
-            <div
-              key={label}
-              className="border border-white/10 bg-[#07100d]/76 p-4 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur sm:p-5"
-            >
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                {label}
-              </p>
-              <p className="mt-3 text-sm leading-6 text-slate-200">
-                {value}
-              </p>
-            </div>
-          ))}
-        </aside>
       </section>
 
       <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <h2 data-reveal className="mb-6 text-3xl font-bold">About Me</h2>
+        <div data-reveal className="mb-8">
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            About me
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">About Me</h2>
+        </div>
 
-        <div data-reveal className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1fr)] xl:items-start">
-            <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-                AI workflow builder
-              </p>
-              <p
-                lang="zh-Hant"
-                className="mt-4 max-w-3xl text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10"
-              >
-                我專注於 NLP、LLM 與資料工作流，擅長把模型實驗整理成可展示、可驗證、可操作的 AI 工具與研究成果。
-              </p>
-              <p
-                lang="zh-Hant"
-                className="mt-5 max-w-3xl text-base leading-8 text-slate-300"
-              >
-                在專案中，我從問題拆解、資料清理、模型應用、實驗評估到成果展示參與完整流程，並重視 workflow design、介面呈現與跨角色溝通。
-              </p>
+        <div className="grid items-start gap-8 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-12 xl:gap-16">
+          <figure
+            data-reveal
+            className="relative h-[24rem] overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:h-[30rem] lg:h-auto lg:aspect-[4/5]"
+          >
+            <Image
+              src={aboutPortrait}
+              alt="Kevin Huang 畢業照"
+              sizes="(min-width: 1024px) 320px, 100vw"
+              className="h-full w-full object-cover object-[50%_18%]"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 via-[#070a0d]/70 to-transparent px-5 pb-4 pt-16">
+              <span className="block text-lg font-bold text-white">Kevin Huang | 黃凱浚</span>
+              <span className="mt-1 block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                AI Engineer / AI Product
+              </span>
+            </figcaption>
+          </figure>
+
+          <div className="min-w-0">
+            <p data-reveal lang="zh-Hant" className="text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10">
+              {aboutIntro.lead}
+            </p>
+            <div data-reveal className="mt-5 grid gap-4">
+              {aboutIntro.paragraphs.map((paragraph) => (
+                <p key={paragraph} lang="zh-Hant" className="text-base leading-8 text-slate-300">
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1">
-              {[
-                {
-                  title: "AI Workflow",
-                  text: "問題拆解、資料清理、模型應用、實驗評估與成果展示。",
-                },
-                {
-                  title: "NLP / LLM",
-                  text: "LLaMA 3、BERT、Gemma、文字生成、意圖分類與問答生成。",
-                },
-                {
-                  title: "Data Product",
-                  text: "Python、SQL、R、統計檢定、PyTorch、n8n、Supabase、Git / Linux 與 demo deployment。",
-                },
-              ].map((item) => (
+            <p className="mb-4 mt-10 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+              Beyond the code
+            </p>
+            <div data-reveal-group className="grid gap-4 md:grid-cols-3">
+              {beyondCode.map((card) => (
                 <article
-                  key={item.title}
-                  className="border border-white/10 bg-slate-950/35 p-4"
+                  key={card.key}
+                  className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur"
                 >
-                  <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
-                    {item.text}
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                    {card.key}
                   </p>
+                  <h3 className="mt-2 text-lg font-bold text-white">{card.title}</h3>
+                  <ul className="mt-4 grid gap-3">
+                    {card.points.map(([role, detail]) => (
+                      <li key={role} className="flex gap-3 text-sm leading-6 text-slate-300">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300" aria-hidden="true" />
+                        <span>
+                          <span className="font-semibold text-white">{role}</span>
+                          <span className="block">{detail}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={card.link.href}
+                    className="mt-auto pt-5 text-sm font-bold text-emerald-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+                  >
+                    {card.link.label} →
+                  </Link>
                 </article>
               ))}
             </div>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-2 border-t border-white/10 pt-6">
-            {[
-              "Best Paper Award",
-              "LLaMA 3 System",
-              "n8n Workflow Automation",
-              "SEO Live Demo",
-              "Database TA",
-              "Google Data Analytics",
-              "AI / ML Certificate",
-            ].map((item) => (
-              <span
-                key={item}
-                className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1.5 text-xs font-semibold text-emerald-100"
-              >
-                {item}
-              </span>
-            ))}
           </div>
         </div>
       </section>
@@ -486,357 +568,262 @@ export default function Home() {
 
       <div className="border-y border-white/10 bg-white/[0.02]">
       <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
-        <div data-reveal className="mb-10 grid gap-6 border-b border-white/10 pb-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,0.7fr)] xl:items-end">
-          <div>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Featured case studies
-            </p>
-            <h2 className="text-3xl font-bold md:text-4xl">Projects</h2>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-400">
-              這裡整理了幾個主要專案，包含實作作品、研究成果與目前進行中的方向。
-            </p>
+        <div data-reveal className="mb-4 max-w-3xl">
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Selected work
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">Projects</h2>
+          <p className="mt-5 text-sm leading-7 text-slate-400">
+            主力專案以系統架構與量化成果呈現完整脈絡，其他作品整理在下方。
+          </p>
+        </div>
+
+        <article
+          data-reveal
+          className="grid items-center gap-8 border-t border-white/10 py-10 md:py-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] lg:gap-12"
+        >
+          <figure className="min-w-0">
+            <div className="overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+              <LightboxImage
+                src={llamaSystemDiagram}
+                alt="LLaMA 3 個人化產品行銷文案生成系統架構圖"
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="h-auto w-full"
+              />
+            </div>
+            <figcaption className="mt-3 text-xs text-slate-500">
+              系統架構：資料 → 偏好分析 → LLaMA 3 → 評估<span className="lg:hidden">（點圖可放大）</span>
+            </figcaption>
+          </figure>
+
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                {llamaShowcase.eyebrow}
+              </span>
+              <span className="text-xs font-bold text-amber-200">★ {llamaShowcase.award}</span>
+            </div>
+            <h3 className="mt-3 text-2xl font-bold leading-tight text-white md:text-3xl">{llamaShowcase.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-400">{llamaShowcase.role}</p>
+            <ProjectSteps steps={llamaShowcase.steps} />
+            <ProjectTags tags={llamaShowcase.tags} />
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <Link href={llamaShowcase.primary.href} className={projectButtonClass}>
+                {llamaShowcase.primary.label} →
+              </Link>
+              <a
+                href={llamaShowcase.secondary.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center text-sm font-semibold text-slate-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+              >
+                {llamaShowcase.secondary.label} ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article
+          data-reveal
+          className="grid items-center gap-8 border-t border-white/10 py-10 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-12"
+        >
+
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/50 bg-amber-300/[0.12] px-3.5 py-1.5 text-sm font-bold text-amber-100 shadow-[0_0_24px_rgba(252,211,77,0.12)]">
+                <span className="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
+                實習 @ {automationShowcase.company}
+              </span>
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                {automationShowcase.eyebrow}
+              </span>
+            </div>
+            <h3 className="mt-4 text-2xl font-bold leading-tight text-white md:text-3xl">{automationShowcase.title}</h3>
+            <p className="mt-2 text-sm font-semibold text-amber-100/80">{automationShowcase.role}</p>
+            <ProjectSteps steps={automationShowcase.steps} />
+            <ProjectTags tags={automationShowcase.tags} />
+            <div className="mt-7">
+              <Link href={automationShowcase.primary.href} className={projectButtonClass}>
+                {automationShowcase.primary.label} →
+              </Link>
+            </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3">
-            {[
-              ["01", "Artifact", "Demo / website / poster"],
-              ["02", "Method", "Problem to outcome"],
-              ["03", "Highlights", "Proof points"],
-            ].map(([step, title, text]) => (
-              <div
-                key={step}
-                className="border border-white/10 bg-white/[0.025] px-4 py-3"
-              >
-                <p className="font-mono text-[11px] font-bold text-emerald-300">
-                  {step}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-white">{title}</p>
-                <p className="mt-1 text-xs leading-5 text-slate-400">{text}</p>
+          <dl className="grid min-w-0 grid-cols-2 gap-px border border-white/10 bg-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+            {automationShowcase.metrics.map(([value, label]) => (
+              <div key={label} className="flex min-h-32 flex-col justify-center bg-[#0a1114] px-5 py-6 md:min-h-40 md:px-7">
+                <dt className="order-last mt-2 text-xs text-slate-400 md:text-sm">{label}</dt>
+                <dd className="text-3xl font-black tracking-tight text-white md:text-4xl">{value}</dd>
               </div>
             ))}
-          </div>
-        </div>
+          </dl>
+        </article>
 
-        <div data-reveal-group className="grid gap-5 xl:grid-cols-12">
-          {featuredProjects.map((project, index) => {
-            const isExternal = project.href.startsWith("http");
-            const artifactLabel = getProjectArtifactLabel(project.action);
-            const reviewType = getProjectReviewType(project.action);
-            const isPrimary = index === 0;
-            const reviewPath = [
-              ["Artifact", artifactLabel],
-              ["Highlights", `${project.proofPoints.length} proof points`],
-              ["Stack", project.tags.slice(0, 2).join(" / ")],
-            ];
-
-            return (
-              <article
-                key={project.title}
-                className={`pressable motion-reduce-transform group relative flex h-full flex-col overflow-hidden border backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 focus-within:ring-2 focus-within:ring-emerald-300/70 ${
-                  isPrimary
-                    ? "border-emerald-300/25 bg-[linear-gradient(135deg,rgba(16,185,129,0.1),rgba(255,255,255,0.04)_45%,rgba(245,158,11,0.055))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] md:p-7 xl:col-span-7"
-                    : "border-white/10 bg-white/[0.045] p-5 shadow-[0_20px_64px_rgba(0,0,0,0.18)] hover:bg-white/[0.065] md:p-6 xl:col-span-5"
-                }`}
-              >
-                <a
-                  href={project.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  aria-label={`${project.action} for ${project.title}`}
-                  tabIndex={-1}
-                  className="absolute inset-0 z-10"
-                />
-
-                <div className="pointer-events-none flex flex-wrap items-center gap-x-3 gap-y-2">
-                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                    {project.badge}
-                  </span>
-                  <span className="h-px w-6 bg-white/15" aria-hidden="true" />
-                  <span className="text-xs font-semibold text-slate-300">
-                    {artifactLabel}
-                  </span>
-                  <span className="text-xs font-semibold text-amber-200">
-                    Verified
-                  </span>
-                </div>
-
-                <div className="pointer-events-none mt-5">
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    {reviewType} entry
-                  </p>
-                  <h3
-                    className={`mt-3 font-bold leading-tight text-white ${
-                      isPrimary ? "text-3xl md:text-[2.35rem]" : "text-2xl"
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
-                  <p className="mt-4 text-[15px] leading-7 text-slate-300 md:text-base">
-                    {project.summary}
-                  </p>
-                </div>
-
-                <dl className="pointer-events-none mt-5 grid gap-3 border-y border-white/10 py-4 sm:grid-cols-3">
-                  {reviewPath.map(([label, value]) => (
-                    <div key={label}>
-                      <dt className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-                        {label}
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold leading-6 text-emerald-100">
-                        {value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <ul className="pointer-events-none mt-5 grid gap-2.5 text-[15px] leading-7 text-slate-200">
-                  {project.proofPoints.map((point) => (
-                    <li key={point} className="flex gap-3">
-                      <span
-                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300"
-                        aria-hidden="true"
-                      />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="pointer-events-none mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-white/10 bg-slate-950/40 px-2.5 py-1 text-xs text-slate-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="relative z-20 mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap">
-                  <a
-                    href={project.href}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    className="pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/55 bg-emerald-300/[0.12] px-4 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/80 hover:bg-emerald-300/[0.18] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70 sm:w-auto"
-                  >
-                    {project.action}
-                  </a>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div data-reveal-group className="mt-10 divide-y divide-white/10 border-y border-white/10">
-          {supportingProjects.map((project, index) => {
-            const isExternal = project.href?.startsWith("http");
-            const artifactLabel = getProjectArtifactLabel(
-              project.action,
-              project.status,
-            );
-            const reviewType = getProjectReviewType(
-              project.action,
-              project.status,
-            );
-            return (
-              <article
-                key={project.title}
-                className="pressable-subtle group relative grid gap-5 py-6 transition hover:bg-white/[0.03] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 xl:grid-cols-[3rem_minmax(14rem,0.82fr)_minmax(0,1.18fr)] xl:gap-8"
-              >
-                {project.href ? (
-                  <a
-                    href={project.href}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    aria-label={`${project.action} for ${project.title}`}
-                    tabIndex={-1}
-                    className="absolute inset-0 z-10"
-                  />
-                ) : null}
-
-                <div className="font-mono text-sm font-bold text-emerald-300/80">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-
-                <div className="pointer-events-none min-w-0">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <div className="border-t border-white/10 pt-10">
+          <p className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+            More projects
+          </p>
+          <div data-reveal-group className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {moreProjects.map((project) => {
+              const content = (
+                <>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                     <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                      {reviewType}
+                      {project.eyebrow}
                     </span>
-                    <span className="text-xs font-semibold text-slate-400">
-                      {artifactLabel}
-                    </span>
+                    {project.status ? (
+                      <span className="text-xs font-bold text-amber-200">● {project.status}</span>
+                    ) : null}
                   </div>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug text-white">{project.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{project.summary}</p>
+                  <p className="mt-4 font-mono text-xs font-semibold text-emerald-200/90">{project.highlight}</p>
+                  <span className="mt-auto pt-5 text-sm font-bold text-emerald-300">
+                    {project.link
+                      ? `${project.link.label} ${isExternalHref(project.link.href) ? "↗" : "→"}`
+                      : "Ongoing"}
+                  </span>
+                </>
+              );
+              const cardClass =
+                "flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur";
 
-                  <h3 className="mt-4 text-lg font-semibold leading-7 text-white md:text-xl">
-                    {project.title}
-                  </h3>
+              if (!project.link) {
+                return (
+                  <article key={project.title} className={cardClass}>
+                    {content}
+                  </article>
+                );
+              }
 
-                  <p className="mt-3 text-[15px] leading-7 text-slate-300">
-                    {project.summary}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="border border-white/10 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="min-w-0">
-                  <div className="pointer-events-none grid gap-3 text-sm leading-6 text-slate-300 md:grid-cols-3">
-                    {[
-                      ["Problem", project.problem],
-                      ["Method", project.method],
-                      ["Outcome", project.outcome],
-                    ].map(([label, value]) => (
-                      <p key={label} className="border-l border-emerald-300/25 pl-3">
-                        <span className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-emerald-300">
-                          {label}
-                        </span>
-                        {value}
-                      </p>
-                    ))}
-                  </div>
-
-                  <div className="relative z-20 mt-4 flex flex-col gap-3 border-t border-white/10 pt-4 sm:flex-row sm:flex-wrap">
-                    {project.href ? (
-                      <a
-                        href={project.href}
-                        target={isExternal ? "_blank" : undefined}
-                        rel={isExternal ? "noopener noreferrer" : undefined}
-                        className="pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-4 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70 sm:w-auto"
-                      >
-                        {project.action}
-                      </a>
-                    ) : (
-                      <span className="inline-flex w-full items-center justify-center rounded-lg border border-white/10 bg-slate-950/35 px-4 py-2.5 text-sm font-bold text-slate-300 sm:w-auto">
-                        Ongoing
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+              const external = isExternalHref(project.link.href);
+              return (
+                <a
+                  key={project.title}
+                  href={project.link.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  className={`${cardClass} pressable motion-reduce-transform transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70`}
+                >
+                  {content}
+                </a>
+              );
+            })}
+          </div>
         </div>
       </section>
       </div>
 
       <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
         <div data-reveal className="mb-8">
-          <div>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Publications & Awards
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Publications & Awards
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">Research & Publications</h2>
+        </div>
+
+        <article
+          data-reveal
+          className="grid items-start gap-8 border-t border-white/10 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12"
+        >
+          <div className="min-w-0">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+              One research · Five awards
             </p>
-            <h2 className="text-3xl font-bold">Research & Publications</h2>
+            <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
+              {awardResearch.topic}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-slate-400">{awardResearch.summary}</p>
+            <dl className="mt-6 flex gap-8">
+              {awardResearch.stats.map(([value, label], index) => (
+                <div key={label} className="flex flex-col">
+                  <dt className="order-last mt-2 text-xs text-slate-400">{label}</dt>
+                  <dd className={`text-4xl font-black leading-none ${index === 0 ? "text-amber-300" : "text-white"}`}>
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <ResearchTags tags={awardResearch.tags} />
+            <Link href={awardResearch.href} className={`mt-7 ${projectButtonClass}`}>
+              View Details →
+            </Link>
           </div>
-        </div>
 
-        <div data-reveal-group className="divide-y divide-white/10 border-y border-white/10">
-          {researchPublications.map((publication) => (
-            <article
-              key={publication.title}
-              className="group relative grid gap-6 py-7 transition hover:bg-white/[0.035] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 xl:grid-cols-[minmax(0,0.82fr)_minmax(22rem,1fr)] xl:gap-10"
-            >
-              <Link
-                href={publication.href}
-                aria-label={`View details for ${publication.title}`}
-                className="absolute inset-0 z-10"
-              />
-
-              <div className="flex min-w-0 flex-col xl:h-full">
-                <div className="pointer-events-none flex flex-col items-start gap-3">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                      {publication.badge}
-                    </span>
-                    {publication.href === "/conference" ? (
-                      <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                        Industrial Engineering Competition First Place
-                      </span>
-                    ) : null}
-                    {publication.href === "/conference" ? (
-                      <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                        Operations Research Project Competition Third Place
-                      </span>
-                    ) : null}
-                  </div>
-                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
-                    {publication.title}
-                  </h3>
-                  {publication.subtitle ? (
-                    <p className="text-lg font-semibold leading-7 text-white md:text-xl md:leading-8">
-                      {publication.subtitle}
-                    </p>
-                  ) : null}
-                </div>
-
-                <div className="pointer-events-none mt-6 border-l border-emerald-300/35 pl-4">
-                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Focus area
-                  </p>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-100">
-                    {publication.badge}
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">
-                    {publication.tags.slice(0, 3).join(" / ")}
-                  </p>
-                </div>
-
-                <div className="relative z-20 mt-auto flex flex-col gap-3 pt-8 sm:flex-row sm:flex-wrap">
-                  <Link
-                    href={publication.href}
-                    className="pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white sm:w-auto"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-
-              <div className="pointer-events-none min-w-0 border border-white/10 bg-slate-950/25 p-5">
-                <dl className="grid gap-4">
-                  {publication.details.map((detail) => (
-                    <div
-                      key={detail.label}
-                    >
-                      <dt className="text-sm font-semibold uppercase tracking-wide text-slate-400">
-                        {detail.label}
-                      </dt>
-                      <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
-                        {Array.isArray(detail.value) ? (
-                          <span className="grid gap-1">
-                            {detail.value.map((item) => (
-                              <span key={item}>{item}</span>
-                            ))}
-                          </span>
-                        ) : (
-                          detail.value
-                        )}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {publication.tags.map((tag) => (
+          <ol className="min-w-0 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
+            {awardResearch.awards.map((award) => {
+              const tone = medalTones[award.tone];
+              return (
+                <li
+                  key={award.name}
+                  className={`grid gap-2 border-b border-white/10 p-4 last:border-b-0 sm:grid-cols-[8.5rem_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:px-5 ${tone.row}`}
+                >
+                  <div className="flex items-center gap-3">
                     <span
-                      key={tag}
-                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-black ${tone.medal}`}
+                      aria-hidden="true"
                     >
-                      {tag}
+                      {award.medal}
                     </span>
-                  ))}
+                    <span className={`text-base font-black ${tone.rank}`}>{award.rank}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[15px] font-semibold leading-6 text-white">{award.name}</p>
+                    <p className="text-[13px] leading-5 text-slate-400">{award.category}</p>
+                  </div>
+                  <p className="font-mono text-xs font-semibold text-slate-400 sm:text-right">
+                    {award.level}
+                    <span className="ml-2 text-slate-300 sm:ml-0 sm:mt-1 sm:block">{award.year}</span>
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
+        </article>
+
+        <article
+          data-reveal
+          className="grid items-start gap-8 border-t border-white/10 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12"
+        >
+          <div className="min-w-0">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+              International publication
+            </p>
+            <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
+              {icccmPaper.title}
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-400">{icccmPaper.titleZh}</p>
+            <ResearchTags tags={icccmPaper.tags} />
+            <Link href={icccmPaper.href} className={`mt-7 ${projectButtonClass}`}>
+              View Details →
+            </Link>
+          </div>
+
+          <div className="min-w-0 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-emerald-100">
+                <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
+                Published Paper · ICCCM 2026
+              </span>
+            </div>
+            <dl className="grid gap-3 px-5 py-4 text-sm">
+              {icccmPaper.facts.map(([label, value]) => (
+                <div key={label} className="grid gap-1 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4">
+                  <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</dt>
+                  <dd className="leading-6 text-slate-200">{value}</dd>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              ))}
+            </dl>
+            <dl className="grid grid-cols-2 gap-px border-t border-white/10 bg-white/10 sm:grid-cols-4">
+              {icccmPaper.results.map(([value, label]) => (
+                <div key={label} className="flex flex-col bg-[#0a1014] px-5 py-4">
+                  <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                  <dd className="text-2xl font-black text-white">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </article>
       </section>
 
       <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">

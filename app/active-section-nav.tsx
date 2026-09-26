@@ -10,6 +10,8 @@ type NavItem = {
 type ActiveSectionNavProps = {
   items: NavItem[];
   variant?: "emerald" | "amber";
+  /** Width at which the inline nav replaces the mobile menu; long nav bars need more room. */
+  breakpoint?: "md" | "lg";
 };
 
 const activeVariantClasses = {
@@ -22,10 +24,10 @@ const activeVariantClasses = {
 export default function ActiveSectionNav({
   items,
   variant = "emerald",
+  breakpoint = "md",
 }: ActiveSectionNavProps) {
-  const [activeHref, setActiveHref] = useState<string | null>(
-    items[0]?.href ?? null,
-  );
+  // Nothing is highlighted until the first section is reached (e.g. while on a hero).
+  const [activeHref, setActiveHref] = useState<string | null>(null);
 
   const scrollToSection = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -79,11 +81,19 @@ export default function ActiveSectionNav({
         return;
       }
 
-      const [mostVisibleHref] = Array.from(visibleSections.entries()).sort(
+      const [mostVisible] = Array.from(visibleSections.entries()).sort(
         (first, second) => second[1] - first[1],
-      )[0] ?? [sections[0].href];
+      );
 
-      setActiveHref(mostVisibleHref);
+      if (mostVisible) {
+        setActiveHref(mostVisible[0]);
+        return;
+      }
+
+      // Above the first tracked section there is nothing to highlight;
+      // between sections keep the first one as before.
+      const firstTop = sections[0].element.getBoundingClientRect().top;
+      setActiveHref(firstTop > window.innerHeight * 0.2 ? null : sections[0].href);
     };
 
     const observer = new IntersectionObserver(
@@ -117,7 +127,7 @@ export default function ActiveSectionNav({
   }, [items]);
 
   return (
-    <div className="hidden gap-2 text-sm font-medium text-slate-300 md:flex">
+    <div className={`hidden gap-2 text-sm font-medium text-slate-300 ${breakpoint === "lg" ? "lg:flex" : "md:flex"}`}>
       {items.map((item) => {
         const isActive = activeHref === item.href;
 

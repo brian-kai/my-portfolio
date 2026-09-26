@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">LLaMA 3 個人化產品行銷文案生成系統架構</title>
+  <desc id="desc">產品描述、消費者評論與行銷文案資料，經消費者偏好分析（TextRank、LDA、K-Means）與語義偏好分析（SBERT、UMAP、HDBSCAN、OpenAI 資料增強），匯入以 QLoRA 微調的 LLaMA 3 8B 生成個人化文案，評估結果 BLEU-4 14.44、METEOR 23.62、人工評估流暢度 0.89。</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#94a3b8" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="coreGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.32"/>
+      <stop offset="0.55" stop-color="#f59e0b" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="coreFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2a22"/>
+      <stop offset="1" stop-color="#1c1a10"/>
+    </linearGradient>
+    <linearGradient id="coreStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ee7b7"/>
+      <stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#6ee7b7"/>
+    </marker>
+    <style>
+      text { font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; fill: #e2e8f0; }
+      .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: 0.2em; fill: #6ee7b7; }
+      .muted { fill: #94a3b8; }
+      .card { fill: #0d1418; stroke: #ffffff; stroke-opacity: 0.12; }
+      .pill { fill: #10231d; stroke: #6ee7b7; stroke-opacity: 0.4; }
+      .pill-text { font-size: 16px; font-weight: 700; fill: #d1fae5; }
+      .link { fill: none; stroke: #6ee7b7; stroke-opacity: 0.55; stroke-width: 2; }
+      .flow { fill: none; stroke: #a7f3d0; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 2 22; animation: flow 1.6s linear infinite; }
+      .pulse { animation: pulse 3.2s ease-in-out infinite; transform-origin: 850px 320px; }
+      @keyframes flow { to { stroke-dashoffset: -24; } }
+      @keyframes pulse { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+      @media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="640" fill="#070a0d"/>
+  <rect width="1200" height="640" fill="url(#grid)"/>
+  <circle class="pulse" cx="850" cy="320" r="230" fill="url(#coreGlow)"/>
+
+  <text x="40" y="66" class="mono eyebrow">SYSTEM ARCHITECTURE</text>
+  <text x="1160" y="66" text-anchor="end" font-size="17" font-weight="700" fill="#fcd34d">★ CIIE 2025 最佳論文獎</text>
+
+  <!-- Data sources -->
+  <text x="40" y="170" class="mono eyebrow" fill-opacity="0.9">DATA</text>
+  <g font-size="20" font-weight="700">
+    <rect class="card" x="40" y="190" width="190" height="64" rx="10"/>
+    <text x="64" y="229">產品描述</text>
+    <rect class="card" x="40" y="288" width="190" height="64" rx="10"/>
+    <text x="64" y="327">消費者評論</text>
+    <rect class="card" x="40" y="386" width="190" height="64" rx="10"/>
+    <text x="64" y="425">行銷文案</text>
+  </g>
+  <text x="40" y="484" font-size="15" class="muted">Amazon · Walmart · eBay</text>
+
+  <!-- Bus from sources to modules -->
+  <path class="link" d="M230 222H260M230 320H260M230 418H260M260 222V418"/>
+  <path class="link" d="M260 215H284" marker-end="url(#arrow)"/>
+  <path class="link" d="M260 425H284" marker-end="url(#arrow)"/>
+
+  <!-- Module 01 -->
+  <rect class="card" x="290" y="130" width="400" height="170" rx="14"/>
+  <text x="314" y="170" class="mono" font-size="16" font-weight="700" fill="#6ee7b7">01</text>
+  <text x="346" y="171" font-size="23" font-weight="800">消費者偏好分析</text>
+  <g>
+    <rect class="pill" x="312" y="196" width="104" height="40" rx="8"/>
+    <text x="364" y="222" text-anchor="middle" class="pill-text">TextRank</text>
+    <path d="M420 216h8" stroke="#6ee7b7" stroke-opacity="0.6" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect class="pill" x="438" y="196" width="104" height="40" rx="8"/>
+    <text x="490" y="222" text-anchor="middle" class="pill-text">LDA</text>
+    <path d="M546 216h8" stroke="#6ee7b7" stroke-opacity="0.6" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect class="pill" x="564" y="196" width="104" height="40" rx="8"/>
+    <text x="616" y="222" text-anchor="middle" class="pill-text">K-Means</text>
+  </g>
+  <text x="314" y="274" font-size="16" class="muted">關鍵字 · 主題 · 情感向量偏好分群</text>
+
+  <!-- Module 02 -->
+  <rect class="card" x="290" y="340" width="400" height="170" rx="14"/>
+  <text x="314" y="380" class="mono" font-size="16" font-weight="700" fill="#6ee7b7">02</text>
+  <text x="346" y="381" font-size="23" font-weight="800">語義偏好分析</text>
+  <g>
+    <rect class="pill" x="312" y="406" width="104" height="40" rx="8"/>
+    <text x="364" y="432" text-anchor="middle" class="pill-text">SBERT</text>
+    <path d="M420 426h8" stroke="#6ee7b7" stroke-opacity="0.6" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect class="pill" x="438" y="406" width="104" height="40" rx="8"/>
+    <text x="490" y="432" text-anchor="middle" class="pill-text">UMAP</text>
+    <path d="M546 426h8" stroke="#6ee7b7" stroke-opacity="0.6" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect class="pill" x="564" y="406" width="104" height="40" rx="8"/>
+    <text x="616" y="432" text-anchor="middle" class="pill-text">HDBSCAN</text>
+  </g>
+  <text x="314" y="484" font-size="16" class="muted">+ OpenAI 資料增強(語氣 · 族群 · 主題)</text>
+
+  <!-- Modules into core -->
+  <path class="link" d="M690 215C716 215 716 285 734 285" marker-end="url(#arrow)"/>
+  <path class="link" d="M690 425C716 425 716 355 734 355" marker-end="url(#arrow)"/>
+  <path class="flow" d="M230 320H260V222M260 320V418M260 215H290M260 425H290M690 215C716 215 716 285 740 285M690 425C716 425 716 355 740 355M960 320H1010"/>
+
+  <!-- Core: LLaMA 3 -->
+  <rect x="740" y="205" width="220" height="230" rx="20" fill="url(#coreFill)" stroke="url(#coreStroke)" stroke-width="2.5"/>
+  <text x="850" y="246" text-anchor="middle" class="mono" font-size="15" font-weight="700" fill="#6ee7b7">03 文案生成</text>
+  <text x="850" y="306" text-anchor="middle" font-size="42" font-weight="900" fill="#ffffff">LLaMA 3</text>
+  <text x="850" y="342" text-anchor="middle" font-size="21" font-weight="700" fill="#fcd34d">8B · QLoRA 微調</text>
+  <line x1="780" y1="370" x2="920" y2="370" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="850" y="402" text-anchor="middle" font-size="18" class="muted">78K 筆行銷文本</text>
+
+  <!-- Output -->
+  <path class="link" d="M960 320H1004" marker-end="url(#arrow)"/>
+  <rect class="card" x="1010" y="215" width="150" height="210" rx="14" stroke="#6ee7b7" stroke-opacity="0.35"/>
+  <text x="1030" y="252" font-size="19" font-weight="800">個人化文案</text>
+  <g fill="#cbd5e1">
+    <rect x="1030" y="276" width="110" height="9" rx="4.5" fill-opacity="0.55"/>
+    <rect x="1030" y="298" width="92" height="9" rx="4.5" fill-opacity="0.4"/>
+    <rect x="1030" y="320" width="104" height="9" rx="4.5" fill-opacity="0.4"/>
+    <rect x="1030" y="342" width="70" height="9" rx="4.5" fill-opacity="0.4"/>
+  </g>
+  <rect x="1030" y="372" width="56" height="28" rx="6" fill="#10231d" stroke="#6ee7b7" stroke-opacity="0.4"/>
+  <text x="1058" y="391" text-anchor="middle" font-size="13" font-weight="700" fill="#a7f3d0">偏好</text>
+  <rect x="1092" y="372" width="48" height="28" rx="6" fill="#1f1a0c" stroke="#fbbf24" stroke-opacity="0.45"/>
+  <text x="1116" y="391" text-anchor="middle" font-size="13" font-weight="700" fill="#fcd34d">產品</text>
+
+  <!-- Evaluation strip -->
+  <path class="link" d="M1085 425V520" stroke-dasharray="4 6" marker-end="url(#arrow)"/>
+  <rect x="290" y="530" width="870" height="72" rx="14" fill="#0b1115" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="314" y="573" class="mono eyebrow">EVALUATION</text>
+  <text y="574" font-size="30" font-weight="900" fill="#ffffff">
+    <tspan x="500">14.44</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">BLEU-4</tspan>
+  </text>
+  <line x1="690" y1="552" x2="690" y2="580" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text y="574" font-size="30" font-weight="900" fill="#ffffff">
+    <tspan x="716">23.62</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">METEOR</tspan>
+  </text>
+  <line x1="912" y1="552" x2="912" y2="580" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text y="574" font-size="30" font-weight="900" fill="#ffffff">
+    <tspan x="938">0.89</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">人工評估流暢度</tspan>
+  </text>
+</svg>
