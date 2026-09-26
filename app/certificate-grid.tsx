@@ -29,7 +29,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
 
   return (
     <>
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div data-reveal-group className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {certificates.map((certificate, index) => {
           const viewerIndex = viewerItems.findIndex(
             (item) => item.title === certificate.title,

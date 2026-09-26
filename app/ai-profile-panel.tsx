@@ -52,8 +52,7 @@ const profileModes = [
 
 export default function AiProfilePanel() {
   const [activeModeId, setActiveModeId] = useState(profileModes[0].id);
-  const activeMode =
-    profileModes.find((mode) => mode.id === activeModeId) ?? profileModes[0];
+  const activeIndex = profileModes.findIndex((mode) => mode.id === activeModeId);
 
   return (
     <aside className="w-full border border-white/10 bg-[#07100d]/80 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur xl:max-w-none">
@@ -71,21 +70,23 @@ export default function AiProfilePanel() {
         </span>
       </div>
 
-      <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div className="profile-mode-controls mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3" data-active-index={activeIndex} role="group" aria-label="實作重點分類">
+        <span className="profile-mode-indicator" aria-hidden="true" />
         {profileModes.map((mode) => {
-          const isActive = mode.id === activeMode.id;
+          const isActive = mode.id === activeModeId;
 
           return (
             <button
               key={mode.id}
               type="button"
               onClick={() => setActiveModeId(mode.id)}
-              className={`pressable-subtle min-h-11 border px-3 py-2 text-left text-sm font-bold transition ${
+              className={`pressable-subtle relative min-h-11 border px-3 py-2 text-left text-sm font-bold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-200 ${
                 isActive
-                  ? "border-emerald-300/60 bg-emerald-300/[0.14] text-white shadow-[0_14px_32px_rgba(16,185,129,0.14)]"
+                  ? "border-transparent text-white"
                   : "border-white/10 bg-white/[0.045] text-slate-300 hover:border-emerald-300/35 hover:bg-white/[0.075] hover:text-white"
               }`}
               aria-pressed={isActive}
+              aria-controls={`profile-${mode.id}`}
             >
               {mode.label}
             </button>
@@ -93,42 +94,54 @@ export default function AiProfilePanel() {
         })}
       </div>
 
-      <div className="mt-3 border border-emerald-300/20 bg-slate-950/40 p-3 md:p-4">
-        <h3 className="text-2xl font-black leading-tight text-white">
-          {activeMode.title}
-        </h3>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
-          {activeMode.summary}
-        </p>
+      <p className="sr-only" role="status">{profileModes[activeIndex].title}</p>
+      <div className="profile-mode-panels mt-3 border border-emerald-300/20 bg-slate-950/40 p-3 md:p-4">
+        {profileModes.map((activeMode) => (
+          <div
+            key={activeMode.id}
+            id={`profile-${activeMode.id}`}
+            className="profile-mode-panel"
+            data-active={activeMode.id === activeModeId}
+            aria-hidden={activeMode.id !== activeModeId}
+            inert={activeMode.id !== activeModeId}
+          >
+            <h3 className="text-2xl font-black leading-tight text-white">
+              {activeMode.title}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-300">
+              {activeMode.summary}
+            </p>
 
-        <div className="mt-3 grid gap-2">
-          {activeMode.proofPoints.map((point) => (
-            <div
-              key={point}
-              className="border-l border-emerald-300/45 bg-white/[0.035] px-3 py-1.5 text-sm font-semibold leading-6 text-slate-100"
-            >
-              {point}
+            <div className="mt-3 grid gap-2">
+              {activeMode.proofPoints.map((point) => (
+                <div
+                  key={point}
+                  className="border-l border-emerald-300/45 bg-white/[0.035] px-3 py-1.5 text-sm font-semibold leading-6 text-slate-100"
+                >
+                  {point}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="mt-3 flex flex-wrap gap-2">
-          {activeMode.stack.map((item) => (
-            <span
-              key={item}
-              className="border border-white/10 bg-[#07100d]/80 px-2.5 py-1 font-mono text-[11px] font-semibold text-emerald-100"
+            <div className="mt-3 flex flex-wrap gap-2">
+              {activeMode.stack.map((item) => (
+                <span
+                  key={item}
+                  className="border border-white/10 bg-[#07100d]/80 px-2.5 py-1 font-mono text-[11px] font-semibold text-emerald-100"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href={activeMode.href}
+              className="pressable motion-reduce-transform mt-4 inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/65 bg-emerald-300 px-4 py-2.5 text-sm font-black text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.16)] transition hover:-translate-y-0.5 hover:bg-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-200/80"
             >
-              {item}
-            </span>
-          ))}
-        </div>
-
-        <a
-          href={activeMode.href}
-          className="pressable motion-reduce-transform mt-4 inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/65 bg-emerald-300 px-4 py-2.5 text-sm font-black text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.16)] transition hover:-translate-y-0.5 hover:bg-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-200/80"
-        >
-          {activeMode.cta}
-        </a>
+              {activeMode.cta}
+            </a>
+          </div>
+        ))}
       </div>
     </aside>
   );

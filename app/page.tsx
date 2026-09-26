@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import ActiveSectionNav from "./active-section-nav";
 import AiProfilePanel from "./ai-profile-panel";
+import HomeMotion from "./home-motion";
 import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import SkillWorkMatrix from "./skill-work-matrix";
@@ -263,7 +264,8 @@ const getProjectReviewType = (action?: string, status?: string) => {
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+    <main id="portfolio-home" className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
+      <HomeMotion />
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
@@ -287,11 +289,12 @@ export default function Home() {
       </nav>
 
       <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#070a0d] pt-16">
+        <div className="hero-glow" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
         <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.12fr)_minmax(28rem,0.85fr)] xl:gap-10">
-          <div className="max-w-3xl">
+          <div className="hero-intro max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Kevin Huang | AI Engineer / AI Product Associate
             </p>
@@ -346,10 +349,12 @@ export default function Home() {
             </div>
           </div>
 
-          <AiProfilePanel />
+          <div className="hero-panel">
+            <AiProfilePanel />
+          </div>
         </div>
 
-        <aside className="relative z-10 mx-auto -mt-16 grid max-w-[86rem] grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 sm:grid-cols-4 md:-mt-20 md:px-8 md:pb-20 xl:-mt-24">
+        <aside data-reveal-group className="relative z-10 mx-auto mt-4 grid max-w-[86rem] grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 sm:grid-cols-4 md:px-8 md:pb-20">
           {[
             ["Research Proof", "2026 IE Competition 1st Place"],
             ["Conference Proof", "2025 CIIE Best Paper Award"],
@@ -372,9 +377,9 @@ export default function Home() {
       </section>
 
       <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <h2 className="mb-6 text-3xl font-bold">About Me</h2>
+        <h2 data-reveal className="mb-6 text-3xl font-bold">About Me</h2>
 
-        <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
+        <div data-reveal className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1fr)] xl:items-start">
             <div>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
@@ -444,13 +449,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="skills" className="relative mx-auto max-w-[90rem] px-6 py-16 md:px-8 md:py-20">
+      <section id="skills" data-reveal className="relative mx-auto max-w-[90rem] px-6 py-16 md:px-8 md:py-20">
         <SkillWorkMatrix />
       </section>
 
       <div className="border-y border-white/10 bg-white/[0.02]">
       <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
-        <div className="mb-10 grid gap-6 border-b border-white/10 pb-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,0.7fr)] xl:items-end">
+        <div data-reveal className="mb-10 grid gap-6 border-b border-white/10 pb-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,0.7fr)] xl:items-end">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Featured case studies
@@ -481,7 +486,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-12">
+        <div data-reveal-group className="grid gap-5 xl:grid-cols-12">
           {featuredProjects.map((project, index) => {
             const isExternal = project.href.startsWith("http");
             const artifactLabel = getProjectArtifactLabel(project.action);
@@ -591,7 +596,7 @@ export default function Home() {
           })}
         </div>
 
-        <div className="mt-10 divide-y divide-white/10 border-y border-white/10">
+        <div data-reveal-group className="mt-10 divide-y divide-white/10 border-y border-white/10">
           {supportingProjects.map((project, index) => {
             const isExternal = project.href?.startsWith("http");
             const artifactLabel = getProjectArtifactLabel(
@@ -693,7 +698,7 @@ export default function Home() {
       </div>
 
       <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
-        <div className="mb-8">
+        <div data-reveal className="mb-8">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Publications & Awards
@@ -702,7 +707,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="divide-y divide-white/10 border-y border-white/10">
+        <div data-reveal-group className="divide-y divide-white/10 border-y border-white/10">
           {researchPublications.map((publication) => (
             <article
               key={publication.title}
@@ -804,7 +809,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
-        <div className="mb-8">
+        <div data-reveal className="mb-8">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Timeline
@@ -815,6 +820,7 @@ export default function Home() {
 
         <h3 className="mb-5 text-2xl font-semibold">Honors & recognition</h3>
         <article
+          data-reveal
           className="pressable motion-reduce-transform group relative block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus-within:ring-2 focus-within:ring-emerald-300/70 md:p-6"
         >
           <Link
@@ -864,7 +870,7 @@ export default function Home() {
         >
           Leadership
         </h3>
-        <div className="grid gap-6">
+        <div data-reveal-group className="grid gap-6">
           {highlights
             .filter((highlight) => highlight.href === "/student-association")
             .map((highlight) => (
@@ -907,7 +913,7 @@ export default function Home() {
         <h3 className="mb-5 mt-12 text-2xl font-semibold">
           Academic & Work Experience
         </h3>
-        <div className="relative grid gap-6 border-l border-emerald-300/25 pl-6">
+        <div data-reveal-group className="relative grid gap-6 border-l border-emerald-300/25 pl-6">
           {experiences.map((experience) => {
             const content = (
               <>
@@ -961,7 +967,7 @@ export default function Home() {
 
       <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
       <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <div className="mb-8">
+        <div data-reveal className="mb-8">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Certifications
@@ -975,9 +981,9 @@ export default function Home() {
       </div>
 
       <section id="contact" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <h2 className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
+        <h2 data-reveal className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
 
-        <div className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
+        <div data-reveal className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
           <p className="text-lg leading-8 text-slate-200">
             我目前正在尋找 AI、資料分析、NLP、LLM
             應用相關的實習、專題合作與研究機會。如果你對我的作品、研究或技術背景有興趣，歡迎透過
