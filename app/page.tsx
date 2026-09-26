@@ -5,6 +5,7 @@ import { resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
 import AiProfilePanel from "./ai-profile-panel";
+import BackToTop from "./back-to-top";
 import HomeMotion from "./home-motion";
 import CertificateGrid from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
@@ -1090,14 +1091,7 @@ export default function Home() {
         </div>
       </section>
 
-      <a
-        href="#"
-        aria-label="Back to top"
-        title="Back to top"
-        className="pressable motion-reduce-transform z-nav fixed bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border border-emerald-300/40 bg-[#070a0d]/86 text-xl font-bold text-emerald-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl"
-      >
-        ↑
-      </a>
+      <BackToTop />
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-400">
         © 2026 Kevin Huang | Kai-Chun Huang. All rights reserved.
