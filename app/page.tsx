@@ -160,7 +160,9 @@ const llamaShowcase = {
 };
 
 const automationShowcase = {
-  eyebrow: "Automation · ZOUSTEC 實習",
+  eyebrow: "Automation",
+  company: "ZOUSTEC",
+  role: `${workflowInternship.title} · ${workflowInternship.meta.split("｜")[1]}`,
   title: "AI 行銷內容自動化",
   steps: [
     ["Problem", "人工製作與發布內容耗時，且影像模型產出的輪播圖常有文字與版面錯誤。"],
@@ -627,10 +629,17 @@ export default function Home() {
         >
 
           <div className="min-w-0">
-            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
-              {automationShowcase.eyebrow}
-            </span>
-            <h3 className="mt-3 text-2xl font-bold leading-tight text-white md:text-3xl">{automationShowcase.title}</h3>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/50 bg-amber-300/[0.12] px-3.5 py-1.5 text-sm font-bold text-amber-100 shadow-[0_0_24px_rgba(252,211,77,0.12)]">
+                <span className="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
+                實習 @ {automationShowcase.company}
+              </span>
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                {automationShowcase.eyebrow}
+              </span>
+            </div>
+            <h3 className="mt-4 text-2xl font-bold leading-tight text-white md:text-3xl">{automationShowcase.title}</h3>
+            <p className="mt-2 text-sm font-semibold text-amber-100/80">{automationShowcase.role}</p>
             <ProjectSteps steps={automationShowcase.steps} />
             <ProjectTags tags={automationShowcase.tags} />
             <div className="mt-7">
