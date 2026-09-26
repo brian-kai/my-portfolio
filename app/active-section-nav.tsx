@@ -10,6 +10,8 @@ type NavItem = {
 type ActiveSectionNavProps = {
   items: NavItem[];
   variant?: "emerald" | "amber";
+  /** Width at which the inline nav replaces the mobile menu; long nav bars need more room. */
+  breakpoint?: "md" | "lg";
 };
 
 const activeVariantClasses = {
@@ -22,6 +24,7 @@ const activeVariantClasses = {
 export default function ActiveSectionNav({
   items,
   variant = "emerald",
+  breakpoint = "md",
 }: ActiveSectionNavProps) {
   const [activeHref, setActiveHref] = useState<string | null>(
     items[0]?.href ?? null,
@@ -117,7 +120,7 @@ export default function ActiveSectionNav({
   }, [items]);
 
   return (
-    <div className="hidden gap-2 text-sm font-medium text-slate-300 md:flex">
+    <div className={`hidden gap-2 text-sm font-medium text-slate-300 ${breakpoint === "lg" ? "lg:flex" : "md:flex"}`}>
       {items.map((item) => {
         const isActive = activeHref === item.href;
 

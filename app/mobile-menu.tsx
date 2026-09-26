@@ -100,7 +100,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
-        className="pressable-subtle inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-slate-200 transition hover:border-emerald-300/50 hover:text-white md:hidden"
+        className="pressable-subtle inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-slate-200 transition hover:border-emerald-300/50 hover:text-white lg:hidden"
       >
         <span className="flex flex-col gap-1.5" aria-hidden="true">
           <span className="block h-0.5 w-5 rounded bg-current" />
@@ -110,7 +110,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
       </button>
 
       {isOpen ? (
-        <div className="z-menu fixed inset-0 md:hidden">
+        <div className="z-menu fixed inset-0 lg:hidden">
           <button
             type="button"
             aria-label="Close navigation menu"
