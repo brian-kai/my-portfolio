@@ -3,7 +3,6 @@ import { cieAward, courseHonors, honorSharing, workflowInternship } from "./resu
 import { resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
-import AiProfilePanel from "./ai-profile-panel";
 import BackToTop from "./back-to-top";
 import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
@@ -292,6 +291,39 @@ function ProjectTags({ tags }: { tags: string[] }) {
   );
 }
 
+const heroProof = [
+  {
+    label: "Competition",
+    value: "1st Place",
+    detail: "2026 全國工業工程與管理大學生專題論文競賽",
+    href: "/conference",
+    action: "Proof",
+    highlight: true,
+  },
+  {
+    label: "Conference",
+    value: "Best Paper",
+    detail: "CIIE 2025 · LLaMA 3 個人化行銷文案",
+    href: "/conference",
+    action: "Proof",
+    highlight: true,
+  },
+  {
+    label: "NLP Model",
+    value: "96.22%",
+    detail: "BERT-BiLSTM 意圖分類 Accuracy",
+    href: "#projects",
+    action: "Projects",
+  },
+  {
+    label: "Automation",
+    value: "30→2 分",
+    detail: "n8n 自動化後每篇內容處理時間",
+    href: "/marketing-automation",
+    action: "Case study",
+  },
+];
+
 export default function Home() {
   return (
     <main id="portfolio-home" className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
@@ -323,14 +355,18 @@ export default function Home() {
         <div className="hero-glow" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-12 px-6 py-16 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.12fr)_minmax(28rem,0.85fr)] xl:gap-10">
+        <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-10 px-6 py-14 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(28rem,0.9fr)] xl:gap-14">
           <div className="hero-intro max-w-3xl">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Kevin Huang | AI Engineer / AI Product Associate
+            <p className="mb-4 text-base text-slate-300 md:text-lg">
+              Hi, I&apos;m <span className="font-bold text-white">Kevin Huang</span>{" "}
+              <span aria-hidden="true">👋</span>
             </p>
 
-            <h1 className="max-w-none text-4xl font-black leading-[1.05] text-white md:text-5xl xl:whitespace-nowrap xl:text-6xl">
-              NLP / LLM AI Engineer
+            <h1 className="text-[2.6rem] font-black leading-[1.05] text-white sm:text-5xl md:text-6xl xl:text-7xl">
+              NLP / LLM
+              <span className="block bg-gradient-to-r from-emerald-300 to-amber-300 bg-clip-text text-transparent">
+                AI Engineer
+              </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
@@ -338,72 +374,67 @@ export default function Home() {
               AI 工具、研究成果與產品展示。
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              {[
-                "IE Competition 1st Place",
-                "OR Competition 3rd Place",
-                "Best Paper Award",
-                "LLaMA 3 System",
-                "Live SEO Tool",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+            <p className="mt-6 inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] px-3.5 py-1.5 text-sm font-bold text-emerald-100">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
+              Open to AI Engineer / AI Product Associate
+            </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href="#projects"
                 className="pressable motion-reduce-transform rounded-lg border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-center font-bold text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.18)] transition hover:-translate-y-0.5 hover:bg-emerald-200"
               >
                 View Projects
               </a>
-
-              <a
-                href="#contact"
-                className="pressable motion-reduce-transform rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
-              >
-                Contact Me
-              </a>
-
               <a
                 href={resumeHref}
-                className="pressable motion-reduce-transform rounded-lg border border-white/10 px-6 py-3 text-center font-bold text-slate-300 transition hover:-translate-y-0.5 hover:border-white/25 hover:text-white"
+                className="pressable motion-reduce-transform rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
               >
                 Resume
               </a>
+              <a
+                href="#contact"
+                className="px-2 py-2 text-center font-bold text-slate-300 underline-offset-4 transition hover:text-white hover:underline"
+              >
+                Contact →
+              </a>
             </div>
           </div>
 
-          <div className="hero-panel">
-            <AiProfilePanel />
-          </div>
+          <aside aria-labelledby="selected-proof" className="hero-panel border border-white/10 bg-[#0a1014]/80 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur">
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
+              <h2 id="selected-proof" className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                Selected proof
+              </h2>
+              <span className="text-xs font-semibold text-slate-400">點擊看證據</span>
+            </div>
+            <ul className="grid grid-cols-2 gap-px bg-white/10">
+              {heroProof.map((proof) => (
+                <li key={proof.label} className="bg-[#0a1014]">
+                  <Link
+                    href={proof.href}
+                    className="group flex h-full flex-col p-4 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 sm:p-5 md:p-6"
+                  >
+                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      {proof.label}
+                    </span>
+                    <span
+                      className={`mt-2.5 text-2xl font-black leading-tight tracking-tight sm:text-3xl md:text-[2.1rem] ${
+                        proof.highlight ? "text-amber-300" : "text-white"
+                      }`}
+                    >
+                      {proof.value}
+                    </span>
+                    <span className="mt-2 text-xs leading-5 text-slate-300 sm:text-sm sm:leading-6">{proof.detail}</span>
+                    <span className="mt-auto pt-3 text-xs font-bold text-emerald-300 transition group-hover:text-emerald-200 sm:text-sm">
+                      {proof.action} →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
-
-        <aside data-reveal-group className="relative z-10 mx-auto mt-4 grid max-w-[86rem] grid-cols-2 gap-3 border-t border-white/10 px-6 pb-16 sm:grid-cols-4 md:px-8 md:pb-20">
-          {[
-            ["Research Proof", "2026 IE Competition 1st Place"],
-            ["Conference Proof", "2025 CIIE Best Paper Award"],
-            ["Product Demo", "SEO Entity Analysis Tool"],
-            ["LLM Stack", "LLaMA 3、BERT-BiLSTM、Gemma 4"],
-          ].map(([label, value]) => (
-            <div
-              key={label}
-              className="border border-white/10 bg-[#07100d]/76 p-4 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur sm:p-5"
-            >
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                {label}
-              </p>
-              <p className="mt-3 text-sm leading-6 text-slate-200">
-                {value}
-              </p>
-            </div>
-          ))}
-        </aside>
       </section>
 
       <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">

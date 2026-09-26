@@ -26,9 +26,8 @@ export default function ActiveSectionNav({
   variant = "emerald",
   breakpoint = "md",
 }: ActiveSectionNavProps) {
-  const [activeHref, setActiveHref] = useState<string | null>(
-    items[0]?.href ?? null,
-  );
+  // Nothing is highlighted until the first section is reached (e.g. while on a hero).
+  const [activeHref, setActiveHref] = useState<string | null>(null);
 
   const scrollToSection = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -82,11 +81,19 @@ export default function ActiveSectionNav({
         return;
       }
 
-      const [mostVisibleHref] = Array.from(visibleSections.entries()).sort(
+      const [mostVisible] = Array.from(visibleSections.entries()).sort(
         (first, second) => second[1] - first[1],
-      )[0] ?? [sections[0].href];
+      );
 
-      setActiveHref(mostVisibleHref);
+      if (mostVisible) {
+        setActiveHref(mostVisible[0]);
+        return;
+      }
+
+      // Above the first tracked section there is nothing to highlight;
+      // between sections keep the first one as before.
+      const firstTop = sections[0].element.getBoundingClientRect().top;
+      setActiveHref(firstTop > window.innerHeight * 0.2 ? null : sections[0].href);
     };
 
     const observer = new IntersectionObserver(
