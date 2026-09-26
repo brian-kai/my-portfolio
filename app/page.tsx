@@ -128,54 +128,6 @@ const highlights = [
   },
 ];
 
-const researchPublications = [
-  {
-    title: "2025 中國工業工程學會年會暨學術研討會",
-    href: "/conference",
-    badge: "Best Paper Award",
-    subtitle: "2026台灣作業研究學會-大專校院專題競賽",
-    details: [
-      {
-        label: "研究主題",
-        value: "基於LLaMA 3模型結合消費者偏好生成個人化產品行銷文案模式",
-      },
-      {
-        label: "獎項",
-        value: [
-          "2026 全國工業工程與管理大學生專題論文與技術報告競賽：服務系統與科技管理組第一名",
-          "2025 工工年會：最佳論文獎 / 大數據技術與應用領域",
-          "2026 台灣作業研究學會大專校院專題競賽：人工智慧與大數據分析組第三名",
-          "逢甲大學工業工程與系統管理學系-114學年度畢業專題第二名",
-          `${cieAward.title}：工業工程組佳作（Honorable Award）`,
-        ],
-      },
-    ],
-    tags: ["LLaMA 3", "NLP", "Marketing Copy", "Best Paper"],
-  },
-  {
-    title: "ICCCM 2026 Published Paper",
-    href: "/icccm",
-    badge: "Published Paper",
-    details: [
-      {
-        label: "研究主題",
-        value:
-          "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
-      },
-      {
-        label: "會議",
-        value:
-          "The 14th International Conference on Computer and Communications Management",
-      },
-      {
-        label: "地點",
-        value: "日本東京",
-      },
-    ],
-    tags: ["ICCCM 2026", "Published Paper", "LSTM", "Essay Scoring"],
-  },
-];
-
 const honors = [
   {
     title: "校級榮譽學生入選",
@@ -363,6 +315,61 @@ const beyondCode = [
     link: { label: "看分享會", href: "/honor-student#sharing-session" },
   },
 ];
+
+const medalTones = {
+  gold: { medal: "bg-amber-300 text-slate-950 shadow-[0_0_16px_rgba(252,211,77,0.45)]", rank: "text-amber-300", row: "bg-[linear-gradient(90deg,rgba(252,211,77,0.09),transparent_60%)]" },
+  silver: { medal: "bg-slate-200 text-slate-950 shadow-[0_0_16px_rgba(226,232,240,0.35)]", rank: "text-slate-100", row: "" },
+  bronze: { medal: "bg-orange-300 text-slate-950 shadow-[0_0_16px_rgba(253,186,116,0.4)]", rank: "text-orange-300", row: "" },
+  emerald: { medal: "bg-emerald-300 text-slate-950 shadow-[0_0_16px_rgba(110,231,183,0.4)]", rank: "text-emerald-300", row: "" },
+};
+
+const awardResearch = {
+  topic: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
+  summary: "同一份畢業專題研究，獲得學會、全國競賽與校內共 5 項肯定。",
+  stats: [
+    ["5", "項獎項"],
+    ["3", "項全國競賽"],
+  ],
+  tags: ["LLaMA 3", "NLP", "Marketing Copy"],
+  href: "/conference",
+  awards: [
+    { medal: "1", rank: "第一名", tone: "gold", name: "全國工業工程與管理大學生專題論文與技術報告競賽", category: "服務系統與科技管理組", level: "全國", year: "2026" },
+    { medal: "★", rank: "最佳論文", tone: "gold", name: "中國工業工程學會年會暨學術研討會", category: "大數據技術與應用領域", level: "學會", year: "2025" },
+    { medal: "2", rank: "第二名", tone: "silver", name: "逢甲大學工工系畢業專題", category: "114 學年度", level: "校內", year: "2026" },
+    { medal: "3", rank: "第三名", tone: "bronze", name: "台灣作業研究學會大專校院專題競賽", category: "人工智慧與大數據分析組", level: "全國", year: "2026" },
+    { medal: "✓", rank: "佳作", tone: "emerald", name: cieAward.title.replace(/^\d{4}\s*/, ""), category: "工業工程組", level: "全國", year: "2026" },
+  ] as { medal: string; rank: string; tone: keyof typeof medalTones; name: string; category: string; level: string; year: string }[],
+};
+
+const icccmPaper = {
+  title: "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
+  titleZh: "以 LSTM 模型之文章客觀評分與評語生成模式",
+  facts: [
+    ["Conference", "ICCCM 2026 · The 14th International Conference on Computer and Communications Management"],
+    ["Date", "July 24–26, 2026"],
+    ["Location", "Tokyo, Japan"],
+  ],
+  results: [
+    ["0.79", "文本分類 F1"],
+    ["0.790", "評分系統 SCC"],
+    ["0.749", "評分系統 PCC"],
+    ["66.7%", "評語生成整體一致性"],
+  ],
+  tags: ["LSTM", "Bi-LSTM", "Essay Scoring"],
+  href: "/icccm",
+};
+
+function ResearchTags({ tags }: { tags: string[] }) {
+  return (
+    <div className="mt-6 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span key={tag} className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200">
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -700,113 +707,114 @@ export default function Home() {
 
       <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
         <div data-reveal className="mb-8">
-          <div>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Publications & Awards
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Publications & Awards
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">Research & Publications</h2>
+        </div>
+
+        <article
+          data-reveal
+          className="grid items-start gap-8 border-t border-white/10 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12"
+        >
+          <div className="min-w-0">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+              One research · Five awards
             </p>
-            <h2 className="text-3xl font-bold">Research & Publications</h2>
+            <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
+              {awardResearch.topic}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-slate-400">{awardResearch.summary}</p>
+            <dl className="mt-6 flex gap-8">
+              {awardResearch.stats.map(([value, label], index) => (
+                <div key={label} className="flex flex-col">
+                  <dt className="order-last mt-2 text-xs text-slate-400">{label}</dt>
+                  <dd className={`text-4xl font-black leading-none ${index === 0 ? "text-amber-300" : "text-white"}`}>
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <ResearchTags tags={awardResearch.tags} />
+            <Link href={awardResearch.href} className={`mt-7 ${projectButtonClass}`}>
+              View Details →
+            </Link>
           </div>
-        </div>
 
-        <div data-reveal-group className="divide-y divide-white/10 border-y border-white/10">
-          {researchPublications.map((publication) => (
-            <article
-              key={publication.title}
-              className="group relative grid gap-6 py-7 transition hover:bg-white/[0.035] focus-within:ring-2 focus-within:ring-emerald-300/70 md:px-4 xl:grid-cols-[minmax(0,0.82fr)_minmax(22rem,1fr)] xl:gap-10"
-            >
-              <Link
-                href={publication.href}
-                aria-label={`View details for ${publication.title}`}
-                className="absolute inset-0 z-10"
-              />
-
-              <div className="flex min-w-0 flex-col xl:h-full">
-                <div className="pointer-events-none flex flex-col items-start gap-3">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                      {publication.badge}
-                    </span>
-                    {publication.href === "/conference" ? (
-                      <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                        Industrial Engineering Competition First Place
-                      </span>
-                    ) : null}
-                    {publication.href === "/conference" ? (
-                      <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm font-medium text-emerald-200">
-                        Operations Research Project Competition Third Place
-                      </span>
-                    ) : null}
-                  </div>
-                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
-                    {publication.title}
-                  </h3>
-                  {publication.subtitle ? (
-                    <p className="text-lg font-semibold leading-7 text-white md:text-xl md:leading-8">
-                      {publication.subtitle}
-                    </p>
-                  ) : null}
-                </div>
-
-                <div className="pointer-events-none mt-6 border-l border-emerald-300/35 pl-4">
-                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Focus area
-                  </p>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-100">
-                    {publication.badge}
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">
-                    {publication.tags.slice(0, 3).join(" / ")}
-                  </p>
-                </div>
-
-                <div className="relative z-20 mt-auto flex flex-col gap-3 pt-8 sm:flex-row sm:flex-wrap">
-                  <Link
-                    href={publication.href}
-                    className="pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white sm:w-auto"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-
-              <div className="pointer-events-none min-w-0 border border-white/10 bg-slate-950/25 p-5">
-                <dl className="grid gap-4">
-                  {publication.details.map((detail) => (
-                    <div
-                      key={detail.label}
-                    >
-                      <dt className="text-sm font-semibold uppercase tracking-wide text-slate-400">
-                        {detail.label}
-                      </dt>
-                      <dd className="mt-1 text-[15px] leading-7 text-slate-200 md:text-base">
-                        {Array.isArray(detail.value) ? (
-                          <span className="grid gap-1">
-                            {detail.value.map((item) => (
-                              <span key={item}>{item}</span>
-                            ))}
-                          </span>
-                        ) : (
-                          detail.value
-                        )}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {publication.tags.map((tag) => (
+          <ol className="min-w-0 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
+            {awardResearch.awards.map((award) => {
+              const tone = medalTones[award.tone];
+              return (
+                <li
+                  key={award.name}
+                  className={`grid gap-2 border-b border-white/10 p-4 last:border-b-0 sm:grid-cols-[8.5rem_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:px-5 ${tone.row}`}
+                >
+                  <div className="flex items-center gap-3">
                     <span
-                      key={tag}
-                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-black ${tone.medal}`}
+                      aria-hidden="true"
                     >
-                      {tag}
+                      {award.medal}
                     </span>
-                  ))}
+                    <span className={`text-base font-black ${tone.rank}`}>{award.rank}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[15px] font-semibold leading-6 text-white">{award.name}</p>
+                    <p className="text-[13px] leading-5 text-slate-400">{award.category}</p>
+                  </div>
+                  <p className="font-mono text-xs font-semibold text-slate-400 sm:text-right">
+                    {award.level}
+                    <span className="ml-2 text-slate-300 sm:ml-0 sm:mt-1 sm:block">{award.year}</span>
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
+        </article>
+
+        <article
+          data-reveal
+          className="grid items-start gap-8 border-t border-white/10 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12"
+        >
+          <div className="min-w-0">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+              International publication
+            </p>
+            <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
+              {icccmPaper.title}
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-400">{icccmPaper.titleZh}</p>
+            <ResearchTags tags={icccmPaper.tags} />
+            <Link href={icccmPaper.href} className={`mt-7 ${projectButtonClass}`}>
+              View Details →
+            </Link>
+          </div>
+
+          <div className="min-w-0 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-emerald-100">
+                <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
+                Published Paper · ICCCM 2026
+              </span>
+            </div>
+            <dl className="grid gap-3 px-5 py-4 text-sm">
+              {icccmPaper.facts.map(([label, value]) => (
+                <div key={label} className="grid gap-1 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4">
+                  <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</dt>
+                  <dd className="leading-6 text-slate-200">{value}</dd>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              ))}
+            </dl>
+            <dl className="grid grid-cols-2 gap-px border-t border-white/10 bg-white/10 sm:grid-cols-4">
+              {icccmPaper.results.map(([value, label]) => (
+                <div key={label} className="flex flex-col bg-[#0a1014] px-5 py-4">
+                  <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                  <dd className="text-2xl font-black text-white">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </article>
       </section>
 
       <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
