@@ -300,7 +300,7 @@ export default function SkillWorkMatrix() {
         </div>
 
         <p className="mt-5 text-sm leading-7 text-slate-300">
-          點選技能後，右側會顯示它實際出現在哪些專案、研究、經驗或證照裡。
+          點選技能後，<span className="xl:hidden">下方</span><span className="hidden xl:inline">右側</span>會顯示它實際出現在哪些專案、研究、經驗或證照裡。
         </p>
 
         <div className="mt-7 grid gap-5">

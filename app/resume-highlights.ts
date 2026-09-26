@@ -20,15 +20,6 @@ export const honorSharing = {
   action: "View Experience",
 };
 
-// Source: Huang_Kai-Chun_ Intelligent Manufacturing Engineer_Resume.pptx, slides 1–2.
-export const education = {
-  school: "私立逢甲大學",
-  degree: "工業工程與系統管理學系 學士",
-  period: "2022.09–2026.06",
-  gpa: "3.9 / 4.3",
-  program: "學碩一貫（4+1）學程，預計 2027.06 取得碩士學位",
-};
-
 export const courseHonors = [
   { title: "資料庫設計 課程優異表現", date: "2024.12", issuer: "逢甲大學" },
   { title: "決策與數據分析 課程優異表現", date: "2025.12", issuer: "逢甲大學" },

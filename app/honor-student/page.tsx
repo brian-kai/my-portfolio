@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { additionalAcademicExperiences, projectLeadership } from "../academic-experiences";
+import { projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
 import { honorSharing } from "../resume-highlights";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -188,21 +188,9 @@ export default function HonorStudentPage() {
 
       <section id="academic-experience" className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">
-          Research & Learning
+          Leadership & Sharing
         </p>
-        <h2 className="mt-3 text-2xl font-bold md:text-3xl">研究參與與自主學習</h2>
-        <div className="mt-8 divide-y divide-amber-100/10 border-y border-amber-100/10">
-          {additionalAcademicExperiences.map((experience) => (
-            <article key={experience.id} id={experience.id} className="grid scroll-mt-28 gap-4 py-7 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-10">
-              <div>
-                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-amber-200">{experience.badge}</p>
-                <h3 className="mt-3 text-xl font-semibold">{experience.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-stone-400">{experience.meta}</p>
-              </div>
-              <p className="text-[15px] leading-8 text-stone-200">{experience.description}</p>
-            </article>
-          ))}
-        </div>
+        <h2 className="mt-3 text-2xl font-bold md:text-3xl">專題領導與經驗分享</h2>
         <article className="mt-8 border-l border-amber-200/40 bg-amber-100/[0.04] p-5 md:p-6">
           <h3 className="text-xl font-semibold">{projectLeadership.title}</h3>
           <p className="mt-3 text-[15px] leading-8 text-stone-200">{projectLeadership.description}</p>

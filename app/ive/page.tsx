@@ -351,7 +351,7 @@ export default function IvePage() {
           </div>
 
           <p className="max-w-2xl text-[15px] leading-7 text-slate-300 md:text-base">
-            點選每位成員卡片，右側會切換對應的角色與網站內容定位。
+            點選每位成員卡片，<span className="lg:hidden">下方</span><span className="hidden lg:inline">右側</span>會切換對應的角色與網站內容定位。
           </p>
         </div>
 
