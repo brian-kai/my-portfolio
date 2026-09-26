@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cieAward, courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
 import { resumeHref } from "./site-config";
@@ -12,6 +13,7 @@ import LightboxImage from "./lightbox-image";
 import SkillWorkMatrix from "./skill-work-matrix";
 import llamaSystemDiagram from "./llama-marketing-system/images/llama-system-diagram.svg";
 import aiatclCertificate from "./image/AIATCL.jpg";
+import aboutPortrait from "./image/honor-student-portrait.jpg";
 import aiCertificate from "./image/ai-certificate.png";
 import googleCertificate from "./image/google-certificate.png";
 import toeicCertificate from "./image/toeic-score-report.png";
@@ -324,6 +326,44 @@ const heroProof = [
   },
 ];
 
+const aboutIntro = {
+  lead: "我從工業工程的系統思維出發，用資料與 AI 把問題拆清楚、做出能實際使用的解法。",
+  paragraphs: [
+    "工業工程讓我習慣從流程與系統的角度看問題。在資料分析、工程統計與決策分析等課程，以及用 LSTM 預測用電趨勢的 AI 課程專題中，我發現自己最享受用資料和模型解決問題的過程，也因此一路投入 NLP 與 LLM 的研究與實作。",
+    "合作時，我最在意溝通與把事情講清楚。擔任畢業專題組長時，模型訓練一度卡關，我主動請教學長姐、查閱文獻，重新調整資料處理與超參數，直到模型穩定；擔任助教的經驗，也讓我習慣把複雜的概念轉成別人聽得懂的說明。",
+  ],
+};
+
+const beyondCode = [
+  {
+    key: "Lead",
+    title: "帶團隊",
+    points: [
+      ["畢業專題組長", "規劃研究方向與進度，安排分工，每週彙整兩次進度報告"],
+      ["系學會活動組長", "擔任抽直屬、聖誕傳情副召與文化季攤販長，負責流程與人員協調"],
+    ],
+    link: { label: "看經歷", href: "#experience" },
+  },
+  {
+    key: "Teach",
+    title: "教別人",
+    points: [
+      ["資料庫設計、決策與數據分析助教", "協助 SQL 與 R 的作業討論與學生問題釐清"],
+      ["補習班理化助教", "把複雜概念轉化為容易理解的內容"],
+    ],
+    link: { label: "看助教經歷", href: "/database-design-tutoring" },
+  },
+  {
+    key: "Share",
+    title: "分享與表達",
+    points: [
+      ["榮譽學生經驗分享會受邀講者", "向約 100 位大一新生分享課程規劃、競賽經驗與研究入門"],
+      ["研討會發表", "於 CIIE 2025 口頭發表畢業專題研究成果"],
+    ],
+    link: { label: "看分享會", href: "/honor-student#sharing-session" },
+  },
+];
+
 export default function Home() {
   return (
     <main id="portfolio-home" className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
@@ -438,75 +478,77 @@ export default function Home() {
       </section>
 
       <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <h2 data-reveal className="mb-6 text-3xl font-bold">About Me</h2>
+        <div data-reveal className="mb-8">
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            About me
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">About Me</h2>
+        </div>
 
-        <div data-reveal className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1fr)] xl:items-start">
-            <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-                AI workflow builder
-              </p>
-              <p
-                lang="zh-Hant"
-                className="mt-4 max-w-3xl text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10"
-              >
-                我專注於 NLP、LLM 與資料工作流，擅長把模型實驗整理成可展示、可驗證、可操作的 AI 工具與研究成果。
-              </p>
-              <p
-                lang="zh-Hant"
-                className="mt-5 max-w-3xl text-base leading-8 text-slate-300"
-              >
-                在專案中，我從問題拆解、資料清理、模型應用、實驗評估到成果展示參與完整流程，並重視 workflow design、介面呈現與跨角色溝通。
-              </p>
+        <div className="grid items-start gap-8 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-12 xl:gap-16">
+          <figure
+            data-reveal
+            className="relative h-[24rem] overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:h-[30rem] lg:h-auto lg:aspect-[4/5]"
+          >
+            <Image
+              src={aboutPortrait}
+              alt="Kevin Huang 畢業照"
+              sizes="(min-width: 1024px) 320px, 100vw"
+              className="h-full w-full object-cover object-[50%_18%]"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 via-[#070a0d]/70 to-transparent px-5 pb-4 pt-16">
+              <span className="block text-lg font-bold text-white">Kevin Huang | 黃凱浚</span>
+              <span className="mt-1 block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                AI Engineer / AI Product
+              </span>
+            </figcaption>
+          </figure>
+
+          <div className="min-w-0">
+            <p data-reveal lang="zh-Hant" className="text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10">
+              {aboutIntro.lead}
+            </p>
+            <div data-reveal className="mt-5 grid gap-4">
+              {aboutIntro.paragraphs.map((paragraph) => (
+                <p key={paragraph} lang="zh-Hant" className="text-base leading-8 text-slate-300">
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1">
-              {[
-                {
-                  title: "AI Workflow",
-                  text: "問題拆解、資料清理、模型應用、實驗評估與成果展示。",
-                },
-                {
-                  title: "NLP / LLM",
-                  text: "LLaMA 3、BERT、Gemma、文字生成、意圖分類與問答生成。",
-                },
-                {
-                  title: "Data Product",
-                  text: "Python、SQL、R、統計檢定、PyTorch、n8n、Supabase、Git / Linux 與 demo deployment。",
-                },
-              ].map((item) => (
+            <p className="mb-4 mt-10 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+              Beyond the code
+            </p>
+            <div data-reveal-group className="grid gap-4 md:grid-cols-3">
+              {beyondCode.map((card) => (
                 <article
-                  key={item.title}
-                  className="border border-white/10 bg-slate-950/35 p-4"
+                  key={card.key}
+                  className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur"
                 >
-                  <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
-                    {item.text}
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                    {card.key}
                   </p>
+                  <h3 className="mt-2 text-lg font-bold text-white">{card.title}</h3>
+                  <ul className="mt-4 grid gap-3">
+                    {card.points.map(([role, detail]) => (
+                      <li key={role} className="flex gap-3 text-sm leading-6 text-slate-300">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300" aria-hidden="true" />
+                        <span>
+                          <span className="font-semibold text-white">{role}</span>
+                          <span className="block">{detail}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={card.link.href}
+                    className="mt-auto pt-5 text-sm font-bold text-emerald-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+                  >
+                    {card.link.label} →
+                  </Link>
                 </article>
               ))}
             </div>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-2 border-t border-white/10 pt-6">
-            {[
-              "Best Paper Award",
-              "LLaMA 3 System",
-              "n8n Workflow Automation",
-              "SEO Live Demo",
-              "Database TA",
-              "Google Data Analytics",
-              "AI / ML Certificate",
-            ].map((item) => (
-              <span
-                key={item}
-                className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1.5 text-xs font-semibold text-emerald-100"
-              >
-                {item}
-              </span>
-            ))}
           </div>
         </div>
       </section>
