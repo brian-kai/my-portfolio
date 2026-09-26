@@ -465,7 +465,6 @@ export default function Home() {
               "LLaMA 3 System",
               "n8n Workflow Automation",
               "SEO Live Demo",
-              "GPA 3.9 / 4.3",
               "Database TA",
               "Google Data Analytics",
               "AI / ML Certificate",
