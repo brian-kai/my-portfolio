@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import LightboxImage from "../lightbox-image";
 import { automationContributions, automationMetrics, workflowInternship } from "../resume-highlights";
+import workflowOverview from "./images/hreasy-n8n-workflow-overview.webp";
 
 export const metadata: Metadata = {
   title: "AI 行銷內容自動化",
@@ -35,6 +37,21 @@ export default function MarketingAutomationPage() {
             ))}
           </dl>
           <p className="mt-4 text-xs leading-6 text-slate-400">數據為履歷所記錄的專案成果；Threads 瀏覽量的統計期間為 30 天。</p>
+        </section>
+        <section aria-labelledby="workflow-overview-title" className="mt-12">
+          <h2 id="workflow-overview-title" className="text-2xl font-bold">n8n 流程全景</h2>
+          <p className="mt-3 max-w-4xl text-[15px] leading-8 text-slate-300">從資料來源、派工與五路內容生成，到審核分流、官方發布、Instagram 互動，再回到 GA4 成效分析與核准建議回饋的完整循環。</p>
+          <figure className="mt-6">
+            <div className="overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+              <LightboxImage
+                src={workflowOverview}
+                alt="HReasy n8n AI 內容生成、審核、發布與成效回饋全景圖"
+                sizes="(min-width: 1152px) 1104px, 100vw"
+                className="h-auto w-full"
+              />
+            </div>
+            <figcaption className="mt-3 text-xs leading-6 text-slate-500">點圖可放大。A–D 內容生成與 F LinkedIn 草稿 → 審核與發布 → IG 互動 → 週報與成效學習 → 核准建議回饋。</figcaption>
+          </figure>
         </section>
         <section aria-labelledby="contributions-title" className="mt-12">
           <h2 id="contributions-title" className="text-2xl font-bold">實作內容與個人貢獻</h2>
