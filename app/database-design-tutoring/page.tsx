@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import tutoringPhotoOne from "../image/6BD131C2-112B-48C8-B90B-FD36B7C5F348.jpg";
 import tutoringPhotoTwo from "../image/96339D99-F8F2-4006-966F-1B68C750CA3C.jpg";
+
+// Sources: the autobiography (2026-03: 100 分、單科第一、系友獎學金; TA duties) and the homepage experience entry.
 
 const photos = [
   {
@@ -21,42 +24,77 @@ const photos = [
   },
 ];
 
-const proofChips = [
-  "Teaching Assistant",
-  "Database Design",
-  "113-2 / 114-2",
-  "SQL / ERD / Lab Exam",
+const stats = [
+  ["100", "修課成績（單科第一）"],
+  ["2", "學期擔任助教"],
+  ["4", "教學主題"],
 ];
 
-const evidenceSummaries = [
+const journey = [
   {
-    title: "SQL Tutoring",
-    description: "協助學生理解查詢邏輯，從題目條件拆解到 SQL 語法撰寫。",
+    date: "2024.12",
+    tag: "Student",
+    title: "修習資料庫設計：100 分、單科第一名",
+    text: "獲系友獎學金「專業課程成績優異獎」。",
+  },
+  {
+    date: "113-2 · 2025.02–06",
+    tag: "TA",
+    title: "第一次擔任課程助教",
+    text: "協助課程教學與夜間輔導，解答作業與 SQL 問題。",
+  },
+  {
+    date: "114-2 · 2026.02–06",
+    tag: "TA",
+    title: "再次受邀擔任助教",
+    text: "延續輔導工作，並協助上機考流程說明。",
+  },
+];
+
+const topics = ["關聯式綱要設計", "SQL 查詢", "正規化", "資料庫管理"];
+
+const work = [
+  {
+    title: "SQL 輔導",
+    en: "SQL tutoring",
+    text: "從題目條件拆解到語法撰寫，帶學生理解查詢邏輯。",
     points: ["SELECT / JOIN / GROUP BY", "查詢條件判讀", "錯誤訊息與結果檢查"],
   },
   {
-    title: "Database Design Support",
-    description: "引導學生釐清資料表設計、欄位關係與作業實作問題。",
-    points: ["資料表關聯判讀", "作業問題釐清", "資料表設計邏輯說明"],
+    title: "資料庫設計引導",
+    en: "Design support",
+    text: "釐清資料表設計、欄位關係與作業實作上的問題。",
+    points: ["資料表關聯判讀", "作業問題釐清", "設計邏輯說明"],
   },
   {
-    title: "Exam Preparation Workflow",
-    description: "將上機考流程拆成可操作步驟，降低正式測驗時的臨場失誤。",
+    title: "上機考流程",
+    en: "Lab exam workflow",
+    text: "把上機考拆成可操作的步驟，降低正式測驗時的臨場失誤。",
     points: ["考試環境確認", "資料匯入與查詢執行", "結果檢查與檔案繳交"],
+  },
+  {
+    title: "課程協作",
+    en: "Course operations",
+    text: "協助教師掌握學生進度並整理課程資料。",
+    points: ["檢查學生課堂進度", "解答學生問題", "整理課程相關資料"],
   },
 ];
 
 const tutoringNavItems = [
   { label: "Overview", href: "#overview" },
-  { label: "Summary", href: "#summary" },
+  { label: "Journey", href: "#journey" },
+  { label: "Work", href: "#work" },
   { label: "Photos", href: "#photos" },
 ];
 
 export const metadata: Metadata = {
   title: "資料庫設計課程助教",
   description:
-    "逢甲大學資料庫設計課程助教經歷，協助 SQL 教學、夜間輔導與上機考流程說明。",
+    "逢甲大學資料庫設計課程以 100 分、單科第一修畢後，於 113-2、114-2 學期擔任該課程助教，負責 SQL 輔導、資料庫設計引導與上機考流程說明。",
 };
+
+const cardClass = "border border-white/10 bg-white/[0.045] backdrop-blur";
+const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300";
 
 export default function DatabaseDesignTutoringPage() {
   return (
@@ -74,9 +112,7 @@ export default function DatabaseDesignTutoringPage() {
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">
-              Kevin Huang | Kai-Chun Huang
-            </span>
+            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
@@ -91,82 +127,121 @@ export default function DatabaseDesignTutoringPage() {
         </div>
       </nav>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-12 pt-28 md:pb-16 md:pt-32">
-        <header id="overview" className="scroll-mt-24 border-b border-white/10 pb-6 md:scroll-mt-28 md:pb-8">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            私立逢甲大學
-          </p>
-          <h1 className="mt-3 text-3xl font-black leading-tight md:text-5xl">
-            資料庫設計課程助教
-          </h1>
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
+        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-20">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12">
+            <div className="min-w-0">
+              <p className={eyebrowClass}>Teaching Assistant · 逢甲大學工業工程與系統管理學系</p>
+              <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl">資料庫設計課程助教</h1>
+              <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
+                以 <span className="font-bold text-amber-200">100 分、單科第一</span> 修畢這門課後，
+                回到課堂擔任助教，把 SQL 查詢、資料表設計與上機考流程，拆解成學生能一步步照做的學習步驟。
+              </p>
+              <dl className="mt-8 grid grid-cols-3 gap-px border border-white/10 bg-white/10">
+                {stats.map(([value, label], index) => (
+                  <div key={label} className="flex flex-col bg-[#0a1014]/90 px-4 py-4 md:px-5">
+                    <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                    <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <figure className="relative overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.3)]">
+              <Image
+                src={tutoringPhotoOne}
+                alt="資料庫設計夜間輔導課堂講解照片"
+                priority
+                sizes="(min-width: 1024px) 480px, 100vw"
+                className="aspect-[4/3] h-auto w-full object-cover"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 to-transparent px-5 pb-3 pt-10 text-sm font-semibold text-slate-200">
+                夜間輔導：拆解 SQL 題目條件與查詢邏輯
+              </figcaption>
+            </figure>
+          </div>
+        </section>
 
-          <p className="mt-5 max-w-4xl text-base leading-8 text-slate-300 md:text-lg">
-            協助學生理解 SQL 查詢、資料表關聯與上機考流程，將資料庫概念轉化成可操作的學習步驟。
-          </p>
-
-          <div className="mt-7 flex flex-wrap gap-2.5">
-            {proofChips.map((chip) => (
-              <span
-                key={chip}
-                className="border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-100"
+        <section id="journey" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+          <p className={eyebrowClass}>From student to TA</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">從修課第一名，到回來教這門課</h2>
+          <ol className="mt-8 grid gap-4 md:grid-cols-3">
+            {journey.map((step, index) => (
+              <li
+                key={step.date}
+                className={`${cardClass} relative p-5 md:p-6 ${index === 0 ? "border-amber-300/35 bg-[linear-gradient(150deg,rgba(252,211,77,0.1),rgba(255,255,255,0.03)_60%)]" : ""}`}
               >
-                {chip}
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-mono text-sm font-semibold text-slate-300">{step.date}</span>
+                  <span
+                    className={`border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] ${
+                      index === 0 ? "border-amber-300/40 text-amber-200" : "border-emerald-300/40 text-emerald-200"
+                    }`}
+                  >
+                    {step.tag}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-bold leading-7 text-white">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-6 flex flex-wrap items-center gap-2">
+            <span className="mr-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Course topics</span>
+            {topics.map((topic) => (
+              <span key={topic} className="border border-emerald-300/20 bg-emerald-300/[0.07] px-3 py-1 text-sm text-emerald-100">
+                {topic}
               </span>
             ))}
           </div>
-        </header>
+        </section>
 
-        <section id="summary" className="scroll-mt-24 py-8 md:scroll-mt-28 md:py-10">
-          <div className="mb-6 max-w-3xl">
-            <h2 className="text-2xl font-bold md:text-3xl">
-              Teaching Evidence Summary
-            </h2>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {evidenceSummaries.map((item) => (
-              <article
-                key={item.title}
-                className="border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.14)] backdrop-blur md:p-6"
-              >
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                  {item.title}
-                </p>
-                <p className="mt-3 text-[15px] leading-7 text-slate-200">
-                  {item.description}
-                </p>
-                <div className="mt-5 grid gap-2">
+        <section id="work" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+          <p className={eyebrowClass}>What I did</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">助教工作內容</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {work.map((item) => (
+              <article key={item.title} className={`${cardClass} flex flex-col p-5`}>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.en}</p>
+                <h3 className="mt-2 text-lg font-bold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
+                <ul className="mt-4 grid gap-2 border-t border-white/10 pt-4">
                   {item.points.map((point) => (
-                    <div
-                      key={point}
-                      className="border-l border-emerald-300/40 pl-3 text-sm leading-6 text-slate-300"
-                    >
+                    <li key={point} className="border-l border-emerald-300/40 pl-3 text-sm leading-6 text-slate-200">
                       {point}
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="photos" className="scroll-mt-24 py-8 md:scroll-mt-28 md:py-10">
-          <div className="mb-8 max-w-3xl">
-            <h2 className="text-2xl font-bold md:text-3xl">
-              Tutoring & Lab Support Record
-            </h2>
-          </div>
-
+        <section id="photos" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+          <p className={eyebrowClass}>Record</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">輔導與上機考紀錄</h2>
           <ImageLightboxGallery
             items={photos}
             actionLabel="View Photo"
             showDescription
             showTitle
             variant="emerald"
-            gridClassName="grid gap-5 md:grid-cols-2 md:gap-6"
+            gridClassName="mt-8 grid gap-5 md:grid-cols-2 md:gap-6"
             imageClassName="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
             imageSizes="(min-width: 768px) 50vw, 100vw"
           />
+
+          <aside className={`${cardClass} mt-10 flex flex-col gap-3 p-5 md:flex-row md:items-center md:justify-between md:p-6`}>
+            <div>
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-300">Also teaching · 114-1</p>
+              <p className="mt-1 font-bold text-white">決策與數據分析 課程助教</p>
+              <p className="mt-1 text-sm leading-6 text-slate-400">
+                同樣以 100 分修畢後擔任助教，指導學生以 R 進行資料前處理、探索性分析與模型建構。
+              </p>
+            </div>
+            <Link href="/#experience" className="shrink-0 text-sm font-bold text-emerald-300 hover:text-emerald-200">
+              看所有經歷 →
+            </Link>
+          </aside>
         </section>
       </div>
     </main>

@@ -26,7 +26,7 @@ const categories: SkillCategory[] = [
     groups: [
       {
         label: "Models & fine-tuning",
-        skills: ["LLaMA 3", "QLoRA", "Gemma 4", "BERT-BiLSTM", "LSTM", "知識蒸餾"],
+        skills: ["LLaMA 3", "QLoRA", "PyTorch", "Gemma 4", "BERT-BiLSTM", "LSTM", "知識蒸餾"],
       },
       { label: "Text analysis", skills: ["TextRank", "LDA", "SBERT", "BLEU / METEOR"] },
     ],
@@ -34,7 +34,7 @@ const categories: SkillCategory[] = [
       {
         title: "LLaMA 3 個人化行銷文案系統",
         href: "/llama-marketing-system",
-        skills: ["LLaMA 3", "QLoRA", "TextRank", "LDA", "SBERT", "BLEU / METEOR"],
+        skills: ["LLaMA 3", "QLoRA", "PyTorch", "TextRank", "LDA", "SBERT", "BLEU / METEOR"],
       },
       {
         title: "國科會計畫：程式碼版本差異註解生成",
