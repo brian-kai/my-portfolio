@@ -13,7 +13,7 @@ export default function MarketingAutomationPage() {
       <nav aria-label="返回導覽" className="border-b border-white/10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
           <Link href="/" className="font-bold">Kevin Huang</Link>
-          <Link href="/#experience" className="rounded-lg border border-white/15 px-4 py-2 text-sm font-semibold transition hover:border-emerald-300/60 focus-visible:outline-2 focus-visible:outline-emerald-200">← Back to Experience</Link>
+          <Link href="/#experience" className="btn btn-secondary btn-sm">← Back to Experience</Link>
         </div>
       </nav>
       <div className="mx-auto max-w-6xl px-6 py-12 md:py-20">

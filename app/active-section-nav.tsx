@@ -9,21 +9,15 @@ type NavItem = {
 
 type ActiveSectionNavProps = {
   items: NavItem[];
+  /** Kept for existing callers; colours now come from the page's --accent (see .theme-amber). */
   variant?: "emerald" | "amber";
   /** Width at which the inline nav replaces the mobile menu; long nav bars need more room. */
   breakpoint?: "md" | "lg";
 };
 
-const activeVariantClasses = {
-  emerald:
-    "border border-emerald-300/35 bg-emerald-300/[0.1] text-emerald-100 shadow-[0_10px_28px_rgba(16,185,129,0.12)]",
-  amber:
-    "border border-amber-200/35 bg-amber-200/[0.1] text-amber-100 shadow-[0_10px_28px_rgba(245,158,11,0.12)]",
-};
 
 export default function ActiveSectionNav({
   items,
-  variant = "emerald",
   breakpoint = "md",
 }: ActiveSectionNavProps) {
   // Nothing is highlighted until the first section is reached (e.g. while on a hero).
@@ -127,26 +121,18 @@ export default function ActiveSectionNav({
   }, [items]);
 
   return (
-    <div className={`hidden gap-2 text-sm font-medium text-slate-300 ${breakpoint === "lg" ? "lg:flex" : "md:flex"}`}>
-      {items.map((item) => {
-        const isActive = activeHref === item.href;
-
-        return (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={(event) => scrollToSection(event, item.href)}
-            aria-current={isActive ? "true" : undefined}
-            className={`pressable-subtle rounded-lg px-3 py-2 transition ${
-              isActive
-                ? activeVariantClasses[variant]
-                : "hover:bg-white/[0.06] hover:text-white"
-            }`}
-          >
-            {item.label}
-          </a>
-        );
-      })}
+    <div className={`nav-track hidden ${breakpoint === "lg" ? "lg:flex" : "md:flex"}`}>
+      {items.map((item) => (
+        <a
+          key={item.href}
+          href={item.href}
+          onClick={(event) => scrollToSection(event, item.href)}
+          aria-current={activeHref === item.href ? "true" : undefined}
+          className="nav-link"
+        >
+          {item.label}
+        </a>
+      ))}
     </div>
   );
 }

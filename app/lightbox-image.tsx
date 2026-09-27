@@ -47,7 +47,7 @@ export default function LightboxImage({
             className={
               actionClassName
                 ? `motion-reduce-transform ${actionClassName}`
-                : "motion-reduce-transform m-3 inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-900 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16]"
+                : "btn btn-secondary btn-sm btn-in-card m-3 w-fit"
             }
           >
             {actionLabel}

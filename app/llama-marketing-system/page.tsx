@@ -209,7 +209,7 @@ export default function LlamaMarketingSystemPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#projects"
-            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white lg:hidden"
+            className="btn btn-secondary btn-sm shrink-0 lg:hidden"
           >
             ← Back
           </Link>
@@ -223,7 +223,7 @@ export default function LlamaMarketingSystemPage() {
             <ActiveSectionNav items={llamaNavItems} breakpoint="lg" />
             <Link
               href="/#projects"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              className="btn btn-secondary btn-sm"
             >
               Back to Projects
             </Link>
@@ -263,13 +263,13 @@ export default function LlamaMarketingSystemPage() {
               href="/file/graduation-project-poster.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-emerald-300/55 bg-emerald-300/[0.12] px-5 py-2.5 text-center text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/80 hover:bg-emerald-300/[0.18]"
+              className="btn btn-primary"
             >
               研究海報 ↗
             </a>
             <Link
               href="/conference"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-5 py-2.5 text-center text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60"
+              className="btn btn-secondary"
             >
               研討會發表與獲獎證明 →
             </Link>

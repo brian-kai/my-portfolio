@@ -33,28 +33,16 @@ type ImageLightboxGalleryProps = {
 
 const variantClasses = {
   cyan: {
-    button:
-      "border-cyan-300/50 bg-cyan-400/15 text-cyan-100 shadow-[0_10px_24px_rgba(8,145,178,0.16)] group-hover:border-cyan-200/80 group-hover:bg-cyan-300/25",
     focus: "focus:ring-cyan-300/70",
     hoverBorder: "hover:border-cyan-300/40",
-    closeFocus: "focus:ring-cyan-300/70",
-    closeHover: "hover:border-cyan-200/70",
   },
   emerald: {
-    button:
-      "border-emerald-300/45 bg-emerald-400/15 text-emerald-100 shadow-[0_10px_24px_rgba(16,185,129,0.12)] group-hover:border-emerald-200/80 group-hover:bg-emerald-300/25",
     focus: "focus:ring-emerald-300/70",
     hoverBorder: "hover:border-emerald-300/40",
-    closeFocus: "focus:ring-emerald-300/70",
-    closeHover: "hover:border-emerald-200/70",
   },
   amber: {
-    button:
-      "border-amber-200/50 bg-amber-200/15 text-amber-100 shadow-[0_10px_24px_rgba(245,158,11,0.14)] group-hover:border-amber-100/80 group-hover:bg-amber-200/25",
     focus: "focus:ring-amber-200/70",
     hoverBorder: "hover:border-amber-200/40",
-    closeFocus: "focus:ring-amber-200/70",
-    closeHover: "hover:border-amber-100/70",
   },
 };
 
@@ -153,7 +141,7 @@ export default function ImageLightboxGallery({
 
                 {actionLabel ? (
                   <div
-                    className={`motion-reduce-transform mt-auto inline-flex w-fit items-center justify-center rounded-lg border px-5 py-2.5 text-sm font-bold transition group-hover:-translate-y-0.5 group-hover:text-white ${styles.button}`}
+                    className="btn btn-secondary btn-sm btn-in-card mt-auto w-fit"
                   >
                     {actionLabel}
                   </div>
@@ -166,8 +154,6 @@ export default function ImageLightboxGallery({
 
       {selectedIndex !== null ? (
         <ProofViewer
-          closeFocusClassName={styles.closeFocus}
-          closeHoverClassName={styles.closeHover}
           currentIndex={selectedIndex}
           isOpen
           items={viewerItems}

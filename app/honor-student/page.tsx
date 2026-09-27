@@ -93,7 +93,7 @@ const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em]
 
 export default function HonorStudentPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#080705] text-white [overflow-wrap:anywhere]">
+    <main className="theme-amber relative min-h-screen overflow-x-hidden bg-[#080705] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(245,158,11,0.15),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(250,204,21,0.075),transparent_24%),radial-gradient(circle_at_72%_64%,rgba(16,185,129,0.07),transparent_30%),linear-gradient(180deg,#080705_0%,#0d0b08_48%,#080705_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
@@ -101,7 +101,7 @@ export default function HonorStudentPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#experience"
-            className="shrink-0 rounded-lg border border-amber-100/15 bg-amber-100/[0.06] px-4 py-2 text-sm font-bold text-stone-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-amber-100/[0.1] hover:text-white md:hidden"
+            className="btn btn-secondary btn-sm shrink-0 md:hidden"
           >
             ← Back
           </Link>
@@ -115,7 +115,7 @@ export default function HonorStudentPage() {
             <ActiveSectionNav items={honorNavItems} variant="amber" />
             <Link
               href="/#experience"
-              className="rounded-lg border border-amber-100/15 bg-amber-100/[0.06] px-4 py-2 text-sm font-bold text-stone-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-amber-100/[0.1] hover:text-white"
+              className="btn btn-secondary btn-sm"
             >
               Back to Honors
             </Link>
@@ -152,13 +152,13 @@ export default function HonorStudentPage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="#criteria"
-                  className="rounded-lg border border-amber-300/60 bg-amber-300 px-5 py-2.5 text-center text-sm font-bold text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
+                  className="btn btn-primary"
                 >
                   看五大面向 ↓
                 </Link>
                 <Link
                   href="#proof"
-                  className="rounded-lg border border-amber-100/20 bg-amber-100/[0.06] px-5 py-2.5 text-center text-sm font-bold text-stone-100 transition hover:-translate-y-0.5 hover:border-amber-200/60"
+                  className="btn btn-secondary"
                 >
                   官方證書 →
                 </Link>

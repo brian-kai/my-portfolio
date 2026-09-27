@@ -7,6 +7,7 @@ import { contactEmail, githubUrl, linkedinUrl, resumeHref } from "./site-config"
 import ActiveSectionNav from "./active-section-nav";
 import BackToTop from "./back-to-top";
 import ContactLinks from "./contact-links";
+import ScrollProgress from "./scroll-progress";
 import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
 import CertificateGrid from "./certificate-grid";
@@ -233,8 +234,7 @@ const moreProjects: {
   },
 ];
 
-const projectButtonClass =
-  "pressable motion-reduce-transform inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/55 bg-emerald-300/[0.12] px-4 py-2.5 text-sm font-bold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300/80 hover:bg-emerald-300/[0.18] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70 sm:w-auto";
+const projectButtonClass = "btn btn-secondary w-full sm:w-auto";
 
 function ProjectSteps({ steps }: { steps: string[][] }) {
   return (
@@ -386,22 +386,28 @@ export default function Home() {
       <DataFlowBackground />
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
+      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/85 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
           <MobileMenu items={navItems} />
 
-          <Link
-            href="/"
-            className="min-w-0 flex-1 truncate text-center text-base font-bold md:text-lg lg:flex-none lg:text-left"
-          >
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
+          <Link href="/" className="group flex min-w-0 items-center gap-3 lg:flex-none">
+            {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG logo */}
+            <img src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg transition group-hover:scale-105" />
+            <span className="min-w-0 leading-tight">
+              <span className="block truncate text-base font-bold text-white">Kevin Huang</span>
+              <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-300 sm:block">
+                NLP / LLM AI Engineer
+              </span>
+            </span>
           </Link>
 
-          <div className="h-10 w-10 shrink-0 lg:hidden" aria-hidden="true" />
-
           <ActiveSectionNav items={navItems} breakpoint="lg" />
+
+          <a href={resumeHref} className="btn btn-primary btn-sm shrink-0">
+            Resume
+          </a>
         </div>
+        <ScrollProgress />
       </nav>
 
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-16">
@@ -435,19 +441,19 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href="#projects"
-                className="pressable motion-reduce-transform rounded-lg border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-center font-bold text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.18)] transition hover:-translate-y-0.5 hover:bg-emerald-200"
+                className="btn btn-primary btn-lg"
               >
                 View Projects
               </a>
               <a
                 href={resumeHref}
-                className="pressable motion-reduce-transform rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+                className="btn btn-secondary btn-lg"
               >
                 Resume
               </a>
               <a
                 href="#contact"
-                className="px-2 py-2 text-center font-bold text-slate-300 underline-offset-4 transition hover:text-white hover:underline"
+                className="btn btn-ghost btn-lg"
               >
                 Contact →
               </a>

@@ -159,7 +159,7 @@ export default function SkillWorkMatrix() {
           <button
             type="button"
             onClick={() => setPinned(null)}
-            className="pressable-subtle w-fit rounded-lg border border-white/15 bg-white/[0.06] px-3 py-2 text-xs font-bold text-slate-300 transition hover:border-emerald-300/50 hover:text-white"
+            className="btn btn-secondary btn-sm w-fit"
           >
             清除選取：{pinned}
           </button>
