@@ -175,7 +175,7 @@ export default function ConferencePage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
           <Link
             href="/#research"
-            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="btn btn-secondary btn-sm shrink-0 md:hidden"
           >
             ← Back
           </Link>
@@ -191,7 +191,7 @@ export default function ConferencePage() {
             <ActiveSectionNav items={conferenceNavItems} />
             <Link
               href="/#research"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              className="btn btn-secondary btn-sm"
             >
               Back to Research
             </Link>
@@ -225,7 +225,7 @@ export default function ConferencePage() {
             <a
               key={href}
               href={href}
-              className="pressable-subtle rounded-lg border border-white/15 bg-white/[0.06] px-3 py-2.5 text-center text-sm font-semibold text-slate-100 transition hover:border-emerald-300/60 hover:bg-emerald-300/[0.1] hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+              className="btn btn-secondary btn-sm"
             >
               {label}
             </a>
@@ -303,7 +303,7 @@ export default function ConferencePage() {
               href={researchOverview.posterHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/60 bg-emerald-300/[0.12] px-6 py-3 text-center font-bold text-emerald-50 shadow-[0_16px_36px_rgba(16,185,129,0.14)] transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:bg-emerald-300/[0.16] hover:text-white sm:w-auto"
+              className="btn btn-primary w-full sm:w-auto"
             >
               View Poster
             </a>

@@ -12,8 +12,6 @@ export type ProofViewerItem = {
 };
 
 type ProofViewerProps = {
-  closeFocusClassName?: string;
-  closeHoverClassName?: string;
   currentIndex: number;
   isOpen: boolean;
   items: ProofViewerItem[];
@@ -31,8 +29,6 @@ const focusableSelector = [
 ].join(",");
 
 export default function ProofViewer({
-  closeFocusClassName = "focus:ring-emerald-300/70",
-  closeHoverClassName = "hover:border-emerald-300/70",
   currentIndex,
   isOpen,
   items,
@@ -178,7 +174,7 @@ export default function ProofViewer({
                   <button
                     type="button"
                     onClick={() => moveTo(-1)}
-                    className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="btn btn-secondary btn-sm"
                     aria-label="Previous image"
                   >
                     Prev
@@ -186,7 +182,7 @@ export default function ProofViewer({
                   <button
                     type="button"
                     onClick={() => moveTo(1)}
-                    className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="btn btn-secondary btn-sm"
                     aria-label="Next image"
                   >
                     Next
@@ -197,7 +193,7 @@ export default function ProofViewer({
               <button
                 type="button"
                 onClick={() => setZoom((current) => Math.min(current + 0.25, 2.5))}
-                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="btn btn-secondary btn-sm"
                 aria-label="Zoom in"
               >
                 Zoom +
@@ -205,7 +201,7 @@ export default function ProofViewer({
               <button
                 type="button"
                 onClick={() => setZoom((current) => Math.max(current - 0.25, 1))}
-                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="btn btn-secondary btn-sm"
                 aria-label="Zoom out"
               >
                 Zoom -
@@ -213,7 +209,7 @@ export default function ProofViewer({
               <button
                 type="button"
                 onClick={() => setZoom(1)}
-                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="btn btn-secondary btn-sm"
               >
                 Reset
               </button>
@@ -221,7 +217,7 @@ export default function ProofViewer({
                 href={originalHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pressable-subtle rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="btn btn-secondary btn-sm"
               >
                 Open original
               </a>
@@ -229,7 +225,7 @@ export default function ProofViewer({
                 ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
-                className={`pressable-subtle rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition ${closeHoverClassName} hover:bg-white/20 focus:outline-none focus:ring-2 ${closeFocusClassName}`}
+                className="btn btn-primary btn-sm"
               >
                 Close
               </button>

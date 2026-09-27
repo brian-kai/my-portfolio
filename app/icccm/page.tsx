@@ -102,7 +102,7 @@ export default function IcccmPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#research"
-            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="btn btn-secondary btn-sm shrink-0 md:hidden"
           >
             ← Back
           </Link>
@@ -116,7 +116,7 @@ export default function IcccmPage() {
             <ActiveSectionNav items={icccmNavItems} />
             <Link
               href="/#research"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              className="btn btn-secondary btn-sm"
             >
               Back to Research
             </Link>

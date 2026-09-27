@@ -80,14 +80,14 @@ const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em]
 
 export default function StudentAssociationPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
+    <main className="theme-amber relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(245,158,11,0.16),transparent_28%),radial-gradient(circle_at_84%_14%,rgba(34,197,94,0.1),transparent_24%),linear-gradient(180deg,#0d0c09_0%,#15120b_52%,#0d0c09_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-amber-200/10 bg-[#0d0c09]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#student-association"
-            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="btn btn-secondary btn-sm shrink-0 md:hidden"
           >
             ← Back
           </Link>
@@ -101,7 +101,7 @@ export default function StudentAssociationPage() {
             <ActiveSectionNav items={associationNavItems} variant="amber" />
             <Link
               href="/#student-association"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-white/[0.1] hover:text-white"
+              className="btn btn-secondary btn-sm"
             >
               Back to Experience
             </Link>
