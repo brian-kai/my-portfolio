@@ -1,86 +1,82 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ActiveSectionNav from "../active-section-nav";
-import departmentNightImage from "../image/ie-department-night.jpg";
+import ImageLightboxGallery from "../image-lightbox-gallery";
+import LightboxImage from "../lightbox-image";
+
 import christmasPartyImage from "../image/christmas-eve-event.jpg";
 import cultureFestivalImage from "../image/culture-festival.jpg";
-import ImageLightboxGallery from "../image-lightbox-gallery";
-import AwardProofSection from "./award-proof-section";
+import departmentNightImage from "../image/ie-department-night.jpg";
+import studentAssociationAward from "../image/student-association-award.png";
 
-const experiences = [
+// Source: autobiography (2026-03), 社團活動經歷.
+
+const ledEvents = [
   {
-    title: "工佔你的直屬心 - 抽直屬",
     role: "副召",
-    description:
-      "協助規劃整體活動流程與細節安排，設計與製作活動表單，統整報名資料，並於活動當日協調現場流程與工作人員分工。",
+    title: "工佔你的直屬心",
+    subtitle: "抽直屬",
+    description: "規劃整體活動流程與細節，設計報名表單並統整報名資料；活動當日協調現場流程與工作人員分工。",
     skills: ["流程規劃", "表單設計", "現場協調"],
   },
   {
-    title: "工下你心頭的莓好滋味 - 聖誕傳情",
     role: "副召",
-    description:
-      "參與活動企劃討論，協助規劃禮物傳遞流程、前期準備與現場管理，確保活動流程順利進行。",
-    skills: ["活動企劃", "前期準備", "現場管理"],
+    title: "工下你心頭的莓好滋味",
+    subtitle: "聖誕傳情",
+    description: "參與活動企劃討論，規劃禮物傳遞流程，負責前期準備、現場管理與工作人員分工。",
+    skills: ["活動企劃", "流程設計", "現場管理"],
   },
   {
-    title: "捌零重逢 - 文化季",
     role: "攤販長",
-    description:
-      "負責攤位整體規劃與管理，安排值班人員，協調攤位配置與活動方式，並處理活動現場突發狀況。",
-    skills: ["攤位規劃", "人員安排", "問題處理"],
+    title: "捌零重逢",
+    subtitle: "文化季",
+    description: "負責攤位整體規劃與管理，安排各攤位值班人員、討論攤位配置，並處理活動現場突發狀況。",
+    skills: ["攤位規劃", "人員排班", "突發處理"],
   },
-  {
-    title: "運動週、耶誕晚會、工工之夜",
-    role: "工作人員",
-    description:
-      "協助活動前期準備、場地布置、現場流程執行、人員協調與活動秩序維持，累積團隊合作與執行經驗。",
-    skills: ["場地布置", "流程執行", "團隊合作"],
-  },
+];
+
+const supportedEvents = ["運動週", "耶誕晚會", "工工之夜"];
+
+const stats = [
+  ["3", "場活動擔任負責人"],
+  ["6", "場系上活動參與"],
+  ["1", "張服務獎狀"],
 ];
 
 const photos = [
   {
-    title: "工工之夜",
-    description: "活動現場參與與流程執行紀錄，補充團隊合作與現場支援經驗。",
-    image: departmentNightImage,
+    title: "捌零重逢文化季",
+    description: "擔任攤販長：攤位規劃、人員排班與現場管理。",
+    image: cultureFestivalImage,
   },
   {
     title: "耶誕晚會",
-    description: "協助活動前期準備、場地布置與現場秩序維持的紀錄。",
+    description: "工作人員：前期準備、場地布置與現場秩序維持。",
     image: christmasPartyImage,
   },
   {
-    title: "捌零重逢文化季",
-    description: "攤位規劃、人員分工與現場管理紀錄，呈現活動執行面的負責範圍。",
-    image: cultureFestivalImage,
+    title: "工工之夜",
+    description: "工作人員：現場流程執行與人員協調。",
+    image: departmentNightImage,
   },
-];
-
-const roleSummary = [
-  ["Role", "活動組長"],
-  ["Context", "工業工程與系統管理學系系學會"],
-  ["Focus", "活動企劃、流程安排、現場協調"],
-  ["Evidence", "正式證明與活動照片"],
-];
-
-const leadershipSkills = [
-  "Event Planning",
-  "Task Assignment",
-  "On-site Coordination",
-  "Team Communication",
 ];
 
 const associationNavItems = [
   { label: "Overview", href: "#overview" },
+  { label: "Led", href: "#led" },
   { label: "Photos", href: "#photos" },
   { label: "Award", href: "#award" },
 ];
 
 export const metadata: Metadata = {
-  title: "系學會活動經歷",
+  title: "系學會活動組長",
   description:
-    "工業工程與系統管理學系系學會活動組長經歷，包含活動職責、正式獎狀證明與活動照片紀錄。",
+    "工業工程與系統管理學系系學會活動組長（2024–2025）：擔任抽直屬、聖誕傳情副召與文化季攤販長，並參與運動週、耶誕晚會、工工之夜，獲系學會服務獎狀。",
 };
+
+const cardClass = "border border-amber-200/15 bg-[#15120b]/80 backdrop-blur";
+const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-amber-200";
 
 export default function StudentAssociationPage() {
   return (
@@ -91,157 +87,140 @@ export default function StudentAssociationPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
           <Link
             href="/#student-association"
-            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white md:hidden"
+            className="shrink-0 rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-white/[0.1] hover:text-white md:hidden"
           >
             ← Back
           </Link>
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">
-              Kevin Huang | Kai-Chun Huang
-            </span>
+            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
             <ActiveSectionNav items={associationNavItems} variant="amber" />
             <Link
               href="/#student-association"
-              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white"
+              className="rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-amber-200/60 hover:bg-white/[0.1] hover:text-white"
             >
-              Back to Student Association
+              Back to Experience
             </Link>
           </div>
         </div>
       </nav>
 
-      <section id="overview" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-12 pt-24 md:scroll-mt-28 md:pb-16 md:pt-28">
-        <div className="border-b border-amber-200/15 pb-8 md:pb-10">
-          <div className="max-w-4xl">
-            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-amber-200">
-              Student Association
-            </p>
-
-            <h1 className="max-w-4xl text-3xl font-black leading-tight md:text-5xl">
-              系學會活動經歷
-            </h1>
-
-            <p className="mt-5 max-w-3xl border-l border-amber-200/35 pl-5 text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
-              大三上學期加入工業工程與系統管理學系系學會，擔任活動組長，參與多項系上活動規劃與執行。這頁整理活動職責、正式證明與照片紀錄，作為團隊協作、流程安排與現場執行能力的補充證據。
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-4">
-            <dl className="grid gap-3 sm:grid-cols-2">
-              {roleSummary.map(([label, value]) => (
-                <div
-                  key={label}
-                  className="border-l border-amber-200/35 bg-white/[0.025] px-4 py-3"
-                >
-                  <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-200/80">
-                    {label}
-                  </dt>
-                  <dd className="mt-1 text-sm font-semibold leading-6 text-slate-100">
-                    {value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="flex flex-wrap gap-2">
-              {leadershipSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="border border-amber-200/15 bg-amber-200/[0.07] px-3 py-1 text-xs font-semibold text-amber-100"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-14 md:pb-16">
-        <div className="mb-7 max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/80">
-            Activity timeline
-          </p>
-          <h2 className="text-2xl font-bold md:text-3xl">活動職責</h2>
-          <p className="mt-3 text-[15px] leading-7 text-slate-400">
-            以下整理不同活動中的負責內容，讓每段經驗對應到具體的規劃、協調與執行能力。
-          </p>
-        </div>
-
-        <div className="relative grid gap-5 border-l border-amber-200/25 pl-5 md:pl-7">
-          {experiences.map((experience, index) => (
-            <article
-              key={experience.title}
-              className="relative grid gap-5 border border-amber-200/10 bg-[#15120b]/76 p-5 shadow-[0_18px_54px_rgba(0,0,0,0.16)] backdrop-blur md:grid-cols-[4.5rem_minmax(0,1fr)] md:p-6"
-            >
-              <span
-                className="absolute -left-[1.72rem] top-7 h-3 w-3 rounded-full border border-amber-100 bg-[#0d0c09]"
-                aria-hidden="true"
-              />
-              <div>
-                <p className="font-mono text-xs font-bold text-amber-200/90">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <span className="mt-3 inline-flex whitespace-nowrap border border-amber-200/20 bg-amber-200/[0.08] px-3 py-1 text-xs font-medium text-amber-100">
-                  {experience.role}
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
+        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-20">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <p className={eyebrowClass}>Student Association · Leadership</p>
+                <span className="rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 font-mono text-xs font-bold text-amber-100">
+                  2024–2025
                 </span>
               </div>
+              <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl">系學會活動組長</h1>
+              <p className="mt-2 text-lg font-semibold text-amber-100">逢甲大學工業工程與系統管理學系系學會</p>
+              <p className="mt-5 text-base leading-8 text-slate-300">
+                大三起加入系學會擔任活動組長，從活動企劃、表單與流程設計到當天的人員調度與突發狀況處理，
+                在有限時間內把活動從規劃帶到落地。
+              </p>
+              <dl className="mt-8 grid grid-cols-3 gap-px border border-amber-200/15 bg-amber-200/15">
+                {stats.map(([value, label], index) => (
+                  <div key={label} className="flex flex-col bg-[#15120b] px-4 py-4">
+                    <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                    <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <figure className="relative overflow-hidden border border-amber-200/20 shadow-[0_24px_80px_rgba(0,0,0,0.3)]">
+              <Image
+                src={cultureFestivalImage}
+                alt="捌零重逢文化季活動照片"
+                priority
+                sizes="(min-width: 1024px) 540px, 100vw"
+                className="aspect-[4/3] h-auto w-full object-cover"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0d0c09]/95 to-transparent px-5 pb-3 pt-10 text-sm font-semibold text-slate-200">
+                捌零重逢文化季 · 擔任攤販長
+              </figcaption>
+            </figure>
+          </div>
+        </section>
 
-              <div>
-                <h3 className="text-lg font-semibold leading-7 md:text-xl">
-                  {experience.title}
-                </h3>
-
-                <p className="mt-3 text-[15px] leading-7 text-slate-300 md:text-base">
-                  {experience.description}
-                </p>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {experience.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-semibold text-slate-300"
-                    >
+        <section id="led" className="scroll-mt-24 border-t border-amber-200/10 py-14 md:scroll-mt-28 md:py-16">
+          <p className={eyebrowClass}>Events I led</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">擔任負責人的活動</h2>
+          <ol className="mt-8 grid gap-4 md:grid-cols-3">
+            {ledEvents.map((event) => (
+              <li key={event.title} className={`${cardClass} flex flex-col p-5 md:p-6`}>
+                <span className="w-fit rounded-full border border-amber-300/50 bg-amber-300/[0.12] px-3 py-1 text-sm font-black text-amber-200">
+                  {event.role}
+                </span>
+                <h3 className="mt-4 text-xl font-bold leading-snug text-white">{event.title}</h3>
+                <p className="text-sm font-semibold text-amber-100/80">{event.subtitle}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{event.description}</p>
+                <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                  {event.skills.map((skill) => (
+                    <span key={skill} className="border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-semibold text-slate-300">
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+              </li>
+            ))}
+          </ol>
+          <div className={`${cardClass} mt-4 flex flex-col gap-3 p-5 md:flex-row md:items-center md:gap-6`}>
+            <p className="shrink-0 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Also on staff</p>
+            <div className="flex flex-wrap gap-2">
+              {supportedEvents.map((name) => (
+                <span key={name} className="border border-amber-200/20 bg-amber-200/[0.06] px-3 py-1 text-sm font-semibold text-amber-50">
+                  {name}
+                </span>
+              ))}
+            </div>
+            <p className="text-sm leading-6 text-slate-400 md:ml-auto md:text-right">前期準備、場地布置、流程執行與秩序維持</p>
+          </div>
+        </section>
 
-      <section id="photos" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
-        <div className="mb-7 max-w-3xl px-1">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/80">
-            Evidence gallery
-          </p>
-          <h2 className="text-2xl font-bold md:text-3xl">活動照片</h2>
-          <p className="mt-3 text-[15px] leading-7 text-slate-400">
-            照片用來補充活動現場與執行紀錄，讓這段經歷不只停留在文字描述。
-          </p>
-        </div>
+        <section id="photos" className="scroll-mt-24 border-t border-amber-200/10 py-14 md:scroll-mt-28 md:py-16">
+          <p className={eyebrowClass}>On site</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">活動現場紀錄</h2>
+          <ImageLightboxGallery
+            items={photos}
+            actionLabel="View Photo"
+            gridClassName="mt-8 grid gap-5 md:grid-cols-3"
+            imageClassName="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+            imageSizes="(min-width: 768px) 33vw, 100vw"
+            showDescription
+            showTitle
+            variant="amber"
+          />
+        </section>
 
-        <ImageLightboxGallery
-          items={photos}
-          gridClassName="grid gap-6 md:grid-cols-2"
-          imageClassName="aspect-[4/3] w-full rounded-xl object-cover object-center transition duration-300 group-hover:scale-[1.02]"
-          imageSizes="(min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="bg-[#15120b]/90 p-3 md:p-5"
-          showDescription
-          showTitle
-          titleClassName="text-lg font-bold md:text-xl"
-          variant="emerald"
-        />
-      </section>
-
-      <AwardProofSection />
+        <section id="award" className="scroll-mt-24 border-t border-amber-200/10 py-14 md:scroll-mt-28 md:py-16">
+          <p className={eyebrowClass}>Official proof</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">系學會服務獎狀</h2>
+          <div className={`${cardClass} mt-8 grid gap-6 p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center md:p-6`}>
+            <div className="overflow-hidden bg-white">
+              <LightboxImage
+                src={studentAssociationAward}
+                alt="系學會服務獎狀"
+                className="mx-auto h-auto max-h-[520px] w-auto max-w-full object-contain"
+                sizes="(min-width: 768px) 440px, calc(100vw - 80px)"
+              />
+            </div>
+            <div>
+              <p className="text-lg font-bold text-white">系學會活動組長 服務獎狀</p>
+              <p className="mt-3 text-[15px] leading-7 text-slate-300">
+                系學會正式核發的服務獎狀，肯定擔任活動組長期間在活動規劃、團隊協作與現場執行上的貢獻。
+              </p>
+              <p className="mt-4 text-sm text-slate-500">點獎狀可放大檢視。</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
