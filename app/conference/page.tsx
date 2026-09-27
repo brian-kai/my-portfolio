@@ -10,6 +10,7 @@ import presentationPhotoTwo from "../image/B1EE1CB0-4CD0-4963-9E2C-D2FFDC5E463C.
 import graduateProjectAward from "../image/graduate-project-award.png";
 import industrialEngineeringCompetitionCeremony from "./industrial-engineering-competition-ceremony-2026.jpg";
 import industrialEngineeringCompetitionAward from "./industrial-engineering-competition-award-2026.png";
+import cieHonorableAward from "./cie-student-paper-honorable-award-2026.png";
 import orCompetitionAward from "./or-competition-award-2026.png";
 import orCompetitionAwardCeremony from "./or-competition-award-ceremony-2026.jpg";
 import bestPaperCertificate from "./2025-11-29-ciie2025-best-paper-award-llama3-marketing-copy.png";
@@ -59,7 +60,17 @@ const evidence: Record<string, { id: string; note?: string; proofs: Proof[] }> =
       { title: "頒獎典禮", image: orCompetitionAwardCeremony, alt: "2026 作業研究專題競賽第三名頒獎照片" },
     ],
   },
-  佳作: { id: "cie-honorable", proofs: [] },
+  佳作: {
+    id: "cie-honorable",
+    proofs: [
+      {
+        title: "佳作獎狀",
+        image: cieHonorableAward,
+        alt: "中國工程師學會學生分會 115 年度工程論文競賽工業工程組佳作獎狀",
+        originalHref: "/file/cie-student-paper-honorable-award-2026.pdf",
+      },
+    ],
+  },
 };
 
 const presentationPhotos = [
@@ -220,9 +231,7 @@ export default function ConferencePage() {
                       titleClassName="text-sm font-semibold text-white"
                       variant="emerald"
                     />
-                  ) : (
-                    <p className="mt-4 pl-14 text-sm text-slate-500">獎狀影本尚未收錄於本頁。</p>
-                  )}
+                  ) : null}
                 </article>
               );
             })}
