@@ -110,7 +110,7 @@ const experiences: Experience[] = [
       "整合 Myers Diff 演算法、深度學習分類與 LLaMA 3，建立自動化程式碼變更註解流程，支援程式碼審查與軟體維護；以 Python 處理 GitHub 程式碼變更資料，包含修改前後程式碼擷取、diff 區塊辨識與模型訓練資料集整理。並協助研究資料彙整、研究經費報帳與核銷，累積研究行政與協調經驗。",
   },
   {
-    period: "2025.02–至今",
+    period: "2025.02–2026.06",
     kind: "Teaching",
     title: "資料庫設計 課程助教",
     org: "逢甲大學工業工程與系統管理學系｜113-2、114-2 學期",
@@ -119,7 +119,7 @@ const experiences: Experience[] = [
     action: "View Photos",
   },
   {
-    period: "大一暑假",
+    period: "2024.07–2025.07",
     kind: "Teaching",
     title: "國中補習班理化助教",
     org: "臺中市私立佳華文理補習班-中科旗艦校",
@@ -148,7 +148,7 @@ const recognitions = [
     kind: "Leadership",
     title: "系學會活動組長",
     detail: "工業工程與系統管理學系系學會：活動規劃、流程安排與現場執行",
-    date: "大三",
+    date: "2024–2025",
     href: "/student-association",
     featured: false,
   },
