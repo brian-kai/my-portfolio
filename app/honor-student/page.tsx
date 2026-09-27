@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
 import { honorSharing } from "../resume-highlights";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -23,54 +23,73 @@ const photos = [
   },
 ];
 
-const proofChips = [
-  "115 級榮譽學生",
-  "Feng Chia University",
-  "Academic / Service / Leadership",
+// The five evaluation criteria are quoted from the certificate; the evidence under each comes from
+// the honor-student application (2026.03) and the rest of this site.
+const criteria = [
+  {
+    key: "01",
+    title: "學術成就",
+    en: "Academic Achievement",
+    evidence: [
+      { text: "LLaMA 3 畢業專題：CIIE 2025 最佳論文獎等 5 項獎項", href: "/llama-marketing-system#awards" },
+      { text: "擔任畢業專題組長，規劃研究進度與分工" },
+      { text: "資料庫設計、決策與數據分析 課程優異表現" },
+    ],
+  },
+  {
+    key: "02",
+    title: "跨域學習",
+    en: "Cross-domain Learning",
+    evidence: [
+      { text: "修習「工業感測與聯網實作」「人工智慧應用」，完成 LSTM 用電趨勢預測專題", href: "/file/electricity-usage-trend-analysis-poster.pdf" },
+      { text: "Google Data Analytics 專業證照：SQL、R、Python 資料分析", href: "/#certificates" },
+    ],
+  },
+  {
+    key: "03",
+    title: "國際參與",
+    en: "International Engagement",
+    evidence: [
+      { text: "與指導教授合作之論文獲 ICCCM 2026 國際研討會接受（日本東京）", href: "/icccm" },
+    ],
+  },
+  {
+    key: "04",
+    title: "專業實習",
+    en: "Professional Practice",
+    evidence: [
+      { text: "國科會研究計畫助理：程式碼版本差異註解生成模式", href: "/#experience" },
+      { text: "資料庫設計、決策與數據分析 課程助教", href: "/database-design-tutoring" },
+    ],
+  },
+  {
+    key: "05",
+    title: "公共服務與領導",
+    en: "Service & Leadership",
+    evidence: [
+      { text: "系學會活動組長：抽直屬、聖誕傳情副召與文化季攤販長", href: "/student-association" },
+      { text: "國中補習班理化助教：協助課堂與課業輔導" },
+    ],
+  },
 ];
 
-const details = [
-  {
-    label: "Academic & Research",
-    value: "以專題領導、研究發表與國際研討會摘要錄取，呈現研究規劃與模型實作經驗。",
-    evidence: [
-      "CIIE 2025 最佳論文獎",
-      "ICCCM 2026 Accepted for Presentation",
-      "畢業專題組長：進度規劃、組員分工與每週兩次進度報告",
-    ],
-  },
-  {
-    label: "Cross-domain Practice",
-    value: "將資料分析、AI 工具與實務問題連結，完成資料整理到成果呈現。",
-    evidence: [
-      "Google Data Analytics：資料清理、SQL 查詢、R 語言與視覺化",
-      "工業感測與聯網實作：用電趨勢分析專題",
-      "2020–2023 年每日用電資料分析、異常檢測與模型建構",
-    ],
-  },
-  {
-    label: "Leadership & Service",
-    value: "透過助教、研究助理與系學會活動經驗，呈現溝通協作與公共服務投入。",
-    evidence: [
-      "資料庫設計課程助教",
-      "研究計畫助理：研究資料整理、經費報帳與核銷",
-      "系學會活動組長",
-    ],
-  },
-];
+const sharingTopics = ["課程規劃", "競賽經驗", "研究專題入門"];
 
 const honorNavItems = [
   { label: "Overview", href: "#overview" },
-  { label: "Evidence", href: "#evidence" },
-  { label: "Experience", href: "#academic-experience" },
-  { label: "Photos", href: "#photos" },
+  { label: "Criteria", href: "#criteria" },
+  { label: "Sharing", href: "#sharing-session" },
+  { label: "Proof", href: "#proof" },
 ];
 
 export const metadata: Metadata = {
   title: "校級榮譽學生入選",
   description:
-    "逢甲大學 115 級榮譽學生入選紀錄，整理研究計畫、預研生、跨域學習、專題領導與教學服務經驗，以及官方證書與照片。",
+    "逢甲大學 115 級榮譽學生入選紀錄：學術成就、跨域學習、國際參與、專業實習與公共服務領導五大面向的對應經歷，以及榮譽學生經驗分享會、官方證書與照片。",
 };
+
+const cardClass = "border border-amber-100/15 bg-amber-100/[0.04] backdrop-blur";
+const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-amber-200";
 
 export default function HonorStudentPage() {
   return (
@@ -89,9 +108,7 @@ export default function HonorStudentPage() {
 
           <Link href="/" className="min-w-0 truncate text-lg font-bold">
             <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">
-              Kevin Huang | Kai-Chun Huang
-            </span>
+            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
@@ -106,125 +123,162 @@ export default function HonorStudentPage() {
         </div>
       </nav>
 
-      <section id="overview" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-12 pt-28 md:scroll-mt-28 md:pb-16 md:pt-32">
-        <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-amber-200">
-          Honors & Recognition
-        </p>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-28 md:pt-32">
+        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-20">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-14">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <p className={eyebrowClass}>Honors & Recognition</p>
+                <span className="rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 font-mono text-xs font-bold text-amber-100">
+                  2026.06
+                </span>
+              </div>
+              <h1 className="mt-4 text-4xl font-black leading-tight md:text-6xl">
+                校級榮譽學生
+              </h1>
+              <p className="mt-3 text-lg font-semibold text-amber-100 md:text-xl">逢甲大學 115 級「榮譽學生」</p>
 
-        <h1 className="max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
-          校級榮譽學生入選
-        </h1>
-
-        <p className="mt-5 max-w-6xl text-base leading-7 text-slate-300 [text-wrap:pretty] md:text-lg md:leading-8">
-          獲選逢甲大學 115 級榮譽學生。申請事蹟涵蓋競賽獲獎與學術成就、跨域學習、公共服務與領導表現，呈現大學階段的研究、實作與服務經驗。
-        </p>
-
-        <div className="mt-7 flex flex-wrap gap-2.5">
-          {proofChips.map((chip) => (
-            <span
-              key={chip}
-              className="border border-amber-200/25 bg-amber-200/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-amber-100"
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section id="evidence" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
-        <div className="mb-8 max-w-3xl">
-          <h2 className="text-2xl font-bold md:text-3xl">申請事蹟與官方證明</h2>
-        </div>
-
-        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)]">
-          <div className="grid gap-4">
-            {details.map((detail) => (
-              <article
-                key={detail.label}
-                className="border border-amber-100/15 bg-amber-100/[0.04] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.14)] backdrop-blur md:p-6"
-              >
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
-                  {detail.label}
+              <blockquote className="mt-8 border-l-2 border-amber-300/60 pl-5">
+                <p className="text-base leading-8 text-stone-200 md:text-lg md:leading-9">
+                  「於學術成就、跨域學習、國際參與、專業實習及公共服務與領導等
+                  <span className="font-bold text-amber-200">五大評選面向</span>
+                  中，取得
+                  <span className="font-bold text-amber-200">兩項以上之卓越成果</span>
+                  ，經本校評選，特授予 115 級『榮譽學生』殊榮。」
                 </p>
-                <p className="mt-3 text-[15px] leading-7 text-stone-200">
-                  {detail.value}
-                </p>
-                <div className="mt-5 grid gap-2">
-                  {detail.evidence.map((item) => (
-                    <div
-                      key={item}
-                      className="border-l border-amber-200/45 pl-3 text-sm leading-6 text-stone-300"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
+                <footer className="mt-2 text-sm text-stone-400">— 逢甲大學榮譽學生證書</footer>
+              </blockquote>
 
-          <aside className="border border-amber-100/15 bg-amber-100/[0.04] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-4">
-            <div className="mb-3">
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-amber-200">
-                Official Certificate
-              </p>
-              <h3 className="mt-2 text-xl font-bold">逢甲大學榮譽學生證書</h3>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="#criteria"
+                  className="rounded-lg border border-amber-300/60 bg-amber-300 px-5 py-2.5 text-center text-sm font-bold text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
+                >
+                  看五大面向 ↓
+                </Link>
+                <Link
+                  href="#proof"
+                  className="rounded-lg border border-amber-100/20 bg-amber-100/[0.06] px-5 py-2.5 text-center text-sm font-bold text-stone-100 transition hover:-translate-y-0.5 hover:border-amber-200/60"
+                >
+                  官方證書 →
+                </Link>
+              </div>
             </div>
 
-            <LightboxImage
-              src={honorStudentCertificate}
-              alt="逢甲大學榮譽學生證書"
-              className="h-auto max-h-[58vh] w-full bg-white object-contain"
-              priority
-              sizes="(min-width: 1280px) 460px, (min-width: 1024px) 34vw, calc(100vw - 48px)"
+            <figure className="relative mx-auto w-full max-w-sm overflow-hidden border border-amber-200/25 shadow-[0_24px_80px_rgba(0,0,0,0.35)] lg:max-w-none">
+              <Image
+                src={honorStudentPortrait}
+                alt="黃凱浚身著榮譽學生畢業服"
+                priority
+                sizes="(min-width: 1024px) 420px, 384px"
+                className="aspect-[4/5] h-auto w-full object-cover object-[50%_15%]"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080705]/95 via-[#080705]/60 to-transparent px-5 pb-4 pt-14">
+                <span className="block text-lg font-bold">黃凱浚 Kai-Chun Huang</span>
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-200">
+                  工業工程與系統管理學系
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="criteria" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
+          <p className={eyebrowClass}>Five criteria</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">五大評選面向 × 我的對應經歷</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-stone-400">
+            評選面向依證書所列；各面向下方為申請書中對應的經歷，點選可查看詳細內容。
+          </p>
+          <ol className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {criteria.map((criterion) => (
+              <li key={criterion.key} className={`${cardClass} flex flex-col p-5 md:p-6`}>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-2xl font-black text-amber-300/80">{criterion.key}</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">{criterion.title}</h3>
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">{criterion.en}</p>
+                  </div>
+                </div>
+                <ul className="mt-5 grid gap-2.5">
+                  {criterion.evidence.map((item) => (
+                    <li key={item.text} className="border-l border-amber-200/40 pl-3 text-sm leading-6 text-stone-200">
+                      {item.href ? (
+                        <Link href={item.href} className="transition hover:text-amber-100">
+                          {item.text} <span className="font-bold text-amber-200" aria-hidden="true">→</span>
+                        </Link>
+                      ) : (
+                        item.text
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="sharing-session" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
+          <p className={eyebrowClass}>After the honor</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">入選之後：把經驗分享給新生</h2>
+          <article className="mt-8 grid gap-8 border border-amber-300/30 bg-[linear-gradient(135deg,rgba(252,211,77,0.1),rgba(255,255,255,0.02)_55%)] p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-12">
+            <div className="min-w-0">
+              <p className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-amber-200">
+                <span className="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
+                {honorSharing.badge}
+              </p>
+              <h3 className="mt-3 text-2xl font-bold text-white md:text-3xl">{honorSharing.title}</h3>
+              <p className="mt-2 font-mono text-sm text-stone-400">{honorSharing.meta}</p>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-stone-200">{honorSharing.description}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {sharingTopics.map((topic) => (
+                  <span key={topic} className="border border-amber-200/30 bg-amber-200/[0.08] px-3 py-1.5 text-sm font-semibold text-amber-100">
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <dl className="grid grid-cols-2 gap-px border border-amber-100/15 bg-amber-100/15 lg:grid-cols-1">
+              <div className="flex flex-col bg-[#0d0b08] px-6 py-5">
+                <dt className="order-last mt-1 text-sm text-stone-400">位大一新生</dt>
+                <dd className="text-4xl font-black text-amber-300">≈100</dd>
+              </div>
+              <div className="flex flex-col bg-[#0d0b08] px-6 py-5">
+                <dt className="order-last mt-1 text-sm text-stone-400">分享主題</dt>
+                <dd className="text-4xl font-black text-white">{sharingTopics.length}</dd>
+              </div>
+            </dl>
+          </article>
+        </section>
+
+        <section id="proof" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
+          <p className={eyebrowClass}>Official proof</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">官方證書與紀錄照片</h2>
+          <div className="mt-8 grid items-start gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <figure className={`${cardClass} p-3 md:p-4`}>
+              <LightboxImage
+                src={honorStudentCertificate}
+                alt="逢甲大學榮譽學生證書"
+                className="h-auto w-full bg-white object-contain"
+                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, calc(100vw - 48px)"
+              />
+              <figcaption className="mt-3 text-sm leading-6 text-stone-400">
+                逢甲大學正式核發之榮譽學生證書（點圖可放大）。
+              </figcaption>
+            </figure>
+            <ImageLightboxGallery
+              items={photos}
+              actionLabel="View Photo"
+              cardClassName="group flex h-full flex-col overflow-hidden border border-amber-100/15 bg-amber-100/[0.04] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-amber-200/40 hover:bg-amber-100/[0.07] focus:outline-none focus:ring-2 focus:ring-amber-200/70"
+              gridClassName="grid gap-6 sm:grid-cols-2"
+              imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
+              imageSizes="(min-width: 1280px) 340px, (min-width: 640px) 50vw, 100vw"
+              imageWrapperClassName="h-[360px] overflow-hidden border-b border-amber-100/10 bg-stone-950/50 md:h-[420px]"
+              showTitle
+              variant="amber"
             />
-
-            <p className="mt-3 text-sm leading-6 text-stone-400">
-              逢甲大學正式核發之榮譽學生證書，作為本頁成果佐證。
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <section id="academic-experience" className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:pb-20">
-        <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">
-          Leadership & Sharing
-        </p>
-        <h2 className="mt-3 text-2xl font-bold md:text-3xl">專題領導與經驗分享</h2>
-        <article className="mt-8 border-l border-amber-200/40 bg-amber-100/[0.04] p-5 md:p-6">
-          <h3 className="text-xl font-semibold">{projectLeadership.title}</h3>
-          <p className="mt-3 text-[15px] leading-8 text-stone-200">{projectLeadership.description}</p>
-          <Link href="/llama-marketing-system" className="mt-4 inline-flex min-h-11 items-center font-semibold text-amber-200 underline underline-offset-4 hover:text-amber-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-200">
-            查看 LLaMA 3 專題與個人貢獻 →
-          </Link>
-        </article>
-        <article id="sharing-session" className="mt-6 scroll-mt-28 border-l border-amber-200/40 bg-amber-100/[0.04] p-5 md:p-6">
-          <p className="font-mono text-xs font-semibold uppercase tracking-wide text-amber-200">{honorSharing.badge}</p>
-          <h3 className="mt-3 text-xl font-semibold">{honorSharing.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-stone-400">{honorSharing.meta}</p>
-          <p className="mt-3 text-[15px] leading-8 text-stone-200">{honorSharing.description}</p>
-        </article>
-      </section>
-
-      <section id="photos" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-6 pb-16 md:scroll-mt-28 md:pb-20">
-        <div className="mb-8 max-w-3xl">
-          <h2 className="text-2xl font-bold md:text-3xl">
-            Honor Student Visual Record
-          </h2>
-        </div>
-
-        <ImageLightboxGallery
-          items={photos}
-          actionLabel="View Photo"
-          cardClassName="group flex h-full flex-col overflow-hidden border border-amber-100/15 bg-amber-100/[0.04] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-amber-200/40 hover:bg-amber-100/[0.07] focus:outline-none focus:ring-2 focus:ring-amber-200/70"
-          gridClassName="grid gap-6 md:grid-cols-2"
-          imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
-          imageSizes="(min-width: 1280px) 620px, (min-width: 768px) 50vw, 100vw"
-          imageWrapperClassName="h-[420px] overflow-hidden border-b border-amber-100/10 bg-stone-950/50 md:h-[520px]"
-          showTitle
-          variant="amber"
-        />
-      </section>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
