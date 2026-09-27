@@ -2,7 +2,7 @@
 // Figures are the outcomes recorded in the resume, not live service counters.
 export const workflowInternship = {
   title: "AI 工作流程研究實習生",
-  meta: "ZOUSTEC TECHNOLOGIES CO., LTD.｜2026.07–至今",
+  meta: "ZOUSTEC TECHNOLOGIES CO., LTD.｜2026.07–2026.09",
   badge: "AI Workflow Research Intern",
   description:
     "整合 51 個 n8n 工作流程，串接 AI 生成、AI 審核與 4 個發布平台；每篇內容處理時間由 30 分鐘縮短為 2 分鐘，執行成功率達 97.1%，累計發布 128 篇內容。結合 GA4 漏斗分析、統計檢定與人工核准，持續改善行銷自動化流程。",

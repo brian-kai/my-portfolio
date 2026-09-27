@@ -57,86 +57,100 @@ const certificates = [
   },
 ];
 
+const experienceKinds = {
+  Work: { label: "Work", badge: "border-amber-300/40 bg-amber-300/[0.1] text-amber-100", dot: "bg-amber-300" },
+  Research: { label: "Research", badge: "border-emerald-300/40 bg-emerald-300/[0.1] text-emerald-100", dot: "bg-emerald-300" },
+  Teaching: { label: "Teaching", badge: "border-sky-300/40 bg-sky-300/[0.1] text-sky-100", dot: "bg-sky-300" },
+  Speaking: { label: "Speaking", badge: "border-violet-300/40 bg-violet-300/[0.1] text-violet-100", dot: "bg-violet-300" },
+};
+
 type Experience = {
+  period: string;
+  kind: keyof typeof experienceKinds;
   title: string;
-  meta: string;
-  badge: string;
+  org: string;
   description: string;
   href?: string;
   action?: string;
 };
 
+// Newest first.
 const experiences: Experience[] = [
-  workflowInternship,
   {
+    period: honorSharing.meta.split("｜")[1],
+    kind: "Speaking",
+    title: honorSharing.title,
+    org: "逢甲大學",
+    description: honorSharing.description,
+    href: honorSharing.href,
+    action: honorSharing.action,
+  },
+  {
+    period: workflowInternship.meta.split("｜")[1],
+    kind: "Work",
+    title: workflowInternship.title,
+    org: "ZOUSTEC Technologies Co., Ltd.",
+    description: workflowInternship.description,
+    href: workflowInternship.href,
+    action: workflowInternship.action,
+  },
+  {
+    period: "2025.09–2026.01",
+    kind: "Teaching",
+    title: "決策與數據分析 課程助教",
+    org: "逢甲大學工業工程與系統管理學系｜114-1 學期",
+    description: "指導學生以 R 進行資料前處理、探索性分析、模型建構與評估，並協助作業討論與學生問題釐清。",
+  },
+  {
+    period: "2025.08–2026.08",
+    kind: "Research",
     title: "國科會研究計畫助理",
-    meta: "私立逢甲大學｜以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式｜2025.08–2026.08",
-    badge: "Research Assistant",
+    org: "逢甲大學｜以 LLaMA 3 模型與 Myers 演算法進行程式碼版本差異註解生成模式",
     description:
       "整合 Myers Diff 演算法、深度學習分類與 LLaMA 3，建立自動化程式碼變更註解流程，支援程式碼審查與軟體維護；以 Python 處理 GitHub 程式碼變更資料，包含修改前後程式碼擷取、diff 區塊辨識與模型訓練資料集整理。並協助研究資料彙整、研究經費報帳與核銷，累積研究行政與協調經驗。",
   },
   {
-    title: "工業工程與系統管理學系資料庫設計課程助教",
-    meta: "私立逢甲大學｜資料庫管理系統與設計｜113-2、114-2 學期（2025.02–至今）",
-    badge: "Teaching Assistant",
-    description:
-      "協助課程教學、夜間輔導、作業討論與學生問題釐清，內容涵蓋關聯式綱要設計、SQL 查詢、正規化與資料庫管理。",
+    period: "2025.02–至今",
+    kind: "Teaching",
+    title: "資料庫設計 課程助教",
+    org: "逢甲大學工業工程與系統管理學系｜113-2、114-2 學期",
+    description: "協助課程教學、夜間輔導、作業討論與學生問題釐清，內容涵蓋關聯式綱要設計、SQL 查詢、正規化與資料庫管理。",
     href: "/database-design-tutoring",
     action: "View Photos",
   },
   {
-    title: "工業工程與系統管理學系決策與數據分析課程助教",
-    meta: "私立逢甲大學｜決策與數據分析｜114-1 學期（2025.09–2026.01）",
-    badge: "Teaching Assistant",
-    description:
-      "指導學生以 R 進行資料前處理、探索性分析、模型建構與評估，並協助作業討論與學生問題釐清。",
-  },
-  honorSharing,
-  {
+    period: "大一暑假",
+    kind: "Teaching",
     title: "國中補習班理化助教",
-    meta: "臺中市私立佳華文理補習班-中科旗艦校｜課堂協助、課業輔導與概念講解",
-    badge: "Tutor Assistant",
-    description:
-      "協助課堂進行、學生課業輔導與理化概念說明，培養將複雜概念拆解並清楚表達的能力。",
+    org: "臺中市私立佳華文理補習班-中科旗艦校",
+    description: "協助課堂進行、學生課業輔導與理化概念說明，培養將複雜概念拆解並清楚表達的能力。",
   },
 ];
 
-const highlights = [
+const recognitions = [
   {
-    title: "2025 中國工業工程學會年會暨學術研討會",
-    href: "/conference",
-    badge: "Best Paper Award",
-    description:
-      "發表 LLaMA 3 個人化行銷文案生成研究，榮獲大數據技術與應用領域最佳論文獎。",
-    tags: ["LLaMA 3", "NLP", "Marketing Copy", "Best Paper"],
-  },
-  {
-    title: "ICCCM 2026",
-    href: "/icccm",
-    badge: "Published Paper",
-    description:
-      "論文 AN OBJECTIVE ESSAY SCORING AND COMMENTARY GENERATION SYSTEM WITH LSTM MODEL 於 2026 年 7 月 24-26 日在日本東京 The 14th International Conference on Computer and Communications Management 發表。",
-    tags: ["ICCCM 2026", "Published Paper", "LSTM", "Essay Scoring"],
-  },
-  {
-    title: "工業工程與系統管理學系系學會",
-    href: "/student-association",
-    badge: "Leadership Evidence",
-    description:
-      "擔任工業工程與系統管理學系系學會活動組長，作為團隊協作、流程安排、資源協調與現場執行能力的輔助證據。",
-    tags: ["Event Planning", "Teamwork", "Coordination", "Leadership"],
-  },
-];
-
-const honors = [
-  {
-    title: "校級榮譽學生入選",
-    badge: "Honor Student",
+    kind: "Honor Student",
+    title: "校級榮譽學生",
+    detail: "逢甲大學 2026 屆，學業表現、專題參與與校內發展的綜合肯定",
+    date: "2026.06",
     href: "/honor-student",
-    action: "View Details",
-    description:
-      "入選逢甲大學 2026 屆榮譽學生（2026.06），作為學業表現、專題參與與校內發展歷程的綜合肯定。",
-    tags: ["University Recognition", "Honor Student", "Academic Growth"],
+    featured: true,
+  },
+  ...courseHonors.map((honor) => ({
+    kind: "Course Honor",
+    title: honor.title.replace(" 課程優異表現", ""),
+    detail: `課程優異表現｜${honor.issuer}`,
+    date: honor.date,
+    href: undefined as string | undefined,
+    featured: false,
+  })),
+  {
+    kind: "Leadership",
+    title: "系學會活動組長",
+    detail: "工業工程與系統管理學系系學會：活動規劃、流程安排與現場執行",
+    date: "大三",
+    href: "/student-association",
+    featured: false,
   },
 ];
 
@@ -828,176 +842,94 @@ export default function Home() {
 
       <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
         <div data-reveal className="mb-8">
-          <div>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Timeline
-            </p>
-            <h2 className="text-3xl font-bold">Experience</h2>
-          </div>
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Timeline
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">Experience</h2>
         </div>
 
-        <h3 className="mb-5 text-2xl font-semibold">Honors & recognition</h3>
-        <article
-          data-reveal
-          className="pressable motion-reduce-transform group relative block border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus-within:ring-2 focus-within:ring-emerald-300/70 md:p-6"
-        >
-          <Link
-            href={honors[0].href}
-            aria-label={`View details for ${honors[0].title}`}
-            className="absolute inset-0 z-10"
-          />
-
-          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-            <div className="pointer-events-none max-w-4xl">
-              <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200">
-                {honors[0].badge}
-              </span>
-              <h3 className="mt-4 text-xl font-semibold leading-7 text-white md:text-2xl">
-                {honors[0].title}
-              </h3>
-              <p className="mt-4 max-w-3xl text-[15px] leading-7 text-slate-300 [text-wrap:pretty] md:text-base md:leading-8">
-                {honors[0].description}
-              </p>
-
-              <div className="pointer-events-auto relative z-20 mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
-                  href={honors[0].href}
-                  className="pressable-subtle inline-flex w-full items-center justify-center rounded-lg border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-2 text-sm font-bold text-emerald-100 transition hover:border-emerald-300/60 hover:bg-emerald-300/[0.14] sm:w-auto"
-                >
-                  {honors[0].action}
-                </Link>
-              </div>
-            </div>
-
-            <div className="pointer-events-none flex max-w-sm flex-wrap gap-2 md:justify-end">
-              {honors[0].tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-white/10 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </article>
-
-        <ul data-reveal-group className="mt-4 grid gap-4 sm:grid-cols-2">
-          {courseHonors.map((honor) => (
-            <li
-              key={honor.title}
-              className="border border-white/10 bg-white/[0.035] p-5"
-            >
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                Academic Honor｜{honor.date}
-              </p>
-              <p className="mt-2 text-base font-semibold leading-7 text-white">
-                {honor.title}
-              </p>
-              <p className="mt-1 text-sm text-slate-400">{honor.issuer}</p>
-            </li>
-          ))}
-        </ul>
-
-        <h3
-          id="student-association"
-          className="mb-5 mt-12 text-2xl font-semibold"
-        >
-          Leadership
+        <h3 id="student-association" className="mb-4 scroll-mt-28 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+          Honors & leadership
         </h3>
-        <div data-reveal-group className="grid gap-6">
-          {highlights
-            .filter((highlight) => highlight.href === "/student-association")
-            .map((highlight) => (
-              <Link
-                key={highlight.title}
-                href={highlight.href}
-                className="pressable motion-reduce-transform group flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
-              >
-                <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
-                  <h3 className="text-lg font-semibold leading-7 md:text-xl md:leading-8">
-                    {highlight.title}
-                  </h3>
-                  <span className="w-fit shrink-0 border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
-                    {highlight.badge}
-                  </span>
-                </div>
-
-                <p className="text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
-                  {highlight.description}
-                </p>
-
-                <div className="mb-6 mt-5 flex flex-wrap gap-2">
-                  {highlight.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
-                  View Details
-                </div>
-              </Link>
-            ))}
-        </div>
-
-        <h3 className="mb-5 mt-12 text-2xl font-semibold">
-          Academic & Work Experience
-        </h3>
-        <div data-reveal-group className="relative grid gap-6 border-l border-emerald-300/25 pl-6">
-          {experiences.map((experience) => {
-            const content = (
+        <ul data-reveal-group className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {recognitions.map((item) => {
+            const body = (
               <>
-                <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
-                  <div>
-                    <h3 className="text-lg font-semibold leading-7 md:text-xl">
-                      {experience.title}
-                    </h3>
-                    <p className="mt-2 text-[15px] leading-7 text-slate-400 md:text-base">
-                      {experience.meta}
-                    </p>
-                  </div>
-
-                  <span className="w-fit border border-emerald-300/20 bg-emerald-300/[0.08] px-4 py-2 text-sm text-emerald-200">
-                    {experience.badge}
+                <div className="flex items-center justify-between gap-3">
+                  <span className={`font-mono text-[10px] font-semibold uppercase tracking-[0.16em] ${item.featured ? "text-amber-300" : "text-emerald-300"}`}>
+                    {item.kind}
                   </span>
+                  <span className="font-mono text-[11px] font-semibold text-slate-400">{item.date}</span>
                 </div>
-
-                <p className="mb-6 text-[15px] leading-7 text-slate-300 md:text-base md:leading-8">
-                  {experience.description}
-                </p>
-
-                {experience.href ? (
-                  <div className="mt-auto inline-flex w-fit items-center justify-center rounded-lg border border-emerald-300/45 bg-emerald-300/[0.1] px-5 py-2.5 text-sm font-bold text-emerald-100 transition group-hover:-translate-y-0.5 group-hover:border-emerald-300/70 group-hover:bg-emerald-300/[0.16] group-hover:text-white">
-                    {experience.action}
-                  </div>
+                <p className="mt-3 text-lg font-bold leading-snug text-white">{item.title}</p>
+                <p className="mt-1.5 text-[13px] leading-5 text-slate-400">{item.detail}</p>
+                {item.href ? (
+                  <span className="mt-auto pt-4 text-sm font-bold text-emerald-300 transition group-hover:text-emerald-200">View →</span>
                 ) : null}
               </>
             );
-
-            return experience.href ? (
-              <Link
-                key={experience.title}
-                href={experience.href}
-                className="pressable motion-reduce-transform group relative flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition before:absolute before:-left-[1.92rem] before:top-6 before:h-3 before:w-3 before:rounded-full before:border before:border-emerald-200 before:bg-[#070a0d] hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70 md:p-6"
-              >
-                {content}
-              </Link>
-            ) : (
-              <article
-                key={experience.title}
-                className="relative border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur before:absolute before:-left-[1.92rem] before:top-6 before:h-3 before:w-3 before:rounded-full before:border before:border-emerald-200 before:bg-[#070a0d] md:p-6"
-              >
-                {content}
-              </article>
+            const cardClass = `flex h-full flex-col border p-4 backdrop-blur md:p-5 ${
+              item.featured
+                ? "border-amber-300/35 bg-[linear-gradient(150deg,rgba(252,211,77,0.1),rgba(255,255,255,0.03)_60%)]"
+                : "border-white/10 bg-white/[0.045]"
+            }`;
+            return (
+              <li key={item.title}>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className={`${cardClass} pressable motion-reduce-transform group transition hover:-translate-y-1 hover:border-emerald-300/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70`}
+                  >
+                    {body}
+                  </Link>
+                ) : (
+                  <div className={cardClass}>{body}</div>
+                )}
+              </li>
             );
           })}
-        </div>
+        </ul>
 
+        <h3 className="mb-4 mt-12 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+          Work, research & teaching
+        </h3>
+        <ol data-reveal-group className="relative">
+          {experiences.map((experience) => {
+            const kind = experienceKinds[experience.kind];
+            return (
+              <li
+                key={experience.title}
+                className="relative grid gap-2 pb-8 pl-7 last:pb-0 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-8 md:pl-0"
+              >
+                {/* Rail and dot: left edge on mobile, between date and card on desktop. */}
+                <span className="absolute bottom-0 left-[5px] top-2 w-px bg-white/10 md:left-[10.4rem]" aria-hidden="true" />
+                <span
+                  className={`absolute left-0 top-1.5 h-[11px] w-[11px] rounded-full ring-4 ring-[#070a0d] md:left-[calc(10.4rem-5px)] ${kind.dot}`}
+                  aria-hidden="true"
+                />
+                <p className="font-mono text-sm font-semibold text-slate-300 md:pt-0.5 md:text-right">{experience.period}</p>
+                <div className="min-w-0 md:pl-6">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className={`border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] ${kind.badge}`}>
+                      {kind.label}
+                    </span>
+                    <h4 className="text-lg font-bold leading-7 text-white md:text-xl">{experience.title}</h4>
+                  </div>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">{experience.org}</p>
+                  <p className="mt-3 max-w-4xl text-[15px] leading-7 text-slate-300">{experience.description}</p>
+                  {experience.href ? (
+                    <Link
+                      href={experience.href}
+                      className="mt-3 inline-block text-sm font-bold text-emerald-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+                    >
+                      {experience.action} →
+                    </Link>
+                  ) : null}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
       </section>
 
       <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
