@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
   <title id="title">LLaMA 3 個人化產品行銷文案生成系統架構</title>
-  <desc id="desc">產品描述、消費者評論與行銷文案資料，經消費者偏好分析（TextRank、LDA、K-Means）與語義偏好分析（SBERT、UMAP、HDBSCAN、OpenAI 資料增強），匯入以 QLoRA 微調的 LLaMA 3 8B 生成個人化文案，評估結果 BLEU-2 15.11、METEOR 16.16、人工評估流暢性 0.89。</desc>
+  <desc id="desc">產品描述、消費者評論與行銷文案資料，經消費者偏好分析（TextRank、LDA、K-Means）與語義偏好分析（SBERT、UMAP、HDBSCAN、OpenAI 資料增強），匯入以 QLoRA 微調的 LLaMA 3 8B 生成個人化文案，評估結果 BLEU-3 18.92、BLEU-4 14.44、METEOR 23.62。</desc>
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0H0V40" fill="none" stroke="#94a3b8" stroke-opacity="0.07" stroke-width="1"/>
@@ -127,14 +127,14 @@
   <rect x="290" y="530" width="870" height="72" rx="14" fill="#0b1115" stroke="#ffffff" stroke-opacity="0.1"/>
   <text x="314" y="573" class="mono eyebrow">EVALUATION</text>
   <text y="574" font-size="30" font-weight="900" fill="#ffffff">
-    <tspan x="500">15.11</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">BLEU-2</tspan>
+    <tspan x="500">18.92</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">BLEU-3</tspan>
   </text>
   <line x1="690" y1="552" x2="690" y2="580" stroke="#ffffff" stroke-opacity="0.12"/>
   <text y="574" font-size="30" font-weight="900" fill="#ffffff">
-    <tspan x="716">16.16</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">METEOR</tspan>
+    <tspan x="716">14.44</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">BLEU-4</tspan>
   </text>
   <line x1="912" y1="552" x2="912" y2="580" stroke="#ffffff" stroke-opacity="0.12"/>
   <text y="574" font-size="30" font-weight="900" fill="#ffffff">
-    <tspan x="938">0.89</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">人工評估流暢性</tspan>
+    <tspan x="938">23.62</tspan><tspan dx="10" font-size="16" font-weight="400" fill="#94a3b8">METEOR</tspan>
   </text>
 </svg>
