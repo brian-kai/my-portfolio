@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cieAward, courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
+import { courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
+import { llamaAwards, medalTones } from "./llama-awards";
 import { contactEmail, githubUrl, linkedinUrl, resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
@@ -167,7 +168,7 @@ const llamaShowcase = {
   steps: [
     ["Problem", "制式化的產品描述，難以貼近不同消費者的偏好。"],
     ["Method", "以 QLoRA 於 78K 筆行銷文本微調 LLaMA 3 8B，結合 TextRank、情感分析與分群建立偏好特徵。"],
-    ["Outcome", "BLEU-4 14.44、METEOR 23.62；人工評估流暢度 0.89、相關性 0.80。"],
+    ["Outcome", "BLEU-2 15.11、METEOR 16.16，皆優於比較模型；人工評估流暢性 0.89、相關性 0.80。"],
   ],
   tags: ["LLaMA 3", "QLoRA", "TextRank", "K-Means", "HDBSCAN"],
   primary: { label: "View Case Study", href: "/llama-marketing-system" },
@@ -333,12 +334,6 @@ const beyondCode = [
   },
 ];
 
-const medalTones = {
-  gold: { medal: "bg-amber-300 text-slate-950 shadow-[0_0_16px_rgba(252,211,77,0.45)]", rank: "text-amber-300", row: "bg-[linear-gradient(90deg,rgba(252,211,77,0.09),transparent_60%)]" },
-  silver: { medal: "bg-slate-200 text-slate-950 shadow-[0_0_16px_rgba(226,232,240,0.35)]", rank: "text-slate-100", row: "" },
-  bronze: { medal: "bg-orange-300 text-slate-950 shadow-[0_0_16px_rgba(253,186,116,0.4)]", rank: "text-orange-300", row: "" },
-  emerald: { medal: "bg-emerald-300 text-slate-950 shadow-[0_0_16px_rgba(110,231,183,0.4)]", rank: "text-emerald-300", row: "" },
-};
 
 const awardResearch = {
   topic: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
@@ -349,13 +344,7 @@ const awardResearch = {
   ],
   tags: ["LLaMA 3", "NLP", "Marketing Copy"],
   href: "/conference",
-  awards: [
-    { medal: "1", rank: "第一名", tone: "gold", name: "全國工業工程與管理大學生專題論文與技術報告競賽", category: "服務系統與科技管理組", level: "全國", year: "2026" },
-    { medal: "★", rank: "最佳論文", tone: "gold", name: "中國工業工程學會年會暨學術研討會", category: "大數據技術與應用領域", level: "學會", year: "2025" },
-    { medal: "2", rank: "第二名", tone: "silver", name: "逢甲大學工工系畢業專題", category: "114 學年度", level: "校內", year: "2026" },
-    { medal: "3", rank: "第三名", tone: "bronze", name: "台灣作業研究學會大專校院專題競賽", category: "人工智慧與大數據分析組", level: "全國", year: "2026" },
-    { medal: "✓", rank: "佳作", tone: "emerald", name: cieAward.title.replace(/^\d{4}\s*/, ""), category: "工業工程組", level: "全國", year: "2026" },
-  ] as { medal: string; rank: string; tone: keyof typeof medalTones; name: string; category: string; level: string; year: string }[],
+  awards: llamaAwards,
 };
 
 const icccmPaper = {
