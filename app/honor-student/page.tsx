@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Arrow, { arrowFor } from "../arrow-icon";
 import ActiveSectionNav from "../active-section-nav";
 import { honorSharing } from "../resume-highlights";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -154,13 +155,13 @@ export default function HonorStudentPage() {
                   href="#criteria"
                   className="btn btn-primary"
                 >
-                  看五大面向 ↓
+                  看五大面向 <Arrow kind="down" />
                 </Link>
                 <Link
                   href="#proof"
                   className="btn btn-secondary"
                 >
-                  官方證書 →
+                  官方證書 <Arrow />
                 </Link>
               </div>
             </div>
@@ -203,8 +204,8 @@ export default function HonorStudentPage() {
                   {criterion.evidence.map((item) => (
                     <li key={item.text} className="border-l border-amber-200/40 pl-3 text-sm leading-6 text-stone-200">
                       {item.href ? (
-                        <Link href={item.href} className="transition hover:text-amber-100">
-                          {item.text} <span className="font-bold text-amber-200" aria-hidden="true">→</span>
+                        <Link href={item.href} className="group transition hover:text-amber-100">
+                          {item.text} <Arrow kind={arrowFor(item.href)} className="arrow-accent inline-block align-[-0.15em]" />
                         </Link>
                       ) : (
                         item.text

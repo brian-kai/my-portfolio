@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Arrow from "./arrow-icon";
 import { useState } from "react";
 
 type Work = {
@@ -233,9 +234,7 @@ export default function SkillWorkMatrix() {
                           }`}
                         >
                           <span>{work.title}</span>
-                          <span className="shrink-0 font-bold text-emerald-300" aria-hidden="true">
-                            {external ? "↗" : "→"}
-                          </span>
+                          <Arrow kind={external ? "external" : "right"} className="arrow-accent self-center" />
                         </Link>
                       </li>
                     );

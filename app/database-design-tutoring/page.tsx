@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Arrow from "../arrow-icon";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
@@ -238,8 +239,8 @@ export default function DatabaseDesignTutoringPage() {
                 同樣以 100 分修畢後擔任助教，指導學生以 R 進行資料前處理、探索性分析與模型建構。
               </p>
             </div>
-            <Link href="/#experience" className="shrink-0 text-sm font-bold text-emerald-300 hover:text-emerald-200">
-              看所有經歷 →
+            <Link href="/#experience" className="link-arrow shrink-0">
+              看所有經歷 <Arrow />
             </Link>
           </aside>
         </section>
