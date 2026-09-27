@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Arrow from "./arrow-icon";
 
 type ContactLinksProps = {
   email: string;
@@ -61,9 +62,7 @@ function Row({ icon, label, value, href, primary, download }: {
         <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</span>
         <span className="block text-[15px] leading-6 [overflow-wrap:anywhere] font-semibold text-white">{value}</span>
       </span>
-      <span className="shrink-0 font-bold text-emerald-300 transition group-hover:translate-x-0.5" aria-hidden="true">
-        {download ? "↓" : external ? "↗" : "→"}
-      </span>
+      <Arrow kind={download ? "down" : external ? "external" : "right"} className="arrow-accent" />
     </a>
   );
 }

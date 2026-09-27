@@ -115,6 +115,26 @@ section[id] {
     box-shadow: inset 0 0 0 1px rgb(var(--accent) / 0.4);
   }
 
+  /* Text links with an arrow: one colour, weight and hover motion everywhere. */
+  .link-arrow {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: rgb(var(--accent));
+    transition: color 150ms ease;
+  }
+  a.link-arrow:hover, .group:hover .link-arrow { color: rgb(var(--accent) / 0.8); }
+  a.link-arrow:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 4px; }
+  .arrow-accent { color: rgb(var(--accent)); }
+
+  .arrow-icon { width: 1.05em; height: 1.05em; flex: none; transition: transform 150ms ease; }
+  :is(a, button, .group):hover .arrow-icon[data-kind="right"] { transform: translateX(3px); }
+  :is(a, button, .group):hover .arrow-icon[data-kind="external"] { transform: translate(2px, -2px); }
+  :is(a, button, .group):hover .arrow-icon[data-kind="down"] { transform: translateY(2px); }
+
   /* Pseudo-buttons inside clickable cards follow the card's hover. */
   .group:hover .btn-in-card { border-color: rgb(var(--accent) / 0.6); background: rgb(255 255 255 / 0.1); color: #fff; transform: translateY(-2px); }
 }

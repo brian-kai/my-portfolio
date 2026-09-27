@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Arrow from "../arrow-icon";
 import { projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -265,13 +266,13 @@ export default function LlamaMarketingSystemPage() {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              研究海報 ↗
+              研究海報 <Arrow kind="external" />
             </a>
             <Link
               href="/conference"
               className="btn btn-secondary"
             >
-              研討會發表與獲獎證明 →
+              研討會發表與獲獎證明 <Arrow />
             </Link>
           </div>
         </section>
@@ -463,9 +464,9 @@ export default function LlamaMarketingSystemPage() {
           </p>
           <Link
             href="/conference"
-            className="mt-4 inline-block text-sm font-bold text-emerald-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+            className="link-arrow mt-4"
           >
-            查看研討會發表與獲獎證明 →
+            查看研討會發表與獲獎證明 <Arrow />
           </Link>
         </section>
       </div>

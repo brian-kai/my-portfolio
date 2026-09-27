@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Arrow, { arrowFor } from "./arrow-icon";
 import { courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
 import { llamaAwards, medalTones } from "./llama-awards";
 import { contactEmail, githubUrl, linkedinUrl, resumeHref } from "./site-config";
@@ -455,7 +456,7 @@ export default function Home() {
                 href="#contact"
                 className="btn btn-ghost btn-lg"
               >
-                Contact →
+                Contact <Arrow />
               </a>
             </div>
           </div>
@@ -485,8 +486,8 @@ export default function Home() {
                       {proof.value}
                     </span>
                     <span className="mt-2 text-xs leading-5 text-slate-300 sm:text-sm sm:leading-6">{proof.detail}</span>
-                    <span className="mt-auto pt-3 text-xs font-bold text-emerald-300 transition group-hover:text-emerald-200 sm:text-sm">
-                      {proof.action} →
+                    <span className="link-arrow mt-auto pt-3">
+                      {proof.action} <Arrow kind={arrowFor(proof.href)} />
                     </span>
                   </Link>
                 </li>
@@ -561,9 +562,9 @@ export default function Home() {
                   </ul>
                   <Link
                     href={card.link.href}
-                    className="mt-auto pt-5 text-sm font-bold text-emerald-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+                    className="link-arrow mt-auto pt-5"
                   >
-                    {card.link.label} →
+                    {card.link.label} <Arrow kind={arrowFor(card.link.href)} />
                   </Link>
                 </article>
               ))}
@@ -619,15 +620,15 @@ export default function Home() {
             <ProjectTags tags={llamaShowcase.tags} />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
               <Link href={llamaShowcase.primary.href} className={projectButtonClass}>
-                {llamaShowcase.primary.label} →
+                {llamaShowcase.primary.label} <Arrow />
               </Link>
               <a
                 href={llamaShowcase.secondary.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-center text-sm font-semibold text-slate-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+                className="link-arrow self-center sm:self-auto"
               >
-                {llamaShowcase.secondary.label} ↗
+                {llamaShowcase.secondary.label} <Arrow kind="external" />
               </a>
             </div>
           </div>
@@ -654,7 +655,7 @@ export default function Home() {
             <ProjectTags tags={automationShowcase.tags} />
             <div className="mt-7">
               <Link href={automationShowcase.primary.href} className={projectButtonClass}>
-                {automationShowcase.primary.label} →
+                {automationShowcase.primary.label} <Arrow />
               </Link>
             </div>
           </div>
@@ -688,11 +689,13 @@ export default function Home() {
                   <h3 className="mt-3 text-lg font-semibold leading-snug text-white">{project.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{project.summary}</p>
                   <p className="mt-4 font-mono text-xs font-semibold text-emerald-200/90">{project.highlight}</p>
-                  <span className="mt-auto pt-5 text-sm font-bold text-emerald-300">
-                    {project.link
-                      ? `${project.link.label} ${isExternalHref(project.link.href) ? "↗" : "→"}`
-                      : "Ongoing"}
-                  </span>
+                  {project.link ? (
+                    <span className="link-arrow mt-auto pt-5">
+                      {project.link.label} <Arrow kind={arrowFor(project.link.href)} />
+                    </span>
+                  ) : (
+                    <span className="mt-auto pt-5 text-sm font-bold text-slate-400">Ongoing</span>
+                  )}
                 </>
               );
               const cardClass =
@@ -756,7 +759,7 @@ export default function Home() {
             </dl>
             <ResearchTags tags={awardResearch.tags} />
             <Link href={awardResearch.href} className={`mt-7 ${projectButtonClass}`}>
-              View Details →
+              View Details <Arrow />
             </Link>
           </div>
 
@@ -805,7 +808,7 @@ export default function Home() {
             <p className="mt-2 text-sm leading-7 text-slate-400">{icccmPaper.titleZh}</p>
             <ResearchTags tags={icccmPaper.tags} />
             <Link href={icccmPaper.href} className={`mt-7 ${projectButtonClass}`}>
-              View Details →
+              View Details <Arrow />
             </Link>
           </div>
 
@@ -860,7 +863,7 @@ export default function Home() {
                 <p className="mt-3 text-lg font-bold leading-snug text-white">{item.title}</p>
                 <p className="mt-1.5 text-[13px] leading-5 text-slate-400">{item.detail}</p>
                 {item.href ? (
-                  <span className="mt-auto pt-4 text-sm font-bold text-emerald-300 transition group-hover:text-emerald-200">View →</span>
+                  <span className="link-arrow mt-auto pt-4">View <Arrow /></span>
                 ) : null}
               </>
             );
@@ -916,9 +919,9 @@ export default function Home() {
                   {experience.href ? (
                     <Link
                       href={experience.href}
-                      className="mt-3 inline-block text-sm font-bold text-emerald-300 underline-offset-4 transition hover:text-emerald-200 hover:underline"
+                      className="link-arrow mt-3"
                     >
-                      {experience.action} →
+                      {experience.action} <Arrow kind={arrowFor(experience.href)} />
                     </Link>
                   ) : null}
                 </div>
