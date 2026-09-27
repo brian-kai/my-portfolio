@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cieAward, courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
-import { resumeHref } from "./site-config";
+import { contactEmail, githubUrl, linkedinUrl, resumeHref } from "./site-config";
 
 import ActiveSectionNav from "./active-section-nav";
 import BackToTop from "./back-to-top";
+import ContactLinks from "./contact-links";
 import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
 import CertificateGrid from "./certificate-grid";
@@ -947,42 +948,23 @@ export default function Home() {
       </section>
       </div>
 
-      <section id="contact" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <h2 data-reveal className="mb-6 text-3xl font-bold">Let&apos;s Connect</h2>
-
-        <div data-reveal className="border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:p-8">
-          <p className="text-lg leading-8 text-slate-200">
-            我目前正在尋找 AI、資料分析、NLP、LLM
-            應用相關的實習、專題合作與研究機會。如果你對我的作品、研究或技術背景有興趣，歡迎透過
-            Email 或 GitHub 與我聯繫。
-          </p>
-
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <a
-              href="mailto:kevin80609@gmail.com"
-              className="pressable motion-reduce-transform w-full rounded-lg border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-center font-bold text-slate-950 shadow-[0_16px_36px_rgba(16,185,129,0.18)] transition hover:-translate-y-0.5 hover:bg-emerald-200 sm:w-auto"
-            >
-              Email Me
-            </a>
-
-            <a
-              href="https://github.com/brian-kai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pressable motion-reduce-transform w-full rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white sm:w-auto"
-            >
-              GitHub
-            </a>
-
-            <a
-              href={resumeHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pressable motion-reduce-transform w-full rounded-lg border border-white/15 bg-white/[0.06] px-6 py-3 text-center font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.1] hover:text-white sm:w-auto"
-            >
-              Download Resume
-            </a>
+      <section id="contact" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
+        <div data-reveal className="grid items-center gap-10 border border-white/10 bg-[linear-gradient(135deg,rgba(16,185,129,0.1),rgba(255,255,255,0.035)_45%,rgba(245,158,11,0.05))] grid-cols-[minmax(0,1fr)] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur md:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-14">
+          <div className="min-w-0">
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              Contact
+            </p>
+            <h2 className="text-3xl font-bold md:text-5xl">Let&apos;s Connect</h2>
+            <p className="mt-5 max-w-xl text-base leading-8 text-slate-300 md:text-lg">
+              我正在尋找 AI Engineer / AI Product Associate 相關職位，也歡迎專題合作與研究交流。如果你對我的作品、研究或技術背景有興趣，歡迎與我聯繫。
+            </p>
+            <p className="mt-6 inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] px-3.5 py-1.5 text-sm font-bold text-emerald-100">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
+              Open to AI Engineer / AI Product Associate
+            </p>
           </div>
+
+          <ContactLinks email={contactEmail} github={githubUrl} linkedin={linkedinUrl || undefined} resumeHref={resumeHref} />
         </div>
       </section>
 

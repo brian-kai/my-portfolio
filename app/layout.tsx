@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { siteDescription, siteName, siteTitle, siteUrl } from "./site-config";
+import { contactEmail, githubUrl, linkedinUrl, siteDescription, siteName, siteTitle, siteUrl } from "./site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,8 +43,8 @@ const personJsonLd = {
   url: siteUrl,
   jobTitle: "AI Engineer / AI Product Associate",
   description: siteDescription,
-  email: "mailto:kevin80609@gmail.com",
-  sameAs: ["https://github.com/brian-kai"],
+  email: `mailto:${contactEmail}`,
+  sameAs: [githubUrl, linkedinUrl].filter(Boolean),
   knowsAbout: [
     "Natural Language Processing",
     "Large Language Models",
