@@ -11,7 +11,7 @@ import ContactLinks from "./contact-links";
 import ScrollProgress from "./scroll-progress";
 import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
-import CertificateGrid from "./certificate-grid";
+import CertificateGrid, { type Certificate } from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import LightboxImage from "./lightbox-image";
 import SkillWorkMatrix from "./skill-work-matrix";
@@ -32,32 +32,44 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const certificates = [
+const certificates: Certificate[] = [
   {
     title: "AIA Talent Certification in AI Literacy",
     issuer: "Taiwan AI Academy",
     image: aiatclCertificate,
     href: "/file/AIATCL.pdf",
-    tags: ["Score 95", "AI Literacy", "Valid 2026.04–2028.04"],
+    issued: "Apr 18, 2026",
+    expires: "Apr 18, 2028",
+    credentialId: "CL2504-D017",
+    metric: { value: "95", label: "AIATCL exam score" },
+    tags: ["AI Literacy", "AIATCL", "Valid 2 years"],
+  },
+  {
+    title: "TOEIC Listening & Reading",
+    issuer: "ETS TOEIC",
+    image: toeicCertificate,
+    href: "/file/toeic-score-report.pdf",
+    issued: "Apr 26, 2026",
+    metric: { value: "845", label: "L465 · R380" },
+    tags: ["English", "Listening", "Reading"],
   },
   {
     title: "Microsoft AI & ML Engineering",
     issuer: "Coursera / Microsoft",
     image: aiCertificate,
-    tags: ["AI", "Machine Learning", "Engineering"],
+    verifyHref: "https://coursera.org/verify/professional-cert/4U9PB4UL4IW4",
+    issued: "Apr 2, 2026",
+    metric: { value: "5", label: "courses" },
+    tags: ["Machine Learning", "Azure", "AI Agents"],
   },
   {
     title: "Google Data Analytics",
     issuer: "Coursera / Google",
     image: googleCertificate,
+    verifyHref: "https://coursera.org/verify/professional-cert/R3Y99VZP1AB4",
+    issued: "Mar 5, 2026",
+    metric: { value: "9", label: "courses" },
     tags: ["Data Analytics", "SQL", "Python"],
-  },
-  {
-    title: "TOEIC Listening & Reading Score Report",
-    issuer: "ETS TOEIC",
-    image: toeicCertificate,
-    href: "/file/toeic-score-report.pdf",
-    tags: ["Score 845", "TOEIC", "English"],
   },
 ];
 
@@ -933,13 +945,16 @@ export default function Home() {
 
       <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
       <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <div data-reveal className="mb-8">
+        <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
               Certifications
             </p>
-            <h2 className="text-3xl font-bold">Certificates</h2>
+            <h2 className="text-3xl font-bold md:text-4xl">Certificates</h2>
           </div>
+          <p className="max-w-md text-sm leading-6 text-slate-400">
+            AI、機器學習、資料分析與英語能力認證。點擊卡片可檢視完整證書。
+          </p>
         </div>
 
         <CertificateGrid certificates={certificates} />
