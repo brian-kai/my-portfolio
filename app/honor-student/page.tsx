@@ -10,6 +10,7 @@ import LightboxImage from "../lightbox-image";
 import honorStudentCertificate from "../image/honor-student-certificate.png";
 import honorStudentPortrait from "../image/honor-student-portrait.jpg";
 import honorStudentPortraitAlt from "../image/honor-student-portrait-alt.jpg";
+import honorStudentSharingSession from "../image/honor-student-sharing-session.jpg";
 
 const photos = [
   {
@@ -90,6 +91,21 @@ export const metadata: Metadata = {
 };
 
 const cardClass = "border border-amber-100/15 bg-amber-100/[0.04] backdrop-blur";
+
+/** Keeps the arrow on the same line as the last two characters, so it never wraps alone. */
+function GluedArrow({ text, href }: { text: string; href: string }) {
+  const head = text.slice(0, -2);
+  const tail = text.slice(-2);
+  return (
+    <>
+      {head}
+      <span className="whitespace-nowrap">
+        {tail}
+        <Arrow kind={arrowFor(href)} className="arrow-accent ml-1 inline-block align-[-0.15em]" />
+      </span>
+    </>
+  );
+}
 const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-amber-200";
 
 export default function HonorStudentPage() {
@@ -190,9 +206,13 @@ export default function HonorStudentPage() {
           <p className="mt-3 max-w-3xl text-sm leading-7 text-stone-400">
             評選面向依證書所列；各面向下方為申請書中對應的經歷，點選可查看詳細內容。
           </p>
-          <ol className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {/* Six-column grid on xl: 01–03 take a third each, 04–05 split the second row, so no slot is left empty. */}
+          <ol className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
             {criteria.map((criterion) => (
-              <li key={criterion.key} className={`${cardClass} flex flex-col p-5 md:p-6`}>
+              <li
+                key={criterion.key}
+                className={`${cardClass} flex flex-col p-5 md:p-6 md:last:col-span-2 xl:col-span-2 xl:[&:nth-child(n+4)]:col-span-3`}
+              >
                 <div className="flex items-baseline gap-3">
                   <span className="font-mono text-2xl font-black text-amber-300/80">{criterion.key}</span>
                   <div>
@@ -202,10 +222,10 @@ export default function HonorStudentPage() {
                 </div>
                 <ul className="mt-5 grid gap-2.5">
                   {criterion.evidence.map((item) => (
-                    <li key={item.text} className="border-l border-amber-200/40 pl-3 text-sm leading-6 text-stone-200">
+                    <li key={item.text} className="border-l border-amber-200/40 pl-3 text-sm leading-6 text-stone-200 break-keep [text-wrap:pretty]">
                       {item.href ? (
                         <Link href={item.href} className="group transition hover:text-amber-100">
-                          {item.text} <Arrow kind={arrowFor(item.href)} className="arrow-accent inline-block align-[-0.15em]" />
+                          <GluedArrow text={item.text} href={item.href} />
                         </Link>
                       ) : (
                         item.text
@@ -221,15 +241,27 @@ export default function HonorStudentPage() {
         <section id="sharing-session" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
           <p className={eyebrowClass}>After the honor</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">入選之後：把經驗分享給新生</h2>
-          <article className="mt-8 grid gap-8 border border-amber-300/30 bg-[linear-gradient(135deg,rgba(252,211,77,0.1),rgba(255,255,255,0.02)_55%)] p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-12">
-            <div className="min-w-0">
+          <article className="mt-8 grid overflow-hidden border border-amber-300/30 bg-[linear-gradient(135deg,rgba(252,211,77,0.1),rgba(255,255,255,0.02)_55%)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
+            <figure className="relative border-b border-amber-300/20 lg:border-b-0 lg:border-r">
+              <LightboxImage
+                src={honorStudentSharingSession}
+                alt="黃凱浚在榮譽學生經驗分享會上，向學弟妹介紹榮譽學生五大領域"
+                className="aspect-[4/3] h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                sizes="(min-width: 1280px) 640px, (min-width: 1024px) 52vw, calc(100vw - 48px)"
+              />
+              <figcaption className="pointer-events-none px-5 py-3 text-sm leading-6 text-stone-300 sm:absolute sm:inset-x-0 sm:bottom-0 sm:bg-gradient-to-t sm:from-[#080705]/95 sm:via-[#080705]/60 sm:to-transparent sm:pb-4 sm:pt-14 sm:text-stone-200">
+                學長姐經驗分享現場：以「榮譽學生五大領域」為題，分享如何選擇適合自己的方向。
+              </figcaption>
+            </figure>
+
+            <div className="flex min-w-0 flex-col p-6 md:p-8">
               <p className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-amber-200">
                 <span className="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
                 {honorSharing.badge}
               </p>
-              <h3 className="mt-3 text-2xl font-bold text-white md:text-3xl">{honorSharing.title}</h3>
+              <h3 className="mt-3 text-2xl font-bold text-white [text-wrap:balance] md:text-3xl">{honorSharing.title}</h3>
               <p className="mt-2 font-mono text-sm text-stone-400">{honorSharing.meta}</p>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-stone-200">{honorSharing.description}</p>
+              <p className="mt-5 text-base leading-8 text-stone-200 [text-wrap:pretty]">{honorSharing.description}</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {sharingTopics.map((topic) => (
                   <span key={topic} className="border border-amber-200/30 bg-amber-200/[0.08] px-3 py-1.5 text-sm font-semibold text-amber-100">
@@ -237,17 +269,17 @@ export default function HonorStudentPage() {
                   </span>
                 ))}
               </div>
+              <dl className="mt-8 grid grid-cols-2 gap-px border border-amber-100/15 bg-amber-100/15 lg:mt-auto">
+                <div className="flex flex-col bg-[#0d0b08] px-5 py-5 sm:px-6">
+                  <dt className="order-last mt-1 text-sm text-stone-400">位大一新生</dt>
+                  <dd className="whitespace-nowrap text-3xl font-black text-amber-300 sm:text-4xl">≈100</dd>
+                </div>
+                <div className="flex flex-col bg-[#0d0b08] px-5 py-5 sm:px-6">
+                  <dt className="order-last mt-1 text-sm text-stone-400">分享主題</dt>
+                  <dd className="text-3xl font-black text-white sm:text-4xl">{sharingTopics.length}</dd>
+                </div>
+              </dl>
             </div>
-            <dl className="grid grid-cols-2 gap-px border border-amber-100/15 bg-amber-100/15 lg:grid-cols-1">
-              <div className="flex flex-col bg-[#0d0b08] px-6 py-5">
-                <dt className="order-last mt-1 text-sm text-stone-400">位大一新生</dt>
-                <dd className="text-4xl font-black text-amber-300">≈100</dd>
-              </div>
-              <div className="flex flex-col bg-[#0d0b08] px-6 py-5">
-                <dt className="order-last mt-1 text-sm text-stone-400">分享主題</dt>
-                <dd className="text-4xl font-black text-white">{sharingTopics.length}</dd>
-              </div>
-            </dl>
           </article>
         </section>
 
