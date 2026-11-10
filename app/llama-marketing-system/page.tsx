@@ -4,16 +4,10 @@ import SubpageFooter from "../subpage-footer";
 import Arrow from "../arrow-icon";
 import { projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
-import ImageLightboxGallery from "../image-lightbox-gallery";
 import LightboxImage from "../lightbox-image";
 import { llamaAwards, medalTones } from "../llama-awards";
 
-import commentHeatmap from "./images/comment-heatmap.png";
-import descriptionHeatmap from "./images/description-heatmap.png";
-import hdbscanCluster from "./images/hdbscan-cluster.png";
-import kmeansCluster from "./images/kmeans-cluster.png";
 import systemDiagram from "./images/llama-system-diagram.svg";
-import trainingLoss from "./images/training-loss.png";
 
 // Sources: 2025-12 graduation thesis 「基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式」;
 // the baseline comparison is the CIIE 2025 paper version, as printed on the research poster (public/file).
@@ -129,39 +123,6 @@ const experiments = {
   },
 };
 
-const gallery = [
-  {
-    title: "K-Means 消費者偏好分群",
-    description: "將產品描述、情感與語意特徵以 PCA 降維後呈現，不同顏色代表不同的消費者偏好群。",
-    image: kmeansCluster,
-    alt: "K-Means 消費者偏好分群圖",
-  },
-  {
-    title: "HDBSCAN 語意偏好分群",
-    description: "SBERT 語意向量經 UMAP 降維、HDBSCAN 分群後的結果；群集邊界清楚，對應實驗二的輪廓係數 0.5038。",
-    image: hdbscanCluster,
-    alt: "HDBSCAN 語意偏好分群圖",
-  },
-  {
-    title: "LLaMA 3 訓練趨勢",
-    description: "訓練初期 loss 快速下降，之後在約 1.0 附近趨於平穩，顯示 QLoRA 微調過程穩定收斂。",
-    image: trainingLoss,
-    alt: "LLaMA 3 個人化行銷文案生成模型訓練 loss 圖",
-  },
-  {
-    title: "產品描述主題分布熱圖",
-    description: "LDA 主題模型下，每筆產品描述屬於各主題的機率；顏色越深代表越集中於該主題。",
-    image: descriptionHeatmap,
-    alt: "產品描述主題分布熱圖",
-  },
-  {
-    title: "評論主題分布熱圖",
-    description: "消費者評論在各主題上的分布，可看出評論集中在少數主題（如 time、good）。",
-    image: commentHeatmap,
-    alt: "評論主題分布熱圖",
-  },
-];
-
 const techStack = [
   "LLaMA 3 8B",
   "QLoRA",
@@ -183,7 +144,6 @@ const llamaNavItems = [
   { label: "Problem", href: "#problem" },
   { label: "Approach", href: "#approach" },
   { label: "Results", href: "#results" },
-  { label: "Evidence", href: "#evidence" },
   { label: "Role", href: "#role" },
   { label: "Awards", href: "#awards" },
 ];
@@ -438,22 +398,8 @@ export default function LlamaMarketingSystemPage() {
           </div>
         </section>
 
-        <section id="evidence" className={sectionClass}>
-          <p className={eyebrowClass}>04 · Evidence</p>
-          <h2 className={h2Class}>視覺證據</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">點圖可放大檢視。每張圖下方說明它呈現的內容。</p>
-          <ImageLightboxGallery
-            items={gallery}
-            gridClassName="mt-6 grid gap-6 md:grid-cols-6 md:[&>*]:col-span-2 md:[&>*:nth-child(-n+2)]:col-span-3"
-            imageClassName="aspect-[4/3] w-full bg-slate-950/50 object-contain p-2 brightness-90 transition duration-300 group-hover:scale-[1.02] group-hover:brightness-100 md:p-3"
-            imageSizes="(min-width: 768px) 50vw, 100vw"
-            showDescription
-            showTitle
-          />
-        </section>
-
         <section id="role" className={sectionClass}>
-          <p className={eyebrowClass}>05 · My role</p>
+          <p className={eyebrowClass}>04 · My role</p>
           <h2 className={h2Class}>{projectLeadership.title}</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             <div className="border-l-2 border-emerald-300/40 pl-4">
@@ -476,7 +422,7 @@ export default function LlamaMarketingSystemPage() {
         </section>
 
         <section id="awards" className={sectionClass}>
-          <p className={eyebrowClass}>06 · Awards</p>
+          <p className={eyebrowClass}>05 · Awards</p>
           <h2 className={h2Class}>同一份研究，獲得 5 項肯定</h2>
           <ol className="mt-8 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
             {llamaAwards.map((award) => {
