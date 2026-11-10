@@ -46,12 +46,10 @@ function Tags({ tags }: { tags: string[] }) {
 function Sheet({
   certificate,
   sizes,
-  priority,
   className = "",
 }: {
   certificate: Certificate;
   sizes: string;
-  priority?: boolean;
   className?: string;
 }) {
   return (
@@ -64,7 +62,6 @@ function Sheet({
           src={certificate.image}
           alt={`${certificate.title} certificate`}
           sizes={sizes}
-          priority={priority}
           className="h-auto max-h-full w-auto max-w-full rounded-sm bg-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] ring-1 ring-white/20 transition duration-300 motion-safe:group-hover:scale-[1.02]"
         />
       </div>
@@ -106,124 +103,57 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
     originalHref: certificate.href,
   }));
 
-  const [featured, ...rest] = certificates;
-
-  if (!featured) {
+  if (certificates.length === 0) {
     return null;
   }
 
   return (
     <>
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-        <article data-reveal className={`${cardClass} flex flex-col sm:flex-row`}>
-          <ViewButton title={featured.title} onClick={() => setSelectedIndex(0)} />
+      {/* Every certificate gets the same card: a row on phones, a column from sm up. */}
+      <ul data-reveal-group className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {certificates.map((certificate, index) => (
+          <li key={certificate.title} className={`${cardClass} flex sm:flex-col`}>
+            <ViewButton title={certificate.title} onClick={() => setSelectedIndex(index)} />
 
-          <Sheet
-            certificate={featured}
-            priority
-            sizes="(min-width: 640px) 18rem, 90vw"
-            className="h-80 border-b border-white/10 sm:h-auto sm:min-h-[26rem] sm:w-[46%] sm:shrink-0 sm:border-b-0 sm:border-r"
-          />
+            <Sheet
+              certificate={certificate}
+              sizes="(min-width: 1280px) 20vw, (min-width: 640px) 44vw, 36vw"
+              className="min-h-44 w-[36%] shrink-0 border-r border-white/10 sm:h-56 sm:w-full sm:border-b sm:border-r-0"
+            />
 
-          <div className="flex flex-1 flex-col p-5 md:p-6">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-emerald-300">
-                {featured.issuer}
-              </p>
-              <span className="shrink-0 border border-amber-300/40 bg-amber-300/[0.1] px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-100">
-                Featured
-              </span>
-            </div>
-            <h3 className="mt-2 text-xl font-bold leading-8 text-white md:text-2xl md:leading-9">
-              {featured.title}
-            </h3>
+            <div className="flex min-w-0 flex-1 flex-col p-4 md:p-5">
+              <p className="text-xs font-bold uppercase tracking-wide text-emerald-300">{certificate.issuer}</p>
+              <h3 className="mt-1 text-base font-semibold leading-6 text-white md:text-lg">{certificate.title}</h3>
 
-            <div className="mt-5 flex items-end gap-3">
-              <span className="font-mono text-5xl font-bold leading-none text-emerald-300 md:text-6xl">
-                {featured.metric.value}
-              </span>
-              <span className="pb-1 text-sm leading-5 text-slate-400">{featured.metric.label}</span>
-            </div>
-
-            <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-4 border-t border-white/10 pt-5 text-sm">
-              <div>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">Issued</dt>
-                <dd className="mt-1 font-semibold text-slate-200">{featured.issued}</dd>
+              <div className="mt-3 flex items-end gap-2">
+                <span className="text-3xl font-black leading-none text-emerald-300">{certificate.metric.value}</span>
+                <span className="pb-0.5 text-xs leading-4 text-slate-400">{certificate.metric.label}</span>
               </div>
-              {featured.expires ? (
-                <div>
-                  <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">Valid until</dt>
-                  <dd className="mt-1 font-semibold text-slate-200">{featured.expires}</dd>
-                </div>
-              ) : null}
-              {featured.credentialId ? (
-                <div className="col-span-2">
-                  <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">Credential ID</dt>
-                  <dd className="mt-1 font-mono font-semibold text-slate-200">{featured.credentialId}</dd>
-                </div>
-              ) : null}
-            </dl>
 
-            <div className="mt-6">
-              <Tags tags={featured.tags} />
-            </div>
+              <p className="mt-3 font-mono text-xs leading-5 text-slate-400">
+                {certificate.issued}
+                {certificate.expires ? ` – ${certificate.expires}` : ""}
+                {certificate.credentialId ? (
+                  <span className="block">ID {certificate.credentialId}</span>
+                ) : null}
+              </p>
 
-            <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6">
-              <span className="link-arrow pointer-events-none">
-                View certificate <Arrow />
-              </span>
-              {featured.verifyHref ? (
-                <VerifyLink href={featured.verifyHref} title={featured.title} />
-              ) : null}
-            </div>
-          </div>
-        </article>
+              <div className="mt-3 hidden sm:block">
+                <Tags tags={certificate.tags} />
+              </div>
 
-        <ul data-reveal-group className="grid gap-5 lg:grid-rows-3">
-          {rest.map((certificate, offset) => (
-            <li key={certificate.title} className={`${cardClass} flex`}>
-              <ViewButton title={certificate.title} onClick={() => setSelectedIndex(offset + 1)} />
-
-              <Sheet
-                certificate={certificate}
-                sizes="(min-width: 640px) 11rem, 36vw"
-                className="min-h-36 w-[36%] shrink-0 border-r border-white/10 sm:w-44"
-              />
-
-              <div className="flex min-w-0 flex-1 flex-col p-4 md:p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-wide text-emerald-300">
-                      {certificate.issuer}
-                    </p>
-                    <h3 className="mt-1 text-base font-semibold leading-6 text-white">
-                      {certificate.title}
-                    </h3>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <p className="font-mono text-2xl font-bold leading-none text-emerald-300">
-                      {certificate.metric.value}
-                    </p>
-                    <p className="mt-1 text-[11px] leading-4 text-slate-400">{certificate.metric.label}</p>
-                  </div>
-                </div>
-
-                <p className="mt-2 font-mono text-xs text-slate-500">{certificate.issued}</p>
-
-                <div className="mt-3 hidden sm:block">
-                  <Tags tags={certificate.tags} />
-                </div>
-
+              <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-4">
+                <span className="link-arrow pointer-events-none">
+                  View <Arrow />
+                </span>
                 {certificate.verifyHref ? (
-                  <div className="mt-auto pt-3">
-                    <VerifyLink href={certificate.verifyHref} title={certificate.title} />
-                  </div>
+                  <VerifyLink href={certificate.verifyHref} title={certificate.title} />
                 ) : null}
               </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </div>
+          </li>
+        ))}
+      </ul>
 
       {selectedIndex !== null ? (
         <ProofViewer

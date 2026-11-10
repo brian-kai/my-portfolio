@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SubpageFooter from "../subpage-footer";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
@@ -223,6 +224,8 @@ export default function IcccmPage() {
             variant="emerald"
           />
         </section>
+
+        <SubpageFooter next={["awards", "intentQa"]} />
       </div>
     </main>
   );

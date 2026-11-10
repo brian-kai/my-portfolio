@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SubpageFooter from "../subpage-footer";
 import Arrow from "../arrow-icon";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -244,6 +245,8 @@ export default function DatabaseDesignTutoringPage() {
             </Link>
           </aside>
         </section>
+
+        <SubpageFooter next={["honor", "association"]} />
       </div>
     </main>
   );

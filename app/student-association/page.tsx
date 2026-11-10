@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SubpageFooter from "../subpage-footer";
 import ActiveSectionNav from "../active-section-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import LightboxImage from "../lightbox-image";
@@ -220,6 +221,8 @@ export default function StudentAssociationPage() {
             </div>
           </div>
         </section>
+
+        <SubpageFooter next={["honor", "tutoring"]} />
       </div>
     </main>
   );

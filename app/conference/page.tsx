@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { StaticImageData } from "next/image";
 import Link from "next/link";
+import SubpageFooter from "../subpage-footer";
 import ActiveSectionNav from "../active-section-nav";
 import Arrow from "../arrow-icon";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -256,6 +257,8 @@ export default function ConferencePage() {
             variant="emerald"
           />
         </section>
+
+        <SubpageFooter next={["llama", "icccm"]} />
       </div>
     </main>
   );

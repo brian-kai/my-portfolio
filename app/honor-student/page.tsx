@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SmartLink from "../smart-link";
+import SubpageFooter from "../subpage-footer";
 import Arrow, { arrowFor } from "../arrow-icon";
 import ActiveSectionNav from "../active-section-nav";
 import { honorSharing } from "../resume-highlights";
@@ -224,9 +226,9 @@ export default function HonorStudentPage() {
                   {criterion.evidence.map((item) => (
                     <li key={item.text} className="border-l border-amber-200/40 pl-3 text-sm leading-6 text-stone-200 break-keep [text-wrap:pretty]">
                       {item.href ? (
-                        <Link href={item.href} className="group transition hover:text-amber-100">
+                        <SmartLink href={item.href} className="group transition hover:text-amber-100">
                           <GluedArrow text={item.text} href={item.href} />
-                        </Link>
+                        </SmartLink>
                       ) : (
                         item.text
                       )}
@@ -311,6 +313,8 @@ export default function HonorStudentPage() {
             />
           </div>
         </section>
+
+        <SubpageFooter next={["association", "tutoring"]} />
       </div>
     </main>
   );
