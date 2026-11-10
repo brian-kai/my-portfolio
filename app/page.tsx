@@ -812,7 +812,7 @@ export default function Home() {
         >
           <div className="min-w-0">
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
-              International publication
+              International conference
             </p>
             <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
               {icccmPaper.title}
@@ -828,7 +828,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
               <span className="inline-flex items-center gap-2 text-sm font-bold text-emerald-100">
                 <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
-                Published Paper · ICCCM 2026
+                Accepted for Presentation · ICCCM 2026
               </span>
             </div>
             <dl className="grid gap-3 px-5 py-4 text-sm">

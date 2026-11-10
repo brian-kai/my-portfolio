@@ -44,7 +44,7 @@ const criteria = [
     en: "Cross-domain Learning",
     evidence: [
       { text: "修習「工業感測與聯網實作」「人工智慧應用」，完成 LSTM 用電趨勢預測專題", href: "/file/electricity-usage-trend-analysis-poster.pdf" },
-      { text: "Google Data Analytics 專業證照：SQL、R、Python 資料分析", href: "/#certificates" },
+      { text: "Google Data Analytics 專業證照：SQL、Tableau、Python 資料分析", href: "/#certificates" },
     ],
   },
   {
@@ -52,7 +52,7 @@ const criteria = [
     title: "國際參與",
     en: "International Engagement",
     evidence: [
-      { text: "與指導教授合作之論文獲 ICCCM 2026 國際研討會接受（日本東京）", href: "/icccm" },
+      { text: "與指導教授合作之研究獲 ICCCM 2026 國際研討會接受口頭發表（日本東京）", href: "/icccm" },
     ],
   },
   {
