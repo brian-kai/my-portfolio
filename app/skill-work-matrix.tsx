@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import Arrow from "./arrow-icon";
 import { useState } from "react";
+import Arrow from "./arrow-icon";
+import SmartLink, { isExternalHref } from "./smart-link";
 
 type Work = {
   title: string;
@@ -27,7 +27,7 @@ const categories: SkillCategory[] = [
     groups: [
       {
         label: "Models & fine-tuning",
-        skills: ["LLaMA 3", "QLoRA", "PyTorch", "Gemma 4", "BERT-BiLSTM", "LSTM", "知識蒸餾"],
+        skills: ["LLaMA 3", "QLoRA", "PyTorch", "Gemma 4", "BiLSTM", "LSTM", "知識蒸餾"],
       },
       { label: "Text analysis", skills: ["TextRank", "LDA", "SBERT", "BLEU / METEOR"] },
     ],
@@ -43,9 +43,9 @@ const categories: SkillCategory[] = [
         skills: ["LLaMA 3"],
       },
       {
-        title: "Intent Classification & QA Generation",
-        href: "#projects",
-        skills: ["QLoRA", "Gemma 4", "BERT-BiLSTM", "知識蒸餾"],
+        title: "知識蒸餾 × 意圖辨識問答系統",
+        href: "/intent-qa-system",
+        skills: ["QLoRA", "Gemma 4", "BiLSTM", "知識蒸餾"],
       },
       {
         title: "ICCCM 2026：LSTM 作文評分與評語生成",
@@ -94,7 +94,7 @@ const categories: SkillCategory[] = [
       {
         title: "Google Data Analytics 證照",
         href: "#certificates",
-        skills: ["Python", "Pandas", "SQL", "R"],
+        skills: ["Python", "Pandas", "SQL"],
       },
     ],
   },
@@ -136,20 +136,22 @@ const categories: SkillCategory[] = [
   },
 ];
 
-const isExternal = (href: string) => href.startsWith("http") || href.endsWith(".pdf");
-
 export default function SkillWorkMatrix() {
   // Clicked skill stays selected; hovering with a mouse previews another one.
   const [pinned, setPinned] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const active = hovered ?? pinned;
+  // Below lg the cards stack, so each "Used in" list starts collapsed to keep the section short.
+  const [expanded, setExpanded] = useState<string[]>([]);
+  const toggleWorks = (key: string) =>
+    setExpanded((current) => (current.includes(key) ? current.filter((item) => item !== key) : [...current, key]));
 
   return (
     <div>
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Skills
+            Skills in use
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Skills & Tools</h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
@@ -171,6 +173,9 @@ export default function SkillWorkMatrix() {
         {categories.map((category) => {
           const categorySkills = category.groups.flatMap((group) => group.skills);
           const activeHere = active !== null && categorySkills.includes(active);
+          // Picking a skill opens the list so the matching works are visible.
+          const worksOpen = expanded.includes(category.key) || activeHere;
+          const worksId = `skill-works-${category.key.slice(0, 2)}`;
 
           return (
             <article
@@ -216,26 +221,36 @@ export default function SkillWorkMatrix() {
               ))}
 
               <div className="mt-6 border-t border-white/10 pt-4">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                <p className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:block">
                   Used in
                 </p>
-                <ul className="mt-2">
+                <button
+                  type="button"
+                  aria-expanded={worksOpen}
+                  aria-controls={worksId}
+                  onClick={() => toggleWorks(category.key)}
+                  className="flex w-full items-center justify-between gap-3 py-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 lg:hidden"
+                >
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">
+                    Used in · {category.works.length} 件作品
+                  </span>
+                  <Arrow kind="down" className={`arrow-accent transition-transform ${worksOpen ? "rotate-180" : ""}`} />
+                </button>
+                <ul id={worksId} className={`mt-2 lg:block ${worksOpen ? "block" : "hidden"}`}>
                   {category.works.map((work) => {
                     const dimmed = activeHere && !work.skills.includes(active);
-                    const external = isExternal(work.href);
+                    const external = isExternalHref(work.href);
                     return (
                       <li key={work.title} className="border-b border-dashed border-white/[0.07] last:border-b-0">
-                        <Link
+                        <SmartLink
                           href={work.href}
-                          target={external ? "_blank" : undefined}
-                          rel={external ? "noopener noreferrer" : undefined}
                           className={`flex items-baseline justify-between gap-3 py-2.5 text-sm leading-6 transition hover:text-emerald-200 ${
                             dimmed ? "text-slate-500 opacity-50" : "text-slate-200"
                           }`}
                         >
                           <span>{work.title}</span>
                           <Arrow kind={external ? "external" : "right"} className="arrow-accent self-center" />
-                        </Link>
+                        </SmartLink>
                       </li>
                     );
                   })}

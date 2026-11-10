@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { StaticImageData } from "next/image";
 import Link from "next/link";
+import SubpageFooter from "../subpage-footer";
 import ActiveSectionNav from "../active-section-nav";
 import Arrow from "../arrow-icon";
 import ImageLightboxGallery from "../image-lightbox-gallery";
@@ -54,7 +55,7 @@ const evidence: Record<string, { id: string; note?: string; proofs: Proof[] }> =
       {
         title: "第三名獎狀",
         image: orCompetitionAward,
-        alt: "2026 臺灣作業研究學會大專校院專題競賽第三名獎狀",
+        alt: "2026 台灣作業研究學會大專校院專題競賽第三名獎狀",
         originalHref: "/file/or-competition-award-2026.pdf",
       },
       { title: "頒獎典禮", image: orCompetitionAwardCeremony, alt: "2026 作業研究專題競賽第三名頒獎照片" },
@@ -256,6 +257,8 @@ export default function ConferencePage() {
             variant="emerald"
           />
         </section>
+
+        <SubpageFooter next={["llama", "icccm"]} />
       </div>
     </main>
   );

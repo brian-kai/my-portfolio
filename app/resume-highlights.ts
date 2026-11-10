@@ -1,11 +1,28 @@
-// Source: Huang_Kai-Chun_ Information Technology Engineer_Resume.pptx, slides 1–2.
+// Source: Huang_Kai-Chun_Resume.pdf (public/file), pages 1–2.
 // Figures are the outcomes recorded in the resume, not live service counters.
+export const education = [
+  {
+    degree: "工業工程與系統管理學系 碩士班",
+    school: "逢甲大學",
+    period: "預計 2027.07 畢業",
+    detail: "4+1 學碩一貫學程",
+    note: "Relevant coursework: Intro to AI · Manufacturing Data Science · Decision Support Systems",
+  },
+  {
+    degree: "工業工程與系統管理學系 學士",
+    school: "逢甲大學",
+    period: "2022.09–2026.06",
+    detail: "GPA 3.9 / 4.3",
+    note: "115 級校級榮譽學生",
+  },
+];
+
 export const workflowInternship = {
   title: "AI 工作流程研究實習生",
   meta: "ZOUSTEC TECHNOLOGIES CO., LTD.｜2026.07–2026.09",
   badge: "AI Workflow Research Intern",
   description:
-    "整合 51 個 n8n 工作流程，串接 AI 生成、AI 審核與 4 個發布平台；每篇內容處理時間由 30 分鐘縮短為 2 分鐘，執行成功率達 97.1%，累計發布 128 篇內容。結合 GA4 漏斗分析、統計檢定與人工核准，持續改善行銷自動化流程。",
+    "建置並部署 51 個 n8n 工作流程，串接 AI 生成、LLM 品質檢查與 4 個發布平台；每篇內容處理時間由 30 分鐘縮短為 2 分鐘，執行成功率達 97.1%，累計發布 128 篇內容。結合 GA4 漏斗分析、統計檢定與人工核准，持續改善行銷自動化流程。",
   href: "/marketing-automation",
   action: "View Case Study",
 };
@@ -33,23 +50,8 @@ export const cieAward = {
 };
 
 export const automationMetrics = [
-  { value: "51", label: "整合的 n8n 工作流程" },
-  { value: "30 → 2 min", label: "每篇內容處理時間" },
+  { value: "30→2", label: "分鐘 / 篇內容" },
   { value: "97.1%", label: "工作流程執行成功率" },
-  { value: "128", label: "已發布內容篇數" },
-];
-
-export const automationContributions = [
-  {
-    title: "多平台內容自動化",
-    description: "設計並整合 51 個 n8n 工作流程，將 AI 內容生成、AI 審核與 4 個發布平台串接成完整系統，縮短內容製作與發布所需時間。",
-  },
-  {
-    title: "以數據回饋改善流程",
-    description: "每週分析 GA4 漏斗數據，以 Fisher 精確檢定及 Benjamini–Hochberg 多重比較校正驗證分析結果，將經人工核准的改善方案帶入下一輪內容製作。",
-  },
-  {
-    title: "HTML 輪播圖模板",
-    description: "以 HTML 模板取代影像模型產出的輪播圖，解決文字與版面錯誤；HReasy Threads 帳號在 30 天內累積 22,761 次瀏覽。",
-  },
+  { value: "51", label: "n8n 工作流程" },
+  { value: "128", label: "篇已發布內容" },
 ];

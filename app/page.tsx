@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Arrow, { arrowFor } from "./arrow-icon";
-import { courseHonors, honorSharing, workflowInternship } from "./resume-highlights";
+import { courseHonors, education, honorSharing, workflowInternship } from "./resume-highlights";
 import { llamaAwards, medalTones } from "./llama-awards";
 import { contactEmail, githubUrl, linkedinUrl, resumeHref } from "./site-config";
 
@@ -15,6 +15,7 @@ import CertificateGrid, { type Certificate } from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import LightboxImage from "./lightbox-image";
 import SkillWorkMatrix from "./skill-work-matrix";
+import { isExternalHref } from "./smart-link";
 import llamaSystemDiagram from "./llama-marketing-system/images/llama-system-diagram.svg";
 import aiatclCertificate from "./image/AIATCL.jpg";
 import aboutPortrait from "./image/honor-student-portrait.jpg";
@@ -23,16 +24,25 @@ import googleCertificate from "./image/google-certificate.png";
 import toeicCertificate from "./image/toeic-score-report.png";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Research", href: "#research" },
   { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "About", href: "#about" },
   { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
 
 const certificates: Certificate[] = [
+  {
+    title: "Microsoft AI & ML Engineering",
+    issuer: "Coursera / Microsoft",
+    image: aiCertificate,
+    verifyHref: "https://coursera.org/verify/professional-cert/4U9PB4UL4IW4",
+    issued: "Apr 2, 2026",
+    metric: { value: "5", label: "courses" },
+    tags: ["Machine Learning", "Azure", "AI Agents"],
+  },
   {
     title: "AIA Talent Certification in AI Literacy",
     issuer: "Taiwan AI Academy",
@@ -45,24 +55,6 @@ const certificates: Certificate[] = [
     tags: ["AI Literacy", "AIATCL", "Valid 2 years"],
   },
   {
-    title: "TOEIC Listening & Reading",
-    issuer: "ETS TOEIC",
-    image: toeicCertificate,
-    href: "/file/toeic-score-report.pdf",
-    issued: "Apr 26, 2026",
-    metric: { value: "845", label: "L465 · R380" },
-    tags: ["English", "Listening", "Reading"],
-  },
-  {
-    title: "Microsoft AI & ML Engineering",
-    issuer: "Coursera / Microsoft",
-    image: aiCertificate,
-    verifyHref: "https://coursera.org/verify/professional-cert/4U9PB4UL4IW4",
-    issued: "Apr 2, 2026",
-    metric: { value: "5", label: "courses" },
-    tags: ["Machine Learning", "Azure", "AI Agents"],
-  },
-  {
     title: "Google Data Analytics",
     issuer: "Coursera / Google",
     image: googleCertificate,
@@ -70,6 +62,15 @@ const certificates: Certificate[] = [
     issued: "Mar 5, 2026",
     metric: { value: "9", label: "courses" },
     tags: ["Data Analytics", "SQL", "Python"],
+  },
+  {
+    title: "TOEIC Listening & Reading",
+    issuer: "ETS TOEIC",
+    image: toeicCertificate,
+    href: "/file/toeic-score-report.pdf",
+    issued: "Apr 26, 2026",
+    metric: { value: "845", label: "L465 · R380" },
+    tags: ["English", "Listening", "Reading"],
   },
 ];
 
@@ -90,17 +91,8 @@ type Experience = {
   action?: string;
 };
 
-// Newest first.
+// Newest first; the internship leads the two entries that ended in 2026.09.
 const experiences: Experience[] = [
-  {
-    period: honorSharing.meta.split("｜")[1],
-    kind: "Speaking",
-    title: honorSharing.title,
-    org: "逢甲大學",
-    description: honorSharing.description,
-    href: honorSharing.href,
-    action: honorSharing.action,
-  },
   {
     period: workflowInternship.meta.split("｜")[1],
     kind: "Work",
@@ -109,6 +101,15 @@ const experiences: Experience[] = [
     description: workflowInternship.description,
     href: workflowInternship.href,
     action: workflowInternship.action,
+  },
+  {
+    period: honorSharing.meta.split("｜")[1],
+    kind: "Speaking",
+    title: honorSharing.title,
+    org: "逢甲大學",
+    description: honorSharing.description,
+    href: honorSharing.href,
+    action: honorSharing.action,
   },
   {
     period: "2025.09–2026.01",
@@ -152,14 +153,16 @@ const recognitions = [
     href: "/honor-student",
     featured: true,
   },
-  ...courseHonors.map((honor) => ({
-    kind: "Course Honor",
-    title: honor.title.replace(" 課程優異表現", ""),
-    detail: `課程優異表現｜${honor.issuer}`,
-    date: honor.date,
+  {
+    kind: "Course Honors",
+    title: "課程優異表現 ×2",
+    detail: `${courseHonors
+      .map((honor) => `${honor.title.replace(" 課程優異表現", "")}（${honor.date}）`)
+      .join("、")}｜${courseHonors[0].issuer}`,
+    date: "2024–2025",
     href: undefined as string | undefined,
     featured: false,
-  })),
+  },
   {
     kind: "Leadership",
     title: "系學會活動組長",
@@ -172,8 +175,6 @@ const recognitions = [
 
 type ProjectLink = { label: string; href: string };
 
-const isExternalHref = (href: string) => href.startsWith("http") || href.endsWith(".pdf");
-
 const llamaShowcase = {
   eyebrow: "Case Study · Research",
   award: "CIIE 2025 最佳論文獎",
@@ -182,7 +183,7 @@ const llamaShowcase = {
   steps: [
     ["Problem", "制式化的產品描述，難以貼近不同消費者的偏好。"],
     ["Method", "以 QLoRA 於 78K 筆行銷文本微調 LLaMA 3 8B，結合 TextRank、情感分析與分群建立偏好特徵。"],
-    ["Outcome", "BLEU-2 15.11、METEOR 16.16，皆優於比較模型；人工評估流暢性 0.89、相關性 0.80。"],
+    ["Outcome", "BLEU-4 14.44、METEOR 23.62，分別比已發表的基準高 27% 與 64%；人工評估流暢性 0.89、相關性 0.80。"],
   ],
   tags: ["LLaMA 3", "QLoRA", "TextRank", "K-Means", "HDBSCAN"],
   primary: { label: "View Case Study", href: "/llama-marketing-system" },
@@ -218,11 +219,12 @@ const moreProjects: {
   link?: ProjectLink;
 }[] = [
   {
-    eyebrow: "NLP",
+    eyebrow: "NLP · CIIE 2026",
     status: "進行中",
-    title: "Intent Classification & QA Generation",
-    summary: "BERT-BiLSTM 意圖分類結合 teacher-student 知識蒸餾，以 69,477 組 QA 微調 Gemma 4-E4B。",
-    highlight: "Accuracy 96.22% · F1 96.20%",
+    title: "知識蒸餾 × 意圖辨識問答系統",
+    summary: "以 73,828 句的 soft label 將微調後的 GPT-OSS-20B 蒸餾為輕量 BiLSTM 進行意圖分類，並以 69,476 組 QA 微調 Gemma 4-E4B。",
+    highlight: "Accuracy 88.13% → 92.76%",
+    link: { label: "View Case Study", href: "/intent-qa-system" },
   },
   {
     eyebrow: "Live Demo",
@@ -295,10 +297,10 @@ const heroProof = [
   },
   {
     label: "NLP Model",
-    value: "96.22%",
-    detail: "BERT-BiLSTM 意圖分類 Accuracy",
-    href: "#projects",
-    action: "Projects",
+    value: "92.76%",
+    detail: "知識蒸餾 BiLSTM 意圖分類 Accuracy",
+    href: "/intent-qa-system",
+    action: "Case study",
   },
   {
     label: "Automation",
@@ -348,47 +350,41 @@ const beyondCode = [
 ];
 
 
-const awardResearch = {
-  topic: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
-  summary: "同一份畢業專題研究，獲得學會、全國競賽與校內共 5 項肯定。",
-  stats: [
-    ["5", "項獎項"],
-    ["3", "項全國競賽"],
-  ],
-  tags: ["LLaMA 3", "NLP", "Marketing Copy"],
-  href: "/conference",
-  awards: llamaAwards,
-};
-
-const icccmPaper = {
-  title: "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
-  titleZh: "以 LSTM 模型之文章客觀評分與評語生成模式",
-  facts: [
-    ["Conference", "ICCCM 2026 · The 14th International Conference on Computer and Communications Management"],
-    ["Date", "July 24–26, 2026"],
-    ["Location", "Tokyo, Japan"],
-  ],
-  results: [
-    ["0.79", "文本分類 F1"],
-    ["0.790", "評分系統 SCC"],
-    ["0.749", "評分系統 PCC"],
-    ["66.7%", "評語生成整體一致性"],
-  ],
-  tags: ["LSTM", "Bi-LSTM", "Essay Scoring"],
-  href: "/icccm",
-};
-
-function ResearchTags({ tags }: { tags: string[] }) {
-  return (
-    <div className="mt-6 flex flex-wrap gap-2">
-      {tags.map((tag) => (
-        <span key={tag} className="border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs text-emerald-200">
-          {tag}
-        </span>
-      ))}
-    </div>
-  );
-}
+const papers = [
+  {
+    status: "Best Paper Award",
+    featured: true,
+    when: "2025.11",
+    title: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
+    subtitle: "A Personalized Marketing Copy Generation System Based on LLaMA 3 Model",
+    venue: "CIIE 2025 · 中國工業工程學會年會暨學術研討會｜大數據技術與應用領域",
+    note: "於研討會口頭發表畢業專題研究，獲該領域最佳論文獎。",
+    href: "/conference#best-paper",
+    action: "View Proof",
+  },
+  {
+    status: "Accepted for Presentation",
+    featured: false,
+    when: "2026.07 · Tokyo",
+    title: "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
+    subtitle: "以 LSTM 模型之文章客觀評分與評語生成模式",
+    venue: "ICCCM 2026 · The 14th International Conference on Computer and Communications Management",
+    note: "文本分類 F1 0.79；評分系統 SCC 0.790、PCC 0.749；評語生成整體一致性 66.7%。",
+    href: "/icccm",
+    action: "View Details",
+  },
+  {
+    status: "Paper Accepted",
+    featured: false,
+    when: "2026",
+    title: "An Intelligent Question-Answering System Based on Knowledge Distillation and User Intent Recognition Technologies",
+    subtitle: "知識蒸餾 × 意圖辨識問答系統",
+    venue: "CIIE 2026 · 中國工業工程學會年會",
+    note: "以知識蒸餾將意圖分類準確率由 88.13% 提升至 92.76%，並微調 Gemma 4-E4B 生成答案。",
+    href: "/intent-qa-system",
+    action: "View Case Study",
+  },
+];
 
 export default function Home() {
   return (
@@ -442,8 +438,8 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-              專注於 NLP、LLM 與資料工作流程專案，將模型實驗轉化為可實際使用的
-              AI 工具、研究成果與產品展示。
+              逢甲大學工業工程碩士生（4+1 學碩一貫），結合 LLM 應用與 AI 工作流程自動化：
+              從模型微調與評估，到實際上線運作的自動化系統。
             </p>
 
             <p className="mt-6 inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] px-3.5 py-1.5 text-sm font-bold text-emerald-100">
@@ -509,86 +505,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
-        <div data-reveal className="mb-8">
-          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            About me
-          </p>
-          <h2 className="text-3xl font-bold md:text-4xl">About Me</h2>
-        </div>
-
-        <div className="grid items-start gap-8 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-12 xl:gap-16">
-          <figure
-            data-reveal
-            className="relative h-[24rem] overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:h-[30rem] lg:h-auto lg:aspect-[4/5]"
-          >
-            <Image
-              src={aboutPortrait}
-              alt="Kevin Huang 畢業照"
-              sizes="(min-width: 1024px) 320px, 100vw"
-              className="h-full w-full object-cover object-[50%_18%]"
-            />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 via-[#070a0d]/70 to-transparent px-5 pb-4 pt-16">
-              <span className="block text-lg font-bold text-white">Kevin Huang | 黃凱浚</span>
-              <span className="mt-1 block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                AI Engineer / AI Product
-              </span>
-            </figcaption>
-          </figure>
-
-          <div className="min-w-0">
-            <p data-reveal lang="zh-Hant" className="text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10">
-              {aboutIntro.lead}
-            </p>
-            <div data-reveal className="mt-5 grid gap-4">
-              {aboutIntro.paragraphs.map((paragraph) => (
-                <p key={paragraph} lang="zh-Hant" className="text-base leading-8 text-slate-300">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            <p className="mb-4 mt-10 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
-              Beyond the code
-            </p>
-            <div data-reveal-group className="grid gap-4 md:grid-cols-3">
-              {beyondCode.map((card) => (
-                <article
-                  key={card.key}
-                  className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur"
-                >
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                    {card.key}
-                  </p>
-                  <h3 className="mt-2 text-lg font-bold text-white">{card.title}</h3>
-                  <ul className="mt-4 grid gap-3">
-                    {card.points.map(([role, detail]) => (
-                      <li key={role} className="flex gap-3 text-sm leading-6 text-slate-300">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300" aria-hidden="true" />
-                        <span>
-                          <span className="font-semibold text-white">{role}</span>
-                          <span className="block">{detail}</span>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={card.link.href}
-                    className="link-arrow mt-auto pt-5"
-                  >
-                    {card.link.label} <Arrow kind={arrowFor(card.link.href)} />
-                  </Link>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" data-reveal className="relative mx-auto max-w-[90rem] px-6 py-16 md:px-8 md:py-20">
-        <SkillWorkMatrix />
-      </section>
-
       <div className="border-y border-white/10 bg-white/[0.02]">
       <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
         <div data-reveal className="mb-4 max-w-3xl">
@@ -630,6 +546,34 @@ export default function Home() {
             <p className="mt-3 text-sm leading-6 text-slate-400">{llamaShowcase.role}</p>
             <ProjectSteps steps={llamaShowcase.steps} />
             <ProjectTags tags={llamaShowcase.tags} />
+            <div className="mt-6 border-t border-white/10 pt-5">
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                One research · Five awards
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {llamaAwards.map((award) => {
+                  const tone = medalTones[award.tone];
+                  return (
+                    <li
+                      key={award.name}
+                      className="inline-flex items-center gap-2 border border-white/10 bg-slate-950/40 py-1 pl-1.5 pr-2.5 text-xs text-slate-200"
+                    >
+                      <span
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-black ${tone.medal}`}
+                        aria-hidden="true"
+                      >
+                        {award.medal}
+                      </span>
+                      <span className={`font-bold ${tone.rank}`}>{award.rank}</span>
+                      <span>{award.short}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <Link href="/conference" className="link-arrow mt-3">
+                看 5 項獎項證明 <Arrow />
+              </Link>
+            </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
               <Link href={llamaShowcase.primary.href} className={projectButtonClass}>
                 {llamaShowcase.primary.label} <Arrow />
@@ -740,129 +684,90 @@ export default function Home() {
       </div>
 
       <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
-        <div data-reveal className="mb-8">
-          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Publications & Awards
+        <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
+          <div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              Papers & conferences
+            </p>
+            <h2 className="text-3xl font-bold md:text-4xl">Research</h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-slate-400">
+            三篇研討會論文，各自連到發表證明或研究細節。
           </p>
-          <h2 className="text-3xl font-bold md:text-4xl">Research & Publications</h2>
         </div>
 
-        <article
-          data-reveal
-          className="grid items-start gap-8 border-t border-white/10 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12"
-        >
-          <div className="min-w-0">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
-              One research · Five awards
-            </p>
-            <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
-              {awardResearch.topic}
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-slate-400">{awardResearch.summary}</p>
-            <dl className="mt-6 flex gap-8">
-              {awardResearch.stats.map(([value, label], index) => (
-                <div key={label} className="flex flex-col">
-                  <dt className="order-last mt-2 text-xs text-slate-400">{label}</dt>
-                  <dd className={`text-4xl font-black leading-none ${index === 0 ? "text-amber-300" : "text-white"}`}>
-                    {value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <ResearchTags tags={awardResearch.tags} />
-            <Link href={awardResearch.href} className={`mt-7 ${projectButtonClass}`}>
-              View Details <Arrow />
-            </Link>
-          </div>
-
-          <ol className="min-w-0 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
-            {awardResearch.awards.map((award) => {
-              const tone = medalTones[award.tone];
-              return (
-                <li
-                  key={award.name}
-                  className={`grid gap-2 border-b border-white/10 p-4 last:border-b-0 sm:grid-cols-[8.5rem_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:px-5 ${tone.row}`}
-                >
-                  <div className="flex items-center gap-3">
+        <ol data-reveal-group className="border border-white/10 bg-[#0a1014]/70 backdrop-blur">
+          {papers.map((paper) => (
+            <li key={paper.title} className="border-b border-white/10 last:border-b-0">
+              <Link
+                href={paper.href}
+                className={`group grid gap-3 p-5 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 md:grid-cols-[13rem_minmax(0,1fr)_auto] md:items-center md:gap-8 md:p-6 ${
+                  paper.featured ? "bg-[linear-gradient(90deg,rgba(252,211,77,0.08),transparent_55%)]" : ""
+                }`}
+              >
+                <div>
+                  <span
+                    className={`inline-flex items-center gap-2 text-sm font-bold ${
+                      paper.featured ? "text-amber-300" : "text-emerald-200"
+                    }`}
+                  >
                     <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-black ${tone.medal}`}
+                      className={`h-2 w-2 shrink-0 rounded-full ${paper.featured ? "bg-amber-300" : "bg-emerald-300"}`}
                       aria-hidden="true"
-                    >
-                      {award.medal}
-                    </span>
-                    <span className={`text-base font-black ${tone.rank}`}>{award.rank}</span>
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[15px] font-semibold leading-6 text-white">{award.name}</p>
-                    <p className="text-[13px] leading-5 text-slate-400">{award.category}</p>
-                  </div>
-                  <p className="font-mono text-xs font-semibold text-slate-400 sm:text-right">
-                    {award.level}
-                    <span className="ml-2 text-slate-300 sm:ml-0 sm:mt-1 sm:block">{award.year}</span>
-                  </p>
-                </li>
-              );
-            })}
-          </ol>
-        </article>
-
-        <article
-          data-reveal
-          className="grid items-start gap-8 border-t border-white/10 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12"
-        >
-          <div className="min-w-0">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
-              International publication
-            </p>
-            <h3 className="mt-3 text-xl font-bold leading-8 text-white md:text-2xl md:leading-10">
-              {icccmPaper.title}
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-400">{icccmPaper.titleZh}</p>
-            <ResearchTags tags={icccmPaper.tags} />
-            <Link href={icccmPaper.href} className={`mt-7 ${projectButtonClass}`}>
-              View Details <Arrow />
-            </Link>
-          </div>
-
-          <div className="min-w-0 border border-white/10 bg-[#0a1014]/70 backdrop-blur">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
-              <span className="inline-flex items-center gap-2 text-sm font-bold text-emerald-100">
-                <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
-                Published Paper · ICCCM 2026
-              </span>
-            </div>
-            <dl className="grid gap-3 px-5 py-4 text-sm">
-              {icccmPaper.facts.map(([label, value]) => (
-                <div key={label} className="grid gap-1 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4">
-                  <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</dt>
-                  <dd className="leading-6 text-slate-200">{value}</dd>
+                    />
+                    {paper.status}
+                  </span>
+                  <p className="mt-1.5 font-mono text-xs font-semibold text-slate-400">{paper.when}</p>
                 </div>
-              ))}
-            </dl>
-            <dl className="grid grid-cols-2 gap-px border-t border-white/10 bg-white/10 sm:grid-cols-4">
-              {icccmPaper.results.map(([value, label]) => (
-                <div key={label} className="flex flex-col bg-[#0a1014] px-5 py-4">
-                  <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
-                  <dd className="text-2xl font-black text-white">{value}</dd>
+                <div className="min-w-0">
+                  <h3 className="text-lg font-bold leading-7 text-white md:text-xl md:leading-8">{paper.title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-300">{paper.subtitle}</p>
+                  <p className="mt-2 text-[13px] leading-5 text-slate-400">{paper.venue}</p>
+                  <p className="mt-2 text-[15px] leading-7 text-slate-300">{paper.note}</p>
                 </div>
-              ))}
-            </dl>
-          </div>
-        </article>
+                <span className="link-arrow md:justify-self-end">
+                  {paper.action} <Arrow />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
         <div data-reveal className="mb-8">
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Timeline
+            Education · Honors · Work
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Experience</h2>
         </div>
 
+        <h3 className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+          Education
+        </h3>
+        <ul data-reveal-group className="mb-12 grid gap-3 md:grid-cols-2">
+          {education.map((item) => (
+            <li
+              key={item.degree}
+              className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-4 backdrop-blur md:p-5"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  {item.school}
+                </span>
+                <span className="font-mono text-[11px] font-semibold text-slate-400">{item.period}</span>
+              </div>
+              <p className="mt-3 text-lg font-bold leading-snug text-white">{item.degree}</p>
+              <p className="mt-1.5 text-sm font-semibold text-emerald-100">{item.detail}</p>
+              <p className="mt-1 text-[13px] leading-5 text-slate-400">{item.note}</p>
+            </li>
+          ))}
+        </ul>
+
         <h3 id="student-association" className="mb-4 scroll-mt-28 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
           Honors & leadership
         </h3>
-        <ul data-reveal-group className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <ul data-reveal-group className="grid gap-3 md:grid-cols-3">
           {recognitions.map((item) => {
             const body = (
               <>
@@ -943,12 +848,94 @@ export default function Home() {
         </ol>
       </section>
 
+      <div className="border-y border-white/10 bg-white/[0.02]">
+      <section id="skills" data-reveal className="relative mx-auto max-w-[90rem] px-6 py-16 md:px-8 md:py-20">
+        <SkillWorkMatrix />
+      </section>
+      </div>
+
+      <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
+        <div data-reveal className="mb-8">
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+            Background
+          </p>
+          <h2 className="text-3xl font-bold md:text-4xl">About Me</h2>
+        </div>
+
+        <div className="grid items-start gap-8 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-12 xl:gap-16">
+          <figure
+            data-reveal
+            className="relative h-[24rem] overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:h-[30rem] lg:h-auto lg:aspect-[4/5]"
+          >
+            <Image
+              src={aboutPortrait}
+              alt="Kevin Huang 畢業照"
+              sizes="(min-width: 1024px) 320px, 100vw"
+              className="h-full w-full object-cover object-[50%_18%]"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 via-[#070a0d]/70 to-transparent px-5 pb-4 pt-16">
+              <span className="block text-lg font-bold text-white">Kevin Huang | 黃凱浚</span>
+              <span className="mt-1 block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                AI Engineer / AI Product
+              </span>
+            </figcaption>
+          </figure>
+
+          <div className="min-w-0">
+            <p data-reveal lang="zh-Hant" className="text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10">
+              {aboutIntro.lead}
+            </p>
+            <div data-reveal className="mt-5 grid gap-4">
+              {aboutIntro.paragraphs.map((paragraph) => (
+                <p key={paragraph} lang="zh-Hant" className="text-base leading-8 text-slate-300">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            <p className="mb-4 mt-10 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+              Beyond the code
+            </p>
+            <div data-reveal-group className="grid gap-4 md:grid-cols-3">
+              {beyondCode.map((card) => (
+                <article
+                  key={card.key}
+                  className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur"
+                >
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                    {card.key}
+                  </p>
+                  <h3 className="mt-2 text-lg font-bold text-white">{card.title}</h3>
+                  <ul className="mt-4 grid gap-3">
+                    {card.points.map(([role, detail]) => (
+                      <li key={role} className="flex gap-3 text-sm leading-6 text-slate-300">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300" aria-hidden="true" />
+                        <span>
+                          <span className="font-semibold text-white">{role}</span>
+                          <span className="block">{detail}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={card.link.href}
+                    className="link-arrow mt-auto pt-5"
+                  >
+                    {card.link.label} <Arrow kind={arrowFor(card.link.href)} />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
       <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
         <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Certifications
+              Verified credentials
             </p>
             <h2 className="text-3xl font-bold md:text-4xl">Certificates</h2>
           </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SubpageFooter from "../subpage-footer";
 import Arrow from "../arrow-icon";
 import { projectLeadership } from "../academic-experiences";
 import ActiveSectionNav from "../active-section-nav";
@@ -14,11 +15,12 @@ import kmeansCluster from "./images/kmeans-cluster.png";
 import systemDiagram from "./images/llama-system-diagram.svg";
 import trainingLoss from "./images/training-loss.png";
 
-// Source: 2025-12 graduation thesis 「基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式」.
+// Sources: 2025-12 graduation thesis 「基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式」;
+// the baseline comparison is the CIIE 2025 paper version, as printed on the research poster (public/file).
 
 const heroStats = [
   ["78,113", "筆訓練資料"],
-  ["16.16", "METEOR（實驗一）"],
+  ["23.62", "METEOR（基準 14.44）"],
   ["0.89", "人工評估流暢性"],
   ["5", "項獎項"],
 ];
@@ -82,6 +84,14 @@ const modules = [
     methods: ["LLaMA 3 8B", "QLoRA", "Unsloth", "PyTorch"],
   },
 ];
+
+// Headline generation result: the same figures the homepage and resume quote.
+const baseline = [
+  { metric: "BLEU-3", ours: 18.92, base: 14.95 },
+  { metric: "BLEU-4", ours: 14.44, base: 11.41 },
+  { metric: "METEOR", ours: 23.62, base: 14.44 },
+];
+const baselineScale = 25;
 
 const experiments = {
   generation: {
@@ -355,8 +365,43 @@ export default function LlamaMarketingSystemPage() {
 
         <section id="results" className={sectionClass}>
           <p className={eyebrowClass}>03 · Results</p>
-          <h2 className={h2Class}>三個實驗驗證系統成效</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <h2 className={h2Class}>生成品質優於已發表基準，並以三個實驗驗證</h2>
+
+          <div className="mt-8 border border-emerald-300/30 bg-[linear-gradient(120deg,rgba(110,231,183,0.07),transparent_60%)] p-5 md:p-6">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 className="text-lg font-bold text-white">生成品質：與已發表的基準比較</h3>
+              <p className="text-xs leading-5 text-slate-400">CIIE 2025 研討會論文版 · 基準為 Guo 等人（2022）</p>
+            </div>
+            <ul className="mt-5 grid gap-6 md:grid-cols-3">
+              {baseline.map((item) => (
+                <li key={item.metric}>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="text-sm font-semibold text-slate-200">{item.metric}</span>
+                    <span className="font-mono text-xs font-bold text-emerald-300">
+                      +{Math.round((item.ours / item.base - 1) * 100)}%
+                    </span>
+                  </div>
+                  <div className="mt-2 grid gap-1.5" aria-hidden="true">
+                    <div className="h-2.5 w-full bg-white/[0.07]">
+                      <div className="h-full rounded-r bg-emerald-300" style={{ width: `${(item.ours / baselineScale) * 100}%` }} />
+                    </div>
+                    <div className="h-2.5 w-full bg-white/[0.07]">
+                      <div className="h-full rounded-r bg-slate-500" style={{ width: `${(item.base / baselineScale) * 100}%` }} />
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    <span className="text-2xl font-black text-white">{item.ours.toFixed(2)}</span>
+                    <span className="ml-2 text-slate-400">基準 {item.base.toFixed(2)}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <h3 className="mt-10 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+            論文終版（2025.12）的三個實驗
+          </h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {[experiments.generation, experiments.clustering].map((experiment) => (
               <article key={experiment.title} className="flex flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur md:p-6">
                 <h3 className="text-lg font-bold text-white">{experiment.title}</h3>
@@ -399,8 +444,8 @@ export default function LlamaMarketingSystemPage() {
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">點圖可放大檢視。每張圖下方說明它呈現的內容。</p>
           <ImageLightboxGallery
             items={gallery}
-            gridClassName="mt-6 grid gap-6 md:grid-cols-2"
-            imageClassName="aspect-[4/3] w-full bg-slate-950/50 object-contain p-2 transition duration-300 group-hover:scale-[1.02] md:p-3"
+            gridClassName="mt-6 grid gap-6 md:grid-cols-6 md:[&>*]:col-span-2 md:[&>*:nth-child(-n+2)]:col-span-3"
+            imageClassName="aspect-[4/3] w-full bg-slate-950/50 object-contain p-2 brightness-90 transition duration-300 group-hover:scale-[1.02] group-hover:brightness-100 md:p-3"
             imageSizes="(min-width: 768px) 50vw, 100vw"
             showDescription
             showTitle
@@ -459,9 +504,6 @@ export default function LlamaMarketingSystemPage() {
               );
             })}
           </ol>
-          <p className="mt-4 text-sm leading-7 text-slate-400">
-            CIIE 2025 研討會論文版本之生成評估：BLEU-3 18.92、BLEU-4 14.44、METEOR 23.62（本頁實驗結果為 2025.12 論文終版）。
-          </p>
           <Link
             href="/conference"
             className="link-arrow mt-4"
@@ -469,6 +511,8 @@ export default function LlamaMarketingSystemPage() {
             查看研討會發表與獲獎證明 <Arrow />
           </Link>
         </section>
+
+        <SubpageFooter next={["awards", "automation"]} />
       </div>
     </main>
   );
