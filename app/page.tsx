@@ -221,8 +221,8 @@ const moreProjects: {
     eyebrow: "NLP",
     status: "進行中",
     title: "Intent Classification & QA Generation",
-    summary: "BERT-BiLSTM 意圖分類結合 teacher-student 知識蒸餾，以 69,477 組 QA 微調 Gemma 4-E4B。",
-    highlight: "Accuracy 96.22% · F1 96.20%",
+    summary: "以 73,828 句的 soft label 將微調後的 GPT-OSS-20B 蒸餾為輕量 BiLSTM 進行意圖分類，並以 69,476 組 QA 微調 Gemma 4-E4B。",
+    highlight: "Accuracy 88.13% → 92.76%",
   },
   {
     eyebrow: "Live Demo",
@@ -295,8 +295,8 @@ const heroProof = [
   },
   {
     label: "NLP Model",
-    value: "96.22%",
-    detail: "BERT-BiLSTM 意圖分類 Accuracy",
+    value: "92.76%",
+    detail: "知識蒸餾 BiLSTM 意圖分類 Accuracy",
     href: "#projects",
     action: "Projects",
   },

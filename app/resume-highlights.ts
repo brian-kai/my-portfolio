@@ -1,4 +1,4 @@
-// Source: Huang_Kai-Chun_ Information Technology Engineer_Resume.pptx, slides 1–2.
+// Source: Huang_Kai-Chun_Resume.pdf (public/file), pages 1–2.
 // Figures are the outcomes recorded in the resume, not live service counters.
 export const workflowInternship = {
   title: "AI 工作流程研究實習生",

@@ -27,7 +27,7 @@ const categories: SkillCategory[] = [
     groups: [
       {
         label: "Models & fine-tuning",
-        skills: ["LLaMA 3", "QLoRA", "PyTorch", "Gemma 4", "BERT-BiLSTM", "LSTM", "知識蒸餾"],
+        skills: ["LLaMA 3", "QLoRA", "PyTorch", "Gemma 4", "BiLSTM", "LSTM", "知識蒸餾"],
       },
       { label: "Text analysis", skills: ["TextRank", "LDA", "SBERT", "BLEU / METEOR"] },
     ],
@@ -45,7 +45,7 @@ const categories: SkillCategory[] = [
       {
         title: "Intent Classification & QA Generation",
         href: "#projects",
-        skills: ["QLoRA", "Gemma 4", "BERT-BiLSTM", "知識蒸餾"],
+        skills: ["QLoRA", "Gemma 4", "BiLSTM", "知識蒸餾"],
       },
       {
         title: "ICCCM 2026：LSTM 作文評分與評語生成",
