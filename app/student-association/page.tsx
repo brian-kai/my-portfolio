@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import SubpageFooter from "../subpage-footer";
-import ActiveSectionNav from "../active-section-nav";
+import SubpageNav from "../subpage-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import LightboxImage from "../lightbox-image";
 
@@ -84,34 +83,10 @@ export default function StudentAssociationPage() {
     <main className="theme-amber relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(245,158,11,0.16),transparent_28%),radial-gradient(circle_at_84%_14%,rgba(34,197,94,0.1),transparent_24%),linear-gradient(180deg,#0d0c09_0%,#15120b_52%,#0d0c09_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-amber-200/10 bg-[#0d0c09]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
-          <Link
-            href="/#student-association"
-            className="btn btn-secondary btn-sm shrink-0 md:hidden"
-          >
-            ← Back
-          </Link>
-
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </Link>
-
-          <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={associationNavItems} variant="amber" />
-            <Link
-              href="/#student-association"
-              className="btn btn-secondary btn-sm"
-            >
-              Back to Experience
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SubpageNav items={associationNavItems} backHref="/#student-association" backLabel="Back to Experience" barClassName="border-amber-200/10 bg-[#0d0c09]/98" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-20">
+        <section id="overview" className="pb-14 md:pb-20">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -150,7 +125,7 @@ export default function StudentAssociationPage() {
           </div>
         </section>
 
-        <section id="led" className="scroll-mt-24 border-t border-amber-200/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="led" className="border-t border-amber-200/10 py-14 md:py-16">
           <p className={eyebrowClass}>Events I led</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">擔任負責人的活動</h2>
           <ol className="mt-8 grid gap-4 md:grid-cols-3">
@@ -185,7 +160,7 @@ export default function StudentAssociationPage() {
           </div>
         </section>
 
-        <section id="photos" className="scroll-mt-24 border-t border-amber-200/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="photos" className="border-t border-amber-200/10 py-14 md:py-16">
           <p className={eyebrowClass}>On site</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">活動現場紀錄</h2>
           <ImageLightboxGallery
@@ -200,7 +175,7 @@ export default function StudentAssociationPage() {
           />
         </section>
 
-        <section id="award" className="scroll-mt-24 border-t border-amber-200/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="award" className="border-t border-amber-200/10 py-14 md:py-16">
           <p className={eyebrowClass}>Official proof</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">系學會服務獎狀</h2>
           <div className={`${cardClass} mt-8 grid gap-6 p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center md:p-6`}>
@@ -217,7 +192,7 @@ export default function StudentAssociationPage() {
               <p className="mt-3 text-[15px] leading-7 text-slate-300">
                 系學會正式核發的服務獎狀，肯定擔任活動組長期間在活動規劃、團隊協作與現場執行上的貢獻。
               </p>
-              <p className="mt-4 text-sm text-slate-500">點獎狀可放大檢視。</p>
+              <p className="mt-4 text-sm text-slate-400">點獎狀可放大檢視。</p>
             </div>
           </div>
         </section>

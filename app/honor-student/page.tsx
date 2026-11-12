@@ -4,7 +4,7 @@ import Link from "next/link";
 import SmartLink from "../smart-link";
 import SubpageFooter from "../subpage-footer";
 import Arrow, { arrowFor } from "../arrow-icon";
-import ActiveSectionNav from "../active-section-nav";
+import SubpageNav from "../subpage-nav";
 import { honorSharing } from "../resume-highlights";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import LightboxImage from "../lightbox-image";
@@ -116,34 +116,10 @@ export default function HonorStudentPage() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(245,158,11,0.15),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(250,204,21,0.075),transparent_24%),radial-gradient(circle_at_72%_64%,rgba(16,185,129,0.07),transparent_30%),linear-gradient(180deg,#080705_0%,#0d0b08_48%,#080705_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-amber-100/10 bg-[#080705]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
-          <Link
-            href="/#experience"
-            className="btn btn-secondary btn-sm shrink-0 md:hidden"
-          >
-            ← Back
-          </Link>
-
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </Link>
-
-          <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={honorNavItems} variant="amber" />
-            <Link
-              href="/#experience"
-              className="btn btn-secondary btn-sm"
-            >
-              Back to Honors
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SubpageNav items={honorNavItems} backHref="/#experience" backLabel="Back to Honors" barClassName="border-amber-100/10 bg-[#080705]/98" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-20">
+        <section id="overview" className="pb-14 md:pb-20">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-14">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -194,7 +170,7 @@ export default function HonorStudentPage() {
               />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080705]/95 via-[#080705]/60 to-transparent px-5 pb-4 pt-14">
                 <span className="block text-lg font-bold">黃凱浚 Kai-Chun Huang</span>
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-200">
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
                   工業工程與系統管理學系
                 </span>
               </figcaption>
@@ -202,7 +178,7 @@ export default function HonorStudentPage() {
           </div>
         </section>
 
-        <section id="criteria" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
+        <section id="criteria" className="border-t border-amber-100/10 py-14 md:py-20">
           <p className={eyebrowClass}>Five criteria</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">五大評選面向 × 我的對應經歷</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-stone-400">
@@ -219,7 +195,7 @@ export default function HonorStudentPage() {
                   <span className="font-mono text-2xl font-black text-amber-300/80">{criterion.key}</span>
                   <div>
                     <h3 className="text-xl font-bold text-white">{criterion.title}</h3>
-                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">{criterion.en}</p>
+                    <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-stone-400">{criterion.en}</p>
                   </div>
                 </div>
                 <ul className="mt-5 grid gap-2.5">
@@ -240,7 +216,7 @@ export default function HonorStudentPage() {
           </ol>
         </section>
 
-        <section id="sharing-session" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
+        <section id="sharing-session" className="border-t border-amber-100/10 py-14 md:py-20">
           <p className={eyebrowClass}>After the honor</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">入選之後：把經驗分享給新生</h2>
           <article className="mt-8 grid overflow-hidden border border-amber-300/30 bg-[linear-gradient(135deg,rgba(252,211,77,0.1),rgba(255,255,255,0.02)_55%)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
@@ -285,7 +261,7 @@ export default function HonorStudentPage() {
           </article>
         </section>
 
-        <section id="proof" className="scroll-mt-24 border-t border-amber-100/10 py-14 md:scroll-mt-28 md:py-20">
+        <section id="proof" className="border-t border-amber-100/10 py-14 md:py-20">
           <p className={eyebrowClass}>Official proof</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">官方證書與紀錄照片</h2>
           <div className="mt-8 grid items-start gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">

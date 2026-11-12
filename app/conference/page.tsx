@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { StaticImageData } from "next/image";
 import Link from "next/link";
 import SubpageFooter from "../subpage-footer";
-import ActiveSectionNav from "../active-section-nav";
+import SubpageNav from "../subpage-nav";
 import Arrow from "../arrow-icon";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 import { llamaAwards, medalTones } from "../llama-awards";
@@ -114,28 +114,10 @@ export default function ConferencePage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
-          <Link href="/#research" className="btn btn-secondary btn-sm shrink-0 md:hidden">
-            ← Back
-          </Link>
-
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </Link>
-
-          <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={conferenceNavItems} />
-            <Link href="/#research" className="btn btn-secondary btn-sm">
-              Back to Research
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SubpageNav items={conferenceNavItems} backHref="/#research" backLabel="Back to Research" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-16">
+        <section id="overview" className="pb-14 md:pb-16">
           <p className={eyebrowClass}>Awards & proof</p>
           <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl">一份研究，五項肯定</h1>
           <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
@@ -193,7 +175,7 @@ export default function ConferencePage() {
           </div>
         </section>
 
-        <section id="awards" className="scroll-mt-24 border-t border-white/10 pt-14 md:scroll-mt-28 md:pt-16">
+        <section id="awards" className="border-t border-white/10 pt-14 md:pt-16">
           <p className={eyebrowClass}>Evidence</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">逐項獎項證明</h2>
           <div className="mt-8 grid gap-6">
@@ -204,7 +186,7 @@ export default function ConferencePage() {
                 <article
                   key={award.name}
                   id={item.id}
-                  className={`scroll-mt-28 border border-white/10 bg-white/[0.035] p-5 backdrop-blur md:p-6 ${tone.row}`}
+                  className={`scroll-mt-4 border border-white/10 bg-white/[0.035] p-5 backdrop-blur md:p-6 ${tone.row}`}
                 >
                   <header className="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-black ${tone.medal}`} aria-hidden="true">
@@ -239,7 +221,7 @@ export default function ConferencePage() {
           </div>
         </section>
 
-        <section id="presentation" className="mt-14 scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="presentation" className="mt-14 border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>On stage · CIIE 2025</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">研討會口頭發表</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">

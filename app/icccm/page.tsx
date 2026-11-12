@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SubpageFooter from "../subpage-footer";
-import ActiveSectionNav from "../active-section-nav";
+import SubpageNav from "../subpage-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import proofPage1 from "../image/icccm-2026-acceptance-notification-page-1.png";
@@ -99,34 +98,10 @@ export default function IcccmPage() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
-          <Link
-            href="/#research"
-            className="btn btn-secondary btn-sm shrink-0 md:hidden"
-          >
-            ← Back
-          </Link>
-
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </Link>
-
-          <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={icccmNavItems} />
-            <Link
-              href="/#research"
-              className="btn btn-secondary btn-sm"
-            >
-              Back to Research
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SubpageNav items={icccmNavItems} backHref="/#research" backLabel="Back to Research" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-16">
+        <section id="overview" className="pb-14 md:pb-16">
           <p className="inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-300/[0.08] px-3.5 py-1.5 text-sm font-bold text-emerald-100">
             <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.9)]" aria-hidden="true" />
             Accepted for Presentation · ICCCM 2026
@@ -142,7 +117,7 @@ export default function IcccmPage() {
                 ["Location", paper.location],
               ].map(([label, value]) => (
                 <div key={label}>
-                  <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</dt>
+                  <dt className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</dt>
                   <dd className="mt-1 text-[15px] font-semibold leading-6 text-slate-100">{value}</dd>
                 </div>
               ))}
@@ -158,7 +133,7 @@ export default function IcccmPage() {
           </div>
         </section>
 
-        <section id="approach" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="approach" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>Problem → Approach</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">不只給分數，也要給回饋</h2>
           <p className="mt-5 max-w-4xl border-l-2 border-amber-300/50 pl-4 text-base leading-8 text-slate-200">{problem}</p>
@@ -180,7 +155,7 @@ export default function IcccmPage() {
           </ol>
         </section>
 
-        <section id="results" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="results" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>Results</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">三項實驗驗證系統表現</h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">以 Hugging Face 評語資料集訓練模型，並分別驗證文本分類、評分系統與評語生成品質。</p>
@@ -200,7 +175,7 @@ export default function IcccmPage() {
             ))}
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <span className="mr-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Applications</span>
+            <span className="mr-1 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Applications</span>
             {applications.map((item) => (
               <span key={item} className="border border-white/10 bg-slate-950/40 px-3 py-1 text-sm text-slate-200">
                 {item}
@@ -209,7 +184,7 @@ export default function IcccmPage() {
           </div>
         </section>
 
-        <section id="proof" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="proof" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>Official proof</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">接受通知函</h2>
           <ImageLightboxGallery

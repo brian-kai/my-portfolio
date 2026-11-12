@@ -13,6 +13,7 @@ import DataFlowBackground from "./data-flow-background";
 import HomeMotion from "./home-motion";
 import CertificateGrid, { type Certificate } from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
+import MoreOnMobile from "./more-on-mobile";
 import LightboxImage from "./lightbox-image";
 import SkillWorkMatrix from "./skill-work-matrix";
 import { isExternalHref } from "./smart-link";
@@ -173,6 +174,42 @@ const recognitions = [
   },
 ];
 
+/** Phones show the newest entries first; the rest sit behind a "show earlier" toggle. */
+const recentExperiences = experiences.slice(0, 4);
+const earlierExperiences = experiences.slice(4);
+
+function ExperienceItem({ experience, last = false }: { experience: Experience; last?: boolean }) {
+  const kind = experienceKinds[experience.kind];
+  return (
+    <li
+      className={`relative grid gap-2 pl-7 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-8 md:pl-0 ${last ? "" : "pb-8"}`}
+    >
+      {/* Rail and dot: left edge on mobile, between date and card on desktop. */}
+      <span className="absolute bottom-0 left-[5px] top-2 w-px bg-white/10 md:left-[10.4rem]" aria-hidden="true" />
+      <span
+        className={`absolute left-0 top-1.5 h-[11px] w-[11px] rounded-full ring-4 ring-[#070a0d] md:left-[calc(10.4rem-5px)] ${kind.dot}`}
+        aria-hidden="true"
+      />
+      <p className="font-mono text-sm font-semibold text-slate-300 md:pt-0.5 md:text-right">{experience.period}</p>
+      <div className="min-w-0 md:pl-6">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className={`border px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] ${kind.badge}`}>
+            {kind.label}
+          </span>
+          <h4 className="text-lg font-bold leading-7 text-white md:text-xl">{experience.title}</h4>
+        </div>
+        <p className="mt-1 text-sm leading-6 text-slate-400">{experience.org}</p>
+        <p className="mt-3 max-w-4xl text-[15px] leading-7 text-slate-300">{experience.description}</p>
+        {experience.href ? (
+          <Link href={experience.href} className="link-arrow mt-3">
+            {experience.action} <Arrow kind={arrowFor(experience.href)} />
+          </Link>
+        ) : null}
+      </div>
+    </li>
+  );
+}
+
 type ProjectLink = { label: string; href: string };
 
 const llamaShowcase = {
@@ -251,12 +288,15 @@ const moreProjects: {
 
 const projectButtonClass = "btn btn-secondary w-full sm:w-auto";
 
+/** Shared page width: the nav and every section use it, so their left edges line up. */
+const container = "mx-auto max-w-[88rem]";
+
 function ProjectSteps({ steps }: { steps: string[][] }) {
   return (
     <dl className="mt-6 grid gap-4">
       {steps.map(([label, value]) => (
         <div key={label} className="border-l-2 border-emerald-300/35 pl-4">
-          <dt className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+          <dt className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
             {label}
           </dt>
           <dd className="mt-1 text-[15px] leading-7 text-slate-200">{value}</dd>
@@ -396,7 +436,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-emerald-300/45 to-transparent" />
 
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
+        <div className={`${container} flex items-center justify-between gap-3 px-4 py-3 md:px-8`}>
           <MobileMenu items={navItems} />
 
           <Link href="/" className="group flex min-w-0 items-center gap-3 lg:flex-none">
@@ -404,7 +444,7 @@ export default function Home() {
             <img src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg transition group-hover:scale-105" />
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-base font-bold text-white">Kevin Huang</span>
-              <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-300 sm:block">
+              <span className="hidden font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300 sm:block">
                 NLP / LLM AI Engineer
               </span>
             </span>
@@ -412,18 +452,20 @@ export default function Home() {
 
           <ActiveSectionNav items={navItems} breakpoint="lg" />
 
-          <a href={resumeHref} className="btn btn-primary btn-sm shrink-0">
+          <a href={resumeHref} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm shrink-0">
             Resume
           </a>
         </div>
         <ScrollProgress />
       </nav>
+      {/* Where the "skip to content" link in the root layout lands. */}
+      <span id="content" tabIndex={-1} />
 
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-16">
         <div className="hero-glow" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
 
-        <div className="relative mx-auto grid min-h-[82dvh] max-w-[86rem] items-center gap-10 px-6 py-14 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(28rem,0.9fr)] xl:gap-14">
+        <div className={`relative ${container} grid min-h-[82dvh] items-center gap-10 px-6 py-14 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(28rem,0.9fr)] xl:gap-14`}>
           <div className="hero-intro max-w-3xl">
             <p className="mb-4 text-base text-slate-300 md:text-lg">
               Hi, I&apos;m <span className="font-bold text-white">Kevin Huang</span>{" "}
@@ -447,22 +489,26 @@ export default function Home() {
               Open to AI Engineer / AI Product Associate
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            {/* Phones get the two main actions side by side (Contact stays in the menu),
+                which keeps the proof panel below within the first screen. */}
+            <div className="mt-8 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:flex sm:flex-wrap sm:items-center">
               <a
                 href="#projects"
-                className="btn btn-primary btn-lg"
+                className="btn btn-primary btn-lg px-3 sm:px-6"
               >
                 View Projects
               </a>
               <a
                 href={resumeHref}
-                className="btn btn-secondary btn-lg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary btn-lg px-3 sm:px-6"
               >
-                Resume
+                Resume <Arrow kind="external" />
               </a>
               <a
                 href="#contact"
-                className="btn btn-ghost btn-lg"
+                className="btn btn-ghost btn-lg hidden sm:inline-flex"
               >
                 Contact <Arrow />
               </a>
@@ -471,7 +517,7 @@ export default function Home() {
 
           <aside aria-labelledby="selected-proof" className="hero-panel border border-white/10 bg-[#0a1014]/80 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur">
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
-              <h2 id="selected-proof" className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+              <h2 id="selected-proof" className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 Selected proof
               </h2>
               <span className="text-xs font-semibold text-slate-400">點擊看證據</span>
@@ -483,7 +529,7 @@ export default function Home() {
                     href={proof.href}
                     className="group flex h-full flex-col p-4 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 sm:p-5 md:p-6"
                   >
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                       {proof.label}
                     </span>
                     <span
@@ -506,7 +552,7 @@ export default function Home() {
       </section>
 
       <div className="border-y border-white/10 bg-white/[0.02]">
-      <section id="projects" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
+      <section id="projects" className={`relative ${container} px-6 py-16 md:px-8 md:py-24`}>
         <div data-reveal className="mb-4 max-w-3xl">
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
             Selected work
@@ -530,14 +576,14 @@ export default function Home() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-3 text-xs text-slate-500">
+            <figcaption className="mt-3 text-xs text-slate-400">
               系統架構：資料 → 偏好分析 → LLaMA 3 → 評估<span className="lg:hidden">（點圖可放大）</span>
             </figcaption>
           </figure>
 
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                 {llamaShowcase.eyebrow}
               </span>
               <span className="text-xs font-bold text-amber-200">★ {llamaShowcase.award}</span>
@@ -547,7 +593,7 @@ export default function Home() {
             <ProjectSteps steps={llamaShowcase.steps} />
             <ProjectTags tags={llamaShowcase.tags} />
             <div className="mt-6 border-t border-white/10 pt-5">
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                 One research · Five awards
               </p>
               <ul className="mt-3 flex flex-wrap gap-2">
@@ -559,7 +605,7 @@ export default function Home() {
                       className="inline-flex items-center gap-2 border border-white/10 bg-slate-950/40 py-1 pl-1.5 pr-2.5 text-xs text-slate-200"
                     >
                       <span
-                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-black ${tone.medal}`}
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-black ${tone.medal}`}
                         aria-hidden="true"
                       >
                         {award.medal}
@@ -601,7 +647,7 @@ export default function Home() {
                 <span className="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
                 實習 @ {automationShowcase.company}
               </span>
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                 {automationShowcase.eyebrow}
               </span>
             </div>
@@ -635,7 +681,7 @@ export default function Home() {
               const content = (
                 <>
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
                       {project.eyebrow}
                     </span>
                     {project.status ? (
@@ -683,7 +729,7 @@ export default function Home() {
       </section>
       </div>
 
-      <section id="research" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
+      <section id="research" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
         <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
@@ -734,7 +780,7 @@ export default function Home() {
         </ol>
       </section>
 
-      <section id="experience" className="relative mx-auto max-w-[86rem] px-6 py-16 md:px-8 md:py-20">
+      <section id="experience" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
         <div data-reveal className="mb-8">
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
             Education · Honors · Work
@@ -752,10 +798,10 @@ export default function Home() {
               className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-4 backdrop-blur md:p-5"
             >
               <div className="flex items-center justify-between gap-3">
-                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
                   {item.school}
                 </span>
-                <span className="font-mono text-[11px] font-semibold text-slate-400">{item.period}</span>
+                <span className="font-mono text-xs font-semibold text-slate-400">{item.period}</span>
               </div>
               <p className="mt-3 text-lg font-bold leading-snug text-white">{item.degree}</p>
               <p className="mt-1.5 text-sm font-semibold text-emerald-100">{item.detail}</p>
@@ -764,7 +810,7 @@ export default function Home() {
           ))}
         </ul>
 
-        <h3 id="student-association" className="mb-4 scroll-mt-28 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+        <h3 id="student-association" className="mb-4 scroll-mt-6 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
           Honors & leadership
         </h3>
         <ul data-reveal-group className="grid gap-3 md:grid-cols-3">
@@ -772,10 +818,10 @@ export default function Home() {
             const body = (
               <>
                 <div className="flex items-center justify-between gap-3">
-                  <span className={`font-mono text-[10px] font-semibold uppercase tracking-[0.16em] ${item.featured ? "text-amber-300" : "text-emerald-300"}`}>
+                  <span className={`font-mono text-xs font-semibold uppercase tracking-[0.16em] ${item.featured ? "text-amber-300" : "text-emerald-300"}`}>
                     {item.kind}
                   </span>
-                  <span className="font-mono text-[11px] font-semibold text-slate-400">{item.date}</span>
+                  <span className="font-mono text-xs font-semibold text-slate-400">{item.date}</span>
                 </div>
                 <p className="mt-3 text-lg font-bold leading-snug text-white">{item.title}</p>
                 <p className="mt-1.5 text-[13px] leading-5 text-slate-400">{item.detail}</p>
@@ -810,51 +856,33 @@ export default function Home() {
           Work, research & teaching
         </h3>
         <ol data-reveal-group className="relative">
-          {experiences.map((experience) => {
-            const kind = experienceKinds[experience.kind];
-            return (
-              <li
-                key={experience.title}
-                className="relative grid gap-2 pb-8 pl-7 last:pb-0 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-8 md:pl-0"
-              >
-                {/* Rail and dot: left edge on mobile, between date and card on desktop. */}
-                <span className="absolute bottom-0 left-[5px] top-2 w-px bg-white/10 md:left-[10.4rem]" aria-hidden="true" />
-                <span
-                  className={`absolute left-0 top-1.5 h-[11px] w-[11px] rounded-full ring-4 ring-[#070a0d] md:left-[calc(10.4rem-5px)] ${kind.dot}`}
-                  aria-hidden="true"
-                />
-                <p className="font-mono text-sm font-semibold text-slate-300 md:pt-0.5 md:text-right">{experience.period}</p>
-                <div className="min-w-0 md:pl-6">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className={`border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] ${kind.badge}`}>
-                      {kind.label}
-                    </span>
-                    <h4 className="text-lg font-bold leading-7 text-white md:text-xl">{experience.title}</h4>
-                  </div>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">{experience.org}</p>
-                  <p className="mt-3 max-w-4xl text-[15px] leading-7 text-slate-300">{experience.description}</p>
-                  {experience.href ? (
-                    <Link
-                      href={experience.href}
-                      className="link-arrow mt-3"
-                    >
-                      {experience.action} <Arrow kind={arrowFor(experience.href)} />
-                    </Link>
-                  ) : null}
-                </div>
-              </li>
-            );
-          })}
+          {recentExperiences.map((experience) => (
+            <ExperienceItem key={experience.title} experience={experience} />
+          ))}
         </ol>
+        <MoreOnMobile
+          moreLabel={`顯示較早的 ${earlierExperiences.length} 項經歷`}
+          lessLabel="收合較早的經歷"
+        >
+          <ol data-reveal-group className="relative">
+            {earlierExperiences.map((experience, index) => (
+              <ExperienceItem
+                key={experience.title}
+                experience={experience}
+                last={index === earlierExperiences.length - 1}
+              />
+            ))}
+          </ol>
+        </MoreOnMobile>
       </section>
 
       <div className="border-y border-white/10 bg-white/[0.02]">
-      <section id="skills" data-reveal className="relative mx-auto max-w-[90rem] px-6 py-16 md:px-8 md:py-20">
+      <section id="skills" data-reveal className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
         <SkillWorkMatrix />
       </section>
       </div>
 
-      <section id="about" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
+      <section id="about" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
         <div data-reveal className="mb-8">
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
             Background
@@ -875,7 +903,7 @@ export default function Home() {
             />
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 via-[#070a0d]/70 to-transparent px-5 pb-4 pt-16">
               <span className="block text-lg font-bold text-white">Kevin Huang | 黃凱浚</span>
-              <span className="mt-1 block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+              <span className="mt-1 block font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
                 AI Engineer / AI Product
               </span>
             </figcaption>
@@ -902,7 +930,7 @@ export default function Home() {
                   key={card.key}
                   className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur"
                 >
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                     {card.key}
                   </p>
                   <h3 className="mt-2 text-lg font-bold text-white">{card.title}</h3>
@@ -931,7 +959,7 @@ export default function Home() {
       </section>
 
       <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
-      <section id="certificates" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-20">
+      <section id="certificates" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
         <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
@@ -948,7 +976,7 @@ export default function Home() {
       </section>
       </div>
 
-      <section id="contact" className="relative mx-auto max-w-[88rem] px-6 py-16 md:px-8 md:py-24">
+      <section id="contact" className={`relative ${container} px-6 py-16 md:px-8 md:py-24`}>
         <div data-reveal className="grid items-center gap-10 border border-white/10 bg-[linear-gradient(135deg,rgba(16,185,129,0.1),rgba(255,255,255,0.035)_45%,rgba(245,158,11,0.05))] grid-cols-[minmax(0,1fr)] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur md:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-14">
           <div className="min-w-0">
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">

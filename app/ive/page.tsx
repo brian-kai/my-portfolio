@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo, useState } from "react";
-import ActiveSectionNav from "../active-section-nav";
+import BackToTop from "../back-to-top";
+import SubpageNav from "../subpage-nav";
 import gaeulImage from "../image/Gaeul.jpg";
 import leeseoImage from "../image/leeseo.jpg";
 import lizImage from "../image/Liz.jpg";
@@ -245,35 +245,9 @@ export default function IvePage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#09070f] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_14%_16%,rgba(236,72,153,0.18),transparent_26%),radial-gradient(circle_at_82%_12%,rgba(45,212,191,0.14),transparent_24%),radial-gradient(circle_at_74%_82%,rgba(129,140,248,0.16),transparent_28%),linear-gradient(180deg,#09070f_0%,#0e111f_50%,#09070f_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(244,114,182,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(45,212,191,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-pink-200/10 bg-[#09070f]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
-          <Link
-            href="/#projects"
-            className="btn btn-secondary btn-sm shrink-0 md:hidden"
-          >
-            ← Back
-          </Link>
+      <SubpageNav items={iveNavItems} backHref="/#projects" backLabel="Back to Projects" barClassName="border-pink-200/10 bg-[#09070f]/98" />
 
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">
-              Kevin Huang | Kai-Chun Huang
-            </span>
-          </Link>
-
-          <div className="hidden items-center gap-5 text-sm text-slate-300 md:flex">
-            <ActiveSectionNav items={iveNavItems} />
-            <Link
-              href="/#projects"
-              className="btn btn-secondary btn-sm"
-            >
-              Back to Projects
-            </Link>
-          </div>
-        </div>
-      </nav>
-
-      <section id="overview" className="relative z-10 mx-auto grid min-h-[calc(100dvh-73px)] max-w-6xl scroll-mt-24 items-center gap-8 px-6 pb-12 pt-28 md:scroll-mt-28 md:grid-cols-[1fr_430px] md:gap-10 md:pb-16 md:pt-32">
+      <section id="overview" className="relative z-10 mx-auto grid min-h-[calc(100dvh-73px)] max-w-6xl items-center gap-8 px-6 pb-12 pt-28 md:grid-cols-[1fr_430px] md:gap-10 md:pb-16 md:pt-32">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-pink-200">
             IVE Fan Website
@@ -511,7 +485,7 @@ export default function IvePage() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
-            <span className="mr-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+            <span className="mr-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
               Quick add
             </span>
             {suggestedTasks.map((suggestion) => (
@@ -546,18 +520,19 @@ export default function IvePage() {
                   type="checkbox"
                   checked={task.done}
                   onChange={() => toggleTask(task.id)}
-                  className="h-4 w-4 accent-emerald-300"
+                  aria-label={`完成任務：${task.text}`}
+                  className="h-5 w-5 accent-emerald-300"
                 />
 
                 <div className="min-w-0">
                   <p
                     className={`text-sm font-semibold ${
-                      task.done ? "text-slate-500 line-through" : "text-slate-100"
+                      task.done ? "text-slate-400 line-through" : "text-slate-100"
                     }`}
                   >
                     {task.text}
                   </p>
-                  <span className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-emerald-200">
+                  <span className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-1 text-xs font-semibold text-emerald-200">
                     {task.category}
                   </span>
                 </div>
@@ -598,7 +573,7 @@ export default function IvePage() {
                       : "border-white/10 bg-white/5 hover:border-emerald-300/50 hover:bg-emerald-200/10"
                   }`}
                 >
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-300">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-300">
                     {option.eyebrow}
                   </span>
                   <span className="mt-1 block text-base font-bold text-white">
@@ -631,6 +606,7 @@ export default function IvePage() {
           </div>
         </section>
       </section>
+      <BackToTop />
     </main>
   );
 }

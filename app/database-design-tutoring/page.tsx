@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SubpageFooter from "../subpage-footer";
 import Arrow from "../arrow-icon";
-import ActiveSectionNav from "../active-section-nav";
+import SubpageNav from "../subpage-nav";
 import ImageLightboxGallery from "../image-lightbox-gallery";
 
 import tutoringPhotoOne from "../image/6BD131C2-112B-48C8-B90B-FD36B7C5F348.jpg";
@@ -103,34 +103,10 @@ export default function DatabaseDesignTutoringPage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
-          <Link
-            href="/#experience"
-            className="btn btn-secondary btn-sm shrink-0 md:hidden"
-          >
-            ← Back
-          </Link>
-
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </Link>
-
-          <div className="hidden items-center gap-3 md:flex">
-            <ActiveSectionNav items={tutoringNavItems} />
-            <Link
-              href="/#experience"
-              className="btn btn-secondary btn-sm"
-            >
-              Back to Experience
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SubpageNav items={tutoringNavItems} backHref="/#experience" backLabel="Back to Experience" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-14 md:scroll-mt-28 md:pb-20">
+        <section id="overview" className="pb-14 md:pb-20">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12">
             <div className="min-w-0">
               <p className={eyebrowClass}>Teaching Assistant · 逢甲大學工業工程與系統管理學系</p>
@@ -163,7 +139,7 @@ export default function DatabaseDesignTutoringPage() {
           </div>
         </section>
 
-        <section id="journey" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="journey" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>From student to TA</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">從修課第一名，到回來教這門課</h2>
           <ol className="mt-8 grid gap-4 md:grid-cols-3">
@@ -175,7 +151,7 @@ export default function DatabaseDesignTutoringPage() {
                 <div className="flex items-center justify-between gap-3">
                   <span className="font-mono text-sm font-semibold text-slate-300">{step.date}</span>
                   <span
-                    className={`border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] ${
+                    className={`border px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-[0.14em] ${
                       index === 0 ? "border-amber-300/40 text-amber-200" : "border-emerald-300/40 text-emerald-200"
                     }`}
                   >
@@ -188,7 +164,7 @@ export default function DatabaseDesignTutoringPage() {
             ))}
           </ol>
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <span className="mr-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Course topics</span>
+            <span className="mr-1 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Course topics</span>
             {topics.map((topic) => (
               <span key={topic} className="border border-emerald-300/20 bg-emerald-300/[0.07] px-3 py-1 text-sm text-emerald-100">
                 {topic}
@@ -197,13 +173,13 @@ export default function DatabaseDesignTutoringPage() {
           </div>
         </section>
 
-        <section id="work" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="work" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>What I did</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">助教工作內容</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {work.map((item) => (
               <article key={item.title} className={`${cardClass} flex flex-col p-5`}>
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.en}</p>
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.en}</p>
                 <h3 className="mt-2 text-lg font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
                 <ul className="mt-4 grid gap-2 border-t border-white/10 pt-4">
@@ -218,7 +194,7 @@ export default function DatabaseDesignTutoringPage() {
           </div>
         </section>
 
-        <section id="photos" className="scroll-mt-24 border-t border-white/10 py-14 md:scroll-mt-28 md:py-16">
+        <section id="photos" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>Record</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">輔導與上機考紀錄</h2>
           <ImageLightboxGallery
@@ -234,7 +210,7 @@ export default function DatabaseDesignTutoringPage() {
 
           <aside className={`${cardClass} mt-10 flex flex-col gap-3 p-5 md:flex-row md:items-center md:justify-between md:p-6`}>
             <div>
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-300">Also teaching · 114-1</p>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-sky-300">Also teaching · 114-1</p>
               <p className="mt-1 font-bold text-white">決策與數據分析 課程助教</p>
               <p className="mt-1 text-sm leading-6 text-slate-400">
                 同樣以 100 分修畢後擔任助教，指導學生以 R 進行資料前處理、探索性分析與模型建構。

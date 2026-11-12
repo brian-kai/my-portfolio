@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     "ZOUSTEC AI 工作流程研究實習：以 51 個 n8n 工作流程串接 AI 生成、LLM 品質檢查與 4 個發布平台，每篇內容由 30 分鐘縮短為 2 分鐘、執行成功率 97.1%，並以 GA4 與統計檢定回饋改善。",
 };
 
-const sectionClass = "scroll-mt-24 border-t border-white/10 py-12 md:scroll-mt-28 md:py-16";
+const sectionClass = "border-t border-white/10 py-12 md:py-16";
 const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300";
 const h2Class = "mt-3 text-2xl font-bold md:text-3xl";
 const cardClass = "border border-white/10 bg-white/[0.045] p-5 backdrop-blur md:p-6";
@@ -128,7 +128,7 @@ export default function MarketingAutomationPage() {
       <SubpageNav items={automationNavItems} backHref="/#projects" backLabel="Back to Projects" breakpoint="lg" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-12 md:scroll-mt-28 md:pb-16">
+        <section id="overview" className="pb-12 md:pb-16">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className={eyebrowClass}>Case study · Internship</p>
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 text-xs font-bold text-amber-100">
@@ -203,7 +203,7 @@ export default function MarketingAutomationPage() {
           <h2 className={h2Class}>讓流程自己把關：品質檢查與自動重試</h2>
 
           <div className="mt-8 border border-white/10 bg-[#0a1014]/80 p-5 backdrop-blur md:p-6">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Quality loop</p>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Quality loop</p>
             <div className="mt-4 flex flex-col gap-2 md:flex-row md:items-stretch">
               <div className="flex-1 border border-white/10 bg-white/[0.04] px-4 py-3">
                 <p className="font-bold text-white">AI 生成草稿</p>
@@ -239,7 +239,7 @@ export default function MarketingAutomationPage() {
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {safeguards.map((item) => (
               <article key={item.title} className={cardClass}>
-                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.label}</p>
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.label}</p>
                 <h3 className="mt-2 text-lg font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-7 text-slate-300">{item.text}</p>
               </article>
@@ -259,7 +259,7 @@ export default function MarketingAutomationPage() {
           <h2 className={h2Class}>輪播圖改用 HTML 模板，不再讓影像模型寫字</h2>
           <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)]">
             <article className={cardClass}>
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Before · 影像模型</p>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Before · 影像模型</p>
               <h3 className="mt-2 text-lg font-bold text-white">字和版面交給模型畫</h3>
               <ul className="mt-3 grid gap-2 text-[15px] leading-7 text-slate-300">
                 <li className="border-l-2 border-white/15 pl-3">中文字會拼錯</li>
@@ -267,7 +267,7 @@ export default function MarketingAutomationPage() {
               </ul>
             </article>
             <article className="border border-emerald-300/30 bg-emerald-300/[0.05] p-5 backdrop-blur md:p-6">
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">After · HTML 模板</p>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">After · HTML 模板</p>
               <h3 className="mt-2 text-lg font-bold text-white">文字由模板排版後再輸出成圖</h3>
               <ul className="mt-3 grid gap-2 text-[15px] leading-7 text-slate-200">
                 <li className="border-l-2 border-emerald-300/40 pl-3">排查影像模型的文字錯誤後，以 HTML 模板重做 Instagram 輪播圖</li>
