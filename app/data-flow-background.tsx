@@ -15,7 +15,8 @@ type Node = { x: number; y: number; vx: number; vy: number };
 
 /**
  * Decorative canvas: pulses flowing along the grid plus a sparse, drifting node network.
- * Progressive enhancement: renders nothing under prefers-reduced-motion, pauses in hidden tabs.
+ * Progressive enhancement: renders nothing under prefers-reduced-motion or on touch devices
+ * (no pointer to react to, and a constant redraw costs battery), and pauses in hidden tabs.
  */
 export default function DataFlowBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -27,6 +28,7 @@ export default function DataFlowBackground() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const finePointer = window.matchMedia("(pointer: fine)");
+    const touchOnly = window.matchMedia("(hover: none) and (pointer: coarse)");
     let width = 0;
     let height = 0;
     let pulses: Pulse[] = [];
@@ -163,7 +165,7 @@ export default function DataFlowBackground() {
     };
 
     const start = () => {
-      if (running || reducedMotion.matches || document.hidden) return;
+      if (running || reducedMotion.matches || touchOnly.matches || document.hidden) return;
       running = true;
       lastDraw = 0;
       frame = requestAnimationFrame(loop);

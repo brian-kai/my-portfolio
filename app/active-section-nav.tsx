@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { scrollToSection } from "./scroll-to-section";
 
 type NavItem = {
   label: string;
@@ -8,9 +9,8 @@ type NavItem = {
 };
 
 type ActiveSectionNavProps = {
+  /** Colours come from the page's --accent (see .theme-amber). */
   items: NavItem[];
-  /** Kept for existing callers; colours now come from the page's --accent (see .theme-amber). */
-  variant?: "emerald" | "amber";
   /** Width at which the inline nav replaces the mobile menu; long nav bars need more room. */
   breakpoint?: "md" | "lg";
 };
@@ -22,24 +22,6 @@ export default function ActiveSectionNav({
 }: ActiveSectionNavProps) {
   // Nothing is highlighted until the first section is reached (e.g. while on a hero).
   const [activeHref, setActiveHref] = useState<string | null>(null);
-
-  const scrollToSection = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    event.preventDefault();
-
-    const section = document.querySelector<HTMLElement>(href);
-    if (!section) {
-      return;
-    }
-
-    window.scrollTo({
-      top: section.offsetTop,
-      behavior: "smooth",
-    });
-    window.history.replaceState(null, "", href);
-  };
 
   useEffect(() => {
     const sections = items
@@ -126,7 +108,10 @@ export default function ActiveSectionNav({
         <a
           key={item.href}
           href={item.href}
-          onClick={(event) => scrollToSection(event, item.href)}
+          onClick={(event) => {
+            event.preventDefault();
+            scrollToSection(item.href);
+          }}
           aria-current={activeHref === item.href ? "true" : undefined}
           className="nav-link"
         >

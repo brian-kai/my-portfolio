@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     "以知識蒸餾將微調後的 GPT-OSS-20B 轉移到輕量 BiLSTM，意圖分類準確率由 88.13% 提升至 92.76%；並以 69,476 組 QA 微調 Gemma 4-E4B 生成答案。論文已獲 2026 CIIE 年會接受。",
 };
 
-const sectionClass = "scroll-mt-24 border-t border-white/10 py-12 md:scroll-mt-28 md:py-16";
+const sectionClass = "border-t border-white/10 py-12 md:py-16";
 const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300";
 const h2Class = "mt-3 text-2xl font-bold md:text-3xl";
 
@@ -88,7 +88,7 @@ export default function IntentQaSystemPage() {
       <SubpageNav items={intentNavItems} backHref="/#projects" backLabel="Back to Projects" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-12 md:scroll-mt-28 md:pb-16">
+        <section id="overview" className="pb-12 md:pb-16">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className={eyebrowClass}>Case study · NLP research</p>
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 text-xs font-bold text-amber-100">
@@ -122,7 +122,7 @@ export default function IntentQaSystemPage() {
           <h2 className={h2Class}>兩個模型，各做擅長的事</h2>
 
           <div className="mt-8 border border-white/10 bg-[#0a1014]/80 p-5 backdrop-blur md:p-6">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Pipeline</p>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Pipeline</p>
             <div className="mt-4 flex flex-col gap-2 md:flex-row md:items-stretch">
               <div className="flex-1 border border-white/10 bg-white/[0.04] px-4 py-3">
                 <p className="font-bold text-white">使用者問題</p>
@@ -155,7 +155,7 @@ export default function IntentQaSystemPage() {
                 <ol className="mt-5 grid gap-3 border-t border-white/10 pt-4">
                   {module.steps.map((step, index) => (
                     <li key={step} className="flex gap-3 text-sm leading-6 text-slate-200">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-300/40 font-mono text-[10px] font-bold text-emerald-200">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-300/40 font-mono text-xs font-bold text-emerald-200">
                         {index + 1}
                       </span>
                       {step}

@@ -37,32 +37,39 @@ const icons = {
 };
 
 const rowClass =
-  "group flex min-h-16 items-center gap-4 border border-white/10 bg-white/[0.045] px-4 py-3 backdrop-blur transition hover:border-emerald-300/45 hover:bg-white/[0.07] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 md:px-5";
+  "group flex min-h-16 items-center gap-3 border border-white/10 bg-white/[0.045] px-3 py-3 backdrop-blur transition hover:border-emerald-300/45 hover:bg-white/[0.07] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 sm:gap-4 sm:px-4 md:px-5";
 
-function Row({ icon, label, value, href, primary, download }: {
+function Row({ icon, label, value, href, primary, download, arrowFromSm }: {
   icon: React.ReactNode;
   label: string;
   value: string;
   href: string;
   primary?: boolean;
+  /** Saves the file instead of opening it, matching the row's "download" wording and arrow. */
   download?: boolean;
+  /** Drops the trailing arrow on phones, where the row needs the width for its text. */
+  arrowFromSm?: boolean;
 }) {
   const external = href.startsWith("http");
   return (
     <a
       href={href}
-      target={external || download ? "_blank" : undefined}
-      rel={external || download ? "noopener noreferrer" : undefined}
+      download={download || undefined}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       className={`${rowClass} min-w-0 flex-1 ${primary ? "border-emerald-300/45 bg-emerald-300/[0.08]" : ""}`}
     >
       <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border ${primary ? "border-emerald-300/50 bg-emerald-300 text-slate-950" : "border-white/15 bg-white/[0.06] text-emerald-200"}`}>
         {icon}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</span>
+        <span className="block font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</span>
         <span className="block text-[15px] leading-6 [overflow-wrap:anywhere] font-semibold text-white">{value}</span>
       </span>
-      <Arrow kind={download ? "down" : external ? "external" : "right"} className="arrow-accent" />
+      <Arrow
+        kind={download ? "down" : external ? "external" : "right"}
+        className={`arrow-accent ${arrowFromSm ? "hidden sm:block" : ""}`}
+      />
     </a>
   );
 }
@@ -82,12 +89,14 @@ export default function ContactLinks({ email, github, linkedin, resumeHref }: Co
 
   return (
     <div className="grid min-w-0 gap-3">
-      <div className="flex min-w-0 gap-3">
-        <Row icon={icons.email} label="Email" value={email} href={`mailto:${email}`} primary />
+      <div className="relative flex min-w-0 gap-3">
+        <Row icon={icons.email} label="Email" value={email} href={`mailto:${email}`} primary arrowFromSm />
+        {/* Phones: a small chip in the row's corner, so the address keeps the full width and
+            stays on one line. From sm up it is a button beside the row. */}
         <button
           type="button"
           onClick={copyEmail}
-          className="shrink-0 border border-white/10 bg-white/[0.045] px-4 text-sm font-bold text-slate-200 transition hover:border-emerald-300/45 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70"
+          className="absolute right-1.5 top-1.5 min-h-6 shrink-0 border border-white/15 bg-[#0a1014]/90 px-2 text-xs font-bold text-slate-200 transition after:absolute after:-inset-1.5 after:content-[''] hover:border-emerald-300/45 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 sm:static sm:min-h-0 sm:border-white/10 sm:bg-white/[0.045] sm:px-4 sm:text-sm sm:after:hidden"
           aria-live="polite"
         >
           {copied ? "已複製 ✓" : "複製"}

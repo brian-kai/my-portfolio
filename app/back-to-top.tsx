@@ -21,7 +21,7 @@ export default function BackToTop() {
       title="Back to top"
       aria-hidden={!visible}
       tabIndex={visible ? undefined : -1}
-      className={`pressable motion-reduce-transform z-nav fixed bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border border-emerald-300/40 bg-[#070a0d]/86 text-xl font-bold text-emerald-200 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-200 hover:text-white md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl ${
+      className={`pressable motion-reduce-transform z-nav fixed bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border border-[rgb(var(--accent)/0.4)] bg-[#070a0d]/86 text-xl font-bold text-[rgb(var(--accent))] shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-[rgb(var(--accent))] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent))] md:bottom-6 md:right-6 md:h-12 md:w-12 md:text-2xl ${
         visible ? "opacity-100" : "pointer-events-none translate-y-2 opacity-0"
       }`}
     >

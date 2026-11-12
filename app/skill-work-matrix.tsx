@@ -184,7 +184,7 @@ export default function SkillWorkMatrix() {
                 activeHere ? "border-emerald-300/40 bg-emerald-300/[0.05]" : "border-white/10 bg-white/[0.045]"
               }`}
             >
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                 {category.key}
               </p>
               <h3 className="mt-2 text-xl font-bold text-white">{category.title}</h3>
@@ -192,7 +192,7 @@ export default function SkillWorkMatrix() {
 
               {category.groups.map((group) => (
                 <div key={group.label} className="mt-5">
-                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                     {group.label}
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -220,8 +220,8 @@ export default function SkillWorkMatrix() {
                 </div>
               ))}
 
-              <div className="mt-6 border-t border-white/10 pt-4">
-                <p className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:block">
+              <div className="mt-6 border-t border-white/10 pt-2 lg:pt-4">
+                <p className="hidden font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400 lg:block">
                   Used in
                 </p>
                 <button
@@ -229,9 +229,9 @@ export default function SkillWorkMatrix() {
                   aria-expanded={worksOpen}
                   aria-controls={worksId}
                   onClick={() => toggleWorks(category.key)}
-                  className="flex w-full items-center justify-between gap-3 py-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 lg:hidden"
+                  className="flex min-h-11 w-full items-center justify-between gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 lg:hidden"
                 >
-                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">
+                  <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
                     Used in · {category.works.length} 件作品
                   </span>
                   <Arrow kind="down" className={`arrow-accent transition-transform ${worksOpen ? "rotate-180" : ""}`} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { scrollToSection } from "./scroll-to-section";
 
 type NavItem = {
   label: string;
@@ -16,7 +17,16 @@ const focusableSelector = [
   "[tabindex]:not([tabindex='-1'])",
 ].join(",");
 
-export default function MobileMenu({ items }: { items: NavItem[] }) {
+type MobileMenuProps = {
+  items: NavItem[];
+  /** Width at which the inline nav takes over and this menu disappears. */
+  breakpoint?: "md" | "lg";
+  /** Heading shown at the top of the drawer. */
+  title?: string;
+};
+
+export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }: MobileMenuProps) {
+  const hiddenFrom = breakpoint === "lg" ? "lg:hidden" : "md:hidden";
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
@@ -73,23 +83,13 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
     };
   }, [isOpen]);
 
-  const scrollToSection = (
+  const goToSection = (
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
     event.preventDefault();
     setIsOpen(false);
-
-    const section = document.querySelector<HTMLElement>(href);
-    if (!section) {
-      return;
-    }
-
-    window.scrollTo({
-      top: section.offsetTop,
-      behavior: "smooth",
-    });
-    window.history.replaceState(null, "", href);
+    scrollToSection(href);
   };
 
   return (
@@ -100,7 +100,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
-        className="btn btn-secondary btn-icon lg:hidden"
+        className={`btn btn-secondary btn-icon shrink-0 ${hiddenFrom}`}
       >
         <span className="flex flex-col gap-1.5" aria-hidden="true">
           <span className="block h-0.5 w-5 rounded bg-current" />
@@ -110,7 +110,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
       </button>
 
       {isOpen ? (
-        <div className="z-menu fixed inset-0 lg:hidden">
+        <div className={`z-menu fixed inset-0 ${hiddenFrom}`}>
           <button
             type="button"
             aria-label="Close navigation menu"
@@ -127,8 +127,8 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
             style={{ height: "100dvh", minHeight: "100dvh" }}
           >
             <div className="flex items-center justify-between gap-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
-                Menu
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[rgb(var(--accent))]">
+                {title}
               </p>
               <button
                 ref={closeButtonRef}
@@ -146,7 +146,7 @@ export default function MobileMenu({ items }: { items: NavItem[] }) {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={(event) => scrollToSection(event, item.href)}
+                  onClick={(event) => goToSection(event, item.href)}
                   className="pressable-subtle rounded-lg px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
                 >
                   {item.label}

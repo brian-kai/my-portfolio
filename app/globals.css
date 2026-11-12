@@ -25,8 +25,10 @@ body {
   text-rendering: geometricPrecision;
 }
 
+/* The only anchor offset on the site: clears the fixed nav for hash links, scrollIntoView()
+   and keyboard focus alike. Targets must not add their own scroll-margin on top of it. */
 html {
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 5rem;
 }
 
 main p,
@@ -34,8 +36,45 @@ main dd {
   text-align: left;
 }
 
-section[id] {
-  scroll-margin-top: 5.5rem;
+/* Avoid a lone character on the last line of a paragraph, and uneven heading lines. */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p,
+li,
+dd,
+figcaption {
+  text-wrap: pretty;
+}
+
+/* In-page nav moves focus to the section it scrolls to (see scroll-to-section.ts);
+   the section itself is not interactive, so it gets no ring. */
+section[tabindex="-1"]:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 200;
+  transform: translateY(-300%);
+  border-radius: 0.5rem;
+  background: rgb(var(--accent));
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0b0f12;
+}
+
+.skip-link:focus {
+  transform: none;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .theme-amber {
@@ -126,6 +165,8 @@ section[id] {
     color: rgb(var(--accent));
     transition: color 150ms ease;
   }
+  a.link-arrow { position: relative; min-height: 1.5rem; }
+  a.link-arrow::after { content: ""; position: absolute; inset: -0.625rem -0.5rem; }
   a.link-arrow:hover, .group:hover .link-arrow { color: rgb(var(--accent) / 0.8); }
   a.link-arrow:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 4px; }
   .arrow-accent { color: rgb(var(--accent)); }
@@ -148,8 +189,10 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Slide only, never fade: text that starts at opacity 0 is not painted until the
+     animation runs, which delayed the largest contentful paint by ~0.8s. */
   .hero-intro > *, .hero-panel {
-    animation: hero-enter 650ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation: hero-enter 550ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
   .hero-intro > :nth-child(2) { animation-delay: 70ms; }
   .hero-intro > :nth-child(3) { animation-delay: 140ms; }
@@ -162,8 +205,8 @@ section[id] {
 }
 
 @keyframes hero-enter {
-  from { opacity: 0; translate: 0 18px; }
-  to { opacity: 1; translate: 0 0; }
+  from { translate: 0 14px; }
+  to { translate: 0 0; }
 }
 
 @keyframes hero-drift {

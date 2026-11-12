@@ -3,7 +3,7 @@ import Link from "next/link";
 import SubpageFooter from "../subpage-footer";
 import Arrow from "../arrow-icon";
 import { projectLeadership } from "../academic-experiences";
-import ActiveSectionNav from "../active-section-nav";
+import SubpageNav from "../subpage-nav";
 import LightboxImage from "../lightbox-image";
 import { llamaAwards, medalTones } from "../llama-awards";
 
@@ -154,7 +154,7 @@ export const metadata: Metadata = {
     "結合消費者偏好分析、語意分群與 QLoRA 微調 LLaMA 3 的個人化行銷文案生成研究，獲 CIIE 2025 最佳論文等 5 項獎項。",
 };
 
-const sectionClass = "scroll-mt-24 border-t border-white/10 py-12 md:scroll-mt-28 md:py-16";
+const sectionClass = "border-t border-white/10 py-12 md:py-16";
 const eyebrowClass = "font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300";
 const h2Class = "mt-3 text-2xl font-bold md:text-3xl";
 
@@ -176,34 +176,10 @@ export default function LlamaMarketingSystemPage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4">
-          <Link
-            href="/#projects"
-            className="btn btn-secondary btn-sm shrink-0 lg:hidden"
-          >
-            ← Back
-          </Link>
-
-          <Link href="/" className="min-w-0 truncate text-lg font-bold">
-            <span className="md:hidden">Kevin Huang</span>
-            <span className="hidden md:inline">Kevin Huang | Kai-Chun Huang</span>
-          </Link>
-
-          <div className="hidden items-center gap-3 lg:flex">
-            <ActiveSectionNav items={llamaNavItems} breakpoint="lg" />
-            <Link
-              href="/#projects"
-              className="btn btn-secondary btn-sm"
-            >
-              Back to Projects
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SubpageNav items={llamaNavItems} backHref="/#projects" backLabel="Back to Projects" breakpoint="lg" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
-        <section id="overview" className="scroll-mt-24 pb-12 md:scroll-mt-28 md:pb-16">
+        <section id="overview" className="pb-12 md:pb-16">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className={eyebrowClass}>Case study · Graduation research</p>
             <Link
@@ -290,7 +266,7 @@ export default function LlamaMarketingSystemPage() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-3 text-xs text-slate-500">
+            <figcaption className="mt-3 text-xs text-slate-400">
               點圖可放大。資料 → 兩個偏好分析模組 → LLaMA 3 生成 → 評估。
             </figcaption>
           </figure>
@@ -304,7 +280,7 @@ export default function LlamaMarketingSystemPage() {
                 <ol className="mt-5 grid gap-3 border-t border-white/10 pt-4">
                   {module.steps.map((step, index) => (
                     <li key={step} className="flex gap-3 text-sm leading-6 text-slate-200">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-300/40 font-mono text-[10px] font-bold text-emerald-200">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-300/40 font-mono text-xs font-bold text-emerald-200">
                         {index + 1}
                       </span>
                       {step}
@@ -391,7 +367,7 @@ export default function LlamaMarketingSystemPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-right text-[11px] text-slate-500">滿分 1.00</p>
+                <p className="mt-2 text-right text-xs text-slate-400">滿分 1.00</p>
               </figure>
               <p className="mt-4 border-l-2 border-emerald-300/40 pl-3 text-sm leading-6 text-slate-200">{experiments.human.finding}</p>
             </article>
