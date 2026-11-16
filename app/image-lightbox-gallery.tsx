@@ -51,7 +51,7 @@ export default function ImageLightboxGallery({
   actionLabel,
   cardClassName,
   gridClassName = "grid gap-6",
-  imageClassName = "w-full rounded-xl object-contain",
+  imageClassName = "w-full object-contain",
   imageSizes = "100vw",
   imageWrapperClassName = "",
   showDescription = false,
@@ -80,7 +80,7 @@ export default function ImageLightboxGallery({
             className={
               cardClassName
                 ? `${interactiveCardClassName} ${cardClassName}`
-                : `${interactiveCardClassName} group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 ${styles.hoverBorder} hover:bg-white/10 focus:outline-none focus:ring-2 ${styles.focus}`
+                : `${interactiveCardClassName} group flex h-full flex-col overflow-hidden border border-white/10 bg-white/5 text-left transition hover:-translate-y-1 ${styles.hoverBorder} hover:bg-white/10 focus:outline-none focus:ring-2 ${styles.focus}`
             }
           >
             <div className={imageWrapperClassName}>
@@ -116,7 +116,7 @@ export default function ImageLightboxGallery({
                     {item.details.map((detail) => (
                       <div
                         key={detail.label}
-                        className={`rounded-xl border px-4 py-3 ${
+                        className={`border px-4 py-3 ${
                           detail.highlight
                             ? "border-emerald-300/45 bg-emerald-300/[0.12]"
                             : "border-white/10 bg-white/[0.045]"

@@ -15,6 +15,7 @@ import CertificateGrid, { type Certificate } from "./certificate-grid";
 import MobileMenu from "./mobile-menu";
 import MoreOnMobile from "./more-on-mobile";
 import LightboxImage from "./lightbox-image";
+import SiteBrand from "./site-brand";
 import SkillWorkMatrix from "./skill-work-matrix";
 import { isExternalHref } from "./smart-link";
 import llamaSystemDiagram from "./llama-marketing-system/images/llama-system-diagram.svg";
@@ -26,11 +27,9 @@ import toeicCertificate from "./image/toeic-score-report.png";
 
 const navItems = [
   { label: "Projects", href: "#projects" },
-  { label: "Research", href: "#research" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "About", href: "#about" },
-  { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -134,7 +133,7 @@ const experiences: Experience[] = [
     org: "逢甲大學工業工程與系統管理學系｜113-2、114-2 學期",
     description: "協助課程教學、夜間輔導、作業討論與學生問題釐清，內容涵蓋關聯式綱要設計、SQL 查詢、正規化與資料庫管理。",
     href: "/database-design-tutoring",
-    action: "View Photos",
+    action: "看照片",
   },
   {
     period: "2024.07–2025.07",
@@ -199,7 +198,7 @@ function ExperienceItem({ experience, last = false }: { experience: Experience; 
           <h4 className="text-lg font-bold leading-7 text-white md:text-xl">{experience.title}</h4>
         </div>
         <p className="mt-1 text-sm leading-6 text-slate-400">{experience.org}</p>
-        <p className="mt-3 max-w-4xl text-[15px] leading-7 text-slate-300">{experience.description}</p>
+        <p className="mt-3 max-w-[42em] text-[15px] leading-7 text-slate-300">{experience.description}</p>
         {experience.href ? (
           <Link href={experience.href} className="link-arrow mt-3">
             {experience.action} <Arrow kind={arrowFor(experience.href)} />
@@ -217,13 +216,17 @@ const llamaShowcase = {
   award: "CIIE 2025 最佳論文獎",
   title: "LLaMA 3 個人化行銷文案系統",
   role: "專題組長｜規劃研究進度與組員分工，每週彙整兩次進度報告。",
+  paper: {
+    venue: "CIIE 2025 · 口頭發表",
+    title: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
+  },
   steps: [
     ["Problem", "制式化的產品描述，難以貼近不同消費者的偏好。"],
     ["Method", "以 QLoRA 於 78K 筆行銷文本微調 LLaMA 3 8B，結合 TextRank、情感分析與分群建立偏好特徵。"],
     ["Outcome", "BLEU-4 14.44、METEOR 23.62，分別比已發表的基準高 27% 與 64%；人工評估流暢性 0.89、相關性 0.80。"],
   ],
   tags: ["LLaMA 3", "QLoRA", "TextRank", "K-Means", "HDBSCAN"],
-  primary: { label: "View Case Study", href: "/llama-marketing-system" },
+  primary: { label: "看案例研究", href: "/llama-marketing-system" },
   secondary: { label: "研究海報", href: "/file/graduation-project-poster.pdf" },
 };
 
@@ -244,45 +247,68 @@ const automationShowcase = {
     ["22,761", "Threads 30 天瀏覽"],
   ],
   tags: ["n8n", "GA4", "Statistical Testing", "Workflow Automation"],
-  primary: { label: "View Case Study", href: "/marketing-automation" },
+  primary: { label: "看案例研究", href: "/marketing-automation" },
 };
 
+type Paper = { venue: string; title: string };
+
+// Research projects carry their paper here, so the papers need no section of their own.
 const moreProjects: {
   eyebrow: string;
   title: string;
   summary: string;
   highlight: string;
-  status?: string;
-  link?: ProjectLink;
+  /** Shown beside the eyebrow in the amber used for awards across the site. */
+  award?: string;
+  paper?: Paper;
+  /** Spans two columns and gets the award tint. */
+  featured?: boolean;
+  /** Headline number shown beside a featured card's text from md up, where the wide card has room. */
+  stat?: { value: string; label: string };
+  link: ProjectLink;
 }[] = [
   {
-    eyebrow: "NLP · CIIE 2026",
-    status: "進行中",
+    eyebrow: "NLP · Research",
+    award: "CIIE 2026 最佳論文獎",
+    featured: true,
     title: "知識蒸餾 × 意圖辨識問答系統",
     summary: "以 73,828 句的 soft label 將微調後的 GPT-OSS-20B 蒸餾為輕量 BiLSTM 進行意圖分類，並以 69,476 組 QA 微調 Gemma 4-E4B。",
     highlight: "Accuracy 88.13% → 92.76%",
-    link: { label: "View Case Study", href: "/intent-qa-system" },
+    stat: { value: "92.76%", label: "意圖分類 Accuracy（蒸餾前 88.13%）" },
+    paper: { venue: "CIIE 2026", title: "應用知識蒸餾與使用者意圖識別技術之智慧問答模式系統" },
+    link: { label: "看案例研究", href: "/intent-qa-system" },
+  },
+  {
+    eyebrow: "NLP · Research",
+    title: "LSTM 作文評分與評語生成",
+    summary: "以分類模型與 TF-IDF 特徵為英文作文客觀評分，並結合 ELMo、Bi-LSTM 與 LSTM 生成評語。",
+    highlight: "F1 0.79 · SCC 0.790 · PCC 0.749",
+    paper: {
+      venue: "ICCCM 2026 · 東京 · 獲接受發表",
+      title: "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
+    },
+    link: { label: "看研究細節", href: "/icccm" },
   },
   {
     eyebrow: "Live Demo",
     title: "4G SEO Entity Analysis Tool",
     summary: "串接 SERP API 擷取實體並比較關鍵詞，輸出結構化洞察到 Google Sheets。",
     highlight: "SERP API → Google Sheets",
-    link: { label: "Live Demo", href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app" },
+    link: { label: "開啟線上 Demo", href: "https://seo-entity-tool-3lm5u8i6p-kevins-projects-7a74b0ff.vercel.app" },
   },
   {
     eyebrow: "Data Analysis · Poster",
     title: "用電趨勢分析",
     summary: "整理 2020–2023 年每日用電資料，以 Python 進行趨勢分析、異常檢測與模型訓練。",
     highlight: "Python · Visualization",
-    link: { label: "View Poster", href: "/file/electricity-usage-trend-analysis-poster.pdf" },
+    link: { label: "看海報", href: "/file/electricity-usage-trend-analysis-poster.pdf" },
   },
   {
     eyebrow: "Frontend",
     title: "IVE K-pop Fan Website",
     summary: "以 Next.js 與 Tailwind CSS 製作，聚焦響應式版面與視覺層級的粉絲網站。",
     highlight: "Next.js · Tailwind CSS",
-    link: { label: "View Website", href: "/ive" },
+    link: { label: "看網站", href: "/ive" },
   },
 ];
 
@@ -296,7 +322,7 @@ function ProjectSteps({ steps }: { steps: string[][] }) {
     <dl className="mt-6 grid gap-4">
       {steps.map(([label, value]) => (
         <div key={label} className="border-l-2 border-emerald-300/35 pl-4">
-          <dt className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
+          <dt className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
             {label}
           </dt>
           <dd className="mt-1 text-[15px] leading-7 text-slate-200">{value}</dd>
@@ -318,36 +344,47 @@ function ProjectTags({ tags }: { tags: string[] }) {
   );
 }
 
+/** The paper a project produced: venue and status first, then the paper's own title. */
+function PaperLine({ paper, className = "" }: { paper: Paper; className?: string }) {
+  return (
+    <p className={`max-w-[42em] border-l-2 border-white/15 pl-3 text-sm leading-6 text-slate-400 ${className}`}>
+      <span className="font-semibold text-slate-200">論文｜{paper.venue}</span>
+      <span className="block">{paper.title}</span>
+    </p>
+  );
+}
+
 const heroProof = [
   {
     label: "Competition",
     value: "1st Place",
     detail: "2026 全國工業工程與管理大學生專題論文競賽",
     href: "/conference#first-place",
-    action: "Proof",
+    action: "看證明",
     highlight: true,
   },
   {
-    label: "Conference",
+    label: "CIIE 2026",
     value: "Best Paper",
-    detail: "CIIE 2025 · LLaMA 3 個人化行銷文案",
-    href: "/conference#best-paper",
-    action: "Proof",
+    detail: "知識蒸餾 × 意圖辨識問答系統",
+    href: "/intent-qa-system#award",
+    action: "看證明",
     highlight: true,
   },
   {
-    label: "NLP Model",
-    value: "92.76%",
-    detail: "知識蒸餾 BiLSTM 意圖分類 Accuracy",
-    href: "/intent-qa-system",
-    action: "Case study",
+    label: "CIIE 2025",
+    value: "Best Paper",
+    detail: "LLaMA 3 個人化行銷文案系統",
+    href: "/conference#best-paper",
+    action: "看證明",
+    highlight: true,
   },
   {
     label: "Automation",
     value: "30→2 分",
     detail: "n8n 自動化後每篇內容處理時間",
     href: "/marketing-automation",
-    action: "Case study",
+    action: "看案例",
   },
 ];
 
@@ -361,7 +398,6 @@ const aboutIntro = {
 
 const beyondCode = [
   {
-    key: "Lead",
     title: "帶團隊",
     points: [
       ["畢業專題組長", "規劃研究方向與進度，安排分工，每週彙整兩次進度報告"],
@@ -370,7 +406,6 @@ const beyondCode = [
     link: { label: "看經歷", href: "#experience" },
   },
   {
-    key: "Teach",
     title: "教別人",
     points: [
       ["資料庫設計、決策與數據分析助教", "協助 SQL 與 R 的作業討論與學生問題釐清"],
@@ -379,7 +414,6 @@ const beyondCode = [
     link: { label: "看助教經歷", href: "/database-design-tutoring" },
   },
   {
-    key: "Share",
     title: "分享與表達",
     points: [
       ["榮譽學生經驗分享會受邀講者", "向約 100 位大一新生分享課程規劃、競賽經驗與研究入門"],
@@ -389,42 +423,6 @@ const beyondCode = [
   },
 ];
 
-
-const papers = [
-  {
-    status: "Best Paper Award",
-    featured: true,
-    when: "2025.11",
-    title: "基於 LLaMA 3 模型結合消費者偏好生成個人化產品行銷文案模式",
-    subtitle: "A Personalized Marketing Copy Generation System Based on LLaMA 3 Model",
-    venue: "CIIE 2025 · 中國工業工程學會年會暨學術研討會｜大數據技術與應用領域",
-    note: "於研討會口頭發表畢業專題研究，獲該領域最佳論文獎。",
-    href: "/conference#best-paper",
-    action: "View Proof",
-  },
-  {
-    status: "Accepted for Presentation",
-    featured: false,
-    when: "2026.07 · Tokyo",
-    title: "An Objective Essay Scoring and Commentary Generation System with LSTM Model",
-    subtitle: "以 LSTM 模型之文章客觀評分與評語生成模式",
-    venue: "ICCCM 2026 · The 14th International Conference on Computer and Communications Management",
-    note: "文本分類 F1 0.79；評分系統 SCC 0.790、PCC 0.749；評語生成整體一致性 66.7%。",
-    href: "/icccm",
-    action: "View Details",
-  },
-  {
-    status: "Paper Accepted",
-    featured: false,
-    when: "2026",
-    title: "An Intelligent Question-Answering System Based on Knowledge Distillation and User Intent Recognition Technologies",
-    subtitle: "知識蒸餾 × 意圖辨識問答系統",
-    venue: "CIIE 2026 · 中國工業工程學會年會",
-    note: "以知識蒸餾將意圖分類準確率由 88.13% 提升至 92.76%，並微調 Gemma 4-E4B 生成答案。",
-    href: "/intent-qa-system",
-    action: "View Case Study",
-  },
-];
 
 export default function Home() {
   return (
@@ -439,16 +437,7 @@ export default function Home() {
         <div className={`${container} flex items-center justify-between gap-3 px-4 py-3 md:px-8`}>
           <MobileMenu items={navItems} />
 
-          <Link href="/" className="group flex min-w-0 items-center gap-3 lg:flex-none">
-            {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG logo */}
-            <img src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg transition group-hover:scale-105" />
-            <span className="min-w-0 leading-tight">
-              <span className="block truncate text-base font-bold text-white">Kevin Huang</span>
-              <span className="hidden font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300 sm:block">
-                NLP / LLM AI Engineer
-              </span>
-            </span>
-          </Link>
+          <SiteBrand />
 
           <ActiveSectionNav items={navItems} breakpoint="lg" />
 
@@ -465,7 +454,7 @@ export default function Home() {
         <div className="hero-glow" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(245,158,11,0.1),transparent_24%)]" />
 
-        <div className={`relative ${container} grid min-h-[82dvh] items-center gap-10 px-6 py-14 md:px-8 md:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(28rem,0.9fr)] xl:gap-14`}>
+        <div className={`relative ${container} grid min-h-[82dvh] items-center gap-10 px-6 py-14 md:px-8 md:py-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(24rem,0.9fr)] xl:grid-cols-[minmax(0,1.1fr)_minmax(28rem,0.9fr)] xl:gap-14`}>
           <div className="hero-intro max-w-3xl">
             <p className="mb-4 text-base text-slate-300 md:text-lg">
               Hi, I&apos;m <span className="font-bold text-white">Kevin Huang</span>{" "}
@@ -480,7 +469,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-              逢甲大學工業工程碩士生（4+1 學碩一貫），結合 LLM 應用與 AI 工作流程自動化：
+              逢甲大學工業工程碩士生（4+1 學碩一貫，預計 2027.07 畢業），結合 LLM 應用與 AI 工作流程自動化：
               從模型微調與評估，到實際上線運作的自動化系統。
             </p>
 
@@ -496,7 +485,7 @@ export default function Home() {
                 href="#projects"
                 className="btn btn-primary btn-lg px-3 sm:px-6"
               >
-                View Projects
+                看作品
               </a>
               <a
                 href={resumeHref}
@@ -504,13 +493,13 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn btn-secondary btn-lg px-3 sm:px-6"
               >
-                Resume <Arrow kind="external" />
+                履歷 <Arrow kind="external" />
               </a>
               <a
                 href="#contact"
                 className="btn btn-ghost btn-lg hidden sm:inline-flex"
               >
-                Contact <Arrow />
+                聯絡我 <Arrow />
               </a>
             </div>
           </div>
@@ -520,26 +509,27 @@ export default function Home() {
               <h2 id="selected-proof" className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 Selected proof
               </h2>
-              <span className="text-xs font-semibold text-slate-400">點擊看證據</span>
+              <span className="text-sm font-semibold text-slate-400">點擊看證據</span>
             </div>
             <ul className="grid grid-cols-2 gap-px bg-white/10">
               {heroProof.map((proof) => (
                 <li key={proof.label} className="bg-[#0a1014]">
                   <Link
                     href={proof.href}
-                    className="group flex h-full flex-col p-4 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 sm:p-5 md:p-6"
+                    className="group flex h-full flex-col p-4 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 sm:p-5 md:p-6 lg:p-5 xl:p-6"
                   >
                     <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                       {proof.label}
                     </span>
+                    {/* Sized so "Best Paper" stays on one line in the narrower lg column. */}
                     <span
-                      className={`mt-2.5 text-2xl font-black leading-tight tracking-tight sm:text-3xl md:text-[2.1rem] ${
+                      className={`mt-2.5 text-2xl font-black leading-tight tracking-tight sm:text-3xl md:text-[2.1rem] lg:text-[1.7rem] xl:text-[2.1rem] ${
                         proof.highlight ? "text-amber-300" : "text-white"
                       }`}
                     >
                       {proof.value}
                     </span>
-                    <span className="mt-2 text-xs leading-5 text-slate-300 sm:text-sm sm:leading-6">{proof.detail}</span>
+                    <span className="mt-2 text-sm leading-6 text-slate-300">{proof.detail}</span>
                     <span className="link-arrow mt-auto pt-3">
                       {proof.action} <Arrow kind={arrowFor(proof.href)} />
                     </span>
@@ -559,7 +549,7 @@ export default function Home() {
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Projects</h2>
           <p className="mt-5 text-sm leading-7 text-slate-400">
-            主力專案以系統架構與量化成果呈現完整脈絡，其他作品整理在下方。
+            主力專案以系統架構與量化成果呈現完整脈絡，其他研究與作品整理在下方，論文資訊直接寫在各專案上。
           </p>
         </div>
 
@@ -576,20 +566,21 @@ export default function Home() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-3 text-xs text-slate-400">
-              系統架構：資料 → 偏好分析 → LLaMA 3 → 評估<span className="lg:hidden">（點圖可放大）</span>
+            <figcaption className="mt-3 text-sm text-slate-400">
+              系統架構：資料 → 偏好分析 → LLaMA 3 → 評估（點圖可放大）
             </figcaption>
           </figure>
 
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                 {llamaShowcase.eyebrow}
               </span>
-              <span className="text-xs font-bold text-amber-200">★ {llamaShowcase.award}</span>
+              <span className="text-sm font-bold text-amber-200">★ {llamaShowcase.award}</span>
             </div>
             <h3 className="mt-3 text-2xl font-bold leading-tight text-white md:text-3xl">{llamaShowcase.title}</h3>
             <p className="mt-3 text-sm leading-6 text-slate-400">{llamaShowcase.role}</p>
+            <PaperLine paper={llamaShowcase.paper} className="mt-4" />
             <ProjectSteps steps={llamaShowcase.steps} />
             <ProjectTags tags={llamaShowcase.tags} />
             <div className="mt-6 border-t border-white/10 pt-5">
@@ -602,7 +593,7 @@ export default function Home() {
                   return (
                     <li
                       key={award.name}
-                      className="inline-flex items-center gap-2 border border-white/10 bg-slate-950/40 py-1 pl-1.5 pr-2.5 text-xs text-slate-200"
+                      className="inline-flex items-center gap-2 border border-white/10 bg-slate-950/40 py-1 pl-1.5 pr-2.5 text-sm text-slate-200"
                     >
                       <span
                         className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-black ${tone.medal}`}
@@ -647,7 +638,7 @@ export default function Home() {
                 <span className="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
                 實習 @ {automationShowcase.company}
               </span>
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                 {automationShowcase.eyebrow}
               </span>
             </div>
@@ -665,7 +656,7 @@ export default function Home() {
           <dl className="grid min-w-0 grid-cols-2 gap-px border border-white/10 bg-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
             {automationShowcase.metrics.map(([value, label]) => (
               <div key={label} className="flex min-h-32 flex-col justify-center bg-[#0a1114] px-5 py-6 md:min-h-40 md:px-7">
-                <dt className="order-last mt-2 text-xs text-slate-400 md:text-sm">{label}</dt>
+                <dt className="order-last mt-2 text-sm text-slate-400">{label}</dt>
                 <dd className="text-3xl font-black tracking-tight text-white md:text-4xl">{value}</dd>
               </div>
             ))}
@@ -673,54 +664,56 @@ export default function Home() {
         </article>
 
         <div className="border-t border-white/10 pt-10">
-          <p className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
-            More projects
-          </p>
-          <div data-reveal-group className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <h3 className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+            More research & projects
+          </h3>
+          {/* Five cards: the award-winning paper spans two columns, so both rows fill at every width. */}
+          <div data-reveal-group className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {moreProjects.map((project) => {
-              const content = (
+              const external = isExternalHref(project.link.href);
+              const text = (
                 <>
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                       {project.eyebrow}
                     </span>
-                    {project.status ? (
-                      <span className="text-xs font-bold text-amber-200">● {project.status}</span>
+                    {project.award ? (
+                      <span className="text-sm font-bold text-amber-200">★ {project.award}</span>
                     ) : null}
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug text-white">{project.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">{project.summary}</p>
-                  <p className="mt-4 font-mono text-xs font-semibold text-emerald-200/90">{project.highlight}</p>
-                  {project.link ? (
-                    <span className="link-arrow mt-auto pt-5">
-                      {project.link.label} <Arrow kind={arrowFor(project.link.href)} />
-                    </span>
-                  ) : (
-                    <span className="mt-auto pt-5 text-sm font-bold text-slate-400">Ongoing</span>
-                  )}
+                  <h4 className={`mt-3 font-semibold leading-snug text-white ${project.featured ? "text-xl md:text-2xl" : "text-lg"}`}>
+                    {project.title}
+                  </h4>
+                  <p className="mt-2 max-w-[42em] text-sm leading-6 text-slate-300">{project.summary}</p>
+                  {project.paper ? <PaperLine paper={project.paper} className="mt-4" /> : null}
+                  {/* With a stat beside the text, the same figure is not repeated as a line. */}
+                  <p className={`mt-4 font-mono text-sm font-semibold text-slate-100 ${project.stat ? "md:hidden" : ""}`}>
+                    {project.highlight}
+                  </p>
+                  <span className="link-arrow mt-auto pt-5">
+                    {project.link.label} <Arrow kind={arrowFor(project.link.href)} />
+                  </span>
                 </>
               );
-              const cardClass =
-                "flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur";
-
-              if (!project.link) {
-                return (
-                  <article key={project.title} className={cardClass}>
-                    {content}
-                  </article>
-                );
-              }
-
-              const external = isExternalHref(project.link.href);
               return (
                 <a
                   key={project.title}
                   href={project.link.href}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
-                  className={`${cardClass} pressable motion-reduce-transform transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70`}
+                  className={`pressable motion-reduce-transform group h-full border p-5 transition hover:-translate-y-1 hover:border-emerald-300/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 md:p-6 ${
+                    project.featured
+                      ? "grid items-center gap-8 border-amber-300/30 bg-[linear-gradient(150deg,rgba(252,211,77,0.09),rgba(255,255,255,0.035)_55%)] sm:col-span-2 md:grid-cols-[minmax(0,1fr)_auto]"
+                      : "flex flex-col border-white/10 bg-white/[0.045] hover:bg-white/[0.07]"
+                  }`}
                 >
-                  {content}
+                  {project.featured ? <div className="flex h-full min-w-0 flex-col">{text}</div> : text}
+                  {project.stat ? (
+                    <div className="hidden border-l border-amber-300/25 py-2 pl-8 pr-2 md:block lg:pr-6">
+                      <p className="text-5xl font-black tracking-tight text-amber-300">{project.stat.value}</p>
+                      <p className="mt-2 max-w-[12em] text-sm leading-6 text-slate-300">{project.stat.label}</p>
+                    </div>
+                  ) : null}
                 </a>
               );
             })}
@@ -729,61 +722,10 @@ export default function Home() {
       </section>
       </div>
 
-      <section id="research" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
-        <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
-          <div>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Papers & conferences
-            </p>
-            <h2 className="text-3xl font-bold md:text-4xl">Research</h2>
-          </div>
-          <p className="max-w-md text-sm leading-6 text-slate-400">
-            三篇研討會論文，各自連到發表證明或研究細節。
-          </p>
-        </div>
-
-        <ol data-reveal-group className="border border-white/10 bg-[#0a1014]/70 backdrop-blur">
-          {papers.map((paper) => (
-            <li key={paper.title} className="border-b border-white/10 last:border-b-0">
-              <Link
-                href={paper.href}
-                className={`group grid gap-3 p-5 transition hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300/70 md:grid-cols-[13rem_minmax(0,1fr)_auto] md:items-center md:gap-8 md:p-6 ${
-                  paper.featured ? "bg-[linear-gradient(90deg,rgba(252,211,77,0.08),transparent_55%)]" : ""
-                }`}
-              >
-                <div>
-                  <span
-                    className={`inline-flex items-center gap-2 text-sm font-bold ${
-                      paper.featured ? "text-amber-300" : "text-emerald-200"
-                    }`}
-                  >
-                    <span
-                      className={`h-2 w-2 shrink-0 rounded-full ${paper.featured ? "bg-amber-300" : "bg-emerald-300"}`}
-                      aria-hidden="true"
-                    />
-                    {paper.status}
-                  </span>
-                  <p className="mt-1.5 font-mono text-xs font-semibold text-slate-400">{paper.when}</p>
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-lg font-bold leading-7 text-white md:text-xl md:leading-8">{paper.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate-300">{paper.subtitle}</p>
-                  <p className="mt-2 text-[13px] leading-5 text-slate-400">{paper.venue}</p>
-                  <p className="mt-2 text-[15px] leading-7 text-slate-300">{paper.note}</p>
-                </div>
-                <span className="link-arrow md:justify-self-end">
-                  {paper.action} <Arrow />
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ol>
-      </section>
-
       <section id="experience" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
         <div data-reveal className="mb-8">
           <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Education · Honors · Work
+            Education · Work · Certificates
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Experience</h2>
         </div>
@@ -798,14 +740,12 @@ export default function Home() {
               className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-4 backdrop-blur md:p-5"
             >
               <div className="flex items-center justify-between gap-3">
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                  {item.school}
-                </span>
-                <span className="font-mono text-xs font-semibold text-slate-400">{item.period}</span>
+                <span className="text-sm font-semibold text-slate-300">{item.school}</span>
+                <span className="font-mono text-sm font-semibold text-slate-400">{item.period}</span>
               </div>
               <p className="mt-3 text-lg font-bold leading-snug text-white">{item.degree}</p>
-              <p className="mt-1.5 text-sm font-semibold text-emerald-100">{item.detail}</p>
-              <p className="mt-1 text-[13px] leading-5 text-slate-400">{item.note}</p>
+              <p className="mt-1.5 text-sm font-semibold text-slate-100">{item.detail}</p>
+              <p className="mt-1 text-sm leading-6 text-slate-400">{item.note}</p>
             </li>
           ))}
         </ul>
@@ -818,15 +758,15 @@ export default function Home() {
             const body = (
               <>
                 <div className="flex items-center justify-between gap-3">
-                  <span className={`font-mono text-xs font-semibold uppercase tracking-[0.16em] ${item.featured ? "text-amber-300" : "text-emerald-300"}`}>
+                  <span className={`font-mono text-xs font-semibold uppercase tracking-[0.16em] ${item.featured ? "text-amber-300" : "text-slate-400"}`}>
                     {item.kind}
                   </span>
                   <span className="font-mono text-xs font-semibold text-slate-400">{item.date}</span>
                 </div>
                 <p className="mt-3 text-lg font-bold leading-snug text-white">{item.title}</p>
-                <p className="mt-1.5 text-[13px] leading-5 text-slate-400">{item.detail}</p>
+                <p className="mt-1.5 text-sm leading-6 text-slate-400">{item.detail}</p>
                 {item.href ? (
-                  <span className="link-arrow mt-auto pt-4">View <Arrow /></span>
+                  <span className="link-arrow mt-auto pt-4">查看 <Arrow /></span>
                 ) : null}
               </>
             );
@@ -874,6 +814,16 @@ export default function Home() {
             ))}
           </ol>
         </MoreOnMobile>
+
+        <div id="certificates" className="mt-12">
+          <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+              Certificates
+            </h3>
+            <p className="text-sm leading-6 text-slate-400">點擊卡片可檢視完整證書。</p>
+          </div>
+          <CertificateGrid certificates={certificates} />
+        </div>
       </section>
 
       <div className="border-y border-white/10 bg-white/[0.02]">
@@ -903,19 +853,19 @@ export default function Home() {
             />
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070a0d]/95 via-[#070a0d]/70 to-transparent px-5 pb-4 pt-16">
               <span className="block text-lg font-bold text-white">Kevin Huang | 黃凱浚</span>
-              <span className="mt-1 block font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
-                AI Engineer / AI Product
+              <span className="mt-1 block font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
+                NLP / LLM AI Engineer
               </span>
             </figcaption>
           </figure>
 
           <div className="min-w-0">
-            <p data-reveal lang="zh-Hant" className="text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10">
+            <p data-reveal lang="zh-Hant" className="max-w-[34em] text-xl font-semibold leading-9 text-white md:text-2xl md:leading-10">
               {aboutIntro.lead}
             </p>
             <div data-reveal className="mt-5 grid gap-4">
               {aboutIntro.paragraphs.map((paragraph) => (
-                <p key={paragraph} lang="zh-Hant" className="text-base leading-8 text-slate-300">
+                <p key={paragraph} lang="zh-Hant" className="max-w-[42em] text-base leading-8 text-slate-300">
                   {paragraph}
                 </p>
               ))}
@@ -927,13 +877,10 @@ export default function Home() {
             <div data-reveal-group className="grid gap-4 md:grid-cols-3">
               {beyondCode.map((card) => (
                 <article
-                  key={card.key}
+                  key={card.title}
                   className="flex h-full flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur"
                 >
-                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                    {card.key}
-                  </p>
-                  <h3 className="mt-2 text-lg font-bold text-white">{card.title}</h3>
+                  <h3 className="text-lg font-bold text-white">{card.title}</h3>
                   <ul className="mt-4 grid gap-3">
                     {card.points.map(([role, detail]) => (
                       <li key={role} className="flex gap-3 text-sm leading-6 text-slate-300">
@@ -957,24 +904,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <div className="border-y border-amber-200/10 bg-amber-400/[0.015]">
-      <section id="certificates" className={`relative ${container} px-6 py-16 md:px-8 md:py-20`}>
-        <div data-reveal className="mb-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
-          <div>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Verified credentials
-            </p>
-            <h2 className="text-3xl font-bold md:text-4xl">Certificates</h2>
-          </div>
-          <p className="max-w-md text-sm leading-6 text-slate-400">
-            AI、機器學習、資料分析與英語能力認證。點擊卡片可檢視完整證書。
-          </p>
-        </div>
-
-        <CertificateGrid certificates={certificates} />
-      </section>
-      </div>
 
       <section id="contact" className={`relative ${container} px-6 py-16 md:px-8 md:py-24`}>
         <div data-reveal className="grid items-center gap-10 border border-white/10 bg-[linear-gradient(135deg,rgba(16,185,129,0.1),rgba(255,255,255,0.035)_45%,rgba(245,158,11,0.05))] grid-cols-[minmax(0,1fr)] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur md:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-14">

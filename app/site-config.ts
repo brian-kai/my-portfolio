@@ -1,6 +1,6 @@
 export const siteUrl = "https://my-portfolio-three-sooty-77.vercel.app";
 export const siteName = "Kevin Huang | Kai-Chun Huang";
-export const siteTitle = `${siteName} | AI & Data Analysis Portfolio`;
+export const siteTitle = `${siteName} | NLP / LLM AI Engineer`;
 export const siteDescription =
   "Kai-Chun Huang's portfolio: LLM fine-tuning, NLP research, and AI workflow automation projects.";
 export const resumeHref = "/file/Huang_Kai-Chun_Resume.pdf";

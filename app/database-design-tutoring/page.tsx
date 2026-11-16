@@ -103,13 +103,16 @@ export default function DatabaseDesignTutoringPage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <SubpageNav items={tutoringNavItems} backHref="/#experience" backLabel="Back to Experience" />
+      <SubpageNav items={tutoringNavItems} backHref="/#experience" backLabel="Experience" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-14 md:pb-20">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12">
             <div className="min-w-0">
-              <p className={eyebrowClass}>Teaching Assistant · 逢甲大學工業工程與系統管理學系</p>
+              <p className={eyebrowClass}>
+                Teaching Assistant{" "}
+                <span className="font-sans text-sm normal-case tracking-normal">· 逢甲大學工業工程與系統管理學系</span>
+              </p>
               <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl">資料庫設計課程助教</h1>
               <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
                 以 <span className="font-bold text-amber-200">100 分、單科第一</span> 修畢這門課後，
@@ -118,7 +121,7 @@ export default function DatabaseDesignTutoringPage() {
               <dl className="mt-8 grid grid-cols-3 gap-px border border-white/10 bg-white/10">
                 {stats.map(([value, label], index) => (
                   <div key={label} className="flex flex-col bg-[#0a1014]/90 px-4 py-4 md:px-5">
-                    <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                    <dt className="order-last mt-1 text-sm leading-5 text-slate-400">{label}</dt>
                     <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{value}</dd>
                   </div>
                 ))}
@@ -166,7 +169,7 @@ export default function DatabaseDesignTutoringPage() {
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <span className="mr-1 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Course topics</span>
             {topics.map((topic) => (
-              <span key={topic} className="border border-emerald-300/20 bg-emerald-300/[0.07] px-3 py-1 text-sm text-emerald-100">
+              <span key={topic} className="border border-white/10 bg-slate-950/40 px-3 py-1 text-sm text-slate-200">
                 {topic}
               </span>
             ))}
@@ -179,7 +182,7 @@ export default function DatabaseDesignTutoringPage() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {work.map((item) => (
               <article key={item.title} className={`${cardClass} flex flex-col p-5`}>
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.en}</p>
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{item.en}</p>
                 <h3 className="mt-2 text-lg font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
                 <ul className="mt-4 grid gap-2 border-t border-white/10 pt-4">
@@ -199,7 +202,7 @@ export default function DatabaseDesignTutoringPage() {
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">輔導與上機考紀錄</h2>
           <ImageLightboxGallery
             items={photos}
-            actionLabel="View Photo"
+            actionLabel="放大照片"
             showDescription
             showTitle
             variant="emerald"

@@ -41,7 +41,7 @@ const personJsonLd = {
   name: "Kai-Chun Huang",
   alternateName: "Kevin Huang",
   url: siteUrl,
-  jobTitle: "AI Engineer / AI Product Associate",
+  jobTitle: "NLP / LLM AI Engineer",
   description: siteDescription,
   email: `mailto:${contactEmail}`,
   sameAs: [githubUrl, linkedinUrl].filter(Boolean),

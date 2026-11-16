@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Arrow from "./arrow-icon";
 import SmartLink, { isExternalHref } from "./smart-link";
 
@@ -128,13 +128,15 @@ const categories: SkillCategory[] = [
         skills: ["Next.js", "Tailwind CSS"],
       },
       {
-        title: "這個作品集網站",
-        href: "#portfolio-home",
+        title: "這個作品集網站（原始碼）",
+        href: "https://github.com/brian-kai/my-portfolio",
         skills: ["Next.js", "Tailwind CSS", "Vercel"],
       },
     ],
   },
 ];
+
+const worksIdFor = (category: SkillCategory) => `skill-works-${category.key.slice(0, 2)}`;
 
 export default function SkillWorkMatrix() {
   // Clicked skill stays selected; hovering with a mouse previews another one.
@@ -146,6 +148,20 @@ export default function SkillWorkMatrix() {
   const toggleWorks = (key: string) =>
     setExpanded((current) => (current.includes(key) ? current.filter((item) => item !== key) : [...current, key]));
 
+  // Picking a skill answers "where was it used?" in the list at the bottom of its card. On a phone
+  // that list is usually below the screen, so bring it into view; nothing moves if it already is.
+  useEffect(() => {
+    if (!pinned) return;
+    const category = categories.find((item) => item.groups.some((group) => group.skills.includes(pinned)));
+    const list = category ? document.getElementById(worksIdFor(category)) : null;
+    if (!list) return;
+
+    const { top, bottom } = list.getBoundingClientRect();
+    if (top >= 0 && bottom <= window.innerHeight) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    list.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "nearest" });
+  }, [pinned]);
+
   return (
     <div>
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -154,15 +170,29 @@ export default function SkillWorkMatrix() {
             Skills in use
           </p>
           <h2 className="text-3xl font-bold md:text-4xl">Skills & Tools</h2>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
-            點選任一技術，會標出實際用到它的作品。
+          {/* Two lines are reserved on phones, so selecting a skill never pushes the chips down. */}
+          <p aria-live="polite" className="mt-4 min-h-14 max-w-2xl text-sm leading-7 text-slate-400 md:min-h-0">
+            {pinned ? (
+              <>
+                已選取 <span className="font-semibold text-white">{pinned}</span>，卡片下方標出用到它的作品。
+                <button
+                  type="button"
+                  onClick={() => setPinned(null)}
+                  className="relative ml-2 font-bold text-emerald-300 underline underline-offset-4 after:absolute after:-inset-x-3 after:-inset-y-2 after:content-[''] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 md:hidden"
+                >
+                  清除
+                </button>
+              </>
+            ) : (
+              "點選任一技術，會標出實際用到它的作品。"
+            )}
           </p>
         </div>
         {pinned ? (
           <button
             type="button"
             onClick={() => setPinned(null)}
-            className="btn btn-secondary btn-sm w-fit"
+            className="btn btn-secondary btn-sm hidden w-fit md:inline-flex"
           >
             清除選取：{pinned}
           </button>
@@ -175,7 +205,7 @@ export default function SkillWorkMatrix() {
           const activeHere = active !== null && categorySkills.includes(active);
           // Picking a skill opens the list so the matching works are visible.
           const worksOpen = expanded.includes(category.key) || activeHere;
-          const worksId = `skill-works-${category.key.slice(0, 2)}`;
+          const worksId = worksIdFor(category);
 
           return (
             <article
@@ -184,7 +214,7 @@ export default function SkillWorkMatrix() {
                 activeHere ? "border-emerald-300/40 bg-emerald-300/[0.05]" : "border-white/10 bg-white/[0.045]"
               }`}
             >
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                 {category.key}
               </p>
               <h3 className="mt-2 text-xl font-bold text-white">{category.title}</h3>
@@ -206,7 +236,7 @@ export default function SkillWorkMatrix() {
                           onClick={() => setPinned((current) => (current === skill ? null : skill))}
                           onPointerEnter={(event) => event.pointerType === "mouse" && setHovered(skill)}
                           onPointerLeave={(event) => event.pointerType === "mouse" && setHovered(null)}
-                          className={`border px-2.5 py-1.5 text-[13px] font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 ${
+                          className={`border px-2.5 py-1.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 ${
                             isActive
                               ? "border-emerald-300/80 bg-emerald-300/20 text-white"
                               : "border-emerald-300/20 bg-emerald-300/[0.06] text-emerald-50 hover:border-emerald-300/50"
@@ -231,12 +261,10 @@ export default function SkillWorkMatrix() {
                   onClick={() => toggleWorks(category.key)}
                   className="flex min-h-11 w-full items-center justify-between gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 lg:hidden"
                 >
-                  <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
-                    Used in · {category.works.length} 件作品
-                  </span>
+                  <span className="text-sm font-semibold text-slate-300">用在 {category.works.length} 件作品</span>
                   <Arrow kind="down" className={`arrow-accent transition-transform ${worksOpen ? "rotate-180" : ""}`} />
                 </button>
-                <ul id={worksId} className={`mt-2 lg:block ${worksOpen ? "block" : "hidden"}`}>
+                <ul id={worksId} className={`mt-2 scroll-mb-6 lg:block ${worksOpen ? "block" : "hidden"}`}>
                   {category.works.map((work) => {
                     const dimmed = activeHere && !work.skills.includes(active);
                     const external = isExternalHref(work.href);

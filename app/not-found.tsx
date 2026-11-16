@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Arrow from "./arrow-icon";
+import SiteBrand from "./site-brand";
 
 export const metadata: Metadata = {
   title: "找不到頁面",
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 
 // Where a lost visitor most likely wanted to go.
 const destinations = [
-  { href: "/#projects", label: "Projects", note: "LLM 微調與 AI 自動化專案" },
-  { href: "/#research", label: "Research", note: "研討會論文與獲獎證明" },
-  { href: "/#experience", label: "Experience", note: "學歷、實習與助教經歷" },
+  { href: "/#projects", label: "Projects", note: "LLM 微調、研究論文與 AI 自動化專案" },
+  { href: "/#experience", label: "Experience", note: "學歷、實習、助教經歷與證照" },
+  { href: "/#skills", label: "Skills", note: "技術與實際用到它的作品" },
   { href: "/#contact", label: "Contact", note: "Email、LinkedIn 與履歷" },
 ];
 
@@ -22,14 +23,10 @@ export default function NotFound() {
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
       <nav className="z-nav fixed inset-x-0 top-0 border-b border-white/10 bg-[#070a0d]/98 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
-          <Link href="/" className="group flex min-w-0 items-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG logo */}
-            <img src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg transition group-hover:scale-105" />
-            <span className="min-w-0 truncate text-lg font-bold">Kevin Huang</span>
-          </Link>
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3 md:px-6">
+          <SiteBrand />
           <Link href="/" className="btn btn-secondary btn-sm shrink-0">
-            回首頁
+            ← Home
           </Link>
         </div>
       </nav>
