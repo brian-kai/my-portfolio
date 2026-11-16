@@ -98,7 +98,7 @@ export default function IcccmPage() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <SubpageNav items={icccmNavItems} backHref="/#research" backLabel="Back to Research" />
+      <SubpageNav items={icccmNavItems} backHref="/#projects" backLabel="Projects" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-14 md:pb-16">
@@ -125,7 +125,7 @@ export default function IcccmPage() {
             <dl className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 min-[420px]:grid-cols-3">
               {headline.map(([value, label]) => (
                 <div key={label} className="flex flex-col justify-center bg-[#0a1014]/90 px-5 py-5">
-                  <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                  <dt className="order-last mt-1 text-sm leading-5 text-slate-400">{label}</dt>
                   <dd className="text-3xl font-black text-white md:text-4xl">{value}</dd>
                 </div>
               ))}
@@ -136,16 +136,16 @@ export default function IcccmPage() {
         <section id="approach" className="border-t border-white/10 py-14 md:py-16">
           <p className={eyebrowClass}>Problem → Approach</p>
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">不只給分數，也要給回饋</h2>
-          <p className="mt-5 max-w-4xl border-l-2 border-amber-300/50 pl-4 text-base leading-8 text-slate-200">{problem}</p>
+          <p className="mt-5 max-w-[42em] border-l-2 border-amber-300/50 pl-4 text-base leading-8 text-slate-200">{problem}</p>
           <ol className="mt-8 grid gap-4 md:grid-cols-3">
             {approach.map((step) => (
               <li key={step.title} className={`${cardClass} flex flex-col p-5 md:p-6`}>
-                <p className="font-mono text-xs font-bold text-emerald-300">STEP {step.index}</p>
+                <p className="font-mono text-xs font-bold text-slate-400">STEP {step.index}</p>
                 <h3 className="mt-2 text-xl font-bold text-white">{step.title}</h3>
                 <p className="mt-2 text-sm leading-7 text-slate-300">{step.text}</p>
                 <div className="mt-auto flex flex-wrap gap-2 pt-5">
                   {step.methods.map((method) => (
-                    <span key={method} className="border border-emerald-300/15 bg-emerald-300/[0.07] px-2.5 py-1 text-xs text-emerald-200">
+                    <span key={method} className="border border-white/10 bg-slate-950/40 px-2.5 py-1 text-xs text-slate-300">
                       {method}
                     </span>
                   ))}
@@ -189,7 +189,7 @@ export default function IcccmPage() {
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">接受通知函</h2>
           <ImageLightboxGallery
             items={proofs}
-            actionLabel="View Document"
+            actionLabel="放大文件"
             cardClassName="group flex h-full flex-col overflow-hidden border border-white/10 bg-white/[0.045] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
             gridClassName="mt-8 grid gap-6 md:grid-cols-2"
             imageClassName="h-full w-full object-contain"

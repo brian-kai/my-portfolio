@@ -19,7 +19,7 @@ const pages = {
   },
   intentQa: {
     href: "/intent-qa-system",
-    kind: "Case study · Ongoing",
+    kind: "Case study · Best Paper",
     title: "知識蒸餾 × 意圖辨識問答系統",
     note: "意圖分類準確率 88.13% → 92.76%",
   },
@@ -84,7 +84,7 @@ export default function SubpageFooter({ next }: { next: SubpageKey[] }) {
                   <span className="mt-2 text-lg font-bold leading-snug text-white md:text-xl">{page.title}</span>
                   <span className="mt-1.5 text-sm leading-6 text-slate-300">{page.note}</span>
                   <span className="link-arrow mt-auto pt-4">
-                    View <Arrow />
+                    查看 <Arrow />
                   </span>
                 </Link>
               </li>
@@ -99,7 +99,7 @@ export default function SubpageFooter({ next }: { next: SubpageKey[] }) {
               聯絡我
             </Link>
             <a href={resumeHref} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-              Resume <Arrow kind="external" />
+              履歷 <Arrow kind="external" />
             </a>
             <Link href="/" className="btn btn-ghost">
               回首頁 <Arrow />

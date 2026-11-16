@@ -163,7 +163,7 @@ function MetricGrid({ metrics }: { metrics: string[][] }) {
     <dl className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 min-[360px]:grid-cols-2">
       {metrics.map(([value, label]) => (
         <div key={label} className="flex flex-col bg-[#0a1014] px-4 py-3.5">
-          <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+          <dt className="order-last mt-1 text-sm leading-5 text-slate-400">{label}</dt>
           <dd className={`font-black text-white ${value.length > 7 ? "text-lg md:text-xl" : "text-xl md:text-2xl"}`}>{value}</dd>
         </div>
       ))}
@@ -176,7 +176,7 @@ export default function LlamaMarketingSystemPage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <SubpageNav items={llamaNavItems} backHref="/#projects" backLabel="Back to Projects" breakpoint="lg" />
+      <SubpageNav items={llamaNavItems} backHref="/#projects" backLabel="Projects" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-12 md:pb-16">
@@ -184,7 +184,7 @@ export default function LlamaMarketingSystemPage() {
             <p className={eyebrowClass}>Case study · Graduation research</p>
             <Link
               href="#awards"
-              className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 text-xs font-bold text-amber-100 transition hover:border-amber-300/70"
+              className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 text-sm font-bold text-amber-100 transition hover:border-amber-300/70"
             >
               ★ CIIE 2025 最佳論文 · 5 項獎項
             </Link>
@@ -192,14 +192,14 @@ export default function LlamaMarketingSystemPage() {
           <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl lg:text-[3.4rem]">
             LLaMA 3 個人化產品行銷文案生成系統
           </h1>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-slate-300 md:text-lg">
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
             解析消費者評論中的偏好，結合語意與情感特徵，以 QLoRA 微調 LLaMA 3 8B，為不同消費者生成更貼近需求的產品行銷文案。
           </p>
 
           <dl className="mt-8 grid grid-cols-2 gap-px border border-white/10 bg-white/10 md:grid-cols-4">
             {heroStats.map(([value, label], index) => (
               <div key={label} className="flex flex-col bg-[#0a1014]/90 px-5 py-4 backdrop-blur">
-                <dt className="order-last mt-1 text-xs text-slate-400 md:text-sm">{label}</dt>
+                <dt className="order-last mt-1 text-sm text-slate-400">{label}</dt>
                 <dd className={`text-3xl font-black md:text-4xl ${index === 3 ? "text-amber-300" : "text-white"}`}>{value}</dd>
               </div>
             ))}
@@ -238,7 +238,7 @@ export default function LlamaMarketingSystemPage() {
             <p className="shrink-0 text-5xl font-black text-amber-300">約 30%</p>
             <p className="text-[15px] leading-7 text-slate-200">
               的消費者會因文案中的產品資訊不足、或與自身需求相關性低，而降低購買意圖。
-              <span className="mt-1 block text-xs text-slate-400">資料來源：Amsl 等人（2023），引自論文第一章</span>
+              <span className="mt-1 block text-sm text-slate-400">資料來源：Amsl 等人（2023），引自論文第一章</span>
             </p>
           </div>
 
@@ -246,7 +246,7 @@ export default function LlamaMarketingSystemPage() {
           <ol className="mt-4 grid gap-4 md:grid-cols-3">
             {goals.map(([title, text], index) => (
               <li key={title} className="border-l-2 border-emerald-300/40 pl-4">
-                <p className="font-mono text-xs font-bold text-emerald-300">0{index + 1}</p>
+                <p className="font-mono text-xs font-bold text-slate-400">0{index + 1}</p>
                 <p className="mt-1 font-bold text-white">{title}</p>
                 <p className="mt-1 text-sm leading-6 text-slate-300">{text}</p>
               </li>
@@ -266,7 +266,7 @@ export default function LlamaMarketingSystemPage() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-3 text-xs text-slate-400">
+            <figcaption className="mt-3 text-sm text-slate-400">
               點圖可放大。資料 → 兩個偏好分析模組 → LLaMA 3 生成 → 評估。
             </figcaption>
           </figure>
@@ -274,7 +274,7 @@ export default function LlamaMarketingSystemPage() {
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {modules.map((module) => (
               <article key={module.title} className="flex flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur md:p-6">
-                <p className="font-mono text-xs font-bold text-emerald-300">MODULE {module.index}</p>
+                <p className="font-mono text-xs font-bold text-slate-400">MODULE {module.index}</p>
                 <h3 className="mt-2 text-xl font-bold text-white">{module.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{module.summary}</p>
                 <ol className="mt-5 grid gap-3 border-t border-white/10 pt-4">
@@ -289,7 +289,7 @@ export default function LlamaMarketingSystemPage() {
                 </ol>
                 <div className="mt-auto flex flex-wrap gap-2 pt-5">
                   {module.methods.map((method) => (
-                    <span key={method} className="border border-emerald-300/15 bg-emerald-300/[0.07] px-2.5 py-1 text-xs text-emerald-200">
+                    <span key={method} className="border border-white/10 bg-slate-950/40 px-2.5 py-1 text-xs text-slate-300">
                       {method}
                     </span>
                   ))}
@@ -306,14 +306,14 @@ export default function LlamaMarketingSystemPage() {
           <div className="mt-8 border border-emerald-300/30 bg-[linear-gradient(120deg,rgba(110,231,183,0.07),transparent_60%)] p-5 md:p-6">
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <h3 className="text-lg font-bold text-white">生成品質：與已發表的基準比較</h3>
-              <p className="text-xs leading-5 text-slate-400">CIIE 2025 研討會論文版 · 基準為 Guo 等人（2022）</p>
+              <p className="text-sm leading-6 text-slate-400">CIIE 2025 研討會論文版 · 基準為 Guo 等人（2022）</p>
             </div>
             <ul className="mt-5 grid gap-6 md:grid-cols-3">
               {baseline.map((item) => (
                 <li key={item.metric}>
                   <div className="flex items-baseline justify-between gap-3">
                     <span className="text-sm font-semibold text-slate-200">{item.metric}</span>
-                    <span className="font-mono text-xs font-bold text-emerald-300">
+                    <span className="font-mono text-xs font-bold text-slate-400">
                       +{Math.round((item.ours / item.base - 1) * 100)}%
                     </span>
                   </div>
@@ -334,7 +334,7 @@ export default function LlamaMarketingSystemPage() {
             </ul>
           </div>
 
-          <h3 className="mt-10 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+          <h3 className="mt-10 text-sm font-semibold text-slate-400">
             論文終版（2025.12）的三個實驗
           </h3>
           <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -367,7 +367,7 @@ export default function LlamaMarketingSystemPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-right text-xs text-slate-400">滿分 1.00</p>
+                <p className="mt-2 text-right text-sm text-slate-400">滿分 1.00</p>
               </figure>
               <p className="mt-4 border-l-2 border-emerald-300/40 pl-3 text-sm leading-6 text-slate-200">{experiments.human.finding}</p>
             </article>
@@ -416,9 +416,9 @@ export default function LlamaMarketingSystemPage() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-[15px] font-semibold leading-6 text-white">{award.name}</p>
-                    <p className="text-[13px] leading-5 text-slate-400">{award.category}</p>
+                    <p className="text-sm leading-6 text-slate-400">{award.category}</p>
                   </div>
-                  <p className="font-mono text-xs font-semibold text-slate-400 sm:text-right">
+                  <p className="font-mono text-sm font-semibold text-slate-400 sm:text-right">
                     {award.level}
                     <span className="ml-2 text-slate-300 sm:ml-0 sm:mt-1 sm:block">{award.year}</span>
                   </p>

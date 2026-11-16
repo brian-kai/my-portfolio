@@ -57,6 +57,15 @@ section[tabindex="-1"]:focus {
   outline: none;
 }
 
+/* Tailwind v4's preflight leaves <button> with the default arrow cursor; every button here is an
+   action, so it gets the same hand as a link. Utilities (cursor-zoom-in) still override it. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}
+
 .skip-link {
   position: fixed;
   left: 1rem;
@@ -124,7 +133,7 @@ section[tabindex="-1"]:focus {
   }
   .btn-ghost:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 
-  .btn-sm { min-height: 2.25rem; padding: 0 0.875rem; font-size: 0.8125rem; }
+  .btn-sm { min-height: 2.25rem; padding: 0 0.875rem; font-size: 0.875rem; }
   .btn-lg { min-height: 3rem; padding: 0 1.5rem; font-size: 1rem; }
   .btn-icon { width: 2.5rem; min-height: 2.5rem; padding: 0; }
 
@@ -145,6 +154,10 @@ section[tabindex="-1"]:focus {
     color: #cbd5e1;
     white-space: nowrap;
     transition: color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+  }
+  /* Between lg and xl a seven-item section nav shares the bar with the logo and two buttons. */
+  @media (min-width: 64rem) and (max-width: 79.99rem) {
+    .nav-link { padding-inline: 0.6rem; }
   }
   .nav-link:hover { color: #fff; background: rgb(255 255 255 / 0.06); }
   .nav-link:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 2px; }
@@ -201,7 +214,13 @@ section[tabindex="-1"]:focus {
   .hero-panel { animation-delay: 180ms; }
   .hero-intro > :focus-within, .hero-panel:focus-within { animation: none; }
   .hero-glow { animation: hero-drift 16s ease-in-out infinite alternate; }
+  .drawer-panel { animation: drawer-enter 180ms cubic-bezier(0.22, 1, 0.36, 1); }
 
+}
+
+@keyframes drawer-enter {
+  from { translate: -1.5rem 0; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
 }
 
 @keyframes hero-enter {

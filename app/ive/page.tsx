@@ -245,7 +245,7 @@ export default function IvePage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#09070f] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_14%_16%,rgba(236,72,153,0.18),transparent_26%),radial-gradient(circle_at_82%_12%,rgba(45,212,191,0.14),transparent_24%),radial-gradient(circle_at_74%_82%,rgba(129,140,248,0.16),transparent_28%),linear-gradient(180deg,#09070f_0%,#0e111f_50%,#09070f_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(244,114,182,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(45,212,191,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
-      <SubpageNav items={iveNavItems} backHref="/#projects" backLabel="Back to Projects" barClassName="border-pink-200/10 bg-[#09070f]/98" />
+      <SubpageNav items={iveNavItems} backHref="/#projects" backLabel="Projects" barClassName="border-pink-200/10 bg-[#09070f]/98" />
 
       <section id="overview" className="relative z-10 mx-auto grid min-h-[calc(100dvh-73px)] max-w-6xl items-center gap-8 px-6 pb-12 pt-28 md:grid-cols-[1fr_430px] md:gap-10 md:pb-16 md:pt-32">
         <div>
@@ -298,7 +298,7 @@ export default function IvePage() {
                     <span className="relative flex h-full items-end overflow-hidden rounded-[0.85rem] bg-[#101022]/35 p-2 text-xs font-bold">
                       <Image
                         src={member.image}
-                        alt={member.name}
+                        alt=""
                         className="absolute inset-0 h-full w-full object-contain"
                         sizes="120px"
                       />
@@ -347,7 +347,7 @@ export default function IvePage() {
                 >
                   <Image
                     src={member.image}
-                    alt={member.name}
+                    alt=""
                     className="motion-reduce-transform h-full w-full rounded-lg bg-[#101022]/45 object-contain transition duration-500 hover:scale-105"
                     sizes="(min-width: 1024px) 220px, (min-width: 640px) 50vw, 100vw"
                   />
@@ -409,16 +409,19 @@ export default function IvePage() {
                   </h3>
                   <p className="mt-1 text-sm text-slate-400">{release.type}</p>
                 </div>
-                <span className="text-3xl font-black text-white/10 transition group-hover:text-emerald-300/35 md:text-4xl">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                {/* Watermark number: drawn by CSS so it stays pure decoration for assistive tech and audits. */}
+                <span
+                  aria-hidden="true"
+                  data-index={String(index + 1).padStart(2, "0")}
+                  className="text-3xl font-black text-white/10 transition before:content-[attr(data-index)] group-hover:text-emerald-300/35 md:text-4xl"
+                />
               </div>
 
               <p className="text-[15px] leading-7 text-slate-300 md:text-base">
                 {release.mood}
               </p>
               <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-200 transition group-hover:text-rose-100 md:mt-5">
-                Watch on YouTube
+                在 YouTube 觀看
                 <span aria-hidden="true">-&gt;</span>
               </div>
             </a>

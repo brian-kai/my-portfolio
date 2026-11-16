@@ -1,20 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Arrow from "../arrow-icon";
+import ImageLightboxGallery from "../image-lightbox-gallery";
 import SubpageFooter from "../subpage-footer";
 import SubpageNav from "../subpage-nav";
+import bestPaperCertificate from "./images/2026-11-14-ciie2026-best-paper-award.png";
 
-// Source: Huang_Kai-Chun_Resume.pdf — projects and conference sections. The project is ongoing,
-// so this page only states what the resume records.
+// Sources: Huang_Kai-Chun_Resume.pdf (projects and conference sections) for the method and figures;
+// the CIIE 2026 Best Paper certificate (public/file/ciie-2026-best-paper-award.pdf) for the paper's
+// official title, authors, award and date. The page only states what those two documents record.
 
-const paperTitle =
-  "An Intelligent Question-Answering System Based on Knowledge Distillation and User Intent Recognition Technologies";
+const paper = {
+  titleZh: "應用知識蒸餾與使用者意圖識別技術之智慧問答模式系統",
+  titleEn:
+    "An Intelligent Question-Answering System Based on Knowledge Distillation and User Intent Recognition Technologies",
+  authors: ["楊士霆", "黃凱浚", "李昌豫", "李翃逸"],
+  me: "黃凱浚",
+  conference: "2026 中國工業工程學會年會暨學術研討會",
+  coEvent: "114 年度國科會工程處工業工程與管理學門專題研究計畫成果發表會",
+  issuer: "中國工業工程學會",
+  award: "最佳論文獎",
+  date: "2026.11.14",
+  certificateHref: "/file/ciie-2026-best-paper-award.pdf",
+};
 
+// The award is the last tile and the only highlighted one, as on the LLaMA 3 case study.
 const heroStats = [
   ["92.76%", "意圖分類 Accuracy（蒸餾後）"],
   ["73,828", "句 soft label"],
   ["69,476", "組 QA 資料"],
-  ["4", "項生成評估指標"],
+  ["最佳論文", "CIIE 2026 年會"],
 ];
 
 const modules = [
@@ -57,13 +72,14 @@ const intentNavItems = [
   { label: "Overview", href: "#overview" },
   { label: "Approach", href: "#approach" },
   { label: "Results", href: "#results" },
+  { label: "Award", href: "#award" },
   { label: "Status", href: "#status" },
 ];
 
 export const metadata: Metadata = {
   title: "知識蒸餾 × 意圖辨識問答系統",
   description:
-    "以知識蒸餾將微調後的 GPT-OSS-20B 轉移到輕量 BiLSTM，意圖分類準確率由 88.13% 提升至 92.76%；並以 69,476 組 QA 微調 Gemma 4-E4B 生成答案。論文已獲 2026 CIIE 年會接受。",
+    "以知識蒸餾將微調後的 GPT-OSS-20B 轉移到輕量 BiLSTM，意圖分類準確率由 88.13% 提升至 92.76%；並以 69,476 組 QA 微調 Gemma 4-E4B 生成答案。論文獲 CIIE 2026 最佳論文獎。",
 };
 
 const sectionClass = "border-t border-white/10 py-12 md:py-16";
@@ -85,33 +101,39 @@ export default function IntentQaSystemPage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <SubpageNav items={intentNavItems} backHref="/#projects" backLabel="Back to Projects" />
+      <SubpageNav items={intentNavItems} backHref="/#projects" backLabel="Projects" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-12 md:pb-16">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className={eyebrowClass}>Case study · NLP research</p>
-            <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 text-xs font-bold text-amber-100">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden="true" />
+            <a
+              href="#award"
+              className="inline-flex items-center gap-2 rounded-full border border-amber-300/45 bg-amber-300/[0.1] px-3 py-1 text-sm font-bold text-amber-100 transition hover:border-amber-300/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70"
+            >
+              ★ CIIE 2026 {paper.award}
+            </a>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-3 py-1 text-sm font-bold text-slate-200">
+              <span className="h-1.5 w-1.5 rounded-full bg-slate-300" aria-hidden="true" />
               進行中 · 2025.09–
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-300/[0.08] px-3 py-1 text-xs font-bold text-emerald-100">
-              Paper Accepted · CIIE 2026
             </span>
           </div>
           <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl lg:text-[3.4rem]">知識蒸餾 × 意圖辨識問答系統</h1>
-          <p lang="en" className="mt-3 max-w-4xl text-base font-semibold leading-7 text-emerald-100 md:text-lg">
-            {paperTitle}
+          <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-white md:text-lg">
+            論文｜{paper.titleZh}
           </p>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-slate-300 md:text-lg">
+          <p lang="en" className="mt-1 max-w-3xl text-sm leading-6 text-slate-400">
+            {paper.titleEn}
+          </p>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
             先辨識使用者問題的意圖，再生成回答。意圖辨識以知識蒸餾把大型模型壓成輕量的 BiLSTM，答案生成則微調 Gemma 4-E4B。
           </p>
 
           <dl className="mt-8 grid grid-cols-2 gap-px border border-white/10 bg-white/10 md:grid-cols-4">
             {heroStats.map(([value, label], index) => (
               <div key={label} className="flex flex-col bg-[#0a1014]/90 px-5 py-4 backdrop-blur">
-                <dt className="order-last mt-1 text-xs text-slate-400 md:text-sm">{label}</dt>
-                <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{value}</dd>
+                <dt className="order-last mt-1 text-sm text-slate-400">{label}</dt>
+                <dd className={`text-3xl font-black md:text-4xl ${index === heroStats.length - 1 ? "text-amber-300" : "text-white"}`}>{value}</dd>
               </div>
             ))}
           </dl>
@@ -149,7 +171,7 @@ export default function IntentQaSystemPage() {
           <div className="mt-4 grid gap-4 lg:grid-cols-3">
             {modules.map((module) => (
               <article key={module.title} className="flex flex-col border border-white/10 bg-white/[0.045] p-5 backdrop-blur md:p-6">
-                <p className="font-mono text-xs font-bold text-emerald-300">MODULE {module.index}</p>
+                <p className="font-mono text-xs font-bold text-slate-400">MODULE {module.index}</p>
                 <h3 className="mt-2 text-xl font-bold text-white">{module.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{module.summary}</p>
                 <ol className="mt-5 grid gap-3 border-t border-white/10 pt-4">
@@ -164,7 +186,7 @@ export default function IntentQaSystemPage() {
                 </ol>
                 <div className="mt-auto flex flex-wrap gap-2 pt-5">
                   {module.methods.map((method) => (
-                    <span key={method} className="border border-emerald-300/15 bg-emerald-300/[0.07] px-2.5 py-1 text-xs text-emerald-200">
+                    <span key={method} className="border border-white/10 bg-slate-950/40 px-2.5 py-1 text-xs text-slate-300">
                       {method}
                     </span>
                   ))}
@@ -212,22 +234,89 @@ export default function IntentQaSystemPage() {
           </div>
         </section>
 
+        <section id="award" className={sectionClass}>
+          <p className={eyebrowClass}>03 · Award</p>
+          <h2 className={h2Class}>CIIE 2026 最佳論文獎</h2>
+          <div className="mt-8 grid items-start gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-10">
+            <ImageLightboxGallery
+              items={[
+                {
+                  title: "最佳論文獎狀",
+                  image: bestPaperCertificate,
+                  alt: `${paper.conference}最佳論文獎狀：${paper.titleZh}`,
+                  originalHref: paper.certificateHref,
+                },
+              ]}
+              actionLabel="放大查看"
+              gridClassName="grid"
+              imageClassName="h-full w-full object-contain transition duration-300 group-hover:scale-[1.02]"
+              imageSizes="(min-width: 1024px) 40vw, 100vw"
+              imageWrapperClassName="flex h-[320px] items-center justify-center border-b border-white/10 bg-[#0a1014] p-2 md:h-[400px]"
+              showTitle
+              titleClassName="text-sm font-semibold text-white"
+              variant="amber"
+            />
+
+            <div className="min-w-0">
+              <div className="flex items-center gap-4">
+                <span
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-300 text-sm font-black text-slate-950 shadow-[0_0_16px_rgba(252,211,77,0.45)]"
+                  aria-hidden="true"
+                >
+                  ★
+                </span>
+                <div className="min-w-0">
+                  <p className="text-lg font-black text-amber-300">{paper.award}</p>
+                  <h3 className="text-lg font-bold leading-7 text-white md:text-xl">{paper.conference}</h3>
+                </div>
+              </div>
+
+              {/* Each dt/dd pair sits in one direct child of the dl, which is all a dl may contain. */}
+              <dl className="mt-6 grid gap-5 border-t border-white/10 pt-6 sm:grid-cols-2">
+                <div className="sm:col-span-2">
+                  <dt className="text-sm text-slate-400">論文題目</dt>
+                  <dd className="mt-1 text-base font-semibold leading-7 text-white">{paper.titleZh}</dd>
+                  <dd lang="en" className="mt-1 text-sm leading-6 text-slate-400">{paper.titleEn}</dd>
+                </div>
+                <div className="sm:col-span-2">
+                  <dt className="text-sm text-slate-400">作者</dt>
+                  <dd className="mt-1 text-base leading-7 text-slate-200">
+                    {paper.authors.map((author, index) => (
+                      <span key={author}>
+                        {index > 0 ? "、" : ""}
+                        <span className={author === paper.me ? "font-bold text-white" : undefined}>{author}</span>
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-slate-400">頒發單位</dt>
+                  <dd className="mt-1 text-base leading-7 text-slate-200">{paper.issuer}</dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-slate-400">頒發日期</dt>
+                  <dd className="mt-1 font-mono text-base leading-7 text-slate-200">{paper.date}</dd>
+                </div>
+              </dl>
+
+              <p className="mt-6 max-w-[42em] border-l-2 border-amber-300/50 pl-3 text-sm leading-7 text-slate-300">
+                研討會與{paper.coEvent}合併舉行，本論文經大會評選為最佳論文。
+              </p>
+              <a href={paper.certificateHref} target="_blank" rel="noopener noreferrer" className="link-arrow mt-5">
+                開啟獎狀 PDF <Arrow kind="external" />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section id="status" className={sectionClass}>
-          <p className={eyebrowClass}>03 · Status</p>
+          <p className={eyebrowClass}>04 · Status</p>
           <h2 className={h2Class}>目前進度</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <div className="border-l-2 border-emerald-300/40 pl-4">
-              <p className="font-bold text-white">論文已獲 2026 CIIE 年會接受</p>
-              <p className="mt-2 text-[15px] leading-7 text-slate-300">
-                研究成果已投稿並獲 2026 中國工業工程學會年會（CIIE Annual Conference）接受。
-              </p>
-            </div>
-            <div className="border-l-2 border-amber-300/50 pl-4">
-              <p className="font-bold text-white">持續進行中</p>
-              <p className="mt-2 text-[15px] leading-7 text-slate-300">
-                專案自 2025.09 開始、仍在進行中。目前已完成意圖辨識的蒸餾、Gemma 4-E4B 的微調，以及比較生成答案的評估流程。
-              </p>
-            </div>
+          <div className="mt-6 max-w-[42em] border-l-2 border-emerald-300/40 pl-4">
+            <p className="font-bold text-white">持續進行中</p>
+            <p className="mt-2 text-[15px] leading-7 text-slate-300">
+              專案自 2025.09 開始、仍在進行中。目前已完成意圖辨識的蒸餾、Gemma 4-E4B 的微調，以及比較生成答案的評估流程；論文已於 CIIE 2026 經大會評選為最佳論文。
+            </p>
           </div>
           <h3 className="mt-10 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Tech stack</h3>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -237,8 +326,8 @@ export default function IntentQaSystemPage() {
               </span>
             ))}
           </div>
-          <Link href="/#research" className="link-arrow mt-8">
-            看所有研討會論文 <Arrow />
+          <Link href="/#projects" className="link-arrow mt-8">
+            看其他專案與論文 <Arrow />
           </Link>
         </section>
 

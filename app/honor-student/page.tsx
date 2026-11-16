@@ -116,7 +116,7 @@ export default function HonorStudentPage() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(245,158,11,0.15),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(250,204,21,0.075),transparent_24%),radial-gradient(circle_at_72%_64%,rgba(16,185,129,0.07),transparent_30%),linear-gradient(180deg,#080705_0%,#0d0b08_48%,#080705_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <SubpageNav items={honorNavItems} backHref="/#experience" backLabel="Back to Honors" barClassName="border-amber-100/10 bg-[#080705]/98" />
+      <SubpageNav items={honorNavItems} backHref="/#experience" backLabel="Experience" widthClassName="max-w-7xl" barClassName="border-amber-100/10 bg-[#080705]/98" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-14 md:pb-20">
@@ -170,7 +170,7 @@ export default function HonorStudentPage() {
               />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080705]/95 via-[#080705]/60 to-transparent px-5 pb-4 pt-14">
                 <span className="block text-lg font-bold">黃凱浚 Kai-Chun Huang</span>
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
+                <span className="text-sm font-semibold text-amber-200">
                   工業工程與系統管理學系
                 </span>
               </figcaption>
@@ -278,7 +278,7 @@ export default function HonorStudentPage() {
             </figure>
             <ImageLightboxGallery
               items={photos}
-              actionLabel="View Photo"
+              actionLabel="放大照片"
               cardClassName="group flex h-full flex-col overflow-hidden border border-amber-100/15 bg-amber-100/[0.04] text-left shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-amber-200/40 hover:bg-amber-100/[0.07] focus:outline-none focus:ring-2 focus:ring-amber-200/70"
               gridClassName="grid gap-6 sm:grid-cols-2"
               imageClassName="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"

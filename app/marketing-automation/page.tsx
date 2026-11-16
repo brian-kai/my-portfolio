@@ -125,7 +125,7 @@ export default function MarketingAutomationPage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <SubpageNav items={automationNavItems} backHref="/#projects" backLabel="Back to Projects" breakpoint="lg" />
+      <SubpageNav items={automationNavItems} backHref="/#projects" backLabel="Projects" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-12 md:pb-16">
@@ -138,19 +138,19 @@ export default function MarketingAutomationPage() {
           </div>
           <h1 className="mt-4 text-3xl font-black leading-tight md:text-5xl lg:text-[3.4rem]">AI 行銷內容自動化</h1>
           <p className="mt-3 text-lg font-semibold text-emerald-100">{workflowInternship.title}</p>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-slate-300 md:text-lg">
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
             把內容的生成、審核、發布與成效分析，接成一條會自己把關、也會從數據學習的工作流程，讓團隊不必再重複同樣的人工操作。
           </p>
 
           <dl className="mt-8 grid grid-cols-2 gap-px border border-white/10 bg-white/10 md:grid-cols-4">
             {automationMetrics.map((metric, index) => (
               <div key={metric.label} className="flex flex-col bg-[#0a1014]/90 px-5 py-4 backdrop-blur">
-                <dt className="order-last mt-1 text-xs text-slate-400 md:text-sm">{metric.label}</dt>
+                <dt className="order-last mt-1 text-sm text-slate-400">{metric.label}</dt>
                 <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{metric.value}</dd>
               </div>
             ))}
           </dl>
-          <p className="mt-3 text-xs leading-6 text-slate-400">數據為實習期間的專案成果紀錄，並非即時服務數字。</p>
+          <p className="mt-3 text-sm leading-6 text-slate-400">數據為實習期間的專案成果紀錄，並非即時服務數字。</p>
         </section>
 
         <section id="problem" className={sectionClass}>
@@ -176,7 +176,7 @@ export default function MarketingAutomationPage() {
           <ol className="mt-8 grid gap-px border border-white/10 bg-white/10 md:grid-cols-5">
             {stages.map((stage) => (
               <li key={stage.index} className="flex flex-col bg-[#0a1014] p-5">
-                <p className="font-mono text-xs font-bold text-emerald-300">{stage.index}</p>
+                <p className="font-mono text-xs font-bold text-slate-400">{stage.index}</p>
                 <h3 className="mt-2 text-base font-bold leading-6 text-white">{stage.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{stage.text}</p>
               </li>
@@ -192,7 +192,7 @@ export default function MarketingAutomationPage() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-3 text-xs leading-6 text-slate-400">
+            <figcaption className="mt-3 text-sm leading-6 text-slate-400">
               完整流程全景圖（點圖可放大）：資料來源 → 派工 → 五路內容生成與 AI 審核 → 審核分流與發布 → Instagram 互動 → GA4 成效分析 → 核准建議回饋。
             </figcaption>
           </figure>
@@ -239,7 +239,7 @@ export default function MarketingAutomationPage() {
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {safeguards.map((item) => (
               <article key={item.title} className={cardClass}>
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">{item.label}</p>
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
                 <h3 className="mt-2 text-lg font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-7 text-slate-300">{item.text}</p>
               </article>
@@ -259,7 +259,7 @@ export default function MarketingAutomationPage() {
           <h2 className={h2Class}>輪播圖改用 HTML 模板，不再讓影像模型寫字</h2>
           <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)]">
             <article className={cardClass}>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Before · 影像模型</p>
+              <p className="text-sm font-semibold text-slate-400">Before · 影像模型</p>
               <h3 className="mt-2 text-lg font-bold text-white">字和版面交給模型畫</h3>
               <ul className="mt-3 grid gap-2 text-[15px] leading-7 text-slate-300">
                 <li className="border-l-2 border-white/15 pl-3">中文字會拼錯</li>
@@ -267,7 +267,7 @@ export default function MarketingAutomationPage() {
               </ul>
             </article>
             <article className="border border-emerald-300/30 bg-emerald-300/[0.05] p-5 backdrop-blur md:p-6">
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">After · HTML 模板</p>
+              <p className="text-sm font-semibold text-slate-400">After · HTML 模板</p>
               <h3 className="mt-2 text-lg font-bold text-white">文字由模板排版後再輸出成圖</h3>
               <ul className="mt-3 grid gap-2 text-[15px] leading-7 text-slate-200">
                 <li className="border-l-2 border-emerald-300/40 pl-3">排查影像模型的文字錯誤後，以 HTML 模板重做 Instagram 輪播圖</li>
@@ -288,7 +288,7 @@ export default function MarketingAutomationPage() {
             <ol className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
               {feedbackSteps.map(([title, text], index) => (
                 <li key={title} className="bg-[#0a1014] p-5">
-                  <p className="font-mono text-xs font-bold text-emerald-300">0{index + 1}</p>
+                  <p className="font-mono text-xs font-bold text-slate-400">0{index + 1}</p>
                   <h3 className="mt-2 text-base font-bold text-white">{title}</h3>
                   <p className="mt-1.5 text-sm leading-6 text-slate-300">{text}</p>
                 </li>

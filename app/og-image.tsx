@@ -5,7 +5,7 @@ export const ogImageSize = { width: 1200, height: 630 };
 export const ogImageContentType = "image/png";
 export const ogImageAlt = siteTitle;
 
-const tags = ["LLaMA 3", "NLP / LLM", "Data Analysis"];
+const tags = ["LLM Fine-tuning", "NLP Research", "Workflow Automation"];
 
 export default function OgImage() {
   return new ImageResponse(
@@ -34,7 +34,7 @@ export default function OgImage() {
             color: "#6ee7b7",
           }}
         >
-          Kevin Huang · AI Engineer / AI Product Associate
+          Kevin Huang · Kai-Chun Huang
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -58,8 +58,8 @@ export default function OgImage() {
               maxWidth: 900,
             }}
           >
-            AI, NLP, and data analysis portfolio — research, demos, and
-            production workflows.
+            LLM fine-tuning, NLP research, and AI workflow automation — from
+            papers to systems running in production.
           </div>
         </div>
 

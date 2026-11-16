@@ -96,7 +96,7 @@ export default function ContactLinks({ email, github, linkedin, resumeHref }: Co
         <button
           type="button"
           onClick={copyEmail}
-          className="absolute right-1.5 top-1.5 min-h-6 shrink-0 border border-white/15 bg-[#0a1014]/90 px-2 text-xs font-bold text-slate-200 transition after:absolute after:-inset-1.5 after:content-[''] hover:border-emerald-300/45 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 sm:static sm:min-h-0 sm:border-white/10 sm:bg-white/[0.045] sm:px-4 sm:text-sm sm:after:hidden"
+          className="absolute right-1.5 top-1.5 min-h-6 shrink-0 border border-white/15 bg-[#0a1014]/90 px-2 text-sm font-bold text-slate-200 transition after:absolute after:-inset-1.5 after:content-[''] hover:border-emerald-300/45 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 sm:static sm:min-h-0 sm:border-white/10 sm:bg-white/[0.045] sm:px-4 sm:text-sm sm:after:hidden"
           aria-live="polite"
         >
           {copied ? "已複製 ✓" : "複製"}

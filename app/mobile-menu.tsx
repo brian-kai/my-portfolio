@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Arrow from "./arrow-icon";
 import { scrollToSection } from "./scroll-to-section";
+import { resumeHref } from "./site-config";
 
 type NavItem = {
   label: string;
@@ -97,7 +99,7 @@ export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }:
       <button
         ref={triggerRef}
         type="button"
-        aria-label="Open navigation menu"
+        aria-label="開啟導覽選單"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
         className={`btn btn-secondary btn-icon shrink-0 ${hiddenFrom}`}
@@ -113,7 +115,7 @@ export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }:
         <div className={`z-menu fixed inset-0 ${hiddenFrom}`}>
           <button
             type="button"
-            aria-label="Close navigation menu"
+            aria-label="關閉導覽選單"
             className="absolute inset-0 bg-black/65"
             onClick={() => setIsOpen(false)}
           />
@@ -122,8 +124,8 @@ export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }:
             ref={panelRef}
             role="dialog"
             aria-modal="true"
-            aria-label="Navigation menu"
-            className="absolute left-0 top-0 w-72 max-w-[82vw] overflow-y-auto border-r border-white/10 bg-[#020617] p-6 shadow-2xl shadow-black/40"
+            aria-label="導覽選單"
+            className="drawer-panel absolute left-0 top-0 flex w-72 max-w-[82vw] flex-col overflow-y-auto border-r border-white/10 bg-[#0a1014] p-6 shadow-2xl shadow-black/40"
             style={{ height: "100dvh", minHeight: "100dvh" }}
           >
             <div className="flex items-center justify-between gap-4">
@@ -133,7 +135,7 @@ export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }:
               <button
                 ref={closeButtonRef}
                 type="button"
-                aria-label="Close navigation menu"
+                aria-label="關閉導覽選單"
                 onClick={() => setIsOpen(false)}
                 className="btn btn-secondary btn-icon text-2xl leading-none"
               >
@@ -141,7 +143,7 @@ export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }:
               </button>
             </div>
 
-            <nav className="mt-8 grid gap-2">
+            <nav className="mb-8 mt-8 grid gap-2">
               {items.map((item) => (
                 <a
                   key={item.href}
@@ -153,6 +155,16 @@ export default function MobileMenu({ items, breakpoint = "lg", title = "Menu" }:
                 </a>
               ))}
             </nav>
+
+            {/* The bar has no room for Resume on every page at this width, so it is always here. */}
+            <a
+              href={resumeHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary mt-auto w-full"
+            >
+              Resume <Arrow kind="external" />
+            </a>
           </aside>
         </div>
       ) : null}

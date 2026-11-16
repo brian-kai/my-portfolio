@@ -83,7 +83,7 @@ export default function StudentAssociationPage() {
     <main className="theme-amber relative min-h-screen overflow-x-hidden bg-[#0d0c09] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(245,158,11,0.16),transparent_28%),radial-gradient(circle_at_84%_14%,rgba(34,197,94,0.1),transparent_24%),linear-gradient(180deg,#0d0c09_0%,#15120b_52%,#0d0c09_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(251,191,36,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
-      <SubpageNav items={associationNavItems} backHref="/#student-association" backLabel="Back to Experience" barClassName="border-amber-200/10 bg-[#0d0c09]/98" />
+      <SubpageNav items={associationNavItems} backHref="/#student-association" backLabel="Experience" barClassName="border-amber-200/10 bg-[#0d0c09]/98" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-14 md:pb-20">
@@ -104,7 +104,7 @@ export default function StudentAssociationPage() {
               <dl className="mt-8 grid grid-cols-3 gap-px border border-amber-200/15 bg-amber-200/15">
                 {stats.map(([value, label], index) => (
                   <div key={label} className="flex flex-col bg-[#15120b] px-4 py-4">
-                    <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                    <dt className="order-last mt-1 text-sm leading-5 text-slate-400">{label}</dt>
                     <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{value}</dd>
                   </div>
                 ))}
@@ -139,7 +139,7 @@ export default function StudentAssociationPage() {
                 <p className="mt-3 text-sm leading-7 text-slate-300">{event.description}</p>
                 <div className="mt-auto flex flex-wrap gap-2 pt-5">
                   {event.skills.map((skill) => (
-                    <span key={skill} className="border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-semibold text-slate-300">
+                    <span key={skill} className="border border-white/10 bg-white/[0.04] px-2.5 py-1 text-sm font-semibold text-slate-300">
                       {skill}
                     </span>
                   ))}
@@ -165,7 +165,7 @@ export default function StudentAssociationPage() {
           <h2 className="mt-3 text-2xl font-bold md:text-3xl">活動現場紀錄</h2>
           <ImageLightboxGallery
             items={photos}
-            actionLabel="View Photo"
+            actionLabel="放大照片"
             gridClassName="mt-8 grid gap-5 md:grid-cols-3"
             imageClassName="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
             imageSizes="(min-width: 768px) 33vw, 100vw"

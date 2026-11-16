@@ -114,7 +114,7 @@ export default function ConferencePage() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#070a0d] text-white [overflow-wrap:anywhere]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(245,158,11,0.08),transparent_24%),linear-gradient(180deg,#070a0d_0%,#0a0f12_48%,#070a0d_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(148,163,184,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      <SubpageNav items={conferenceNavItems} backHref="/#research" backLabel="Back to Research" />
+      <SubpageNav items={conferenceNavItems} backHref="/#projects" backLabel="Projects" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
         <section id="overview" className="pb-14 md:pb-16">
@@ -129,7 +129,7 @@ export default function ConferencePage() {
               <dl className="grid grid-cols-3 gap-px border border-white/10 bg-white/10">
                 {stats.map(([value, label], index) => (
                   <div key={label} className="flex flex-col bg-[#0a1014]/90 px-4 py-4">
-                    <dt className="order-last mt-1 text-xs leading-5 text-slate-400">{label}</dt>
+                    <dt className="order-last mt-1 text-sm leading-5 text-slate-400">{label}</dt>
                     <dd className={`text-3xl font-black md:text-4xl ${index === 0 ? "text-amber-300" : "text-white"}`}>{value}</dd>
                   </div>
                 ))}
@@ -197,7 +197,7 @@ export default function ConferencePage() {
                       <h3 className="text-lg font-bold leading-7 text-white md:text-xl">{award.name}</h3>
                       <p className="text-sm text-slate-400">{award.category}</p>
                     </div>
-                    <p className="w-full pl-14 font-mono text-xs font-semibold text-slate-400 sm:w-auto sm:pl-0">
+                    <p className="w-full pl-14 font-mono text-sm font-semibold text-slate-400 sm:w-auto sm:pl-0">
                       {award.level} · {award.year}
                     </p>
                   </header>
@@ -205,11 +205,11 @@ export default function ConferencePage() {
                   {item.proofs.length ? (
                     <ImageLightboxGallery
                       items={item.proofs}
-                      actionLabel="View"
+                      actionLabel="放大查看"
                       gridClassName={`mt-5 grid gap-4 ${item.proofs.length > 1 ? "sm:grid-cols-2" : "sm:max-w-md"}`}
                       imageClassName="h-full w-full object-contain transition duration-300 group-hover:scale-[1.02]"
                       imageSizes="(min-width: 640px) 50vw, 100vw"
-                      imageWrapperClassName="flex h-[300px] items-center justify-center border-b border-white/10 bg-slate-950/60 p-2 md:h-[360px]"
+                      imageWrapperClassName="flex h-[300px] items-center justify-center border-b border-white/10 bg-[#0a1014] p-2 md:h-[360px]"
                       showTitle
                       titleClassName="text-sm font-semibold text-white"
                       variant="emerald"
@@ -229,7 +229,7 @@ export default function ConferencePage() {
           </p>
           <ImageLightboxGallery
             items={presentationPhotos}
-            actionLabel="View Photo"
+            actionLabel="放大照片"
             gridClassName="mt-8 grid gap-6 md:grid-cols-2"
             imageClassName="aspect-[4/3] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
             imageSizes="(min-width: 768px) 50vw, 100vw"

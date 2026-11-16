@@ -33,7 +33,7 @@ function Tags({ tags }: { tags: string[] }) {
       {tags.map((tag) => (
         <li
           key={tag}
-          className="border border-emerald-300/15 bg-emerald-300/[0.07] px-2.5 py-0.5 text-xs text-emerald-200"
+          className="border border-white/10 bg-slate-950/40 px-2.5 py-0.5 text-xs text-slate-300"
         >
           {tag}
         </li>
@@ -60,7 +60,7 @@ function Sheet({
       <div className="absolute inset-3 flex items-center justify-center md:inset-4">
         <Image
           src={certificate.image}
-          alt={`${certificate.title} certificate`}
+          alt={`${certificate.title} 證書`}
           sizes={sizes}
           className="h-auto max-h-full w-auto max-w-full rounded-sm bg-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] ring-1 ring-white/20 transition duration-300 motion-safe:group-hover:scale-[1.02]"
         />
@@ -74,7 +74,7 @@ function ViewButton({ title, onClick }: { title: string; onClick: () => void }) 
     <button
       type="button"
       onClick={onClick}
-      aria-label={`View certificate for ${title}`}
+      aria-label={`檢視證書：${title}`}
       className="absolute inset-0 z-10 cursor-zoom-in focus:outline-none"
     />
   );
@@ -86,10 +86,10 @@ function VerifyLink({ href, title }: { href: string; title: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Verify ${title} credential`}
+      aria-label={`驗證證書：${title}`}
       className="link-arrow relative z-20"
     >
-      Verify <Arrow kind="external" />
+      驗證 <Arrow kind="external" />
     </a>
   );
 }
@@ -99,7 +99,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
   const viewerItems: ProofViewerItem[] = certificates.map((certificate) => ({
     title: certificate.title,
     image: certificate.image,
-    alt: `${certificate.title} certificate`,
+    alt: `${certificate.title} 證書`,
     originalHref: certificate.href,
   }));
 
@@ -122,11 +122,11 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
             />
 
             <div className="flex min-w-0 flex-1 flex-col p-4 md:p-5">
-              <p className="text-xs font-bold uppercase tracking-wide text-emerald-300">{certificate.issuer}</p>
-              <h3 className="mt-1 text-base font-semibold leading-6 text-white md:text-lg">{certificate.title}</h3>
+              <p className="text-xs font-bold uppercase tracking-wide text-slate-400">{certificate.issuer}</p>
+              <h4 className="mt-1 text-base font-semibold leading-6 text-white md:text-lg">{certificate.title}</h4>
 
               <div className="mt-3 flex items-end gap-2">
-                <span className="text-3xl font-black leading-none text-emerald-300">{certificate.metric.value}</span>
+                <span className="text-3xl font-black leading-none text-white">{certificate.metric.value}</span>
                 <span className="pb-0.5 text-xs leading-4 text-slate-400">{certificate.metric.label}</span>
               </div>
 
@@ -144,7 +144,7 @@ export default function CertificateGrid({ certificates }: CertificateGridProps) 
 
               <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-4">
                 <span className="link-arrow pointer-events-none">
-                  View <Arrow />
+                  查看 <Arrow />
                 </span>
                 {certificate.verifyHref ? (
                   <VerifyLink href={certificate.verifyHref} title={certificate.title} />

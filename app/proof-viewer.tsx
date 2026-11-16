@@ -299,7 +299,7 @@ export default function ProofViewer({
     >
       <div
         ref={dialogRef}
-        className="mx-auto flex h-full w-full max-w-7xl flex-col overflow-hidden rounded-2xl border border-white/15 bg-slate-950/90 shadow-2xl"
+        className="mx-auto flex h-full w-full max-w-7xl flex-col overflow-hidden border border-white/15 bg-[#0a1014]/95 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-white/10 px-3 py-2.5 sm:px-4 sm:py-3">
@@ -319,8 +319,8 @@ export default function ProofViewer({
                   type="button"
                   onClick={() => moveTo(-1)}
                   className={toolButtonClass}
-                  aria-label="Previous image"
-                  title="Previous image (←)"
+                  aria-label="上一張"
+                  title="上一張（←）"
                 >
                   <Icon name="prev" />
                 </button>
@@ -328,8 +328,8 @@ export default function ProofViewer({
                   type="button"
                   onClick={() => moveTo(1)}
                   className={toolButtonClass}
-                  aria-label="Next image"
-                  title="Next image (→)"
+                  aria-label="下一張"
+                  title="下一張（→）"
                 >
                   <Icon name="next" />
                 </button>
@@ -341,8 +341,8 @@ export default function ProofViewer({
               onClick={() => zoomBy(1 / ZOOM_STEP)}
               disabled={activeZoom <= 1}
               className={`${toolButtonClass} disabled:pointer-events-none disabled:opacity-40`}
-              aria-label="Zoom out"
-              title="Zoom out (-)"
+              aria-label="縮小"
+              title="縮小（-）"
             >
               <Icon name="zoomOut" />
             </button>
@@ -351,8 +351,8 @@ export default function ProofViewer({
               onClick={() => zoomBy(ZOOM_STEP)}
               disabled={activeZoom >= MAX_ZOOM}
               className={`${toolButtonClass} disabled:pointer-events-none disabled:opacity-40`}
-              aria-label="Zoom in"
-              title="Zoom in (+)"
+              aria-label="放大"
+              title="放大（+）"
             >
               <Icon name="zoomIn" />
             </button>
@@ -360,8 +360,8 @@ export default function ProofViewer({
               type="button"
               onClick={fitToScreen}
               className={toolButtonClass}
-              aria-label="Fit to screen"
-              title="Fit to screen (0)"
+              aria-label="符合畫面"
+              title="符合畫面（0）"
             >
               <Icon name="fit" />
             </button>
@@ -370,8 +370,8 @@ export default function ProofViewer({
               target="_blank"
               rel="noopener noreferrer"
               className={toolButtonClass}
-              aria-label="Open original in a new tab"
-              title="Open original"
+              aria-label="在新分頁開啟原檔"
+              title="開啟原檔"
             >
               <Icon name="external" />
             </a>
@@ -380,8 +380,8 @@ export default function ProofViewer({
               type="button"
               onClick={onClose}
               className="btn btn-primary btn-icon"
-              aria-label="Close"
-              title="Close (Esc)"
+              aria-label="關閉"
+              title="關閉（Esc）"
             >
               <Icon name="close" />
             </button>
@@ -412,7 +412,7 @@ export default function ProofViewer({
               src={activeItem.image}
               alt={activeItem.alt ?? activeItem.title}
               onClick={toggleZoom}
-              className={`m-auto block h-auto max-w-none rounded-lg ${activeZoom > 1 ? "cursor-zoom-out" : "cursor-zoom-in"}`}
+              className={`m-auto block h-auto max-w-none ${activeZoom > 1 ? "cursor-zoom-out" : "cursor-zoom-in"}`}
               // Until the stage is measured, plain CSS keeps the image inside it.
               style={imageWidth ? { width: imageWidth } : { width: "auto", maxWidth: "100%", maxHeight: "100%" }}
               sizes={imageWidth ? `${imageWidth}px` : "100vw"}
@@ -420,7 +420,7 @@ export default function ProofViewer({
           </div>
 
           {overflowsSideways && !panned ? (
-            <p className="pointer-events-none absolute inset-x-0 bottom-3 mx-auto w-fit rounded-full border border-white/15 bg-slate-950/90 px-3 py-1.5 text-xs font-semibold text-slate-200 sm:hidden">
+            <p className="pointer-events-none absolute inset-x-0 bottom-3 mx-auto w-fit rounded-full border border-white/15 bg-[#0a1014]/95 px-3 py-1.5 text-sm font-semibold text-slate-200 sm:hidden">
               ← 左右滑動查看全圖 →
             </p>
           ) : null}
